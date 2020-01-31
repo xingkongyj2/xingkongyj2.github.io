@@ -16,11 +16,11 @@
 <meta property="og:url" content="http://yoursite.com/2020/01/31/hello-world/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
 <meta property="article:published_time" content="2020-01-31T05:48:33.715Z">
-<meta property="article:modified_time" content="2020-01-31T05:48:33.715Z">
-<meta property="article:author" content="John Doe">
+<meta property="article:modified_time" content="2020-01-31T11:11:39.534Z">
+<meta property="article:author" content="MaYuJie">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
 
@@ -68,7 +68,7 @@
     <link rel="stylesheet" href="/css/progressbar.css">
 <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
     
-    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     
 
 
@@ -89,26 +89,23 @@
             <div class="navbar-start">
                 
                 <a class="navbar-item"
-                href="/">Home</a>
+                href="/">主页</a>
                 
                 <a class="navbar-item"
-                href="/archives">Archives</a>
+                href="/categories">分类</a>
                 
                 <a class="navbar-item"
-                href="/categories">Categories</a>
+                href="/tags">标签</a>
                 
                 <a class="navbar-item"
-                href="/tags">Tags</a>
-                
-                <a class="navbar-item"
-                href="/about">About</a>
+                href="/archives">归档</a>
                 
             </div>
             
             <div class="navbar-end">
                 
                     
-                    <a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                    <a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/xingkongyj2">
                         
                         <i class="fab fa-github"></i>
                         
@@ -116,8 +113,12 @@
                     
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
                 
-                <a class="navbar-item search" title="Search" href="javascript:;">
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
                 </a>
                 
@@ -129,31 +130,44 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
 <div class="card">
     
     <div class="card-content article ">
+
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>Hello World
+            
+        </h1>
+
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-01-31T05:48:33.715Z">2020-01-31</time>
+                
+                <time class="level-item has-text-grey" datetime="2020-01-31T05:48:33.715Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-31</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-01-31T11:11:39.534Z"><i class="far fa-calendar-check">&nbsp;</i>2020-01-31</time>
+                
+
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    1 分钟 read (About 123 words)
+                    1 分钟 读完 (大约 123 个字)
                 </span>
                 
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
                 
             </div>
         </div>
         
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                Hello World
-            
-        </h1>
+
         <div class="content">
             <p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
@@ -178,49 +192,13 @@
 
 
 
-<div class="card">
-    <div class="card-content">
-        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
-        <div class="buttons is-centered">
-            
-                
-<div class="notification is-danger">
-    You forgot to set the <code>qrcode</code> for Alipay. Please set it in <code>_config.yml</code>.
-</div>
-
-                
-                
-<div class="notification is-danger">
-    You forgot to set the <code>qrcode</code> for Wechat. Please set it in <code>_config.yml</code>.
-</div>
-
-                
-                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
-
-<div class="notification is-danger">
-    You forgot to set the <code>business</code> and <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.
-</div>
-
-                
-                
-<div class="notification is-danger">
-    You forgot to set the <code>url</code> Patreon. Please set it in <code>_config.yml</code>.
-</div>
-
-                
-        </div>
-    </div>
-</div>
-
-
-
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
         <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/01/31/test-blog/">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/01/31/hexo/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">test_blog</span>
+                <span class="level-item">Blog</span>
             </a>
         </div>
         
@@ -229,6 +207,27 @@
 </div>
 
 
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: false,
+        verify: false,
+        app_id: '9a8UsSRbBVmCDFHRrVHg5nUp-gzGzoHsz',
+        app_key: 'An5aJ6yR12XjMvKTrT9QoYmg',
+        placeholder: 'Say something...'
+    });
+</script>
+
+    </div>
+</div>
 </div>
                 
 
@@ -245,22 +244,22 @@
                 <div>
                     
                     <figure class="image is-128x128 has-mb-6">
-                        <img class="" src="/images/avatar.png" alt="Your name">
+                        <img class="" src="/images/logo.png" alt="兔子翻书">
                     </figure>
                     
                     <p class="is-size-4 is-block">
-                        Your name
+                        兔子翻书
                     </p>
                     
                     
                     <p class="is-size-6 is-block">
-                        Your title
+                        👨‍🎓
                     </p>
                     
                     
                     <p class="is-size-6 is-flex is-flex-center has-text-grey">
                         <i class="fas fa-map-marker-alt has-mr-7"></i>
-                        <span>Your location</span>
+                        <span>宁波</span>
                     </p>
                     
                 </div>
@@ -270,11 +269,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Posts
+                        文章
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            2
+                            3
                         </p>
                     </a>
                 </div>
@@ -282,11 +281,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Categories
+                        分类
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            0
+                            1
                         </p>
                     </a>
                 </div>
@@ -294,11 +293,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tags
+                        标签
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            0
+                            2
                         </p>
                     </a>
                 </div>
@@ -306,293 +305,57 @@
         </nav>
         
         <div class="level">
-            <a class="level-item button is-link is-rounded" href="https://github.com/ppoffice" target="_blank" rel="noopener">
-                Follow</a>
+            <a class="level-item button is-link is-rounded" href="mailto:2580130642@qq.com" target="_blank" rel="noopener">
+                联系我</a>
         </div>
         
         
-        
-        <div class="level is-mobile">
-            
-            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
-                title="Github" href="https://github.com/ppoffice">
-                
-                <i class="fab fa-github"></i>
-                
-            </a>
-            
-            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
-                title="Facebook" href="https://facebook.com">
-                
-                <i class="fab fa-facebook"></i>
-                
-            </a>
-            
-            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
-                title="Twitter" href="https://twitter.com">
-                
-                <i class="fab fa-twitter"></i>
-                
-            </a>
-            
-            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
-                title="Dribbble" href="https://dribbble.com">
-                
-                <i class="fab fa-dribbble"></i>
-                
-            </a>
-            
-            <a class="level-item button is-white is-marginless" target="_blank" rel="noopener"
-                title="RSS" href="/">
-                
-                <i class="fas fa-rss"></i>
-                
-            </a>
-            
-        </div>
         
     </div>
 </div>
     
         
-    
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-        <h3 class="menu-label">
-            Links
-        </h3>
-        <ul class="menu-list">
-        
-            <li>
-                <a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener">
-                    <span class="level-left">
-                        <span class="level-item">Hexo</span>
-                    </span>
-                    <span class="level-right">
-                        <span class="level-item tag">hexo.io</span>
-                    </span>
-                </a>
-            </li>
-        
-            <li>
-                <a class="level is-mobile" href="https://github.com/ppoffice" target="_blank" rel="noopener">
-                    <span class="level-left">
-                        <span class="level-item">PPOffice</span>
-                    </span>
-                    <span class="level-right">
-                        <span class="level-item tag">github.com</span>
-                    </span>
-                </a>
-            </li>
-        
-        </ul>
-        </div>
-    </div>
-</div>
 
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                Categories
-            </h3>
-            <ul class="menu-list">
-            
-            </ul>
+    <div class="card widget column-left is-sticky" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#Quick-Start">
+        <span class="has-mr-6">1</span>
+        <span>Quick Start</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Create-a-new-post">
+        <span class="has-mr-6">1.1</span>
+        <span>Create a new post</span>
+        </a></li><li>
+        <a class="is-flex" href="#Run-server">
+        <span class="has-mr-6">1.2</span>
+        <span>Run server</span>
+        </a></li><li>
+        <a class="is-flex" href="#Generate-static-files">
+        <span class="has-mr-6">1.3</span>
+        <span>Generate static files</span>
+        </a></li><li>
+        <a class="is-flex" href="#Deploy-to-remote-sites">
+        <span class="has-mr-6">1.4</span>
+        <span>Deploy to remote sites</span>
+        </a></li></ul></li></ul>
+            </div>
         </div>
     </div>
-</div>
-    
-        
+
     
     
         <div class="column-right-shadow is-hidden-widescreen ">
         
-            <div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            Recent
-        </h3>
-        
-        <article class="media">
-            
-            <a href="/2020/01/31/test-blog/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="test_blog">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-31T06:03:54.000Z">2020-01-31</time></div>
-                    <a href="/2020/01/31/test-blog/" class="title has-link-black-ter is-size-6 has-text-weight-normal">test_blog</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/01/31/hello-world/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Hello World">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-31T05:48:33.715Z">2020-01-31</time></div>
-                    <a href="/2020/01/31/hello-world/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hello World</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-    </div>
-</div>
-        
-            <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-        <h3 class="menu-label">
-            Archives
-        </h3>
-        <ul class="menu-list">
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2020/01/">
-                <span class="level-start">
-                    <span class="level-item">January 2020</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">2</span>
-                </span>
-            </a>
-        </li>
-        
-        </ul>
-        </div>
-    </div>
-</div>
-        
-            <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                Tags
-            </h3>
-            <div class="field is-grouped is-grouped-multiline">
-                
-            </div>
-        </div>
-    </div>
-</div>
-        
         </div>
     
 </div>
 
                 
-
-
-
-
-<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
-    
-        <div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            Recent
-        </h3>
-        
-        <article class="media">
-            
-            <a href="/2020/01/31/test-blog/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="test_blog">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-31T06:03:54.000Z">2020-01-31</time></div>
-                    <a href="/2020/01/31/test-blog/" class="title has-link-black-ter is-size-6 has-text-weight-normal">test_blog</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2020/01/31/hello-world/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Hello World">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-31T05:48:33.715Z">2020-01-31</time></div>
-                    <a href="/2020/01/31/hello-world/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Hello World</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-    </div>
-</div>
-    
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-        <h3 class="menu-label">
-            Archives
-        </h3>
-        <ul class="menu-list">
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2020/01/">
-                <span class="level-start">
-                    <span class="level-item">January 2020</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">2</span>
-                </span>
-            </a>
-        </li>
-        
-        </ul>
-        </div>
-    </div>
-</div>
-    
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                Tags
-            </h3>
-            <div class="field is-grouped is-grouped-multiline">
-                
-            </div>
-        </div>
-    </div>
-</div>
-    
-    
-</div>
-
             </div>
         </div>
     </section>
@@ -606,41 +369,26 @@
                 
                 </a>
                 <p class="is-size-7">
-                &copy; 2020 John Doe&nbsp;
+                &copy; 2020 MaYuJie&nbsp;
                 Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> & <a
                         href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a>
+                
+                <br>
+
+                <span id="busuanzi_container_site_uv">
+                    <span id="busuanzi_value_site_uv">0</span>
+                    位小伙伴的
+                </span>
+                <span id="busuanzi_container_site_pv">
+                    <span id="busuanzi_value_site_pv">0</span>
+                    次陪伴
+                </span>
+
+
                 
                 </p>
             </div>
             <div class="level-end">
-            
-                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
-                
-                <p class="control">
-                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/">
-                        
-                        <i class="fab fa-creative-commons"></i>
-                        
-                    </a>
-                </p>
-                
-                <p class="control">
-                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
-                        
-                        <i class="fab fa-creative-commons-by"></i>
-                        
-                    </a>
-                </p>
-                
-                <p class="control">
-                    <a class="button is-white is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
-                        
-                        <i class="fab fa-github"></i>
-                        
-                    </a>
-                </p>
-                
-                </div>
             
             </div>
         </div>
@@ -725,7 +473,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 
-<a id="back-to-top" title="Back to Top" href="javascript:;">
+<a id="back-to-top" title="回到顶端" href="javascript:;">
     <i class="fas fa-chevron-up"></i>
 </a>
 <script src="/js/back-to-top.js" defer></script>
@@ -749,7 +497,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="searchbox ins-search">
     <div class="searchbox-container ins-search-container">
         <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
             <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="searchbox-result-wrapper ins-section-wrapper">
@@ -761,11 +509,11 @@ document.addEventListener('DOMContentLoaded', function () {
     (function (window) {
         var INSIGHT_CONFIG = {
             TRANSLATION: {
-                POSTS: 'Posts',
-                PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
-                UNTITLED: '(Untitled)',
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
             },
             CONTENT_URL: '/content.json',
         };
