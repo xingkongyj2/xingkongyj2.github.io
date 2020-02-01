@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>编程注意事项及技巧(C/C++) - 兔子翻书</title>
+
+
+    <meta name="description" content="编程习惯 每写一段程序就测试程序是否正确。总之就是写一段验证一段 做除法运算时，一定要检测分母为零的情况 尽量多使用小于符号 便于程序理解和程序的规范（比如二分查找）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="编程注意事项及技巧(C&#x2F;C++)">
+<meta property="og:url" content="http://mayujie321.com/81424da4.html">
+<meta property="og:site_name" content="兔子翻书">
+<meta property="og:description" content="编程习惯 每写一段程序就测试程序是否正确。总之就是写一段验证一段 做除法运算时，一定要检测分母为零的情况 尽量多使用小于符号 便于程序理解和程序的规范（比如二分查找）">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://mayujie321.com/images/og_image.png">
+<meta property="article:published_time" content="2018-06-30T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-02-01T08:39:33.244Z">
+<meta property="article:author" content="MaYuJie">
+<meta property="article:tag" content="C&#x2F;C++">
+<meta property="article:tag" content="编程注意事项">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://mayujie321.com/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="编程注意事项及技巧(C/C++)" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">主页</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/xingkongyj2">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>编程注意事项及技巧(C/C++)
+            
+        </h1>
+
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                
+                <time class="level-item has-text-grey" datetime="2018-06-30T16:00:00.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2018-07-01</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-02-01T08:39:33.244Z"><i class="far fa-calendar-check">&nbsp;</i>2020-02-01</time>
+                
+
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0C-C/">编程笔记C/C++</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    7 分钟 读完 (大约 1008 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+
+        <div class="content">
+            <h2 id="编程习惯"><a href="#编程习惯" class="headerlink" title="编程习惯"></a>编程习惯</h2><ol>
+<li>每写一段程序就测试程序是否正确。总之就是写一段验证一段</li>
+<li>做除法运算时，一定要检测分母为零的情况</li>
+<li>尽量多使用小于符号 便于程序理解和程序的规范（比如二分查找）</li>
+</ol>
+<a id="more"></a>
+
+<br>
+
+<h2 id="编程技巧"><a href="#编程技巧" class="headerlink" title="编程技巧"></a>编程技巧</h2><ol>
+<li><p>如果数字大的离谱，说明有技巧或者规律</p>
+</li>
+<li><p>循环时使用位运算可以大大提高速度</p>
+</li>
+<li><p>除法用辗转相除法</p>
+</li>
+<li><p>指针：<code>p+i</code> <code>a+i</code> <code>&amp;a[i]</code>等价</p>
+<p><code>(p+i)</code> <code>(a+i)</code> <code>a[i]</code>等价</p>
+<p><code>p[i]</code> <code>(p+i)</code> 等价</p>
+<p><code>a[i] [j]</code>,<code>* (*(p+i)+j)</code>等价于<code>p [i] [j]</code></p>
+</li>
+<li><p><code>char *p p=&quot;hello&quot;</code>(当赋值后,值不能再被修改。但是可以对<code>p</code>重新赋值)</p>
+</li>
+<li><p><code>&amp;a</code>相当于管辖范围上升了一级 <code>*a</code>相当于管辖范围下降了一级</p>
+</li>
+<li><p><code>int sum(int a[])</code> 将形参数组名作为指针变量来处理</p>
+</li>
+<li><p><code>const int *p</code> 当<code>p</code>被赋值后<code>p</code>所指向的值不能再被修改，但是<code>p</code>可以被重新赋值</p>
+</li>
+<li><p><code>int *function（int sum）</code> 返回指针的函数。必须确保返回的地址有意义，返回全局变量的地址，不是非全局变量，返回静态局部变量，而非动态</p>
+</li>
+<li><p>C语言中每一个函数都有地址</p>
+</li>
+<li><p>算数组个数：<code>sizeof(a)/sizeof(a[0])</code></p>
+</li>
+<li><p>定义结构体的时候，里面的变量可以不能初始化。因为定义结构体时，并未给其分配内存，所以初值是无法存储的</p>
+</li>
+<li><p>打表，就是把各个情况的答案列举出来，然后对应输出来</p>
+</li>
+<li><p>注意：前序遍历的结果使用堆栈改变根节点和左子树的输出顺序后，前序遍历的结果成了中序遍历。因为堆栈交换了根节点和左子树的输出顺序，当然也能交换左右子树的输出顺序等其他树输出的顺序</p>
+</li>
+<li><p>C/C++库中，<code>qsort</code>比较函数的返回值是<code>int</code> 而<code>sort</code>是返回<code>bool</code></p>
+</li>
+<li><p>由于结构体内存在<code>next</code>指针，而申请结构体空间后同时定义了<code>next</code>指针，此时<code>next</code>指针未指向任何空间，在测试时可能导致错误</p>
+</li>
+<li><p>参数的传递是将实参的值赋给形参。然而对于数组来说却是一个例外，因为数组的数据太多了，将其一一赋值既麻烦又浪费空间，所以数组作为参数传递给函数的只是数组首元素的地址，函数在需要用到后面元素时再按照这个地址和数组下标去查找</p>
+</li>
+<li><p>C语言中正无穷大，头函数：<code>#include &lt;limits.h&gt;</code>，无穷大 <code>INT_MAX</code>，无穷小 <code>INT_MIN</code><a href="http://www.cplusplus.com/reference/climits/">文献参考</a></p>
+</li>
+<li><p>当用多重循环枚举答案时，定义一个标志并且设置为循环条件。一旦找到循环条件不成立就退出所有循环</p>
+</li>
+<li><p>求素数：筛法（最快）</p>
+</li>
+<li><p>三目运算符: <code>c=a&gt;b?a:b</code></p>
+</li>
+</ol>
+<br>
+
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><ol>
+<li><code>%c</code>会读取任何字符，包括换行和回车。其他格式输入，如果空格出现在前面，会被摒弃掉</li>
+<li>字符前面有回车，一定要先用<code>getchar()</code>把回车吸收掉</li>
+<li>尽量不要使用<code>getchar（）</code></li>
+<li>字符串的处理一定要注意：完了之后要在最后一个元素手动加一个<code>‘\0’</code></li>
+<li>对于字符数组而言，数组名可以直接打印出数组里面的全部字符。如果指针不是值得首元素，那么将打印指针所指向的字符以及后面全部的字符</li>
+<li><code>int atoi(char* s)</code> 字符串转换成整型数</li>
+<li>strcmp比较字符串时与最后的<code>‘\0’</code>无关</li>
+<li>使用strlen计算字符串长度时，<code>‘\0’</code>它不算进去</li>
+</ol>
+
+        </div>
+        
+        <hr style="height:1px;margin:1rem 0"/>
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/C-C/" rel="tag">C/C++</a>,&nbsp;<a class="has-link-grey -link" href="/tags/%E7%BC%96%E7%A8%8B%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" rel="tag">编程注意事项</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/af55460a.html">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">堆栈</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/6fad0c92.html">
+                <span class="level-item">分治策略</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: false,
+        app_id: '9a8UsSRbBVmCDFHRrVHg5nUp-gzGzoHsz',
+        app_key: 'An5aJ6yR12XjMvKTrT9QoYmg',
+        placeholder: 'Say something...'
+    });
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/images/logo.png" alt="兔子翻书">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        兔子翻书
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        👨‍🎓
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>宁波</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            34
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            9
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            61
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="mailto:2580130642@qq.com" target="_blank" rel="noopener">
+                联系我</a>
+        </div>
+        
+        
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget column-left is-sticky" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#编程习惯">
+        <span class="has-mr-6">1</span>
+        <span>编程习惯</span>
+        </a></li><li>
+        <a class="is-flex" href="#编程技巧">
+        <span class="has-mr-6">2</span>
+        <span>编程技巧</span>
+        </a></li><li>
+        <a class="is-flex" href="#字符串">
+        <span class="has-mr-6">3</span>
+        <span>字符串</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="编程注意事项及技巧(C/C++)" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 MaYuJie&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="external nofollow">Icarus</a>
+                
+                <br>
+
+                <span id="busuanzi_container_site_uv">
+                    <span id="busuanzi_value_site_uv">0</span>
+                    位小伙伴的
+                </span>
+                <span id="busuanzi_container_site_pv">
+                    <span id="busuanzi_value_site_pv">0</span>
+                    次陪伴
+                </span>
+
+
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://mayujie321.com',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

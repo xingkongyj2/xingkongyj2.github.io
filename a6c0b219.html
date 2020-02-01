@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>python语法总结 - 兔子翻书</title>
+
+
+    <meta name="description" content="python数据类型总结 组合数据类型   集合数据类型   序列数据类型:元组、列表   字典类型">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python语法总结">
+<meta property="og:url" content="http://mayujie321.com/a6c0b219.html">
+<meta property="og:site_name" content="兔子翻书">
+<meta property="og:description" content="python数据类型总结 组合数据类型   集合数据类型   序列数据类型:元组、列表   字典类型">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://mayujie321.com/images/og_image.png">
+<meta property="article:published_time" content="2019-03-18T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-02-01T08:39:33.217Z">
+<meta property="article:author" content="MaYuJie">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://mayujie321.com/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="python语法总结" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">主页</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/xingkongyj2">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>python语法总结
+            
+        </h1>
+
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                
+                <time class="level-item has-text-grey" datetime="2019-03-18T16:00:00.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-03-19</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-02-01T08:39:33.217Z"><i class="far fa-calendar-check">&nbsp;</i>2020-02-01</time>
+                
+
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/python/">python</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    6 分钟 读完 (大约 970 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+
+        <div class="content">
+            <h2 id="python数据类型总结"><a href="#python数据类型总结" class="headerlink" title="python数据类型总结"></a>python数据类型总结</h2><ul>
+<li><p>组合数据类型 </p>
+</li>
+<li><p>集合数据类型 </p>
+</li>
+<li><p>序列数据类型:元组、列表 </p>
+</li>
+<li><p>字典类型</p>
+</li>
+</ul>
+<a id="more"></a>
+
+<h3 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h3><ul>
+<li><p>用<code>{}</code>，或<code>set()</code>表示</p>
+</li>
+<li><p>集合元素唯一，不存在相同元素，集合元素序列随机的 </p>
+</li>
+<li><p>用<code>{}</code>和<code>set</code>建立有区别 建立新的集合只能用<code>set()</code></p>
+</li>
+</ul>
+<p><strong>场景</strong>:去重</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">集合方法：</span><br><span class="line">s.add(x)</span><br><span class="line">s.remove(x) 移除x，没有x就产生KeyError异常</span><br><span class="line">s.clear() 移除所有元素</span><br><span class="line">s.pop()	随机返回一个元素，并且更新S</span><br><span class="line">s.copy()</span><br><span class="line">s.len()</span><br><span class="line">x <span class="keyword">in</span> s</span><br><span class="line">x <span class="keyword">not</span> <span class="keyword">in</span> s</span><br><span class="line">集合的遍历与定义的顺序不一定一样</span><br><span class="line">应用：包含关系比较。去重复元素</span><br></pre></td></tr></table></figure>
+
+<h3 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h3><ul>
+<li><p>保护数据</p>
+</li>
+<li><p>一旦创建不能被修改</p>
+</li>
+<li><p>用<code>()</code>或<code>tuple()</code>创建，逗号分隔 </p>
+</li>
+</ul>
+<blockquote>
+<p>注意：只有一个元素时一定要加上逗号 a=(1,)</p>
+</blockquote>
+<h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><ul>
+<li><p>升级的数组</p>
+</li>
+<li><p>用<code>list()</code>或者<code>[]</code></p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#列表与集合转换：</span></span><br><span class="line">s=set(ls)  lt=list(s)</span><br><span class="line"></span><br><span class="line">list.append(obj)　  　　在列表的末尾添加新的对象</span><br><span class="line"></span><br><span class="line">list.count(obj)　　  　　统计某个元素在列表中出现的次数</span><br><span class="line"></span><br><span class="line">list.extend(*obj)　 　　在列表末尾一次性追加另一个序列中的多个值(用新列表扩展原来的列表)</span><br><span class="line"></span><br><span class="line">list.index(obj)        　　从列表中找出某个值第一个匹配项的索引位置</span><br><span class="line"></span><br><span class="line">list.insert(index,obj)　  将对象插入列表,第一个参数可以是位置</span><br><span class="line"></span><br><span class="line">list.pop(obj=list[<span class="number">-1</span>]　　移除列表中的一个元素(默认最后一个元素),并返回该元素的值</span><br><span class="line"></span><br><span class="line">list.remove(obj)　　　　移除列表中某个值的第一个匹配项</span><br><span class="line"></span><br><span class="line">list.reverse()　　　　　反向列表中的元素</span><br><span class="line"></span><br><span class="line">list.sort[func]　　　　　对原列表进行排序,参数reverse=<span class="literal">True</span>时,从大到小排序</span><br></pre></td></tr></table></figure>
+
+<h3 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h3><ul>
+<li><code>{}</code>或者<code>dict()</code> </li>
+<li>引用：<code>d[&quot;中国&quot;]</code></li>
+</ul>
+<blockquote>
+<p> {} 空的大括号用来定义字典类型而不是集合类型</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">del</span> d[k]</span><br><span class="line">k <span class="keyword">in</span> d</span><br><span class="line">d.keys()   返回d全部键信息</span><br><span class="line">d.values()	返回d全部值信息</span><br><span class="line">d.items()	返回d全部键值对信息</span><br><span class="line">d.get(k,&lt;default&gt;)	键K存在，返回值，不存在则返回&lt;default&gt;值</span><br><span class="line">d.pop(k,&lt;default&gt;)	键K存在，取出值，不存在则返回&lt;default&gt;值</span><br><span class="line">d.popitem()</span><br><span class="line">d.clear()</span><br><span class="line">len(d)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="python知识点"><a href="#python知识点" class="headerlink" title="python知识点"></a>python知识点</h2><ul>
+<li><p><code>hei,wei=eval(input())</code></p>
+</li>
+<li><p><code>print(&quot;Hello:&quot;,i)</code> 加了逗号就有空格了 </p>
+</li>
+<li><p><code>print(&quot;12345&quot;,end=&quot;&quot;)</code> </p>
+</li>
+<li><p><code>print(&quot;{}haha{2}&quot;.format(a,b))</code></p>
+</li>
+<li><p><code>10/3=3.333333333335</code> </p>
+</li>
+<li><p><code>10//3=3</code></p>
+</li>
+<li><p><code>x**y=</code>=x^y</p>
+</li>
+<li><p>下标<code>0</code>表示左起第一个元素， <code>-1</code>表示倒数最后一个元素</p>
+</li>
+<li><p><code>TempStr[0:-1</code>]表示第一个元素到倒数第二个元素的切片</p>
+</li>
+<li><p><code>[M:N:K]</code> K为步长</p>
+</li>
+<li><p><code>[::-1]</code> 字符串倒序</p>
+</li>
+<li><p>要打印双引号用有转义字符的双引号<code>\&quot;</code></p>
+</li>
+<li><p><code>\b</code>回退 <code>\n</code>换行 <code>\r</code>回车</p>
+</li>
+<li><p><code>x+y</code> 连接两个字符串 </p>
+</li>
+<li><p><code>n*x</code> 复制n次字符串x</p>
+</li>
+<li><p><code>x in s</code> 如果x是s的子串，返回<code>Ture</code></p>
+</li>
+<li><p><code>str.upper()</code>全部大些 </p>
+</li>
+<li><p><code>str.lower()</code>全部小写 </p>
+</li>
+<li><p><code>str.title()</code> 首字母大写，其余小写的 </p>
+</li>
+<li><p><code>str.capitalize()</code> 单词首字母大写 </p>
+</li>
+<li><p><code>str.split(sep=None)</code> 返回一个列表，由str根据sep被分隔的部分组成</p>
+</li>
+<li><p><code>str.count()</code>返回子串出现的次数</p>
+</li>
+<li><p><code>str.replace(old,new)</code> 返回str副本，所有old子串被替换为</p>
+</li>
+<li><p><code>new str.center(width,[fillchar])</code> str根据with居中，fillchar可选</p>
+</li>
+<li><p><code>&quot;对&quot; if a==99 else &quot;错&quot;</code></p>
+</li>
+<li><p><code>try:</code> </p>
+<p>​        <code>&lt;语句块1&gt;</code></p>
+<p> <code>except&lt;异常处理&gt;:</code> </p>
+<p>​        <code>&lt;语句块2&gt;</code></p>
+</li>
+<li><p><code>try:</code> </p>
+<p>​        <code>&lt;语句块1&gt;</code> </p>
+<p><code>except：</code> </p>
+<p>​        <code>&lt;语句块2&gt;</code> </p>
+<p><code>else:</code> </p>
+<p>​        <code>&lt;语句块3&gt;</code></p>
+<p> <code>finally:</code> </p>
+<p>​        <code>&lt;语句块4&gt;</code></p>
+<p>finally一定执行，else在不发生异常时执行</p>
+</li>
+<li><p><code>return s//m,n,m</code> 返回多个值</p>
+</li>
+<li><p>使用<code>global</code>在函数中使用全局变量</p>
+</li>
+<li><p><code>lambda</code>函数–没有函数名，函数名是返回结果，用于定义简单的能在一行内表达的函数 <code>&lt;函数名&gt;=lambda&lt;参数&gt;:&lt;表达式&gt;</code></p>
+</li>
+<li><p><code>S|T</code>或      <code>S&amp;T</code>与       <code>S&lt;=T</code>判断S与T的包含关系</p>
+</li>
+</ul>
+
+        </div>
+        
+        <hr style="height:1px;margin:1rem 0"/>
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/python/" rel="tag">python</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/cca1b543.html">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">词频统计</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/f7749ae2.html">
+                <span class="level-item">N皇后问题</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: false,
+        app_id: '9a8UsSRbBVmCDFHRrVHg5nUp-gzGzoHsz',
+        app_key: 'An5aJ6yR12XjMvKTrT9QoYmg',
+        placeholder: 'Say something...'
+    });
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/images/logo.png" alt="兔子翻书">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        兔子翻书
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        👨‍🎓
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>宁波</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            34
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            9
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            61
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="mailto:2580130642@qq.com" target="_blank" rel="noopener">
+                联系我</a>
+        </div>
+        
+        
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget column-left is-sticky" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#python数据类型总结">
+        <span class="has-mr-6">1</span>
+        <span>python数据类型总结</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#集合">
+        <span class="has-mr-6">1.1</span>
+        <span>集合</span>
+        </a></li><li>
+        <a class="is-flex" href="#元组">
+        <span class="has-mr-6">1.2</span>
+        <span>元组</span>
+        </a></li><li>
+        <a class="is-flex" href="#列表">
+        <span class="has-mr-6">1.3</span>
+        <span>列表</span>
+        </a></li><li>
+        <a class="is-flex" href="#字典">
+        <span class="has-mr-6">1.4</span>
+        <span>字典</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#python知识点">
+        <span class="has-mr-6">2</span>
+        <span>python知识点</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="python语法总结" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 MaYuJie&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="external nofollow">Icarus</a>
+                
+                <br>
+
+                <span id="busuanzi_container_site_uv">
+                    <span id="busuanzi_value_site_uv">0</span>
+                    位小伙伴的
+                </span>
+                <span id="busuanzi_container_site_pv">
+                    <span id="busuanzi_value_site_pv">0</span>
+                    次陪伴
+                </span>
+
+
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://mayujie321.com',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

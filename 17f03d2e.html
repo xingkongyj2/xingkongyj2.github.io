@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.2.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>Matplotlib(待补充) - 兔子翻书</title>
+
+
+    <meta name="description" content="ReferenceMatplotlib中文 Matplotlib库入门 Matplotlib库基础图表函数.pdf">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Matplotlib(待补充)">
+<meta property="og:url" content="http://mayujie321.com/17f03d2e.html">
+<meta property="og:site_name" content="兔子翻书">
+<meta property="og:description" content="ReferenceMatplotlib中文 Matplotlib库入门 Matplotlib库基础图表函数.pdf">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://mayujie321.com/images/og_image.png">
+<meta property="article:published_time" content="2019-12-16T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-02-01T08:39:33.197Z">
+<meta property="article:author" content="MaYuJie">
+<meta property="article:tag" content="数据分析">
+<meta property="article:tag" content="数据可视化">
+<meta property="article:tag" content="Matplotlib">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://mayujie321.com/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="Matplotlib(待补充)" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">主页</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/xingkongyj2">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>Matplotlib(待补充)
+            
+        </h1>
+
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                
+                <time class="level-item has-text-grey" datetime="2019-12-16T16:00:00.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-17</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-02-01T08:39:33.197Z"><i class="far fa-calendar-check">&nbsp;</i>2020-02-01</time>
+                
+
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">数据分析</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 分钟 读完 (大约 554 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+
+        <div class="content">
+            <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://www.matplotlib.org.cn/intro/#%E5%85%B6%E4%BB%96%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90">Matplotlib中文</a></p>
+<p><a href="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/000019d3-52b9-4b48-997b-22e0b4ae75aa/Matplotlib.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAT73L2G45NG3MK3O6%2F20191217%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20191217T071241Z&X-Amz-Expires=86400&X-Amz-Security-Token=IQoJb3JpZ2luX2VjECwaCXVzLXdlc3QtMiJHMEUCIArsM%2Fphp5igE0voDRgDaI7RTjKOX6UBBlBmHz9PA1wGAiEA19%2FWKGVOdnQwWTZfYnZXFO1nhMtaRjYywkLKFHX%2Fa2Iq3AIIhf%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgwyNzQ1NjcxNDkzNzAiDKiMCbx5gZiUbDB9riqwAp9Mb1j1jkMP9Q8dUu3Noon6k4PjnJXAtIhzHkO5fq22kpQOnIcbEBoKhLnZGcJBCvhmGmCn1HZf1fRkQbzaUvn6qfYESaR9jt%2FbhkYjMoGM6f%2FPFR9xb%2BHztFq%2B79PiRt%2FrmernbGpqTVJzj8KdEJ1oXrqgjLcYMS3U8RV2q7vQh41vFPbpiYvISdVmmlD8RcM0MX6yCIWaCb4LERAtCQRUs9kRY6ua7X%2BNbYu%2BKww0lMMPUVTyaZrP0I4p1RFH8%2F0iySXODJb3qMv8fqSVR0J1SRUplSLieSn%2B3EqahDA7CuikwHsBEDuf6aoyyncejR28VmxxznDPkEEuv1amYNeMf0EQQ4EgqOTPQMDdJ%2Bwh87ETJ3zpOKOaETBmZarz%2B0jwoTOp9AhD4JDvQsofeRcwlqLh7wU6zAJnuPv4XIMMJ1Wr4uExeHhFJa2zCIfNJA%2BxVkPzAu81w2%2FLQ8N%2Fq9%2BlBmpIEwwxPyXhDFL7ht1jZBtSjpIXLcV%2BR6OlVCDmY18asb5GNwLdLeEfUCpK8b3p7W7DPvrtJtJuKGLiCZlHEanjMu1zvkAG5bkkARbVgaeZ2woNJ7oLF2ZP6xp6S1DJWo0zrOsCInXUWxrkZalgHCggvlgANMmDNRDIGldMvSM1a%2FFKGecKgn0NFd3NmQaUdooULl7GxlAyLhAweBfyTMTBA8lRUbL3%2FgaVCzxsVM1fgUB1hVl3cTCYI3uS%2BLpHuYCs0A9ORAL4XqbuPPxXl8cgn1jKqijn7tMiRckbiBxR4wqql%2BLis2IMsTWvk0Get9dk3aijHUnINTtJSGLm7wrwzxr37vcQ2bshv4hBXch5jC%2F%2F9D1zaQQmKOT8XWpgLMuxPA%3D%3D&X-Amz-Signature=65c2ab5a5b83cb9ecf048e67bd1cdba4661a43bcb1258fbfb88120ea7507ed98&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Matplotlib%25E5%25BA%2593%25E5%259F%25BA%25E7%25A1%2580%25E5%259B%25BE%25E8%25A1%25A8%25E5%2587%25BD%25E6%2595%25B0.pdf%22">Matplotlib库入门</a></p>
+<p><a href="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/000019d3-52b9-4b48-997b-22e0b4ae75aa/Matplotlib.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAT73L2G45NG3MK3O6%2F20191217%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20191217T071241Z&X-Amz-Expires=86400&X-Amz-Security-Token=IQoJb3JpZ2luX2VjECwaCXVzLXdlc3QtMiJHMEUCIArsM%2Fphp5igE0voDRgDaI7RTjKOX6UBBlBmHz9PA1wGAiEA19%2FWKGVOdnQwWTZfYnZXFO1nhMtaRjYywkLKFHX%2Fa2Iq3AIIhf%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgwyNzQ1NjcxNDkzNzAiDKiMCbx5gZiUbDB9riqwAp9Mb1j1jkMP9Q8dUu3Noon6k4PjnJXAtIhzHkO5fq22kpQOnIcbEBoKhLnZGcJBCvhmGmCn1HZf1fRkQbzaUvn6qfYESaR9jt%2FbhkYjMoGM6f%2FPFR9xb%2BHztFq%2B79PiRt%2FrmernbGpqTVJzj8KdEJ1oXrqgjLcYMS3U8RV2q7vQh41vFPbpiYvISdVmmlD8RcM0MX6yCIWaCb4LERAtCQRUs9kRY6ua7X%2BNbYu%2BKww0lMMPUVTyaZrP0I4p1RFH8%2F0iySXODJb3qMv8fqSVR0J1SRUplSLieSn%2B3EqahDA7CuikwHsBEDuf6aoyyncejR28VmxxznDPkEEuv1amYNeMf0EQQ4EgqOTPQMDdJ%2Bwh87ETJ3zpOKOaETBmZarz%2B0jwoTOp9AhD4JDvQsofeRcwlqLh7wU6zAJnuPv4XIMMJ1Wr4uExeHhFJa2zCIfNJA%2BxVkPzAu81w2%2FLQ8N%2Fq9%2BlBmpIEwwxPyXhDFL7ht1jZBtSjpIXLcV%2BR6OlVCDmY18asb5GNwLdLeEfUCpK8b3p7W7DPvrtJtJuKGLiCZlHEanjMu1zvkAG5bkkARbVgaeZ2woNJ7oLF2ZP6xp6S1DJWo0zrOsCInXUWxrkZalgHCggvlgANMmDNRDIGldMvSM1a%2FFKGecKgn0NFd3NmQaUdooULl7GxlAyLhAweBfyTMTBA8lRUbL3%2FgaVCzxsVM1fgUB1hVl3cTCYI3uS%2BLpHuYCs0A9ORAL4XqbuPPxXl8cgn1jKqijn7tMiRckbiBxR4wqql%2BLis2IMsTWvk0Get9dk3aijHUnINTtJSGLm7wrwzxr37vcQ2bshv4hBXch5jC%2F%2F9D1zaQQmKOT8XWpgLMuxPA%3D%3D&X-Amz-Signature=65c2ab5a5b83cb9ecf048e67bd1cdba4661a43bcb1258fbfb88120ea7507ed98&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Matplotlib%25E5%25BA%2593%25E5%259F%25BA%25E7%25A1%2580%25E5%259B%25BE%25E8%25A1%25A8%25E5%2587%25BD%25E6%2595%25B0.pdf%22">Matplotlib库基础图表函数.pdf</a></p>
+<a id="more"></a>
+
+
+        </div>
+        
+        <hr style="height:1px;margin:1rem 0"/>
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/Matplotlib/" rel="tag">Matplotlib</a>,&nbsp;<a class="has-link-grey -link" href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" rel="tag">数据分析</a>,&nbsp;<a class="has-link-grey -link" href="/tags/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/" rel="tag">数据可视化</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/3be9a986.html">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Numpy</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/6d314fc.html">
+                <span class="level-item">数据库(Mysql)之权限</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: false,
+        app_id: '9a8UsSRbBVmCDFHRrVHg5nUp-gzGzoHsz',
+        app_key: 'An5aJ6yR12XjMvKTrT9QoYmg',
+        placeholder: 'Say something...'
+    });
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/images/logo.png" alt="兔子翻书">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        兔子翻书
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        👨‍🎓
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>宁波</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            34
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            9
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            61
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="mailto:2580130642@qq.com" target="_blank" rel="noopener">
+                联系我</a>
+        </div>
+        
+        
+        
+    </div>
+</div>
+    
+        
+
+    <div class="card widget column-left is-sticky" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#Reference">
+        <span class="has-mr-6">1</span>
+        <span>Reference</span>
+        </a></li></ul>
+            </div>
+        </div>
+    </div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="Matplotlib(待补充)" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 MaYuJie&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="external nofollow">Icarus</a>
+                
+                <br>
+
+                <span id="busuanzi_container_site_uv">
+                    <span id="busuanzi_value_site_uv">0</span>
+                    位小伙伴的
+                </span>
+                <span id="busuanzi_container_site_pv">
+                    <span id="busuanzi_value_site_pv">0</span>
+                    次陪伴
+                </span>
+
+
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+<script>
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://mayujie321.com',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
