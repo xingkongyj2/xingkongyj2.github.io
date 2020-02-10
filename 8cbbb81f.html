@@ -19,7 +19,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://mayujie321.com/images/og_image.png">
 <meta property="article:published_time" content="2020-02-05T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-02-10T15:41:51.644Z">
+<meta property="article:modified_time" content="2020-02-10T15:44:48.650Z">
 <meta property="article:author" content="MaYuJie">
 <meta property="article:tag" content="PAT">
 <meta name="twitter:card" content="summary">
@@ -148,7 +148,7 @@
                 
                 <time class="level-item has-text-grey" datetime="2020-02-05T16:00:00.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-02-06</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-02-10T15:41:51.644Z"><i class="far fa-calendar-check">&nbsp;</i>2020-02-10</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-02-10T15:44:48.650Z"><i class="far fa-calendar-check">&nbsp;</i>2020-02-10</time>
                 
 
                 
@@ -160,7 +160,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    20 分钟 读完 (大约 2972 个字)
+                    20 分钟 读完 (大约 2956 个字)
                 </span>
                 
                 
@@ -408,7 +408,7 @@
 </tbody></table>
 <br>
 
-<h1 id="C-STl总结"><a href="#C-STl总结" class="headerlink" title="C++ STl总结"></a>C++ STl总结</h1><h2 id="vector-可变长数组"><a href="#vector-可变长数组" class="headerlink" title="vector:可变长数组"></a>vector:可变长数组</h2><p>只有<code>vector</code>和<code>string</code>才允许<code>vi.begin()+3</code>这种迭代去加上整数的写法</p>
+<h1 id="C-STl总结"><a href="#C-STl总结" class="headerlink" title="C++ STl总结"></a>C++ STl总结</h1><h2 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h2><p>只有<code>vector</code>和<code>string</code>才允许<code>vi.begin()+3</code>这种迭代去加上整数的写法</p>
 <p><strong>vector常见用途</strong></p>
 <ol>
 <li>存储数据 <ul>
@@ -435,7 +435,10 @@
 
 
 
-<h2 id="set-内部自动有序且不含重复元素"><a href="#set-内部自动有序且不含重复元素" class="headerlink" title="set:内部自动有序且不含重复元素"></a>set:内部自动有序且不含重复元素</h2><p>set使用方法详细常用[<a href="https://blog.csdn.net/changjiale110/article/details/79108447">参考</a>]</p>
+<h2 id="set"><a href="#set" class="headerlink" title="set:"></a>set:</h2><blockquote>
+<p>内部自动有序且不含重复元素</p>
+</blockquote>
+<p>set使用方法详细常用[<a href="https://blog.csdn.net/changjiale110/article/details/79108447">参考</a>]</p>
 <p>set集合的交并补[<a href="https://blog.csdn.net/woai233/article/details/79413936">参考2</a>]</p>
 <p><strong>set常见用途</strong></p>
 <p>自动去重并按升序排列。要处理不唯一的情况适用<code>multiset</code></p>
@@ -482,7 +485,10 @@
 <blockquote>
 <p>map中的元素是自动按Key升序排序，所以不能对map用sort函数</p>
 </blockquote>
-<p><strong>map常见用途:</strong></p>
+<blockquote>
+<p>unordered_map速度更快</p>
+</blockquote>
+<p>map常见用途:**</p>
 <ol>
 <li>需要建立字符串与整数之间映射的题目</li>
 <li>判断大整数或者其他数据类型是否存在的题目，可把<code>map</code>当<code>bool</code>数组使用</li>
@@ -504,9 +510,6 @@
 </ul>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;       //要加头文件</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//定义 map&lt;typename1,typename2&gt; mp;</span></span><br><span class="line">    <span class="built_in">map</span>&lt;<span class="built_in">string</span>,<span class="keyword">int</span>&gt; mp;     <span class="comment">//字符串到整形发的映射，不能使用char</span></span><br><span class="line">    <span class="built_in">map</span>&lt;<span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt;,<span class="built_in">string</span>&gt; mp2;</span><br><span class="line">    <span class="built_in">map</span>&lt;<span class="keyword">char</span>,<span class="keyword">int</span>&gt; mp3;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//赋值，</span></span><br><span class="line">    mp3[<span class="string">'c'</span>]=<span class="number">10</span>;     <span class="comment">//键只能有一个，当赋值时内部存在则修改，不存在就新建</span></span><br><span class="line">    mp[<span class="string">'m'</span>]=<span class="number">20</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="built_in">map</span>&lt;<span class="keyword">char</span>,<span class="keyword">int</span>&gt;::iterator it=mp3.<span class="built_in">begin</span>();it!=mp3.<span class="built_in">end</span>();i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%c %d\n"</span>,it-&gt;first,it-&gt;second);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">//map与set组合使用，这样一个键可以对应多个值</span></span><br><span class="line">		<span class="built_in">map</span>&lt;<span class="built_in">string</span>,<span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt; &gt; m;</span><br><span class="line">    m[<span class="string">"book"</span>].insert(<span class="number">123</span>);</span><br><span class="line">    <span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt;::iterator it=m[<span class="string">"book"</span>].<span class="built_in">begin</span>();</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,*it);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<br>
-
-<h2 id="unordered-map"><a href="#unordered-map" class="headerlink" title="unordered_map"></a>unordered_map</h2><p>待补充[<a href="https://www.sczyh30.com/posts/C-C/cpp-stl-hashmap/">参考</a>]</p>
 <br>
 
 <h2 id="queue"><a href="#queue" class="headerlink" title="queue"></a>queue</h2><ul>
@@ -695,13 +698,13 @@
         <span class="has-mr-6">2</span>
         <span>C++ STl总结</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#vector-可变长数组">
+        <a class="is-flex" href="#vector">
         <span class="has-mr-6">2.1</span>
-        <span>vector:可变长数组</span>
+        <span>vector</span>
         </a></li><li>
-        <a class="is-flex" href="#set-内部自动有序且不含重复元素">
+        <a class="is-flex" href="#set">
         <span class="has-mr-6">2.2</span>
-        <span>set:内部自动有序且不含重复元素</span>
+        <span>set:</span>
         </a></li><li>
         <a class="is-flex" href="#string">
         <span class="has-mr-6">2.3</span>
@@ -711,28 +714,24 @@
         <span class="has-mr-6">2.4</span>
         <span>map</span>
         </a></li><li>
-        <a class="is-flex" href="#unordered-map">
-        <span class="has-mr-6">2.5</span>
-        <span>unordered_map</span>
-        </a></li><li>
         <a class="is-flex" href="#queue">
-        <span class="has-mr-6">2.6</span>
+        <span class="has-mr-6">2.5</span>
         <span>queue</span>
         </a></li><li>
         <a class="is-flex" href="#priority-queue">
-        <span class="has-mr-6">2.7</span>
+        <span class="has-mr-6">2.6</span>
         <span>priority_queue</span>
         </a></li><li>
         <a class="is-flex" href="#stack">
-        <span class="has-mr-6">2.8</span>
+        <span class="has-mr-6">2.7</span>
         <span>stack</span>
         </a></li><li>
         <a class="is-flex" href="#pair">
-        <span class="has-mr-6">2.9</span>
+        <span class="has-mr-6">2.8</span>
         <span>pair</span>
         </a></li><li>
         <a class="is-flex" href="#algorithm">
-        <span class="has-mr-6">2.10</span>
+        <span class="has-mr-6">2.9</span>
         <span>algorithm</span>
         </a></li></ul></li></ul>
             </div>
