@@ -439,9 +439,10 @@ img.thumbnail {
   color: #ff3860;
 }
 .content blockquote {
-  background-color: #e6f9f3;
+  background: #e6f9f3;
+  border-left: 5px solid #00c081;
 }
-.content blockquote border-left:5px solid #00C081 footer strong + cite {
+.content blockquote footer strong + cite {
   margin-left: 0.5em;
 }
 /* ---------------------------------
