@@ -46,7 +46,7 @@ textarea {
   }
   .is-3-column .container {
     max-width: 1216px;
-    width: 1216px;
+    width: 1152px;
   }
 }
 @media screen and (min-width: 1472px) {
@@ -435,10 +435,13 @@ img.thumbnail {
 }
 .content > code,
 .content :not(pre) > code {
-  font-size: 0.85em;
+  font-size: 0.95em;
   color: #ff3860;
 }
-.content blockquote footer strong + cite {
+.content blockquote {
+  background-color: #e6f9f3;
+}
+.content blockquote border-left:5px solid #00C081 footer strong + cite {
   margin-left: 0.5em;
 }
 /* ---------------------------------
