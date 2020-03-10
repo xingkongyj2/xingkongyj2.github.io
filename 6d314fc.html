@@ -1,180 +1,387 @@
 <!DOCTYPE html>
-<html  lang="zh">
-<head>
-    <meta charset="utf-8" />
-
-<meta name="generator" content="Hexo 4.2.0" />
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-
-<title>数据库(Mysql)之权限 - 兔子翻书</title>
-
-
-    <meta name="description" content="数据库安全权限管理使用create user创建用户账号:create user ‘user’@’localhost’ identified by [password] &#39;password&#39; [,user identified by [password] &#39;password&#39;] …">
-<meta property="og:type" content="article">
-<meta property="og:title" content="数据库(Mysql)之权限">
-<meta property="og:url" content="http://mayujie321.com/6d314fc.html">
-<meta property="og:site_name" content="兔子翻书">
-<meta property="og:description" content="数据库安全权限管理使用create user创建用户账号:create user ‘user’@’localhost’ identified by [password] &#39;password&#39; [,user identified by [password] &#39;password&#39;] …">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://mayujie321.com/images/og_image.png">
-<meta property="article:published_time" content="2019-12-14T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-02-02T11:33:19.411Z">
-<meta property="article:author" content="MaYuJie">
-<meta property="article:tag" content="Mysql">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://mayujie321.com/images/og_image.png">
-
-
-
-
-
-
-
-<link rel="icon" href="/images/favicon.svg">
-
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
-
-
+<html>
+<head hexo-theme='https://volantis.js.org/#2.0'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
     
-    
-<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+  <!-- 页面元数据 -->
+  
+    <title>数据库(Mysql)之权限 - 兔子翻书</title>
+  
+    <meta name="keywords" content="Mysql">
+  
+  
+    <meta name="description" content="数据库安全权限管理使用create user创建用户账号:create user ‘user’@’localhost’ identified by [password] &#39;password&#39;
+[,user identified by [password] &#39;password&#39;] … ">
+  
 
-    
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+  <!-- feed -->
+  
 
-    
-    
-    
-    
-<link rel="stylesheet" href="/css/back-to-top.css">
+  <!-- import meta -->
+  
 
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css">
+  
     
-    
-    
-    
-    
-    
-    
-    <link rel="stylesheet" href="/css/progressbar.css">
-<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
-    
-    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
 
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
 
+  
+
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
+  
+
+  <!-- import link -->
+  
+
+  
+    
 <link rel="stylesheet" href="/css/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
 </head>
-<body class="is-3-column">
-    <nav class="navbar navbar-main">
-    <div class="container">
-        <div class="navbar-brand is-flex-center">
-            <a class="navbar-item navbar-logo" href="/">
-            
-                <img src="/images/logo.svg" alt="数据库(Mysql)之权限" height="28">
-            
-            </a>
-        </div>
-        <div class="navbar-menu">
-            
-            <div class="navbar-start">
-                
-                <a class="navbar-item"
-                href="/">主页</a>
-                
-                <a class="navbar-item"
-                href="/categories">分类</a>
-                
-                <a class="navbar-item"
-                href="/tags">标签</a>
-                
-                <a class="navbar-item"
-                href="/archives">归档</a>
-                
-            </div>
-            
-            <div class="navbar-end">
-                
-                    
-                    <a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/xingkongyj2">
-                        
-                        <i class="fab fa-github"></i>
-                        
-                    </a>
-                    
-                
-                
-                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
-                    <i class="fas fa-list-ul"></i>
-                </a>
-                
-                
-                <a class="navbar-item search" title="搜索" href="javascript:;">
-                    <i class="fas fa-search"></i>
-                </a>
-                
-            </div>
-        </div>
+
+<body>
+  
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+<header class="l_header shadow blur">
+
+  <div class='wrapper'>
+    <div class='nav-sub container--flex'>
+      <a class="logo flat-box"></a>
+      <ul class='switcher h-list'>
+        <li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
     </div>
-</nav>
-    
-    <section class="section">
-        <div class="container">
-            <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main">
-<div class="card">
-    
-    <div class="card-content article ">
-
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <i class="fas fa-angle-double-right"></i>数据库(Mysql)之权限
-            
-        </h1>
-
+		<div class="nav-main container container--flex">
+      
         
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                
-                <time class="level-item has-text-grey" datetime="2019-12-14T16:00:00.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2019-12-15</time>
-                
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-02-02T11:33:19.411Z"><i class="far fa-calendar-check">&nbsp;</i>2020-02-02</time>
-                
+        <a class="logo flat-box" target="_self" href='/'>
+          
+          
+          
+            MYJ's blog
+          
+          
+        </a>
+      
 
+			<div class='menu navigation'>
+				<ul class='h-list'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="nav flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  
+                    <i class='fas fa-rss fa-fw'></i>
+                  
+                  Home
+                </a>
                 
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
-                </div>
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="nav flat-box" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  
+                    <i class='fas fa-archive fa-fw'></i>
+                  
+                  Line
+                </a>
                 
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="nav flat-box" href=/resource/
+                  
+                  
+                  
+                    id="resource"
+                  >
+                  
+                    <i class='fas fa-link fa-fw'></i>
+                  
+                  One
+                </a>
                 
-                <span class="level-item has-text-grey">
-                    
-                    
-                    8 分钟 读完 (大约 1259 个字)
-                </span>
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="nav flat-box" href=/resource2/
+                  
+                  
+                  
+                    id="resource2"
+                  >
+                  
+                    <i class='fas fa-link fa-fw'></i>
+                  
+                  Two
+                </a>
                 
-                
-                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
-                    <i class="far fa-eye"></i>
-                    <span id="busuanzi_value_page_pv">0</span>次访问
-                </span>
-                
-            </div>
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      
+        <div class="m_search">
+          <form name="searchform" class="form u-search-form">
+            <i class="icon fas fa-search fa-fw"></i>
+            <input type="text" class="input u-search-input" placeholder="搜索一下" />
+          </form>
         </div>
-        
+      
 
-        <div class="content">
-            <h2 id="数据库安全权限管理"><a href="#数据库安全权限管理" class="headerlink" title="数据库安全权限管理"></a>数据库安全权限管理</h2><h3 id="使用create-user创建用户账号"><a href="#使用create-user创建用户账号" class="headerlink" title="使用create user创建用户账号:"></a>使用create user创建用户账号:</h3><p><code>create user ‘user’@’localhost’ identified by [password] &#39;password&#39;</code></p>
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+<aside class="menu-phone white-box">
+  <header>
+  	<nav class="menu navigation">
+      <ul>
+        
+        
+          <li>
+            <a class="nav flat-box" href=/
+              
+              
+              
+                id="home"
+              >
+              
+                <i class='fas fa-rss fa-fw'></i>
+              
+              博客
+            </a>
+          </li>
+        
+          <li>
+            <a class="nav flat-box" href=/categories/
+              
+              
+              
+                id="categories"
+              >
+              
+                <i class='fas fa-folder-open fa-fw'></i>
+              
+              分类
+            </a>
+          </li>
+        
+          <li>
+            <a class="nav flat-box" href=/tags/
+              
+              
+              
+                id="tags"
+              >
+              
+                <i class='fas fa-tags fa-fw'></i>
+              
+              标签
+            </a>
+          </li>
+        
+          <li>
+            <a class="nav flat-box" href=/archives/
+              
+              
+              
+                id="archives"
+              >
+              
+                <i class='fas fa-archive fa-fw'></i>
+              
+              归档
+            </a>
+          </li>
+        
+          <li>
+            <a class="nav flat-box" href=/friends/
+              
+              
+              
+                id="friends"
+              >
+              
+                <i class='fas fa-link fa-fw'></i>
+              
+              友链
+            </a>
+          </li>
+        
+          <li>
+            <a class="nav flat-box" href=/about/
+              
+              
+              
+                id="about"
+              >
+              
+                <i class='fas fa-info-circle fa-fw'></i>
+              
+              关于
+            </a>
+          </li>
+        
+      </ul>
+  	</nav>
+  </header>
+</aside>
+<script>setLoadingBarProgress(40);</script>
+
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper'>
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/6d314fc.html">
+        数据库(Mysql)之权限
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+<div class='new-meta-item author'>
+  <a href="https://mayujie321.com/" rel="nofollow">
+    <img src="https://i.loli.net/2020/03/10/hgsf9ADMF4U6zkQ.png">
+    <p>兔子翻书</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>数据库</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-edit" aria-hidden="true"></i>
+    <p>发布于：2019年12月15日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          <h2 id="数据库安全权限管理"><a href="#数据库安全权限管理" class="headerlink" title="数据库安全权限管理"></a>数据库安全权限管理</h2><h3 id="使用create-user创建用户账号"><a href="#使用create-user创建用户账号" class="headerlink" title="使用create user创建用户账号:"></a>使用create user创建用户账号:</h3><p><code>create user ‘user’@’localhost’ identified by [password] &#39;password&#39;</code></p>
 <p><code>[,user identified by [password] &#39;password&#39;] …</code> </p>
 <a id="more"></a>
 
@@ -182,7 +389,7 @@
 <p>实质就是在mysql.user表中插入一条语句</p>
 </blockquote>
 <h3 id="Grant语句"><a href="#Grant语句" class="headerlink" title="Grant语句"></a>Grant语句</h3><blockquote>
-<p>8.0版本后语句发生了改变[<a href="https://juejin.im/post/5b6eec2cf265da0f5e3315a6#heading-2">参考</a>]</p>
+<p>8.0版本后语句发生了改变[<a href="https://juejin.im/post/5b6eec2cf265da0f5e3315a6#heading-2" target="_blank" rel="noopener">参考</a>]</p>
 </blockquote>
 <p><code>Grant 权限 on 对象 to 用户 indentified by ‘密码’</code></p>
 <p> <code>[with grant option]</code></p>
@@ -213,7 +420,7 @@
 
 
 <h2 id="备份恢复"><a href="#备份恢复" class="headerlink" title="备份恢复"></a>备份恢复</h2><p><strong>Reference</strong></p>
-<p><a href="https://juejin.im/post/5dbb084d5188250d2134ab09">mysql导入导出设置</a></p>
+<p><a href="https://juejin.im/post/5dbb084d5188250d2134ab09" target="_blank" rel="noopener">mysql导入导出设置</a></p>
 <p><strong>备份类型</strong>  </p>
 <ul>
 <li>冷备（cold backup）：需要关mysql服务，读写请求均不允许状态下进行；  </li>
@@ -255,317 +462,436 @@
 <h2 id="建表代码实例"><a href="#建表代码实例" class="headerlink" title="建表代码实例"></a>建表代码实例</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">确定使用的库</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">USE</span> readbook;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">Navicat MySQL Data Transfer</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">Source Server         : mysql</span></span><br><span class="line"><span class="comment">Source Server Version : 50624</span></span><br><span class="line"><span class="comment">Source Host           : localhost:3306</span></span><br><span class="line"><span class="comment">Source Database       : ss</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">Target Server Type    : MYSQL</span></span><br><span class="line"><span class="comment">Target Server Version : 50624</span></span><br><span class="line"><span class="comment">File Encoding         : 65001</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">Date: 2019-09-03 20:11:49</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SET</span> FOREIGN_KEY_CHECKS=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- ----------------------------</span></span><br><span class="line"><span class="comment">-- Table structure for books</span></span><br><span class="line"><span class="comment">-- ----------------------------</span></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">EXISTS</span> <span class="string">`books`</span>;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`books`</span> (</span><br><span class="line">  <span class="string">`bno`</span> <span class="built_in">varchar</span>(<span class="number">8</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">''</span>,</span><br><span class="line">  <span class="string">`classid`</span> <span class="built_in">char</span>(<span class="number">5</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`bname`</span> <span class="built_in">varchar</span>(<span class="number">30</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`author`</span> <span class="built_in">varchar</span>(<span class="number">30</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`price`</span> <span class="built_in">decimal</span>(<span class="number">8</span>,<span class="number">1</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`publish`</span> <span class="built_in">varchar</span>(<span class="number">30</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`csl`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="string">`bno`</span>)</span><br><span class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span> <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- ----------------------------</span></span><br><span class="line"><span class="comment">-- Records of books</span></span><br><span class="line"><span class="comment">-- ----------------------------</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`books`</span> <span class="keyword">VALUES</span> (<span class="string">'sn9001  '</span>, <span class="string">'jsj'</span>, <span class="string">'SQL SERVER2005教程'</span>, <span class="string">'龚波'</span>, <span class="string">'10.5'</span>, <span class="string">'北京希望出版社'</span>, <span class="string">'5'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`books`</span> <span class="keyword">VALUES</span> (<span class="string">'sn9002  '</span>, <span class="string">'jsj'</span>, <span class="string">'Delphi数据库开发指南'</span>, <span class="string">'万科'</span>, <span class="string">'26.4'</span>, <span class="string">'清华大学出版社'</span>, <span class="string">'5'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- ----------------------------</span></span><br><span class="line"><span class="comment">-- Table structure for borrow</span></span><br><span class="line"><span class="comment">-- ----------------------------</span></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">EXISTS</span> <span class="string">`borrow`</span>;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`borrow`</span> (</span><br><span class="line">  <span class="string">`rno`</span> <span class="built_in">varchar</span>(<span class="number">7</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">''</span>,</span><br><span class="line">  <span class="string">`bno`</span> <span class="built_in">varchar</span>(<span class="number">8</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">''</span>,</span><br><span class="line">  <span class="string">`lenddate`</span> datetime <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`limitdate`</span> datetime <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`returndate`</span> datetime <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`fine`</span> <span class="built_in">decimal</span>(<span class="number">10</span>,<span class="number">2</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`renew`</span> <span class="built_in">int</span>(<span class="number">2</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="string">`rno`</span>,<span class="string">`bno`</span>,<span class="string">`lenddate`</span>),</span><br><span class="line">  <span class="keyword">KEY</span> <span class="string">`fk_br_bno_idx`</span> (<span class="string">`bno`</span>),</span><br><span class="line">  <span class="keyword">CONSTRAINT</span> <span class="string">`borrow_ibfk_1`</span> <span class="keyword">FOREIGN</span> <span class="keyword">KEY</span> (<span class="string">`rno`</span>) <span class="keyword">REFERENCES</span> <span class="string">`readers`</span> (<span class="string">`rno`</span>),</span><br><span class="line">  <span class="keyword">CONSTRAINT</span> <span class="string">`borrow_ibfk_2`</span> <span class="keyword">FOREIGN</span> <span class="keyword">KEY</span> (<span class="string">`bno`</span>) <span class="keyword">REFERENCES</span> <span class="string">`books`</span> (<span class="string">`bno`</span>)</span><br><span class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span> <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- ----------------------------</span></span><br><span class="line"><span class="comment">-- Records of borrow</span></span><br><span class="line"><span class="comment">-- ----------------------------</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`borrow`</span> <span class="keyword">VALUES</span> (<span class="string">'1022203'</span>, <span class="string">'sn9010'</span>, <span class="string">'2013-02-26 00:00:00'</span>, <span class="string">'2013-08-26 00:00:00'</span>, <span class="string">'2013-07-01 00:00:00'</span>, <span class="string">'0.00'</span>, <span class="literal">null</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`borrow`</span> <span class="keyword">VALUES</span> (<span class="string">'1022203'</span>, <span class="string">'sn9013'</span>, <span class="string">'2013-02-26 00:00:00'</span>, <span class="string">'2013-08-26 00:00:00'</span>, <span class="string">'2013-07-01 00:00:00'</span>, <span class="string">'0.00'</span>, <span class="literal">null</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- ----------------------------</span></span><br><span class="line"><span class="comment">-- Table structure for readers</span></span><br><span class="line"><span class="comment">-- ----------------------------</span></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">EXISTS</span> <span class="string">`readers`</span>;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`readers`</span> (</span><br><span class="line">  <span class="string">`rno`</span> <span class="built_in">varchar</span>(<span class="number">7</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`rname`</span> <span class="built_in">char</span>(<span class="number">15</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`rsex`</span> <span class="built_in">varchar</span>(<span class="number">2</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`spet`</span> <span class="built_in">char</span>(<span class="number">20</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`dept`</span> <span class="built_in">char</span>(<span class="number">20</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`birthday`</span> datetime <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`tel`</span> <span class="built_in">char</span>(<span class="number">11</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'电话'</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="string">`rno`</span>)</span><br><span class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span> <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- ----------------------------</span></span><br><span class="line"><span class="comment">-- Records of readers</span></span><br><span class="line"><span class="comment">-- ----------------------------</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`readers`</span> <span class="keyword">VALUES</span> (<span class="string">'1022102'</span>, <span class="string">'王铮亮'</span>, <span class="string">'男'</span>, <span class="string">'国贸'</span>, <span class="string">'经济与管理'</span>, <span class="string">'1992-07-15 00:00:00'</span>, <span class="string">'674576'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`readers`</span> <span class="keyword">VALUES</span> (<span class="string">'1022201'</span>, <span class="string">'佟大为'</span>, <span class="string">'男'</span>, <span class="string">'国贸'</span>, <span class="string">'经济与管理'</span>, <span class="string">'1992-10-19 00:00:00'</span>, <span class="string">'674334'</span>);</span><br></pre></td></tr></table></figure>
 
 
-        </div>
-        
-        <hr style="height:1px;margin:1rem 0"/>
-        <div class="level is-size-7 is-uppercase">
-            <div class="level-start">
-                <div class="level-item">
-                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
-                    <a class="has-link-grey -link" href="/tags/Mysql/" rel="tag">Mysql</a>
-                </div>
-            </div>
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-<div class="card card-transparent">
-    <div class="level post-navigation is-flex-wrap is-mobile">
-        
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/17f03d2e.html">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">Matplotlib(待补充)</span>
-            </a>
-        </div>
-        
-        
-        <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/e4e4cef7.html">
-                <span class="level-item">数据库(Mysql)之语句</span>
-                <i class="level-item fas fa-chevron-right"></i>
-            </a>
-        </div>
-        
-    </div>
-</div>
-
-
-
-<div class="card">
-    <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">评论</h3>
-        
-<div id="valine-thread" class="content"></div>
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
-<script>
-    new Valine({
-        el: '#valine-thread' ,
-        notify: true,
-        verify: false,
-        app_id: '9a8UsSRbBVmCDFHRrVHg5nUp-gzGzoHsz',
-        app_key: 'An5aJ6yR12XjMvKTrT9QoYmg',
-        placeholder: 'Say something...'
-    });
-</script>
-
-    </div>
-</div>
-</div>
-                
-
-
-
-
-<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
-    
-        
-
-    <div class="card widget column-left is-sticky" id="toc">
-        <div class="card-content">
-            <div class="menu">
-                <h3 class="menu-label">
-                    目录
-                </h3>
-                <ul class="menu-list"><li>
-        <a class="is-flex" href="#数据库安全权限管理">
-        <span class="has-mr-6">1</span>
-        <span>数据库安全权限管理</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#使用create-user创建用户账号">
-        <span class="has-mr-6">1.1</span>
-        <span>使用create user创建用户账号:</span>
-        </a></li><li>
-        <a class="is-flex" href="#使用Insert语句建用户">
-        <span class="has-mr-6">1.2</span>
-        <span>使用Insert语句建用户</span>
-        </a></li><li>
-        <a class="is-flex" href="#Grant语句">
-        <span class="has-mr-6">1.3</span>
-        <span>Grant语句</span>
-        </a></li><li>
-        <a class="is-flex" href="#修改用户账号">
-        <span class="has-mr-6">1.4</span>
-        <span>修改用户账号</span>
-        </a></li><li>
-        <a class="is-flex" href="#修改用户口令">
-        <span class="has-mr-6">1.5</span>
-        <span>修改用户口令</span>
-        </a></li><li>
-        <a class="is-flex" href="#删除用户">
-        <span class="has-mr-6">1.6</span>
-        <span>删除用户</span>
-        </a></li><li>
-        <a class="is-flex" href="#权限授予">
-        <span class="has-mr-6">1.7</span>
-        <span>权限授予</span>
-        </a></li><li>
-        <a class="is-flex" href="#收回权限">
-        <span class="has-mr-6">1.8</span>
-        <span>收回权限</span>
-        </a></li><li>
-        <a class="is-flex" href="#查看权限">
-        <span class="has-mr-6">1.9</span>
-        <span>查看权限</span>
-        </a></li></ul></li><li>
-        <a class="is-flex" href="#备份恢复">
-        <span class="has-mr-6">2</span>
-        <span>备份恢复</span>
-        </a></li><li>
-        <a class="is-flex" href="#事务及并发控制">
-        <span class="has-mr-6">3</span>
-        <span>事务及并发控制</span>
-        </a></li><li>
-        <a class="is-flex" href="#建表代码实例">
-        <span class="has-mr-6">4</span>
-        <span>建表代码实例</span>
-        </a></li></ul>
-            </div>
-        </div>
-    </div>
-
-    
-    
-        <div class="column-right-shadow is-hidden-widescreen ">
-        
-        </div>
-    
-</div>
-
-                
-            </div>
-        </div>
-    </section>
-    <footer class="footer">
-    <div class="container">
-        <div class="level">
-            <div class="level-start has-text-centered-mobile">
-                <a class="footer-logo is-block has-mb-6" href="/">
-                
-                    <img src="/images/logo.svg" alt="数据库(Mysql)之权限" height="28">
-                
-                </a>
-                <p class="is-size-7">
-                &copy; 2020 MaYuJie&nbsp;
-                Powered by <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> & <a
-                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="external nofollow">Icarus</a>
-                
-                <br>
-
-                <span id="busuanzi_container_site_uv">
-                    <span id="busuanzi_value_site_uv">0</span>
-                    位小伙伴的
-                </span>
-                <span id="busuanzi_container_site_pv">
-                    <span id="busuanzi_value_site_pv">0</span>
-                    次陪伴
-                </span>
-
-
-                
-                </p>
-            </div>
-            <div class="level-end">
+          
+            <br>
             
-            </div>
+  
+
+  
+
+
+          
         </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-02-02T19:33:19+08:00">
+  <a class='notlink'>
+    <i class="fas fa-save" aria-hidden="true"></i>
+    <p>更新于：2020年2月2日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Mysql/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i><p>Mysql</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+      
     </div>
-</footer>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
-<script>moment.locale("zh-CN");</script>
+  </section>
 
 
-<script>
-var IcarusThemeSettings = {
-    site: {
-        url: 'http://mayujie321.com',
-        external_link: {"enable":true,"exclude":[]}
-    },
-    article: {
-        highlight: {
-            clipboard: true,
-            fold: 'unfolded'
-        }
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/17f03d2e.html'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Matplotlib(待补充)</p>
+                <p class='content'>ReferenceMatplotlib中文
+Matplotlib库入门
+Matplotlib库基础图表函数.pdf
+
+
+</p>
+              </a>
+            
+            
+              <a class='next' href='/e4e4cef7.html'>
+                <p class='title'>数据库(Mysql)之语句<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>SQL语句语法&amp;实例
+语句结束后要加封号
+
+
+一个数据库在打开的时候是不能删除的
+
+CREAT创建库: CREATE DATABASE &lt;数据库名&gt;;
+创建表：CREATE ...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-spinner fa-spin fa-fw"></i>
+          </div>
+        </section>
+      
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: '数据库(Mysql)之权限',
+      tools: true
     }
-};
-</script>
+  </script>
 
 
-<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
-
-
-
-
-
-<script src="/js/animation.js"></script>
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
-<script src="/js/gallery.js" defer></script>
-
-
-
-<div id="outdated">
-    <h6>Your browser is out-of-date!</h6>
-    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
-            my browser now </a></p>
-    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        outdatedBrowser({
-            bgColor: '#f25648',
-            color: '#ffffff',
-            lowerThan: 'flex'
-        });
-    });
-</script>
+<aside class='l_side'>
+  
+  
 
-
-<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    MathJax.Hub.Config({
-        'HTML-CSS': {
-            matchFontHeight: false
-        },
-        SVG: {
-            matchFontHeight: false
-        },
-        CommonHTML: {
-            matchFontHeight: false
-        },
-        tex2jax: {
-            inlineMath: [
-                ['$','$'],
-                ['\\(','\\)']
-            ]
-        }
-    });
-});
-</script>
-
-
-<a id="back-to-top" title="回到顶端" href="javascript:;">
-    <i class="fas fa-chevron-up"></i>
-</a>
-<script src="/js/back-to-top.js" defer></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script src="/js/main.js" defer></script>
-
+  
     
-    <div class="searchbox ins-search">
-    <div class="searchbox-container ins-search-container">
-        <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
-            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="searchbox-result-wrapper ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
+    
+
+
+  <section class="widget toc-wrapper shadow desktop mobile">
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库安全权限管理"><span class="toc-text">数据库安全权限管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用create-user创建用户账号"><span class="toc-text">使用create user创建用户账号:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用Insert语句建用户"><span class="toc-text">使用Insert语句建用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Grant语句"><span class="toc-text">Grant语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改用户账号"><span class="toc-text">修改用户账号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改用户口令"><span class="toc-text">修改用户口令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除用户"><span class="toc-text">删除用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#权限授予"><span class="toc-text">权限授予</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#收回权限"><span class="toc-text">收回权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看权限"><span class="toc-text">查看权限</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#备份恢复"><span class="toc-text">备份恢复</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事务及并发控制"><span class="toc-text">事务及并发控制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#建表代码实例"><span class="toc-text">建表代码实例</span></a></li></ol>
     </div>
-</div>
-<script>
-    (function (window) {
-        var INSIGHT_CONFIG = {
-            TRANSLATION: {
-                POSTS: '文章',
-                PAGES: '页面',
-                CATEGORIES: '分类',
-                TAGS: '标签',
-                UNTITLED: '(无标题)',
-            },
-            CONTENT_URL: '/content.json',
-        };
-        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-    })(window);
-</script>
-<script src="/js/insight.js" defer></script>
-<link rel="stylesheet" href="/css/search.css">
-<link rel="stylesheet" href="/css/insight.css">
+  </section>
+
+
+  
+
+
+</aside>
+
+
+  
+  <footer class="clearfix white">
+    <br><br>
     
+      
+        <div class="aplayer-container">
+          
+
+  
+    <meting-js
+      theme='#1BCDFC'
+      autoplay='false'
+      volume='0.7'
+      loop='all'
+      order='list'
+      fixed='false'
+      list-max-height='340px'
+      server='netease'
+      type='playlist'
+      id='4906738582'
+      list-folded='true'>
+    </meting-js>
+  
+
+
+        </div>
+      
+    
+  </footer>
+
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.0.0/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js" async></script>
+
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        if ('.cover') {
+          $('.cover').backstretch(
+          ["https://i.loli.net/2020/03/10/LKJhk24ntImwbxN.jpg"],
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+          ["https://i.loli.net/2020/03/10/LKJhk24ntImwbxN.jpg"],
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js" async></script>
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js" async></script>
+
+  
+
+
+
+
+
+
+
+
+  
+    
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.0.0/js/valine.js"></script>
+
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var notify = 'true' == true;
+  var verify = 'true' == true;
+  var valine = new Valine();
+  valine.init({
+    el: '#valine_container',
+    notify: notify,
+    verify: verify,
+    guest_info: guest_info,
+    
+    appId: "9a8UsSRbBVmCDFHRrVHg5nUp-gzGzoHsz",
+    appKey: "An5aJ6yR12XjMvKTrT9QoYmg",
+    placeholder: "快来评论吧~",
+    pageSize:'10',
+    avatar:'mp',
+    lang:'zh-cn',
+    visitor: 'false',
+    highlight:'true'
+  })
+  </script>
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.0.0/js/search.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.0.0/js/comment_typing.js"></script>
+
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "复制成功";
+  let COPY_FAILURE = "复制失败";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+
+
+<!-- fancybox -->
+
+  <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
 </body>
 </html>

@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://volantis.js.org/#2.0'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+    <title>计算机资源 - 兔子翻书</title>
+  
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css">
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
+  
+
+  <!-- import link -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+<header class="l_header no_sidebar shadow blur">
+
+  <div class='wrapper'>
+    <div class='nav-sub container--flex'>
+      <a class="logo flat-box"></a>
+      <ul class='switcher h-list'>
+        <li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main container container--flex">
+      
+        
+        <a class="logo flat-box" target="_self" href='/'>
+          
+          
+          
+            MYJ's blog
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='h-list'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="nav flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  
+                    <i class='fas fa-rss fa-fw'></i>
+                  
+                  Home
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="nav flat-box" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  
+                    <i class='fas fa-archive fa-fw'></i>
+                  
+                  Line
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="nav flat-box" href=/resource/
+                  
+                  
+                  
+                    id="resource"
+                  >
+                  
+                    <i class='fas fa-link fa-fw'></i>
+                  
+                  One
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="nav flat-box" href=/resource2/
+                  
+                  
+                  
+                    id="resource2"
+                  >
+                  
+                    <i class='fas fa-link fa-fw'></i>
+                  
+                  Two
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      
+        <div class="m_search">
+          <form name="searchform" class="form u-search-form">
+            <i class="icon fas fa-search fa-fw"></i>
+            <input type="text" class="input u-search-input" placeholder="搜索一下" />
+          </form>
+        </div>
+      
+
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+<aside class="menu-phone white-box">
+  <header>
+  	<nav class="menu navigation">
+      <ul>
+        
+        
+          <li>
+            <a class="nav flat-box" href=/
+              
+              
+              
+                id="home"
+              >
+              
+                <i class='fas fa-rss fa-fw'></i>
+              
+              博客
+            </a>
+          </li>
+        
+          <li>
+            <a class="nav flat-box" href=/categories/
+              
+              
+              
+                id="categories"
+              >
+              
+                <i class='fas fa-folder-open fa-fw'></i>
+              
+              分类
+            </a>
+          </li>
+        
+          <li>
+            <a class="nav flat-box" href=/tags/
+              
+              
+              
+                id="tags"
+              >
+              
+                <i class='fas fa-tags fa-fw'></i>
+              
+              标签
+            </a>
+          </li>
+        
+          <li>
+            <a class="nav flat-box" href=/archives/
+              
+              
+              
+                id="archives"
+              >
+              
+                <i class='fas fa-archive fa-fw'></i>
+              
+              归档
+            </a>
+          </li>
+        
+          <li>
+            <a class="nav flat-box" href=/friends/
+              
+              
+              
+                id="friends"
+              >
+              
+                <i class='fas fa-link fa-fw'></i>
+              
+              友链
+            </a>
+          </li>
+        
+          <li>
+            <a class="nav flat-box" href=/about/
+              
+              
+              
+                id="about"
+              >
+              
+                <i class='fas fa-info-circle fa-fw'></i>
+              
+              关于
+            </a>
+          </li>
+        
+      </ul>
+  	</nav>
+  </header>
+</aside>
+<script>setLoadingBarProgress(40);</script>
+
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper'>
+      
+
+<div class='l_main no_sidebar'>
+  
+
+  
+    <article id="about" class="post white-box shadow article-type-about" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+      <div class='new-meta-box'>
+        
+      </div>
+      
+    </div>
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          <p center large><red>计</red><yellow>算</yellow><green>机</green><blue>资</blue><cyan>源</cyan></p>
+
+
+<details>
+<summary>
+机场 👇
+</summary>
+
+
+<ul>
+<li><p><a href="https://www.mkswp.com/category/vpn/" target="_blank" rel="noopener">VPN 软件推荐和使用教程-软矿</a></p>
+</li>
+<li><p><a href="https://www.duyaoss.com/archives/3/" target="_blank" rel="noopener">浅谈部分机场（SS/SSR提供商）的使用感受–完整版（联通）更新中 - DuyaoSS-机场简介</a></p>
+</li>
+<li><p><a href="https://233blog.com/post/37/" target="_blank" rel="noopener">谷歌云搭建</a></p>
+</li>
+</ul>
+<p><strong>平台</strong></p>
+<ul>
+<li><a href="https://huanxisha.live/user" target="_blank" rel="noopener">浣溪沙</a></li>
+<li><a href="https://xn--9kq166e0fv.com/user" target="_blank" rel="noopener">海豚湾</a></li>
+<li><a href="https://www.my2one.life/user/shop" target="_blank" rel="noopener">My2one云加速</a></li>
+</ul>
+</details>
+
+
+
+
+
+<details>
+<summary>
+代码转图片👇
+</summary>
+
+
+<ul>
+<li><a href="https://codeimg.io/" target="_blank" rel="noopener">代码美化</a></li>
+<li><a href="http://codezen.rishimohan.me/" target="_blank" rel="noopener">代码美化2</a></li>
+<li><a href="https://carbon.now.sh" target="_blank" rel="noopener">代码美化3</a></li>
+</ul>
+</details>
+
+
+
+
+
+<details>
+<summary>
+代码主题👇
+</summary>
+
+
+<ul>
+<li><a href="http://color-themes.com/?view=index" target="_blank" rel="noopener">Code Color Themes</a></li>
+</ul>
+</details>
+
+
+
+
+
+
+
+<details>
+<summary>
+Github项目推荐👇
+</summary>
+
+
+<ul>
+<li><a href="https://www.ctolib.com/" target="_blank" rel="noopener">CTOLib码库</a></li>
+<li><a href="https://hellogithub.com/" target="_blank" rel="noopener">HelloGitHub</a></li>
+</ul>
+</details>
+
+
+
+
+
+<details>
+<summary>
+图床👇
+</summary>
+
+
+<ul>
+<li><a href="https://picgo.github.io/PicGo-Doc/zh/guide/" target="_blank" rel="noopener">PicGo | PicGo</a></li>
+</ul>
+</details>
+
+
+
+
+
+
+
+<details>
+<summary>
+流程图👇
+</summary>
+
+
+<ul>
+<li><a href="https://www.draw.io/" target="_blank" rel="noopener">画流程图2</a></li>
+</ul>
+</details>
+
+
+
+
+
+<details>
+<summary>
+短链接👇
+</summary>
+
+
+<ul>
+<li><a href="https://bitly.com/pages/pricing" target="_blank" rel="noopener">Pricing | Bitly</a></li>
+</ul>
+</details>
+
+
+
+
+
+<details>
+<summary>
+PDF👇
+</summary>
+
+
+<ul>
+<li><a href="https://easypdf.com/cn" target="_blank" rel="noopener">PDF 轉換</a></li>
+<li><a href="https://pdf2docx.com/zh/" target="_blank" rel="noopener">PDF转DOCX – 在线转换PDF文档至DOCX格式</a></li>
+</ul>
+</details>
+
+
+
+
+
+<details>
+<summary>
+Leetcode👇
+</summary>
+
+
+<ul>
+<li><a href="https://github.com/grandyang/leetcode" target="_blank" rel="noopener">leetcode解答</a></li>
+</ul>
+</details>
+
+
+
+
+<details>
+<summary>
+网站集合 👇
+</summary>
+
+
+<ul>
+<li><a href="https://creativemass.cn/#/section-8" target="_blank" rel="noopener">Creative Mass</a></li>
+</ul>
+</details>
+          
+        </div>
+        
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-spinner fa-spin fa-fw"></i>
+          </div>
+        </section>
+      
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+
+</div>
+<aside class='l_side'>
+  
+
+</aside>
+
+
+  
+  <footer class="clearfix white">
+    <br><br>
+    
+      
+        <div class="aplayer-container">
+          
+
+  
+    <meting-js
+      theme='#1BCDFC'
+      autoplay='false'
+      volume='0.7'
+      loop='all'
+      order='list'
+      fixed='false'
+      list-max-height='340px'
+      server='netease'
+      type='playlist'
+      id='4906738582'
+      list-folded='true'>
+    </meting-js>
+  
+
+
+        </div>
+      
+    
+  </footer>
+
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.0.0/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js" async></script>
+
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        if ('.cover') {
+          $('.cover').backstretch(
+          ["https://i.loli.net/2020/03/10/LKJhk24ntImwbxN.jpg"],
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+          ["https://i.loli.net/2020/03/10/LKJhk24ntImwbxN.jpg"],
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js" async></script>
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js" async></script>
+
+  
+
+
+
+
+
+
+
+
+  
+    
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.0.0/js/valine.js"></script>
+
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var notify = 'true' == true;
+  var verify = 'true' == true;
+  var valine = new Valine();
+  valine.init({
+    el: '#valine_container',
+    notify: notify,
+    verify: verify,
+    guest_info: guest_info,
+    
+    appId: "9a8UsSRbBVmCDFHRrVHg5nUp-gzGzoHsz",
+    appKey: "An5aJ6yR12XjMvKTrT9QoYmg",
+    placeholder: "有什么想说的？",
+    pageSize:'10',
+    avatar:'mp',
+    lang:'zh-cn',
+    visitor: 'false',
+    highlight:'true'
+  })
+  </script>
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.0.0/js/search.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.0.0/js/comment_typing.js"></script>
+
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "复制成功";
+  let COPY_FAILURE = "复制失败";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+
+
+<!-- fancybox -->
+
+  <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
