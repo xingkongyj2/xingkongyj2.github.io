@@ -175,6 +175,25 @@
             
           
           
+            
+            
+              <li>
+                <a class="nav flat-box" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  
+                    <i class='fas fa-feather-alt fa-fw'></i>
+                  
+                  留言
+                </a>
+                
+              </li>
+            
+          
+          
 				</ul>
 			</div>
 
@@ -258,6 +277,20 @@
             </a>
           </li>
         
+          <li>
+            <a class="nav flat-box" href=/about/
+              
+              
+              
+                id="about"
+              >
+              
+                <i class='fas fa-feather-alt fa-fw'></i>
+              
+              留言
+            </a>
+          </li>
+        
       </ul>
   	</nav>
   </header>
@@ -294,7 +327,9 @@
       <section class="article typo">
         <div class="article-entry" itemprop="articleBody">
           
-          
+          <p center large><blue>说吧，我听着呢<blue></p>
+
+
           
         </div>
         
@@ -312,6 +347,31 @@
         
       </section>
     </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-spinner fa-spin fa-fw"></i>
+          </div>
+        </section>
+      
+    </section>
+  </article>
+
+
   
 
 
@@ -445,6 +505,36 @@
 
 
 
+
+  
+    
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.0.0/js/valine.js"></script>
+
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var notify = 'true' == true;
+  var verify = 'true' == true;
+  var valine = new Valine();
+  valine.init({
+    el: '#valine_container',
+    notify: notify,
+    verify: verify,
+    guest_info: guest_info,
+    
+    appId: "9a8UsSRbBVmCDFHRrVHg5nUp-gzGzoHsz",
+    appKey: "An5aJ6yR12XjMvKTrT9QoYmg",
+    placeholder: "有什么想对我说的呢？",
+    pageSize:'10',
+    avatar:'mp',
+    lang:'zh-cn',
+    visitor: 'false',
+    highlight:'true'
+  })
+  </script>
 
 
 
