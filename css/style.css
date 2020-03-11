@@ -1721,7 +1721,8 @@ footer .copyright {
   font-size: 1.375rem;
 }
 .l_main .post-wrapper .post .meta .title a {
-  font-size: 1.375rem;
+  font-size: 1.725rem;
+  color: #2196f3;
 }
 @media screen and (max-width: 500px) {
   .l_main .post-wrapper .post .meta {
@@ -2044,12 +2045,18 @@ details[red] {
 .body-wrapper {
   position: relative;
   display: flex;
-  width: 100%;
+  width: 67%;
+  min-width: 830px;
   max-width: 1080px;
   margin: 0 auto;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: stretch;
+}
+@media screen and (max-width: 768px) {
+  .body-wrapper {
+    width: 95%;
+  }
 }
 .container--flex {
   display: flex;
