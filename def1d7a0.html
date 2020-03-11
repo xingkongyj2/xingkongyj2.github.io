@@ -467,7 +467,7 @@
 
 
   
-  <footer class="clearfix ">
+  <footer class="clearfix white">
     <br><br>
     
       
@@ -536,6 +536,33 @@
 
 
 
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        if ('.cover') {
+          $('.cover').backstretch(
+          ["/img/0930.jpg"],
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+          ["/img/0930.jpg"],
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
 
 
 

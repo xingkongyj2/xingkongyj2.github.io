@@ -78,17 +78,17 @@
   
   <div class="cover-wrapper">
     
-      <cover class='cover  half'>
+      <cover class='cover  full'>
         <div class='cover-body'>
   <div class='a'>
     
       <img class='logo' src='https://ae01.alicdn.com/kf/U01fa64e0e7264a48acf2f0a2010162d4G.jpg'/>
     
     
-      <p class="title "><blue>MYJ's blog</blue></p>
+      <p class="title white"><blue>MYJ's blog</blue></p>
     
     
-      <p class="subtitle "><blue>考研er/少数派/计算机</blue></p>
+      <p class="subtitle white"><blue>考研er/少数派/计算机</blue></p>
     
   </div>
   <div class='b'>
@@ -105,7 +105,7 @@
         
           
             <li>
-              <a class="nav home "
+              <a class="nav home white"
                 href="/resource/"
                 
                 
@@ -115,7 +115,7 @@
             </li>
           
             <li>
-              <a class="nav home "
+              <a class="nav home white"
                 href="/resource2/"
                 
                 
@@ -125,7 +125,7 @@
             </li>
           
             <li>
-              <a class="nav home "
+              <a class="nav home white"
                 href="mailto:2580130642@qq.com"
                 
                 
@@ -140,6 +140,7 @@
   </div>
 </div>
 
+        <div class="scroll-down"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
       </cover>
     
     <div id="loading-bar-wrapper">
@@ -352,6 +353,12 @@
   <section class="post-list ">
     
       
+        
+          
+        
+          
+        
+          
         
           
         
@@ -576,12 +583,6 @@
 
               </div>
             
-          
-        
-          
-        
-          
-        
           
         
           
@@ -1720,7 +1721,7 @@
 
 
   
-  <footer class="clearfix ">
+  <footer class="clearfix white">
     <br><br>
     
       
@@ -1789,6 +1790,33 @@
 
 
 
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        if ('.cover') {
+          $('.cover').backstretch(
+          ["/img/0930.jpg"],
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+          ["/img/0930.jpg"],
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
 
 
 
