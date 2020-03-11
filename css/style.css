@@ -2807,6 +2807,7 @@ div.hoverbox:hover >div.target {
   z-index: 2;
 }
 #u-search .modal-header #u-search-modal-form #u-search-modal-input {
+  color: #fff;
   margin: 16px 50px;
   padding: 0 8px;
   width: calc(100% - 100px - 16px);
