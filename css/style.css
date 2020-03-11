@@ -2056,6 +2056,7 @@ details[red] {
 @media screen and (max-width: 768px) {
   .body-wrapper {
     width: 95%;
+    min-width: 0px;
   }
 }
 .container--flex {
