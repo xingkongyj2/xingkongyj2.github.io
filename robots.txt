@@ -1,8 +1,0 @@
-User-agent: *
-Allow: /
-Allow: /categories/
-Allow: /tags/
-Allow: /archives/
-
-Sitemap: http://mayujie321.com/sitemap.xml
-Sitemap: http://mayujie321.com/baidusitemap.xml
