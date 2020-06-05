@@ -1,26 +1,12 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    
-
-    
-
-    
-
-
-
     <meta charset="utf-8">
-    
-    
-    
     
     <title>数据库(Mysql)之权限 | MYJ&#39;s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
-    <meta name="theme-color" content="#FF007B">
-    
-    
-    <meta name="keywords" content="">
+
     <meta name="description" content="数据库安全权限管理使用create user创建用户账号:create user ‘user’@’localhost’ identified by [password] &#39;password&#39; [,user identified by [password] &#39;password&#39;] …">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据库(Mysql)之权限">
@@ -32,136 +18,111 @@
 <meta property="og:image" content="https://i.loli.net/2020/02/02/fXx5gKvSNGrQplI.png">
 <meta property="og:image" content="https://i.loli.net/2020/02/02/nWeXO4yTJ7M1tAP.png">
 <meta property="article:published_time" content="2019-12-14T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-04-16T09:27:46.561Z">
+<meta property="article:modified_time" content="2020-06-05T06:51:31.761Z">
 <meta property="article:author" content="兔子翻书">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://i.loli.net/2020/02/02/uHVlJWy1EbsqImt.png">
-    
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
-    <script>window.lazyScripts=[]</script>
 
-    <!-- custom head -->
     
+
+    
+
+    
+
+    <link rel="stylesheet" href="/dist/build.css?1.2.0">
+
+    <script>
+        window.aomori = {
+            
+        }
+    </script>
 
 <meta name="generator" content="Hexo 4.2.0"></head>
 
 <body>
-    <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide" >
-  <div class="inner flex-row-vertical">
-    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
-        <i class="icon icon-lg icon-close"></i>
-    </a>
-    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
-      <div class="brand">
-        <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/img/avatar.jpg">
-        </a>
-        <hgroup class="introduce">
-          <h5 class="nickname">兔子翻书</h5>
-          <a href="mailto:2580130642@qq.com" title="2580130642@qq.com" class="mail">2580130642@qq.com</a>
-        </hgroup>
+  <div class="container">
+  <header class="header">
+    <div class="header-type">
+      
+      <div class="avatar avatar-sm">
+        <img src="/images/avatar.jpg" alt="兔子翻书">
+      </div>
+      
+      <a href="/">MYJ&#39;s Blog</a>
+    </div>
+    <div class="header-menu">
+      
+        <a href="/">Home</a>
+      
+        <a href="/archives">Line</a>
+      
+    </div>
+    
+    <div class="header-menu-mobile">
+      <div class="header-menu-mobile-inner" id="mobile-menu-open">
+        <i class="icon icon-menu"></i>
       </div>
     </div>
-    <div class="scroll-wrap flex-col">
-      <ul class="nav">
-        
-            <li class="waves-block waves-effect">
-              <a href="/"  >
-                <i class="icon icon-lg icon-home"></i>
-                Home
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/categories"  >
-                <i class="icon icon-lg icon-tags"></i>
-                Tags
-              </a>
-            </li>
-        
-      </ul>
+  </header>
+
+  <div class="header-menu-mobile-menu">
+    <div class="header-menu-mobile-menu-bg"></div>
+    <div class="header-menu-mobile-menu-wrap">
+      <div class="header-menu-mobile-menu-inner">
+        <div class="header-menu-mobile-menu-close" id="mobile-menu-close">
+          <i class="icon icon-cross"></i>
+        </div>
+        <div class="header-menu-mobile-menu-list">
+          
+            <a href="/">Home</a>
+          
+            <a href="/archives">Line</a>
+          
+        </div>
+      </div>
     </div>
   </div>
-</aside>
 
-    <main id="main">
-        <header class="top-header" id="header">
-    <div class="flex-row">
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
-          <i class="icon icon-lg icon-navicon"></i>
-        </a>
-        <div class="flex-col header-title ellipsis">数据库(Mysql)之权限</div>
+</div>
+
+  <div class="container">
+    <div class="main">
+      <section class="inner">
+        <section class="inner-main">
+          <div class="post">
+    <article id="post-数据库(Mysql)之权限" class="article article-type-post" itemscope
+    itemprop="blogPost">
+
+    <div class="article-inner">
+
         
-        <div class="search-wrap" id="search-wrap">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
-                <i class="icon icon-lg icon-chevron-left"></i>
-            </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
-                <i class="icon icon-lg icon-search"></i>
-            </a>
+
+        
+        <header class="article-header">
+            
+  
+    <h1 class="article-title" itemprop="name">
+      数据库(Mysql)之权限
+    </h1>
+  
+
+        </header>
+        
+
+        <div class="article-more-info article-more-info-post hairline">
+            <div class="article-date">
+  <time datetime="2019-12-14T16:00:00.000Z" itemprop="datePublished">2019-12-15</time>
+</div>
+            
+            <div class="article-category">
+                <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+            </div>
+            
+            
         </div>
-        
-        
-    </div>
-</header>
-<header class="content-header post-header">
 
-    <div class="container fade-scale">
-        <h1 class="title">数据库(Mysql)之权限</h1>
-        <h5 class="subtitle">
-            
-                <time datetime="2019-12-14T16:00:00.000Z" itemprop="datePublished" class="page-time">
-  2019-12-15
-</time>
-
-
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li></ul>
-
-            
-        </h5>
-    </div>
-
-    
-
-
-</header>
-
-
-<div class="container body-wrap">
-    
-    <aside class="post-widget">
-        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
-            <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数据库安全权限管理"><span class="post-toc-number">1.</span> <span class="post-toc-text">数据库安全权限管理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用create-user创建用户账号"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">使用create user创建用户账号:</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用Insert语句建用户"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">使用Insert语句建用户</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Grant语句"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">Grant语句</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改用户账号"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">修改用户账号</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改用户口令"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">修改用户口令</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#删除用户"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">删除用户</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#权限授予"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">权限授予</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#收回权限"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">收回权限</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#查看权限"><span class="post-toc-number">1.9.</span> <span class="post-toc-text">查看权限</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#备份恢复"><span class="post-toc-number">2.</span> <span class="post-toc-text">备份恢复</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#事务及并发控制"><span class="post-toc-number">3.</span> <span class="post-toc-text">事务及并发控制</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#建表代码实例"><span class="post-toc-number">4.</span> <span class="post-toc-text">建表代码实例</span></a></li></ol>
-        </nav>
-    </aside>
-
-
-<article id="post-数据库(Mysql)之权限"
-  class="post-article article-type-post fade" itemprop="blogPost">
-
-    <div class="post-card">
-        <h1 class="post-card-title">数据库(Mysql)之权限</h1>
-        <div class="post-meta">
-            <time class="post-time" title="2019-12-15 00:00:00" datetime="2019-12-14T16:00:00.000Z"  itemprop="datePublished">2019-12-15</time>
-
-            
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li></ul>
-
-
-
-            
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
-    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
-</span>
-
-
-        </div>
-        <div class="post-content" id="post-content" itemprop="postContent">
+        <div class="article-entry post-inner-html hairline" itemprop="articleBody">
             <h2 id="数据库安全权限管理"><a href="#数据库安全权限管理" class="headerlink" title="数据库安全权限管理"></a>数据库安全权限管理</h2><h3 id="使用create-user创建用户账号"><a href="#使用create-user创建用户账号" class="headerlink" title="使用create user创建用户账号:"></a>使用create user创建用户账号:</h3><p><code>create user ‘user’@’localhost’ identified by [password] &#39;password&#39;</code></p>
 <p><code>[,user identified by [password] &#39;password&#39;] …</code> </p>
 <a id="more"></a>
@@ -196,10 +157,38 @@
 <p><code>[With grant option]</code></p>
 <h3 id="收回权限"><a href="#收回权限" class="headerlink" title="收回权限"></a>收回权限</h3><p><code>Revoke 权限 on 对象 from 用户</code></p>
 <h3 id="查看权限"><a href="#查看权限" class="headerlink" title="查看权限"></a>查看权限</h3><p><code>show grants FOR &#39;user&#39;@&#39;host&#39;;</code> </p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">//创建用户账号</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">user</span> <span class="string">'xixixi'</span>@<span class="string">'localhost'</span> <span class="keyword">identified</span> <span class="keyword">by</span> <span class="string">'xingkong22'</span></span><br><span class="line"></span><br><span class="line">//<span class="keyword">Grant</span>语句</span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">select</span> <span class="keyword">on</span> jxgl.* <span class="keyword">to</span> <span class="string">'newuser'</span>@<span class="string">'localhost'</span> </span><br><span class="line"><span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'111'</span>;</span><br><span class="line"></span><br><span class="line">//修改用户账号</span><br><span class="line"><span class="keyword">RENAME</span> <span class="keyword">USER</span> <span class="string">'xixixi'</span>@<span class="string">'localhost'</span> <span class="keyword">to</span> <span class="string">'hahaha'</span>@<span class="string">'localhost'</span>;</span><br><span class="line"></span><br><span class="line">//修改用户口令</span><br><span class="line">mysqladmin -uhahaha -p password</span><br><span class="line"></span><br><span class="line">//使用<span class="keyword">set</span>语句来修改密码</span><br><span class="line"><span class="keyword">set</span> <span class="keyword">password</span> <span class="keyword">for</span> <span class="string">'xixixi'</span>@<span class="string">'localhost'</span> = <span class="keyword">password</span>(<span class="string">'123'</span>)</span><br><span class="line"></span><br><span class="line">//授予用户newuser对jxgl数据库students表上sno列和sname列的查询权限</span><br><span class="line"><span class="keyword">Grant</span> <span class="keyword">select</span>(sno,sname) <span class="keyword">on</span> jxgl.students </span><br><span class="line"><span class="keyword">to</span> ‘newuser’@’localhost’</span><br><span class="line"></span><br><span class="line">//授予用户newuser对jxgl数据库students表上sno列和sname列的查询权限，并允许其将权限授予其他用户</span><br><span class="line"><span class="keyword">Grant</span> <span class="keyword">select</span>(sno,sname) <span class="keyword">on</span> jxgl.students </span><br><span class="line"><span class="keyword">to</span> ‘newuser’@’localhost’ </span><br><span class="line"><span class="keyword">with</span> <span class="keyword">grant</span> <span class="keyword">option</span></span><br><span class="line"></span><br><span class="line">//授予所有权限</span><br><span class="line"><span class="keyword">Grant</span> <span class="keyword">all</span> <span class="keyword">on</span> 对象 <span class="keyword">to</span> 用户 [<span class="keyword">with</span> <span class="keyword">grant</span> <span class="keyword">option</span>]</span><br><span class="line">//mysql <span class="number">8.0</span>之后</span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">ALL</span> <span class="keyword">ON</span> *.* <span class="keyword">TO</span> <span class="string">'Testuser1'</span>@<span class="string">'localhost'</span>;</span><br><span class="line"></span><br><span class="line">收回用户jack的所有的删除权限</span><br><span class="line">//<span class="keyword">revoke</span> <span class="keyword">delete</span> <span class="keyword">on</span> *.* <span class="keyword">from</span> <span class="string">'jack'</span>@<span class="string">'localhost'</span>;</span><br></pre></td></tr></table></figure>
+<pre><code class="sql">//创建用户账号
+create user &#39;xixixi&#39;@&#39;localhost&#39; identified by &#39;xingkong22&#39;
 
+//Grant语句
+grant select on jxgl.* to &#39;newuser&#39;@&#39;localhost&#39; 
+IDENTIFIED BY &#39;111&#39;;
 
+//修改用户账号
+RENAME USER &#39;xixixi&#39;@&#39;localhost&#39; to &#39;hahaha&#39;@&#39;localhost&#39;;
 
+//修改用户口令
+mysqladmin -uhahaha -p password
+
+//使用set语句来修改密码
+set password for &#39;xixixi&#39;@&#39;localhost&#39; = password(&#39;123&#39;)
+
+//授予用户newuser对jxgl数据库students表上sno列和sname列的查询权限
+Grant select(sno,sname) on jxgl.students 
+to ‘newuser’@’localhost’
+
+//授予用户newuser对jxgl数据库students表上sno列和sname列的查询权限，并允许其将权限授予其他用户
+Grant select(sno,sname) on jxgl.students 
+to ‘newuser’@’localhost’ 
+with grant option
+
+//授予所有权限
+Grant all on 对象 to 用户 [with grant option]
+//mysql 8.0之后
+GRANT ALL ON *.* TO &#39;Testuser1&#39;@&#39;localhost&#39;;
+
+收回用户jack的所有的删除权限
+//revoke delete on *.* from &#39;jack&#39;@&#39;localhost&#39;;</code></pre>
 <h2 id="备份恢复"><a href="#备份恢复" class="headerlink" title="备份恢复"></a>备份恢复</h2><p><strong>Reference</strong></p>
 <p><a href="https://juejin.im/post/5dbb084d5188250d2134ab09" target="_blank" rel="noopener">mysql导入导出设置</a></p>
 <p><strong>备份类型</strong>  </p>
@@ -227,182 +216,233 @@
 <p><code>fields terminated by &#39;,&#39;</code></p>
 <p><code>enclosed by &#39;&quot;&#39;</code></p>
 <p><code>lines terminated by &#39;\r\n&#39;;</code></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//备份本地数据库jxgl中students表</span><br><span class="line">Mysqldump –hlocalhost –uroot –p1234 jxgl students &gt; d:\backup\studentsbak.sql</span><br><span class="line"></span><br><span class="line">//备份数据库jxgl和readbook</span><br><span class="line">Mysqldump –hlocalhost –uroot –p1234 –databases jxgl readbook&gt;文件名</span><br><span class="line"></span><br><span class="line">//备份本地服务器上的所有数据库</span><br><span class="line">Mysqldump –uroot –p1234 <span class="comment">--all-databases &gt; backup_151211.sql</span></span><br><span class="line"></span><br><span class="line">//对数据jxgl进行还原</span><br><span class="line">mysql -u username -p test_db &lt; jxgl.sql</span><br></pre></td></tr></table></figure>
+<pre><code class="sql">//备份本地数据库jxgl中students表
+Mysqldump –hlocalhost –uroot –p1234 jxgl students &gt; d:\backup\studentsbak.sql
 
+//备份数据库jxgl和readbook
+Mysqldump –hlocalhost –uroot –p1234 –databases jxgl readbook&gt;文件名
 
+//备份本地服务器上的所有数据库
+Mysqldump –uroot –p1234 --all-databases &gt; backup_151211.sql
 
+//对数据jxgl进行还原
+mysql -u username -p test_db &lt; jxgl.sql 
+</code></pre>
 <h2 id="事务及并发控制"><a href="#事务及并发控制" class="headerlink" title="事务及并发控制"></a>事务及并发控制</h2><p> <strong>事务并发的问题</strong></p>
 <ul>
 <li>丢失修改</li>
 <li>读“脏”数据</li>
 <li>不可重复读</li>
 </ul>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://i.loli.net/2020/02/02/uHVlJWy1EbsqImt.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
+<p><img src="https://i.loli.net/2020/02/02/uHVlJWy1EbsqImt.png" alt=""></p>
+<p><img src="https://i.loli.net/2020/02/02/fXx5gKvSNGrQplI.png" alt=""></p>
+<p><img src="https://i.loli.net/2020/02/02/nWeXO4yTJ7M1tAP.png" alt=""></p>
+<h2 id="建表代码实例"><a href="#建表代码实例" class="headerlink" title="建表代码实例"></a>建表代码实例</h2><pre><code class="sql">/*
+确定使用的库
+*/
+USE readbook;
 
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://i.loli.net/2020/02/02/fXx5gKvSNGrQplI.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
+/*
+Navicat MySQL Data Transfer
 
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="https://i.loli.net/2020/02/02/nWeXO4yTJ7M1tAP.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
+Source Server         : mysql
+Source Server Version : 50624
+Source Host           : localhost:3306
+Source Database       : ss
 
-<h2 id="建表代码实例"><a href="#建表代码实例" class="headerlink" title="建表代码实例"></a>建表代码实例</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">确定使用的库</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">USE</span> readbook;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">Navicat MySQL Data Transfer</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">Source Server         : mysql</span></span><br><span class="line"><span class="comment">Source Server Version : 50624</span></span><br><span class="line"><span class="comment">Source Host           : localhost:3306</span></span><br><span class="line"><span class="comment">Source Database       : ss</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">Target Server Type    : MYSQL</span></span><br><span class="line"><span class="comment">Target Server Version : 50624</span></span><br><span class="line"><span class="comment">File Encoding         : 65001</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">Date: 2019-09-03 20:11:49</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SET</span> FOREIGN_KEY_CHECKS=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- ----------------------------</span></span><br><span class="line"><span class="comment">-- Table structure for books</span></span><br><span class="line"><span class="comment">-- ----------------------------</span></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">EXISTS</span> <span class="string">`books`</span>;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`books`</span> (</span><br><span class="line">  <span class="string">`bno`</span> <span class="built_in">varchar</span>(<span class="number">8</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">''</span>,</span><br><span class="line">  <span class="string">`classid`</span> <span class="built_in">char</span>(<span class="number">5</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`bname`</span> <span class="built_in">varchar</span>(<span class="number">30</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`author`</span> <span class="built_in">varchar</span>(<span class="number">30</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`price`</span> <span class="built_in">decimal</span>(<span class="number">8</span>,<span class="number">1</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`publish`</span> <span class="built_in">varchar</span>(<span class="number">30</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`csl`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="string">`bno`</span>)</span><br><span class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span> <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- ----------------------------</span></span><br><span class="line"><span class="comment">-- Records of books</span></span><br><span class="line"><span class="comment">-- ----------------------------</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`books`</span> <span class="keyword">VALUES</span> (<span class="string">'sn9001  '</span>, <span class="string">'jsj'</span>, <span class="string">'SQL SERVER2005教程'</span>, <span class="string">'龚波'</span>, <span class="string">'10.5'</span>, <span class="string">'北京希望出版社'</span>, <span class="string">'5'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`books`</span> <span class="keyword">VALUES</span> (<span class="string">'sn9002  '</span>, <span class="string">'jsj'</span>, <span class="string">'Delphi数据库开发指南'</span>, <span class="string">'万科'</span>, <span class="string">'26.4'</span>, <span class="string">'清华大学出版社'</span>, <span class="string">'5'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- ----------------------------</span></span><br><span class="line"><span class="comment">-- Table structure for borrow</span></span><br><span class="line"><span class="comment">-- ----------------------------</span></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">EXISTS</span> <span class="string">`borrow`</span>;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`borrow`</span> (</span><br><span class="line">  <span class="string">`rno`</span> <span class="built_in">varchar</span>(<span class="number">7</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">''</span>,</span><br><span class="line">  <span class="string">`bno`</span> <span class="built_in">varchar</span>(<span class="number">8</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">''</span>,</span><br><span class="line">  <span class="string">`lenddate`</span> datetime <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`limitdate`</span> datetime <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`returndate`</span> datetime <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`fine`</span> <span class="built_in">decimal</span>(<span class="number">10</span>,<span class="number">2</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`renew`</span> <span class="built_in">int</span>(<span class="number">2</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="string">`rno`</span>,<span class="string">`bno`</span>,<span class="string">`lenddate`</span>),</span><br><span class="line">  <span class="keyword">KEY</span> <span class="string">`fk_br_bno_idx`</span> (<span class="string">`bno`</span>),</span><br><span class="line">  <span class="keyword">CONSTRAINT</span> <span class="string">`borrow_ibfk_1`</span> <span class="keyword">FOREIGN</span> <span class="keyword">KEY</span> (<span class="string">`rno`</span>) <span class="keyword">REFERENCES</span> <span class="string">`readers`</span> (<span class="string">`rno`</span>),</span><br><span class="line">  <span class="keyword">CONSTRAINT</span> <span class="string">`borrow_ibfk_2`</span> <span class="keyword">FOREIGN</span> <span class="keyword">KEY</span> (<span class="string">`bno`</span>) <span class="keyword">REFERENCES</span> <span class="string">`books`</span> (<span class="string">`bno`</span>)</span><br><span class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span> <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- ----------------------------</span></span><br><span class="line"><span class="comment">-- Records of borrow</span></span><br><span class="line"><span class="comment">-- ----------------------------</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`borrow`</span> <span class="keyword">VALUES</span> (<span class="string">'1022203'</span>, <span class="string">'sn9010'</span>, <span class="string">'2013-02-26 00:00:00'</span>, <span class="string">'2013-08-26 00:00:00'</span>, <span class="string">'2013-07-01 00:00:00'</span>, <span class="string">'0.00'</span>, <span class="literal">null</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`borrow`</span> <span class="keyword">VALUES</span> (<span class="string">'1022203'</span>, <span class="string">'sn9013'</span>, <span class="string">'2013-02-26 00:00:00'</span>, <span class="string">'2013-08-26 00:00:00'</span>, <span class="string">'2013-07-01 00:00:00'</span>, <span class="string">'0.00'</span>, <span class="literal">null</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- ----------------------------</span></span><br><span class="line"><span class="comment">-- Table structure for readers</span></span><br><span class="line"><span class="comment">-- ----------------------------</span></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">EXISTS</span> <span class="string">`readers`</span>;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`readers`</span> (</span><br><span class="line">  <span class="string">`rno`</span> <span class="built_in">varchar</span>(<span class="number">7</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`rname`</span> <span class="built_in">char</span>(<span class="number">15</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`rsex`</span> <span class="built_in">varchar</span>(<span class="number">2</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`spet`</span> <span class="built_in">char</span>(<span class="number">20</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`dept`</span> <span class="built_in">char</span>(<span class="number">20</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`birthday`</span> datetime <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`tel`</span> <span class="built_in">char</span>(<span class="number">11</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'电话'</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="string">`rno`</span>)</span><br><span class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span> <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- ----------------------------</span></span><br><span class="line"><span class="comment">-- Records of readers</span></span><br><span class="line"><span class="comment">-- ----------------------------</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`readers`</span> <span class="keyword">VALUES</span> (<span class="string">'1022102'</span>, <span class="string">'王铮亮'</span>, <span class="string">'男'</span>, <span class="string">'国贸'</span>, <span class="string">'经济与管理'</span>, <span class="string">'1992-07-15 00:00:00'</span>, <span class="string">'674576'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`readers`</span> <span class="keyword">VALUES</span> (<span class="string">'1022201'</span>, <span class="string">'佟大为'</span>, <span class="string">'男'</span>, <span class="string">'国贸'</span>, <span class="string">'经济与管理'</span>, <span class="string">'1992-10-19 00:00:00'</span>, <span class="string">'674334'</span>);</span><br></pre></td></tr></table></figure>
+Target Server Type    : MYSQL
+Target Server Version : 50624
+File Encoding         : 65001
 
+Date: 2019-09-03 20:11:49
+*/
+
+SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for books
+-- ----------------------------
+DROP TABLE IF EXISTS `books`;
+CREATE TABLE `books` (
+  `bno` varchar(8) NOT NULL DEFAULT &#39;&#39;,
+  `classid` char(5) DEFAULT NULL,
+  `bname` varchar(30) DEFAULT NULL,
+  `author` varchar(30) DEFAULT NULL,
+  `price` decimal(8,1) DEFAULT NULL,
+  `publish` varchar(30) DEFAULT NULL,
+  `csl` int(11) DEFAULT NULL,
+  PRIMARY KEY (`bno`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of books
+-- ----------------------------
+INSERT INTO `books` VALUES (&#39;sn9001  &#39;, &#39;jsj&#39;, &#39;SQL SERVER2005教程&#39;, &#39;龚波&#39;, &#39;10.5&#39;, &#39;北京希望出版社&#39;, &#39;5&#39;);
+INSERT INTO `books` VALUES (&#39;sn9002  &#39;, &#39;jsj&#39;, &#39;Delphi数据库开发指南&#39;, &#39;万科&#39;, &#39;26.4&#39;, &#39;清华大学出版社&#39;, &#39;5&#39;);
+
+-- ----------------------------
+-- Table structure for borrow
+-- ----------------------------
+DROP TABLE IF EXISTS `borrow`;
+CREATE TABLE `borrow` (
+  `rno` varchar(7) NOT NULL DEFAULT &#39;&#39;,
+  `bno` varchar(8) NOT NULL DEFAULT &#39;&#39;,
+  `lenddate` datetime NOT NULL,
+  `limitdate` datetime DEFAULT NULL,
+  `returndate` datetime DEFAULT NULL,
+  `fine` decimal(10,2) DEFAULT NULL,
+  `renew` int(2) DEFAULT NULL,
+  PRIMARY KEY (`rno`,`bno`,`lenddate`),
+  KEY `fk_br_bno_idx` (`bno`),
+  CONSTRAINT `borrow_ibfk_1` FOREIGN KEY (`rno`) REFERENCES `readers` (`rno`),
+  CONSTRAINT `borrow_ibfk_2` FOREIGN KEY (`bno`) REFERENCES `books` (`bno`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of borrow
+-- ----------------------------
+INSERT INTO `borrow` VALUES (&#39;1022203&#39;, &#39;sn9010&#39;, &#39;2013-02-26 00:00:00&#39;, &#39;2013-08-26 00:00:00&#39;, &#39;2013-07-01 00:00:00&#39;, &#39;0.00&#39;, null);
+INSERT INTO `borrow` VALUES (&#39;1022203&#39;, &#39;sn9013&#39;, &#39;2013-02-26 00:00:00&#39;, &#39;2013-08-26 00:00:00&#39;, &#39;2013-07-01 00:00:00&#39;, &#39;0.00&#39;, null);
+
+-- ----------------------------
+-- Table structure for readers
+-- ----------------------------
+DROP TABLE IF EXISTS `readers`;
+CREATE TABLE `readers` (
+  `rno` varchar(7) NOT NULL,
+  `rname` char(15) NOT NULL,
+  `rsex` varchar(2) DEFAULT NULL,
+  `spet` char(20) DEFAULT NULL,
+  `dept` char(20) DEFAULT NULL,
+  `birthday` datetime DEFAULT NULL,
+  `tel` char(11) DEFAULT NULL COMMENT &#39;电话&#39;,
+  PRIMARY KEY (`rno`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of readers
+-- ----------------------------
+INSERT INTO `readers` VALUES (&#39;1022102&#39;, &#39;王铮亮&#39;, &#39;男&#39;, &#39;国贸&#39;, &#39;经济与管理&#39;, &#39;1992-07-15 00:00:00&#39;, &#39;674576&#39;);
+INSERT INTO `readers` VALUES (&#39;1022201&#39;, &#39;佟大为&#39;, &#39;男&#39;, &#39;国贸&#39;, &#39;经济与管理&#39;, &#39;1992-10-19 00:00:00&#39;, &#39;674334&#39;);</code></pre>
 
         </div>
 
-        <blockquote class="post-copyright">
-    
-    <footer>
-        <a href="http://yoursite.com">
-            <img src="/img/avatar.jpg" alt="兔子翻书">
-            兔子翻书
-        </a>
-    </footer>
-</blockquote>
+    </div>
 
+    
+
+    
+
+    
+
+    
+<div class="article-copyright hairline">
+  <p>
+    本作品采用 <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a> 进行许可。
+  </p>
+</div>
+
+
+    
+
+    
+<nav class="article-nav">
+  
+    <a href="/2019/12/17/Matplotlib/" id="article-nav-newer" class="article-nav-link-wrap">
+      <div class="article-nav-caption">下一篇</div>
+      <div class="article-nav-title">
         
-
-
-        <div class="post-footer">
-            
-
-            
-
-
-        </div>
-    </div>
-
-    
-<nav class="post-nav flex-row flex-justify-between">
+          Matplotlib(待补充)
+        
+      </div>
+    </a>
   
-    <div class="waves-block waves-effect prev">
-      <a href="/2019/12/17/Matplotlib/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">Matplotlib(待补充)</h4>
-      </a>
-    </div>
   
-
-  
-    <div class="waves-block waves-effect next">
-      <a href="/2019/12/01/%E6%95%B0%E6%8D%AE%E5%BA%93(Mysql)%E4%B9%8B%E8%AF%AD%E5%8F%A5/" id="post-next" class="post-nav-link">
-        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">数据库(Mysql)之语句</h4>
-      </a>
-    </div>
+    <a href="/2019/12/01/%E6%95%B0%E6%8D%AE%E5%BA%93(Mysql)%E4%B9%8B%E8%AF%AD%E5%8F%A5/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-caption">上一篇</div>
+      <div class="article-nav-title">数据库(Mysql)之语句</div>
+    </a>
   
 </nav>
 
 
 
-    
 
 </article>
 
 
 
+
 </div>
+        </section>
+      </section>
+      <aside class="sidebar">
+        <div class="widget">
+          
 
-        <footer class="footer">
-    <div class="top">
-        
-<p>
-    <span id="busuanzi_container_site_uv" style='display:none'>
-        小伙伴：<span id="busuanzi_value_site_uv"></span>
-    </span>
-    <span id="busuanzi_container_site_pv" style='display:none'>
-        浏览：<span id="busuanzi_value_site_pv"></span>
-    </span>
-</p>
-
-
-        <p>
-            
-            <span>博客内容遵循 <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
-        </p>
+  
+  <div class="widget-wrap">
+    <div class="widget-inner">
+      <div class="toc post-toc-html"></div>
     </div>
-    <div class="bottom">
-        <p><span>兔子翻书 &copy; 2020</span>
+  </div>
+
+
+  
+  <div class="widget-wrap widget-cate">
+    <div class="widget-title"><span>Tags</span></div>
+    <div class="widget-inner">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/">Blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MAC/">MAC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/PAT/">PAT</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%8B%E8%BD%BD%E5%B7%A5%E5%85%B7/">下载工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">数据分析</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%88%AC%E8%99%AB/">爬虫</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0C-C/">编程笔记C/C++</a></li></ul>
+    </div>
+  </div>
+
+
+
+        </div>
+        <div id="backtop"><i class="icon icon-arrow-up"></i></div>
+      </aside>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-info">
+            <span>&copy; 2020 MYJ&#39;s Blog</span>
             
-        </p>
+
+
+
+
+
+
+
+
+
+
+  <a class="social" href="https://github.com/xingkongyj2" target="_blank" rel="noopener">
+    <span class="n-icon n-icon-github"></span>
+  </a>
+
+        </div>
+        <div class="footer-powered">
+            <a href="https://mayujie321.com" target="_blank"> 新漫场</a> &nbsp;&nbsp;
+            <a href="mailto:2580130642@qq.com" target="_blank"> Email</a> 
+        </div>
     </div>
 </footer>
 
-    </main>
-    <div class="mask" id="mask"></div>
-<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
 
-    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
-<script>
-var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
+
+<script src="/dist/build.js?1.2.0.js"></script>
 
 
-</script>
-
-<script src="/js/main.min.js?v=1.7.2"></script>
-
-
-<div class="search-panel" id="search-panel">
-    <ul class="search-result" id="search-result"></ul>
-</div>
-<template id="search-tpl">
-<li class="item">
-    <a href="{path}" class="waves-block waves-effect">
-        <div class="title ellipsis" title="{title}">{title}</div>
-        <div class="flex-row flex-middle">
-            <div class="tags ellipsis">
-                {tags}
-            </div>
-            <time class="flex-col time">{date}</time>
-        </div>
-    </a>
-</li>
-</template>
-
-<script src="/js/search.min.js?v=1.7.2" async></script>
+<script src="/dist/custom.js?1.2.0.js"></script>
 
 
 
 
 
-
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-
-
-<script>
-(function() {
-    var OriginTitile = document.title, titleTime;
-    document.addEventListener('visibilitychange', function() {
-        if (document.hidden) {
-            document.title = '死鬼去哪里了！';
-            clearTimeout(titleTime);
-        } else {
-            document.title = '(つェ⊂)咦!又好了!';
-            titleTime = setTimeout(function() {
-                document.title = OriginTitile;
-            },2000);
-        }
-    });
-})();
-</script>
 
 
 

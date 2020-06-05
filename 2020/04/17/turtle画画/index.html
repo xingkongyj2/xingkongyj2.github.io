@@ -1,320 +1,700 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    
-
-    
-
-    
-
-
-
     <meta charset="utf-8">
     
-    
-    
-    
-    <title>turtle画画 | MYJ&#39;s Blog</title>
+    <title>使用turtle画画 | MYJ&#39;s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
-    <meta name="theme-color" content="#FF007B">
-    
-    
-    <meta name="keywords" content="">
-    <meta name="description" content="参考官方文档 小猪佩奇绘制1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969798">
+
+    <meta name="description" content="真的没想到用turtle画出的樱花图还挺好看的。赏花啦">
 <meta property="og:type" content="article">
-<meta property="og:title" content="turtle画画">
+<meta property="og:title" content="使用turtle画画">
 <meta property="og:url" content="http://yoursite.com/2020/04/17/turtle%E7%94%BB%E7%94%BB/index.html">
 <meta property="og:site_name" content="MYJ&#39;s Blog">
-<meta property="og:description" content="参考官方文档 小猪佩奇绘制1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969798">
+<meta property="og:description" content="真的没想到用turtle画出的樱花图还挺好看的。赏花啦">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-04-16T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-04-17T02:04:40.482Z">
+<meta property="article:modified_time" content="2020-06-05T07:13:19.036Z">
 <meta property="article:author" content="兔子翻书">
 <meta name="twitter:card" content="summary">
-    
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
-    <script>window.lazyScripts=[]</script>
 
-    <!-- custom head -->
     
+
+    
+
+    
+
+    <link rel="stylesheet" href="/dist/build.css?1.2.0">
+
+    <script>
+        window.aomori = {
+            
+        }
+    </script>
 
 <meta name="generator" content="Hexo 4.2.0"></head>
 
 <body>
-    <div id="loading" class="active"></div>
 
-    <aside id="menu" class="hide" >
-  <div class="inner flex-row-vertical">
-    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
-        <i class="icon icon-lg icon-close"></i>
-    </a>
-    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
-      <div class="brand">
-        <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/img/avatar.jpg">
-        </a>
-        <hgroup class="introduce">
-          <h5 class="nickname">兔子翻书</h5>
-          <a href="mailto:2580130642@qq.com" title="2580130642@qq.com" class="mail">2580130642@qq.com</a>
-        </hgroup>
+  <div class="container">
+  <header class="header">
+    <div class="header-type">
+      
+      <div class="avatar avatar-sm">
+        <img src="/images/avatar.jpg" alt="兔子翻书">
+      </div>
+      
+      <a href="/">MYJ&#39;s Blog</a>
+    </div>
+    <div class="header-menu">
+      
+        <a href="/">Home</a>
+      
+        <a href="/archives">Line</a>
+      
+    </div>
+    
+    <div class="header-menu-mobile">
+      <div class="header-menu-mobile-inner" id="mobile-menu-open">
+        <i class="icon icon-menu"></i>
       </div>
     </div>
-    <div class="scroll-wrap flex-col">
-      <ul class="nav">
-        
-            <li class="waves-block waves-effect">
-              <a href="/"  >
-                <i class="icon icon-lg icon-home"></i>
-                Home
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/categories"  >
-                <i class="icon icon-lg icon-tags"></i>
-                Tags
-              </a>
-            </li>
-        
-      </ul>
+  </header>
+
+  <div class="header-menu-mobile-menu">
+    <div class="header-menu-mobile-menu-bg"></div>
+    <div class="header-menu-mobile-menu-wrap">
+      <div class="header-menu-mobile-menu-inner">
+        <div class="header-menu-mobile-menu-close" id="mobile-menu-close">
+          <i class="icon icon-cross"></i>
+        </div>
+        <div class="header-menu-mobile-menu-list">
+          
+            <a href="/">Home</a>
+          
+            <a href="/archives">Line</a>
+          
+        </div>
+      </div>
     </div>
   </div>
-</aside>
 
-    <main id="main">
-        <header class="top-header" id="header">
-    <div class="flex-row">
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
-          <i class="icon icon-lg icon-navicon"></i>
-        </a>
-        <div class="flex-col header-title ellipsis">turtle画画</div>
-        
-        <div class="search-wrap" id="search-wrap">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
-                <i class="icon icon-lg icon-chevron-left"></i>
-            </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
-                <i class="icon icon-lg icon-search"></i>
-            </a>
-        </div>
-        
-        
-    </div>
-</header>
-<header class="content-header post-header">
+</div>
 
-    <div class="container fade-scale">
-        <h1 class="title">turtle画画</h1>
-        <h5 class="subtitle">
-            
-                <time datetime="2020-04-16T16:00:00.000Z" itemprop="datePublished" class="page-time">
-  2020-04-17
-</time>
+  <div class="container">
+    <div class="main">
+      <section class="inner">
+        <section class="inner-main">
+          <div class="post">
+    <article id="post-turtle画画" class="article article-type-post" itemscope
+    itemprop="blogPost">
 
-
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/python/">python</a></li></ul>
-
-            
-        </h5>
-    </div>
-
-    
-
-
-</header>
-
-
-<div class="container body-wrap">
-    
-    <aside class="post-widget">
-        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
-            <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考"><span class="post-toc-number">1.</span> <span class="post-toc-text">参考</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#小猪佩奇绘制"><span class="post-toc-number">2.</span> <span class="post-toc-text">小猪佩奇绘制</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#五角星绘制"><span class="post-toc-number">3.</span> <span class="post-toc-text">五角星绘制</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#小蟒蛇绘制"><span class="post-toc-number">4.</span> <span class="post-toc-text">小蟒蛇绘制</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#四叶草绘制源码"><span class="post-toc-number">5.</span> <span class="post-toc-text">四叶草绘制源码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#狮子绘制"><span class="post-toc-number">6.</span> <span class="post-toc-text">狮子绘制</span></a></li></ol>
-        </nav>
-    </aside>
-
-
-<article id="post-turtle画画"
-  class="post-article article-type-post fade" itemprop="blogPost">
-
-    <div class="post-card">
-        <h1 class="post-card-title">turtle画画</h1>
-        <div class="post-meta">
-            <time class="post-time" title="2020-04-17 00:00:00" datetime="2020-04-16T16:00:00.000Z"  itemprop="datePublished">2020-04-17</time>
-
-            
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/python/">python</a></li></ul>
-
-
-
-            
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
-    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
-</span>
-
-
-        </div>
-        <div class="post-content" id="post-content" itemprop="postContent">
-            <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://docs.python.org/zh-cn/3/library/turtle.html#filling" target="_blank" rel="noopener">官方文档</a></p>
-<h2 id="小猪佩奇绘制"><a href="#小猪佩奇绘制" class="headerlink" title="小猪佩奇绘制"></a>小猪佩奇绘制</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> turtle <span class="keyword">as</span> t</span><br><span class="line"></span><br><span class="line"><span class="comment"># 准备设置</span></span><br><span class="line">t.screensize(<span class="number">400</span>, <span class="number">300</span>)  <span class="comment"># 设置画布大小</span></span><br><span class="line">t.pensize(<span class="number">4</span>)  <span class="comment"># 设置画笔的大小</span></span><br><span class="line">t.colormode(<span class="number">255</span>)  <span class="comment"># 设置GBK颜色范围为0-255</span></span><br><span class="line">t.color((<span class="number">255</span>, <span class="number">155</span>, <span class="number">192</span>), <span class="string">"pink"</span>)  <span class="comment"># 设置画笔颜色和填充颜色(pink)</span></span><br><span class="line">t.setup(<span class="number">840</span>, <span class="number">500</span>)  <span class="comment"># 设置主窗口的大小为840*500</span></span><br><span class="line">t.speed(<span class="number">10</span>)  <span class="comment"># 设置画笔速度为10</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 画鼻子</span></span><br><span class="line">t.penup()  <span class="comment"># 提笔</span></span><br><span class="line">t.goto(<span class="number">-100</span>, <span class="number">100</span>)  <span class="comment"># 画笔前往坐标(-100,100)</span></span><br><span class="line">t.pendown()  <span class="comment"># 下笔</span></span><br><span class="line">t.seth(<span class="number">-30</span>)  <span class="comment"># 笔的角度为-30°（鼻子向右倾斜30度），但未行进</span></span><br><span class="line">t.begin_fill()  <span class="comment"># 外形填充的开始标志</span></span><br><span class="line">a = <span class="number">0.4</span>  <span class="comment"># 设置初始步长</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">120</span>):  <span class="comment"># 循环一个从0开始到119的列表</span></span><br><span class="line">    <span class="keyword">if</span> <span class="number">0</span> &lt;= i &lt; <span class="number">30</span> <span class="keyword">or</span> <span class="number">60</span> &lt;= i &lt; <span class="number">90</span>:</span><br><span class="line">        a = a + <span class="number">0.08</span></span><br><span class="line">        t.lt(<span class="number">3</span>)  <span class="comment"># 向左转3度</span></span><br><span class="line">        t.fd(a)  <span class="comment"># 向前走a的步长</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        a = a - <span class="number">0.08</span></span><br><span class="line">        t.lt(<span class="number">3</span>)  <span class="comment"># 向左转3度</span></span><br><span class="line">        t.fd(a)  <span class="comment"># 向前走a的步长</span></span><br><span class="line">t.end_fill()  <span class="comment"># 依据轮廓填充颜色</span></span><br><span class="line">t.penup()  <span class="comment"># 提笔</span></span><br><span class="line">t.seth(<span class="number">90</span>)  <span class="comment"># 笔的角度为90度</span></span><br><span class="line">t.fd(<span class="number">25</span>)  <span class="comment"># 向前移动25</span></span><br><span class="line">t.seth(<span class="number">0</span>)  <span class="comment"># 转换画笔的角度为0</span></span><br><span class="line">t.fd(<span class="number">10</span>)  <span class="comment"># 向前移动10</span></span><br><span class="line">t.pendown()  <span class="comment"># 下笔</span></span><br><span class="line">t.pencolor(<span class="number">255</span>, <span class="number">155</span>, <span class="number">192</span>)  <span class="comment"># 设置画笔颜色</span></span><br><span class="line">t.seth(<span class="number">10</span>)  <span class="comment"># 转换画笔的角度为10</span></span><br><span class="line">t.begin_fill()  <span class="comment"># 外形填充开始标志</span></span><br><span class="line">t.circle(<span class="number">5</span>)  <span class="comment"># 画一个半径为5的圆</span></span><br><span class="line">t.color(<span class="number">160</span>, <span class="number">82</span>, <span class="number">45</span>)  <span class="comment"># 设置填充颜色</span></span><br><span class="line">t.end_fill()  <span class="comment"># 依据轮廓填充颜色</span></span><br><span class="line">t.penup()  <span class="comment"># 提笔</span></span><br><span class="line">t.seth(<span class="number">0</span>)  <span class="comment"># 转换画笔的角度为0</span></span><br><span class="line">t.fd(<span class="number">20</span>)  <span class="comment"># 向前移动25</span></span><br><span class="line">t.pendown()  <span class="comment"># 下笔</span></span><br><span class="line">t.pencolor(<span class="number">255</span>, <span class="number">155</span>, <span class="number">192</span>)  <span class="comment"># 设置画笔和填充颜色</span></span><br><span class="line">t.seth(<span class="number">10</span>)  <span class="comment"># 转换画笔的角度为10</span></span><br><span class="line">t.begin_fill()  <span class="comment"># 外形填充开始标志</span></span><br><span class="line">t.circle(<span class="number">5</span>)  <span class="comment"># 画一个半径为5的圆</span></span><br><span class="line">t.color(<span class="number">160</span>, <span class="number">82</span>, <span class="number">45</span>)  <span class="comment"># 设置填充颜色</span></span><br><span class="line">t.end_fill()  <span class="comment"># 依据轮廓填充颜色</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 以此类推，画头</span></span><br><span class="line">t.color((<span class="number">255</span>, <span class="number">155</span>, <span class="number">192</span>), <span class="string">"pink"</span>)</span><br><span class="line">t.penup()</span><br><span class="line">t.seth(<span class="number">90</span>)</span><br><span class="line">t.fd(<span class="number">41</span>)</span><br><span class="line">t.seth(<span class="number">0</span>)</span><br><span class="line">t.fd(<span class="number">0</span>)</span><br><span class="line">t.pendown()</span><br><span class="line">t.begin_fill()</span><br><span class="line">t.seth(<span class="number">180</span>)</span><br><span class="line">t.circle(<span class="number">300</span>, <span class="number">-30</span>)  <span class="comment"># 顺时针画一个半径为300,圆心角为30°的不完整圆</span></span><br><span class="line">t.circle(<span class="number">100</span>, <span class="number">-60</span>)  <span class="comment"># 接上去</span></span><br><span class="line">t.circle(<span class="number">80</span>, <span class="number">-100</span>)</span><br><span class="line">t.circle(<span class="number">150</span>, <span class="number">-20</span>)</span><br><span class="line">t.circle(<span class="number">60</span>, <span class="number">-95</span>)</span><br><span class="line">t.seth(<span class="number">161</span>)</span><br><span class="line">t.circle(<span class="number">-300</span>, <span class="number">15</span>)</span><br><span class="line">t.penup()</span><br><span class="line">t.goto(<span class="number">-100</span>, <span class="number">100</span>)</span><br><span class="line">t.pendown()</span><br><span class="line">t.seth(<span class="number">-30</span>)</span><br><span class="line">a = <span class="number">0.4</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">60</span>):</span><br><span class="line">    <span class="keyword">if</span> <span class="number">0</span> &lt;= i &lt; <span class="number">30</span> <span class="keyword">or</span> <span class="number">60</span> &lt;= i &lt; <span class="number">90</span>:</span><br><span class="line">        a = a + <span class="number">0.08</span></span><br><span class="line">        t.lt(<span class="number">3</span>)  <span class="comment"># 向左转3度</span></span><br><span class="line">        t.fd(a)  <span class="comment"># 向前走a的步长</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        a = a - <span class="number">0.08</span></span><br><span class="line">        t.lt(<span class="number">3</span>)</span><br><span class="line">        t.fd(a)</span><br><span class="line">t.end_fill()  <span class="comment"># 回到画头出发点，闭合填充背景色</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 画耳朵</span></span><br><span class="line">t.color((<span class="number">255</span>, <span class="number">155</span>, <span class="number">192</span>), <span class="string">"pink"</span>)</span><br><span class="line">t.penup()</span><br><span class="line">t.seth(<span class="number">90</span>)</span><br><span class="line">t.fd(<span class="number">-7</span>)</span><br><span class="line">t.seth(<span class="number">0</span>)</span><br><span class="line">t.fd(<span class="number">70</span>)</span><br><span class="line">t.pendown()</span><br><span class="line">t.begin_fill()</span><br><span class="line">t.seth(<span class="number">100</span>)</span><br><span class="line">t.circle(<span class="number">-50</span>, <span class="number">50</span>)</span><br><span class="line">t.circle(<span class="number">-10</span>, <span class="number">120</span>)</span><br><span class="line">t.circle(<span class="number">-50</span>, <span class="number">54</span>)</span><br><span class="line">t.end_fill()</span><br><span class="line">t.penup()</span><br><span class="line">t.seth(<span class="number">90</span>)</span><br><span class="line">t.fd(<span class="number">-12</span>)</span><br><span class="line">t.seth(<span class="number">0</span>)</span><br><span class="line">t.fd(<span class="number">30</span>)</span><br><span class="line">t.pendown()</span><br><span class="line">t.begin_fill()</span><br><span class="line">t.seth(<span class="number">100</span>)</span><br><span class="line">t.circle(<span class="number">-50</span>, <span class="number">50</span>)</span><br><span class="line">t.circle(<span class="number">-10</span>, <span class="number">120</span>)</span><br><span class="line">t.circle(<span class="number">-50</span>, <span class="number">56</span>)</span><br><span class="line">t.end_fill()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 画眼睛</span></span><br><span class="line">t.color((<span class="number">255</span>, <span class="number">155</span>, <span class="number">192</span>), <span class="string">"white"</span>)</span><br><span class="line">t.penup()</span><br><span class="line">t.seth(<span class="number">90</span>)</span><br><span class="line">t.fd(<span class="number">-20</span>)</span><br><span class="line">t.seth(<span class="number">0</span>)</span><br><span class="line">t.fd(<span class="number">-95</span>)</span><br><span class="line">t.pendown()</span><br><span class="line">t.begin_fill()</span><br><span class="line">t.circle(<span class="number">15</span>)</span><br><span class="line">t.end_fill()</span><br><span class="line">t.color(<span class="string">"black"</span>)</span><br><span class="line">t.penup()</span><br><span class="line">t.seth(<span class="number">90</span>)</span><br><span class="line">t.fd(<span class="number">12</span>)</span><br><span class="line">t.seth(<span class="number">0</span>)</span><br><span class="line">t.fd(<span class="number">-3</span>)</span><br><span class="line">t.pendown()</span><br><span class="line">t.begin_fill()</span><br><span class="line">t.circle(<span class="number">3</span>)</span><br><span class="line">t.end_fill()</span><br><span class="line">t.color((<span class="number">255</span>, <span class="number">155</span>, <span class="number">192</span>), <span class="string">"white"</span>)</span><br><span class="line">t.penup()</span><br><span class="line">t.seth(<span class="number">90</span>)</span><br><span class="line">t.fd(<span class="number">-25</span>)</span><br><span class="line">t.seth(<span class="number">0</span>)</span><br><span class="line">t.fd(<span class="number">40</span>)</span><br><span class="line">t.pendown()</span><br><span class="line">t.begin_fill()</span><br><span class="line">t.circle(<span class="number">15</span>)</span><br><span class="line">t.end_fill()</span><br><span class="line">t.color(<span class="string">"black"</span>)</span><br><span class="line">t.penup()</span><br><span class="line">t.seth(<span class="number">90</span>)</span><br><span class="line">t.fd(<span class="number">12</span>)</span><br><span class="line">t.seth(<span class="number">0</span>)</span><br><span class="line">t.fd(<span class="number">-3</span>)</span><br><span class="line">t.pendown()</span><br><span class="line">t.begin_fill()</span><br><span class="line">t.circle(<span class="number">3</span>)</span><br><span class="line">t.end_fill()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 画腮</span></span><br><span class="line">t.color((<span class="number">255</span>, <span class="number">155</span>, <span class="number">192</span>))</span><br><span class="line">t.penup()</span><br><span class="line">t.seth(<span class="number">90</span>)</span><br><span class="line">t.fd(<span class="number">-95</span>)</span><br><span class="line">t.seth(<span class="number">0</span>)</span><br><span class="line">t.fd(<span class="number">65</span>)</span><br><span class="line">t.pendown()</span><br><span class="line">t.begin_fill()</span><br><span class="line">t.circle(<span class="number">30</span>)</span><br><span class="line">t.end_fill()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 画嘴</span></span><br><span class="line">t.color(<span class="number">239</span>, <span class="number">69</span>, <span class="number">19</span>)</span><br><span class="line">t.penup()</span><br><span class="line">t.seth(<span class="number">90</span>)</span><br><span class="line">t.fd(<span class="number">15</span>)</span><br><span class="line">t.seth(<span class="number">0</span>)</span><br><span class="line">t.fd(<span class="number">-100</span>)</span><br><span class="line">t.pendown()</span><br><span class="line">t.seth(<span class="number">-80</span>)</span><br><span class="line">t.circle(<span class="number">30</span>, <span class="number">40</span>)</span><br><span class="line">t.circle(<span class="number">40</span>, <span class="number">80</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 画身体</span></span><br><span class="line">t.color(<span class="string">"red"</span>, (<span class="number">255</span>, <span class="number">99</span>, <span class="number">71</span>))</span><br><span class="line">t.penup()</span><br><span class="line">t.seth(<span class="number">90</span>)</span><br><span class="line">t.fd(<span class="number">-20</span>)</span><br><span class="line">t.seth(<span class="number">0</span>)</span><br><span class="line">t.fd(<span class="number">-78</span>)</span><br><span class="line">t.pendown()</span><br><span class="line">t.begin_fill()</span><br><span class="line">t.seth(<span class="number">-130</span>)</span><br><span class="line">t.circle(<span class="number">100</span>, <span class="number">10</span>)</span><br><span class="line">t.circle(<span class="number">300</span>, <span class="number">30</span>)</span><br><span class="line">t.seth(<span class="number">0</span>)</span><br><span class="line">t.fd(<span class="number">230</span>)</span><br><span class="line">t.seth(<span class="number">90</span>)</span><br><span class="line">t.circle(<span class="number">300</span>, <span class="number">30</span>)</span><br><span class="line">t.circle(<span class="number">100</span>, <span class="number">3</span>)</span><br><span class="line">t.color((<span class="number">255</span>, <span class="number">155</span>, <span class="number">192</span>), (<span class="number">255</span>, <span class="number">100</span>, <span class="number">100</span>))</span><br><span class="line">t.seth(<span class="number">-135</span>)</span><br><span class="line">t.circle(<span class="number">-80</span>, <span class="number">63</span>)</span><br><span class="line">t.circle(<span class="number">-150</span>, <span class="number">24</span>)</span><br><span class="line">t.end_fill()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 画手</span></span><br><span class="line">t.color((<span class="number">255</span>, <span class="number">155</span>, <span class="number">192</span>))</span><br><span class="line">t.penup()</span><br><span class="line">t.seth(<span class="number">90</span>)</span><br><span class="line">t.fd(<span class="number">-40</span>)</span><br><span class="line">t.seth(<span class="number">0</span>)</span><br><span class="line">t.fd(<span class="number">-27</span>)</span><br><span class="line">t.pendown()</span><br><span class="line">t.seth(<span class="number">-160</span>)</span><br><span class="line">t.circle(<span class="number">300</span>, <span class="number">15</span>)</span><br><span class="line">t.penup()</span><br><span class="line">t.seth(<span class="number">90</span>)</span><br><span class="line">t.fd(<span class="number">15</span>)</span><br><span class="line">t.seth(<span class="number">0</span>)</span><br><span class="line">t.fd(<span class="number">0</span>)</span><br><span class="line">t.pendown()</span><br><span class="line">t.seth(<span class="number">-10</span>)</span><br><span class="line">t.circle(<span class="number">-20</span>, <span class="number">90</span>)</span><br><span class="line">t.penup()</span><br><span class="line">t.seth(<span class="number">90</span>)</span><br><span class="line">t.fd(<span class="number">30</span>)</span><br><span class="line">t.seth(<span class="number">0</span>)</span><br><span class="line">t.fd(<span class="number">237</span>)</span><br><span class="line">t.pendown()</span><br><span class="line">t.seth(<span class="number">-20</span>)</span><br><span class="line">t.circle(<span class="number">-300</span>, <span class="number">15</span>)</span><br><span class="line">t.penup()</span><br><span class="line">t.seth(<span class="number">90</span>)</span><br><span class="line">t.fd(<span class="number">20</span>)</span><br><span class="line">t.seth(<span class="number">0</span>)</span><br><span class="line">t.fd(<span class="number">0</span>)</span><br><span class="line">t.pendown()</span><br><span class="line">t.seth(<span class="number">-170</span>)</span><br><span class="line">t.circle(<span class="number">20</span>, <span class="number">90</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 画脚</span></span><br><span class="line">t.pensize(<span class="number">10</span>)</span><br><span class="line">t.color((<span class="number">240</span>, <span class="number">128</span>, <span class="number">128</span>))</span><br><span class="line">t.penup()</span><br><span class="line">t.seth(<span class="number">90</span>)</span><br><span class="line">t.fd(<span class="number">-75</span>)</span><br><span class="line">t.seth(<span class="number">0</span>)</span><br><span class="line">t.fd(<span class="number">-180</span>)</span><br><span class="line">t.pendown()</span><br><span class="line">t.seth(<span class="number">-90</span>)</span><br><span class="line">t.fd(<span class="number">40</span>)</span><br><span class="line">t.seth(<span class="number">-180</span>)</span><br><span class="line">t.color(<span class="string">"black"</span>)</span><br><span class="line">t.pensize(<span class="number">15</span>)</span><br><span class="line">t.fd(<span class="number">20</span>)</span><br><span class="line">t.pensize(<span class="number">10</span>)</span><br><span class="line">t.color((<span class="number">240</span>, <span class="number">128</span>, <span class="number">128</span>))</span><br><span class="line">t.penup()</span><br><span class="line">t.seth(<span class="number">90</span>)</span><br><span class="line">t.fd(<span class="number">40</span>)</span><br><span class="line">t.seth(<span class="number">0</span>)</span><br><span class="line">t.fd(<span class="number">90</span>)</span><br><span class="line">t.pendown()</span><br><span class="line">t.seth(<span class="number">-90</span>)</span><br><span class="line">t.fd(<span class="number">40</span>)</span><br><span class="line">t.seth(<span class="number">-180</span>)</span><br><span class="line">t.color(<span class="string">"black"</span>)</span><br><span class="line">t.pensize(<span class="number">15</span>)</span><br><span class="line">t.fd(<span class="number">20</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 画尾巴</span></span><br><span class="line">t.pensize(<span class="number">4</span>)</span><br><span class="line">t.color((<span class="number">255</span>, <span class="number">155</span>, <span class="number">192</span>))</span><br><span class="line">t.penup()</span><br><span class="line">t.seth(<span class="number">90</span>)</span><br><span class="line">t.fd(<span class="number">70</span>)</span><br><span class="line">t.seth(<span class="number">0</span>)</span><br><span class="line">t.fd(<span class="number">95</span>)</span><br><span class="line">t.pendown()</span><br><span class="line">t.seth(<span class="number">0</span>)</span><br><span class="line">t.circle(<span class="number">70</span>, <span class="number">20</span>)</span><br><span class="line">t.circle(<span class="number">10</span>, <span class="number">330</span>)</span><br><span class="line">t.circle(<span class="number">70</span>, <span class="number">30</span>)</span><br><span class="line"></span><br><span class="line">t.done()  <span class="comment"># 画布窗口停留</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="五角星绘制"><a href="#五角星绘制" class="headerlink" title="五角星绘制"></a>五角星绘制</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> turtle		         <span class="comment">#导入turtle库包</span></span><br><span class="line">turtle.screensize(<span class="number">200</span>, <span class="number">150</span>)      <span class="comment">#设置画布大小</span></span><br><span class="line">turtle.speed(<span class="number">2</span>) <span class="comment">#设置画笔速度为2</span></span><br><span class="line">turtle.fillcolor(<span class="string">"black"</span>)        <span class="comment">#填充颜色</span></span><br><span class="line">turtle.begin_fill()              <span class="comment">#开始画，类似起笔</span></span><br><span class="line">turtle.up()                      <span class="comment">#提笔</span></span><br><span class="line">count = <span class="number">1</span>                        <span class="comment">#计时器，用于计录次数</span></span><br><span class="line"><span class="keyword">while</span> count &lt;= <span class="number">5</span>:                <span class="comment">#控制绘制次数</span></span><br><span class="line">    turtle.forward(<span class="number">250</span>)	         <span class="comment">#画笔绘制的方向，向前移动指定的距离</span></span><br><span class="line">    turtle.right(<span class="number">144</span>)		 <span class="comment">#向右转144度</span></span><br><span class="line">    count += <span class="number">1</span>                   <span class="comment">#循环绘制</span></span><br><span class="line">    turtle.down()                <span class="comment">#下笔</span></span><br><span class="line">turtle.end_fill()                <span class="comment">#完成填充图片的绘制</span></span><br><span class="line">turtle.done()                    <span class="comment">#保持窗口停留</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="小蟒蛇绘制"><a href="#小蟒蛇绘制" class="headerlink" title="小蟒蛇绘制"></a>小蟒蛇绘制</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> turtle <span class="comment">#引用绘图库 turtle</span></span><br><span class="line">turtle.screensize(<span class="number">500</span>, <span class="number">300</span>)<span class="comment">#设置画布大小</span></span><br><span class="line">turtle.setup(<span class="number">800</span>, <span class="number">400</span>, <span class="number">300</span>, <span class="number">300</span>) <span class="comment"># 设置主窗口的大小和位置,后两个参数可选</span></span><br><span class="line">turtle.speed(<span class="number">2</span>) <span class="comment">#设置画笔速度为2</span></span><br><span class="line">turtle.penup() <span class="comment">#提起笔移动，不绘制图形</span></span><br><span class="line">turtle.fd(<span class="number">-330</span>)<span class="comment"># 画笔向绘制方向的当前方向移动distance(integer or float)的pixels距离</span></span><br><span class="line">turtle.pendown()<span class="comment">#落下画笔</span></span><br><span class="line">turtle.pensize(<span class="number">20</span>) <span class="comment">#设置画笔的宽度；</span></span><br><span class="line">turtle.pencolor(<span class="string">"green"</span>) <span class="comment">#画笔颜色设成绿色</span></span><br><span class="line">turtle.seth(<span class="number">-45</span>) <span class="comment"># 只改变行进方向（角度按逆时针），但不行进</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">    turtle.circle(<span class="number">40</span>, <span class="number">90</span>) <span class="comment">#画圆，半径为正(负)，表示圆心在画笔的左边(右边)画圆</span></span><br><span class="line">    turtle.circle(<span class="number">-40</span>, <span class="number">90</span>)</span><br><span class="line">turtle.circle(<span class="number">40</span>, <span class="number">80</span>/<span class="number">2</span>)</span><br><span class="line">turtle.fd(<span class="number">40</span>)</span><br><span class="line">turtle.circle(<span class="number">16</span>, <span class="number">180</span>)</span><br><span class="line">turtle.fd(<span class="number">40</span> * <span class="number">2</span>/<span class="number">3</span>)</span><br><span class="line">turtle.end_fill() <span class="comment">#完成填充图片的绘制</span></span><br><span class="line">turtle.done() <span class="comment">#保持窗口停留</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="四叶草绘制源码"><a href="#四叶草绘制源码" class="headerlink" title="四叶草绘制源码"></a>四叶草绘制源码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> turtle <span class="keyword">as</span> t</span><br><span class="line"></span><br><span class="line"><span class="comment">#准备设置</span></span><br><span class="line">t.screensize(<span class="number">400</span>, <span class="number">300</span>) <span class="comment">#设置画布大小</span></span><br><span class="line">t.setup(<span class="number">840</span>, <span class="number">500</span>) <span class="comment">#设置主窗口的大小为840*500</span></span><br><span class="line">t.pensize(<span class="number">5</span>) <span class="comment">#设置外花边的大小</span></span><br><span class="line">t.color(<span class="string">'mediumseagreen'</span>, <span class="string">'forestgreen'</span>) <span class="comment">#设置画笔颜色和填充颜色</span></span><br><span class="line">t.speed(<span class="number">10</span>) <span class="comment">#设置画笔速度为10</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">draw_clover</span><span class="params">(radius, rotate)</span>:</span> <span class="comment">#参数radius控制叶子的大小，rotate控制叶子的旋转</span></span><br><span class="line">    t.begin_fill() <span class="comment">#外形填充开始标志</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">4</span>): <span class="comment">#从0到3开始的for循环，共四片花瓣</span></span><br><span class="line">        direction = i * <span class="number">90</span></span><br><span class="line">        t.seth(<span class="number">60</span> + direction + rotate)   <span class="comment">#控制叶子根部的角度为60度</span></span><br><span class="line">        t.fd(<span class="number">4</span> * radius)</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">2</span>):</span><br><span class="line">            t.seth(<span class="number">90</span> + direction + rotate)</span><br><span class="line">            t.circle(radius, <span class="number">180</span>)</span><br><span class="line">        t.seth(<span class="number">-60</span> + direction + rotate)</span><br><span class="line">        t.fd(<span class="number">4</span> * radius)</span><br><span class="line">        t.seth(<span class="number">60</span> + direction+rotate)   <span class="comment">#控制叶子根部的角度为60度</span></span><br><span class="line">        t.fd(<span class="number">2</span> * radius)</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">2</span>): <span class="comment">#从0到1开始的for循环，画内花边</span></span><br><span class="line">            t.pencolor(<span class="string">"whitesmoke"</span>) <span class="comment">#设置内花边颜色</span></span><br><span class="line">            t.pensize(<span class="number">8</span>) <span class="comment">#设置内花边的大小</span></span><br><span class="line">            t.seth(<span class="number">90</span> + direction + rotate)</span><br><span class="line">            t.circle(radius/<span class="number">2</span>, <span class="number">180</span>)</span><br><span class="line">            t.color(<span class="string">'mediumseagreen'</span>, <span class="string">'forestgreen'</span>)</span><br><span class="line">            t.pensize(<span class="number">5</span>)</span><br><span class="line">        t.seth(<span class="number">-60</span> + direction + rotate)</span><br><span class="line">        t.fd(<span class="number">2</span> * radius)</span><br><span class="line">    t.end_fill() <span class="comment">#依据轮廓填充颜色</span></span><br><span class="line">    t.seth(<span class="number">-110</span>)</span><br><span class="line">    t.fd(<span class="number">6</span> * radius)</span><br><span class="line"></span><br><span class="line">draw_clover(<span class="number">40</span>, <span class="number">25</span>)</span><br><span class="line">t.done() <span class="comment">#保持窗口停留</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="狮子绘制"><a href="#狮子绘制" class="headerlink" title="狮子绘制"></a>狮子绘制</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> turtle <span class="keyword">as</span> t</span><br><span class="line"></span><br><span class="line"><span class="comment">#准备设置</span></span><br><span class="line">t.screensize(<span class="number">400</span>, <span class="number">300</span>) <span class="comment">#设置画布大小</span></span><br><span class="line">t.setup(<span class="number">840</span>, <span class="number">500</span>) <span class="comment">#设置主窗口的大小为840*500</span></span><br><span class="line">t.speed(<span class="number">10</span>) <span class="comment">#设置画笔速度为10</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#画头发</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hair</span><span class="params">()</span>:</span>  </span><br><span class="line">    t.penup()</span><br><span class="line">    t.goto(<span class="number">-70</span>, <span class="number">125</span>)</span><br><span class="line">    t.pendown()</span><br><span class="line">    t.fillcolor(<span class="string">'saddlebrown'</span>) <span class="comment">#设置填充色</span></span><br><span class="line">    t.begin_fill()</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">12</span>):</span><br><span class="line">        t.setheading(<span class="number">60</span> - (j * <span class="number">30</span>)) <span class="comment">#每次调整画笔角度</span></span><br><span class="line">        t.circle(<span class="number">-50</span>, <span class="number">90</span>) <span class="comment">#画120度的弧</span></span><br><span class="line">    t.end_fill()</span><br><span class="line">    </span><br><span class="line"><span class="comment">#画耳朵，dir用来设置方向，左右耳对称</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">ears</span><span class="params">(dir)</span>:</span>  </span><br><span class="line">    t.penup()</span><br><span class="line">    t.goto((<span class="number">0</span> - dir) * <span class="number">25</span>, <span class="number">75</span>)</span><br><span class="line">    t.setheading(<span class="number">90</span>)</span><br><span class="line">    t.pendown()</span><br><span class="line">    t.fillcolor(<span class="string">'peru'</span>)</span><br><span class="line">    t.begin_fill()</span><br><span class="line">    t.circle(dir * <span class="number">28</span>)</span><br><span class="line">    t.end_fill()</span><br><span class="line">    t.penup()</span><br><span class="line">    t.goto((<span class="number">0</span> - dir) * <span class="number">30</span>, <span class="number">68</span>)</span><br><span class="line">    t.setheading(<span class="number">90</span>)</span><br><span class="line">    t.pendown()</span><br><span class="line">    t.fillcolor(<span class="string">'white'</span>)</span><br><span class="line">    t.begin_fill()</span><br><span class="line">    t.circle(dir * <span class="number">18</span>)</span><br><span class="line">    t.end_fill()</span><br><span class="line"></span><br><span class="line"><span class="comment">#画脸</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">face</span><span class="params">()</span>:</span>  </span><br><span class="line">    t.penup()</span><br><span class="line">    t.goto(<span class="number">0</span>, <span class="number">80</span>)</span><br><span class="line">    t.pendown()</span><br><span class="line">    t.fillcolor(<span class="string">'peru'</span>)</span><br><span class="line">    t.begin_fill()</span><br><span class="line">    t.setheading(<span class="number">180</span>)</span><br><span class="line">    t.circle(<span class="number">80</span>)</span><br><span class="line">    t.end_fill()</span><br><span class="line">    <span class="comment"># 下巴</span></span><br><span class="line">    t.circle(<span class="number">80</span>, <span class="number">125</span>)</span><br><span class="line">    t.fillcolor(<span class="string">'white'</span>)</span><br><span class="line">    t.begin_fill()</span><br><span class="line">    t.circle(<span class="number">80</span>, <span class="number">110</span>)</span><br><span class="line">    t.setheading(<span class="number">145</span>)</span><br><span class="line">    t.circle(<span class="number">110</span>, <span class="number">72</span>)</span><br><span class="line">    t.end_fill()</span><br><span class="line">    </span><br><span class="line"><span class="comment">#画眼睛，dir用来设置方向，左右眼对称</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">eye</span><span class="params">(dir)</span>:</span>  </span><br><span class="line">    t.penup()</span><br><span class="line">    t.goto((<span class="number">0</span> - dir) * <span class="number">30</span>, <span class="number">20</span>)</span><br><span class="line">    t.setheading(<span class="number">0</span>)</span><br><span class="line">    t.pendown()</span><br><span class="line">    t.fillcolor(<span class="string">'black'</span>)</span><br><span class="line">    t.begin_fill()</span><br><span class="line">    t.circle(<span class="number">10</span>)</span><br><span class="line">    t.end_fill()  </span><br><span class="line"> </span><br><span class="line"><span class="comment">#画嘴巴    </span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mouth</span><span class="params">()</span>:</span>  </span><br><span class="line">    t.penup()</span><br><span class="line">    t.goto(<span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">    t.setheading(<span class="number">-90</span>)</span><br><span class="line">    t.pendown()</span><br><span class="line">    t.forward(<span class="number">50</span>)</span><br><span class="line">    t.setheading(<span class="number">0</span>)</span><br><span class="line">    t.circle(<span class="number">80</span>, <span class="number">25</span>)</span><br><span class="line">    t.penup()</span><br><span class="line">    t.goto(<span class="number">0</span>, <span class="number">-50</span>)</span><br><span class="line">    t.setheading(<span class="number">180</span>)</span><br><span class="line">    t.pendown()</span><br><span class="line">    t.circle(<span class="number">-80</span>, <span class="number">25</span>)</span><br><span class="line">    </span><br><span class="line"><span class="comment">#画鼻子</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">nose</span><span class="params">()</span>:</span>  </span><br><span class="line">    t.penup()</span><br><span class="line">    t.goto(<span class="number">15</span>, <span class="number">0</span>)</span><br><span class="line">    t.setheading(<span class="number">90</span>)</span><br><span class="line">    t.pendown()</span><br><span class="line">    t.fillcolor(<span class="string">'saddlebrown'</span>)</span><br><span class="line">    t.begin_fill()</span><br><span class="line">    t.circle(<span class="number">15</span>)</span><br><span class="line">    t.end_fill()</span><br><span class="line">    </span><br><span class="line">hair()</span><br><span class="line">ears(<span class="number">1</span>)</span><br><span class="line">ears(<span class="number">-1</span>)</span><br><span class="line">face()</span><br><span class="line">eye(<span class="number">1</span>)</span><br><span class="line">eye(<span class="number">-1</span>)</span><br><span class="line">mouth()</span><br><span class="line">nose()</span><br><span class="line"></span><br><span class="line">t.done() <span class="comment">#保持窗口停留</span></span><br></pre></td></tr></table></figure>
-
-
-        </div>
-
-        <blockquote class="post-copyright">
-    
-    <footer>
-        <a href="http://yoursite.com">
-            <img src="/img/avatar.jpg" alt="兔子翻书">
-            兔子翻书
-        </a>
-    </footer>
-</blockquote>
+    <div class="article-inner">
 
         
 
-
-        <div class="post-footer">
+        
+        <header class="article-header">
             
-
-            
-
-
-        </div>
-    </div>
-
-    
-<nav class="post-nav flex-row flex-justify-between">
   
-    <div class="waves-block waves-effect prev">
-      <a href="/2020/04/17/python%E7%A7%92%E6%9D%80%E8%93%9D%E5%A2%A8%E4%BA%91%E8%A7%86%E9%A2%91/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">python秒杀蓝墨云视频</h4>
-      </a>
-    </div>
+    <h1 class="article-title" itemprop="name">
+      使用turtle画画
+    </h1>
   
 
-  
-    <div class="waves-block waves-effect next">
-      <a href="/2020/04/16/%E4%BD%BF%E7%94%A8wordpress%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2-%E4%BA%94%E5%88%86%E9%92%9F%E5%BB%BA%E7%AB%99/" id="post-next" class="post-nav-link">
-        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">使用wordpress搭建博客-五分钟建站</h4>
-      </a>
+        </header>
+        
+
+        <div class="article-more-info article-more-info-post hairline">
+            <div class="article-date">
+  <time datetime="2020-04-16T16:00:00.000Z" itemprop="datePublished">2020-04-17</time>
+</div>
+            
+            <div class="article-category">
+                <a class="article-category-link" href="/categories/python/">python</a>
+            </div>
+            
+            
+        </div>
+
+        <div class="article-entry post-inner-html hairline" itemprop="articleBody">
+            <p>真的没想到用turtle画出的樱花图还挺好看的。赏花啦</p>
+<a id="more"></a>
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://docs.python.org/zh-cn/3/library/turtle.html#filling" target="_blank" rel="noopener">官方文档</a></p>
+<h2 id="小猪佩奇绘制"><a href="#小猪佩奇绘制" class="headerlink" title="小猪佩奇绘制"></a>小猪佩奇绘制</h2><pre><code class="python">import turtle as t
+
+# 准备设置
+t.screensize(400, 300)  # 设置画布大小
+t.pensize(4)  # 设置画笔的大小
+t.colormode(255)  # 设置GBK颜色范围为0-255
+t.color((255, 155, 192), &quot;pink&quot;)  # 设置画笔颜色和填充颜色(pink)
+t.setup(840, 500)  # 设置主窗口的大小为840*500
+t.speed(10)  # 设置画笔速度为10
+
+# 画鼻子
+t.penup()  # 提笔
+t.goto(-100, 100)  # 画笔前往坐标(-100,100)
+t.pendown()  # 下笔
+t.seth(-30)  # 笔的角度为-30°（鼻子向右倾斜30度），但未行进
+t.begin_fill()  # 外形填充的开始标志
+a = 0.4  # 设置初始步长
+for i in range(120):  # 循环一个从0开始到119的列表
+    if 0 &lt;= i &lt; 30 or 60 &lt;= i &lt; 90:
+        a = a + 0.08
+        t.lt(3)  # 向左转3度
+        t.fd(a)  # 向前走a的步长
+    else:
+        a = a - 0.08
+        t.lt(3)  # 向左转3度
+        t.fd(a)  # 向前走a的步长
+t.end_fill()  # 依据轮廓填充颜色
+t.penup()  # 提笔
+t.seth(90)  # 笔的角度为90度
+t.fd(25)  # 向前移动25
+t.seth(0)  # 转换画笔的角度为0
+t.fd(10)  # 向前移动10
+t.pendown()  # 下笔
+t.pencolor(255, 155, 192)  # 设置画笔颜色
+t.seth(10)  # 转换画笔的角度为10
+t.begin_fill()  # 外形填充开始标志
+t.circle(5)  # 画一个半径为5的圆
+t.color(160, 82, 45)  # 设置填充颜色
+t.end_fill()  # 依据轮廓填充颜色
+t.penup()  # 提笔
+t.seth(0)  # 转换画笔的角度为0
+t.fd(20)  # 向前移动25
+t.pendown()  # 下笔
+t.pencolor(255, 155, 192)  # 设置画笔和填充颜色
+t.seth(10)  # 转换画笔的角度为10
+t.begin_fill()  # 外形填充开始标志
+t.circle(5)  # 画一个半径为5的圆
+t.color(160, 82, 45)  # 设置填充颜色
+t.end_fill()  # 依据轮廓填充颜色
+
+# 以此类推，画头
+t.color((255, 155, 192), &quot;pink&quot;)
+t.penup()
+t.seth(90)
+t.fd(41)
+t.seth(0)
+t.fd(0)
+t.pendown()
+t.begin_fill()
+t.seth(180)
+t.circle(300, -30)  # 顺时针画一个半径为300,圆心角为30°的不完整圆
+t.circle(100, -60)  # 接上去
+t.circle(80, -100)
+t.circle(150, -20)
+t.circle(60, -95)
+t.seth(161)
+t.circle(-300, 15)
+t.penup()
+t.goto(-100, 100)
+t.pendown()
+t.seth(-30)
+a = 0.4
+for i in range(60):
+    if 0 &lt;= i &lt; 30 or 60 &lt;= i &lt; 90:
+        a = a + 0.08
+        t.lt(3)  # 向左转3度
+        t.fd(a)  # 向前走a的步长
+    else:
+        a = a - 0.08
+        t.lt(3)
+        t.fd(a)
+t.end_fill()  # 回到画头出发点，闭合填充背景色
+
+# 画耳朵
+t.color((255, 155, 192), &quot;pink&quot;)
+t.penup()
+t.seth(90)
+t.fd(-7)
+t.seth(0)
+t.fd(70)
+t.pendown()
+t.begin_fill()
+t.seth(100)
+t.circle(-50, 50)
+t.circle(-10, 120)
+t.circle(-50, 54)
+t.end_fill()
+t.penup()
+t.seth(90)
+t.fd(-12)
+t.seth(0)
+t.fd(30)
+t.pendown()
+t.begin_fill()
+t.seth(100)
+t.circle(-50, 50)
+t.circle(-10, 120)
+t.circle(-50, 56)
+t.end_fill()
+
+# 画眼睛
+t.color((255, 155, 192), &quot;white&quot;)
+t.penup()
+t.seth(90)
+t.fd(-20)
+t.seth(0)
+t.fd(-95)
+t.pendown()
+t.begin_fill()
+t.circle(15)
+t.end_fill()
+t.color(&quot;black&quot;)
+t.penup()
+t.seth(90)
+t.fd(12)
+t.seth(0)
+t.fd(-3)
+t.pendown()
+t.begin_fill()
+t.circle(3)
+t.end_fill()
+t.color((255, 155, 192), &quot;white&quot;)
+t.penup()
+t.seth(90)
+t.fd(-25)
+t.seth(0)
+t.fd(40)
+t.pendown()
+t.begin_fill()
+t.circle(15)
+t.end_fill()
+t.color(&quot;black&quot;)
+t.penup()
+t.seth(90)
+t.fd(12)
+t.seth(0)
+t.fd(-3)
+t.pendown()
+t.begin_fill()
+t.circle(3)
+t.end_fill()
+
+# 画腮
+t.color((255, 155, 192))
+t.penup()
+t.seth(90)
+t.fd(-95)
+t.seth(0)
+t.fd(65)
+t.pendown()
+t.begin_fill()
+t.circle(30)
+t.end_fill()
+
+# 画嘴
+t.color(239, 69, 19)
+t.penup()
+t.seth(90)
+t.fd(15)
+t.seth(0)
+t.fd(-100)
+t.pendown()
+t.seth(-80)
+t.circle(30, 40)
+t.circle(40, 80)
+
+# 画身体
+t.color(&quot;red&quot;, (255, 99, 71))
+t.penup()
+t.seth(90)
+t.fd(-20)
+t.seth(0)
+t.fd(-78)
+t.pendown()
+t.begin_fill()
+t.seth(-130)
+t.circle(100, 10)
+t.circle(300, 30)
+t.seth(0)
+t.fd(230)
+t.seth(90)
+t.circle(300, 30)
+t.circle(100, 3)
+t.color((255, 155, 192), (255, 100, 100))
+t.seth(-135)
+t.circle(-80, 63)
+t.circle(-150, 24)
+t.end_fill()
+
+# 画手
+t.color((255, 155, 192))
+t.penup()
+t.seth(90)
+t.fd(-40)
+t.seth(0)
+t.fd(-27)
+t.pendown()
+t.seth(-160)
+t.circle(300, 15)
+t.penup()
+t.seth(90)
+t.fd(15)
+t.seth(0)
+t.fd(0)
+t.pendown()
+t.seth(-10)
+t.circle(-20, 90)
+t.penup()
+t.seth(90)
+t.fd(30)
+t.seth(0)
+t.fd(237)
+t.pendown()
+t.seth(-20)
+t.circle(-300, 15)
+t.penup()
+t.seth(90)
+t.fd(20)
+t.seth(0)
+t.fd(0)
+t.pendown()
+t.seth(-170)
+t.circle(20, 90)
+
+# 画脚
+t.pensize(10)
+t.color((240, 128, 128))
+t.penup()
+t.seth(90)
+t.fd(-75)
+t.seth(0)
+t.fd(-180)
+t.pendown()
+t.seth(-90)
+t.fd(40)
+t.seth(-180)
+t.color(&quot;black&quot;)
+t.pensize(15)
+t.fd(20)
+t.pensize(10)
+t.color((240, 128, 128))
+t.penup()
+t.seth(90)
+t.fd(40)
+t.seth(0)
+t.fd(90)
+t.pendown()
+t.seth(-90)
+t.fd(40)
+t.seth(-180)
+t.color(&quot;black&quot;)
+t.pensize(15)
+t.fd(20)
+
+# 画尾巴
+t.pensize(4)
+t.color((255, 155, 192))
+t.penup()
+t.seth(90)
+t.fd(70)
+t.seth(0)
+t.fd(95)
+t.pendown()
+t.seth(0)
+t.circle(70, 20)
+t.circle(10, 330)
+t.circle(70, 30)
+
+t.done()  # 画布窗口停留</code></pre>
+<h2 id="五角星绘制"><a href="#五角星绘制" class="headerlink" title="五角星绘制"></a>五角星绘制</h2><pre><code class="python">import turtle                 #导入turtle库包
+turtle.screensize(200, 150)      #设置画布大小
+turtle.speed(2) #设置画笔速度为2
+turtle.fillcolor(&quot;black&quot;)        #填充颜色
+turtle.begin_fill()              #开始画，类似起笔
+turtle.up()                      #提笔
+count = 1                        #计时器，用于计录次数
+while count &lt;= 5:                #控制绘制次数
+    turtle.forward(250)             #画笔绘制的方向，向前移动指定的距离
+    turtle.right(144)         #向右转144度
+    count += 1                   #循环绘制
+    turtle.down()                #下笔
+turtle.end_fill()                #完成填充图片的绘制
+turtle.done()                    #保持窗口停留</code></pre>
+<h2 id="小蟒蛇绘制"><a href="#小蟒蛇绘制" class="headerlink" title="小蟒蛇绘制"></a>小蟒蛇绘制</h2><pre><code class="python">import turtle #引用绘图库 turtle
+turtle.screensize(500, 300)#设置画布大小
+turtle.setup(800, 400, 300, 300) # 设置主窗口的大小和位置,后两个参数可选
+turtle.speed(2) #设置画笔速度为2
+turtle.penup() #提起笔移动，不绘制图形
+turtle.fd(-330)# 画笔向绘制方向的当前方向移动distance(integer or float)的pixels距离
+turtle.pendown()#落下画笔
+turtle.pensize(20) #设置画笔的宽度；
+turtle.pencolor(&quot;green&quot;) #画笔颜色设成绿色
+turtle.seth(-45) # 只改变行进方向（角度按逆时针），但不行进
+for i in range(5):
+    turtle.circle(40, 90) #画圆，半径为正(负)，表示圆心在画笔的左边(右边)画圆
+    turtle.circle(-40, 90)
+turtle.circle(40, 80/2)
+turtle.fd(40)
+turtle.circle(16, 180)
+turtle.fd(40 * 2/3)
+turtle.end_fill() #完成填充图片的绘制
+turtle.done() #保持窗口停留</code></pre>
+<h2 id="四叶草绘制源码"><a href="#四叶草绘制源码" class="headerlink" title="四叶草绘制源码"></a>四叶草绘制源码</h2><pre><code class="python">import turtle as t
+
+#准备设置
+t.screensize(400, 300) #设置画布大小
+t.setup(840, 500) #设置主窗口的大小为840*500
+t.pensize(5) #设置外花边的大小
+t.color(&#39;mediumseagreen&#39;, &#39;forestgreen&#39;) #设置画笔颜色和填充颜色
+t.speed(10) #设置画笔速度为10
+
+def draw_clover(radius, rotate): #参数radius控制叶子的大小，rotate控制叶子的旋转
+    t.begin_fill() #外形填充开始标志
+    for i in range(4): #从0到3开始的for循环，共四片花瓣
+        direction = i * 90
+        t.seth(60 + direction + rotate)   #控制叶子根部的角度为60度
+        t.fd(4 * radius)
+        for j in range(2):
+            t.seth(90 + direction + rotate)
+            t.circle(radius, 180)
+        t.seth(-60 + direction + rotate)
+        t.fd(4 * radius)
+        t.seth(60 + direction+rotate)   #控制叶子根部的角度为60度
+        t.fd(2 * radius)
+        for j in range(2): #从0到1开始的for循环，画内花边
+            t.pencolor(&quot;whitesmoke&quot;) #设置内花边颜色
+            t.pensize(8) #设置内花边的大小
+            t.seth(90 + direction + rotate)
+            t.circle(radius/2, 180)
+            t.color(&#39;mediumseagreen&#39;, &#39;forestgreen&#39;)
+            t.pensize(5)
+        t.seth(-60 + direction + rotate)
+        t.fd(2 * radius)
+    t.end_fill() #依据轮廓填充颜色
+    t.seth(-110)
+    t.fd(6 * radius)
+
+draw_clover(40, 25)
+t.done() #保持窗口停留</code></pre>
+<h2 id="狮子绘制"><a href="#狮子绘制" class="headerlink" title="狮子绘制"></a>狮子绘制</h2><pre><code class="python">import turtle as t
+
+#准备设置
+t.screensize(400, 300) #设置画布大小
+t.setup(840, 500) #设置主窗口的大小为840*500
+t.speed(10) #设置画笔速度为10
+
+#画头发
+def hair():  
+    t.penup()
+    t.goto(-70, 125)
+    t.pendown()
+    t.fillcolor(&#39;saddlebrown&#39;) #设置填充色
+    t.begin_fill()
+    for j in range(12):
+        t.setheading(60 - (j * 30)) #每次调整画笔角度
+        t.circle(-50, 90) #画120度的弧
+    t.end_fill()
+
+#画耳朵，dir用来设置方向，左右耳对称
+def ears(dir):  
+    t.penup()
+    t.goto((0 - dir) * 25, 75)
+    t.setheading(90)
+    t.pendown()
+    t.fillcolor(&#39;peru&#39;)
+    t.begin_fill()
+    t.circle(dir * 28)
+    t.end_fill()
+    t.penup()
+    t.goto((0 - dir) * 30, 68)
+    t.setheading(90)
+    t.pendown()
+    t.fillcolor(&#39;white&#39;)
+    t.begin_fill()
+    t.circle(dir * 18)
+    t.end_fill()
+
+#画脸
+def face():  
+    t.penup()
+    t.goto(0, 80)
+    t.pendown()
+    t.fillcolor(&#39;peru&#39;)
+    t.begin_fill()
+    t.setheading(180)
+    t.circle(80)
+    t.end_fill()
+    # 下巴
+    t.circle(80, 125)
+    t.fillcolor(&#39;white&#39;)
+    t.begin_fill()
+    t.circle(80, 110)
+    t.setheading(145)
+    t.circle(110, 72)
+    t.end_fill()
+
+#画眼睛，dir用来设置方向，左右眼对称
+def eye(dir):  
+    t.penup()
+    t.goto((0 - dir) * 30, 20)
+    t.setheading(0)
+    t.pendown()
+    t.fillcolor(&#39;black&#39;)
+    t.begin_fill()
+    t.circle(10)
+    t.end_fill()  
+
+#画嘴巴    
+def mouth():  
+    t.penup()
+    t.goto(0, 0)
+    t.setheading(-90)
+    t.pendown()
+    t.forward(50)
+    t.setheading(0)
+    t.circle(80, 25)
+    t.penup()
+    t.goto(0, -50)
+    t.setheading(180)
+    t.pendown()
+    t.circle(-80, 25)
+
+#画鼻子
+def nose():  
+    t.penup()
+    t.goto(15, 0)
+    t.setheading(90)
+    t.pendown()
+    t.fillcolor(&#39;saddlebrown&#39;)
+    t.begin_fill()
+    t.circle(15)
+    t.end_fill()
+
+hair()
+ears(1)
+ears(-1)
+face()
+eye(1)
+eye(-1)
+mouth()
+nose()
+
+t.done() #保持窗口停留</code></pre>
+
+        </div>
+
     </div>
+
+    
+
+    
+
+    
+
+    
+<div class="article-copyright hairline">
+  <p>
+    本作品采用 <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a> 进行许可。
+  </p>
+</div>
+
+
+    
+
+    
+<nav class="article-nav">
+  
+    <a href="/2020/04/17/python%E7%A7%92%E6%9D%80%E8%93%9D%E5%A2%A8%E4%BA%91%E8%A7%86%E9%A2%91/" id="article-nav-newer" class="article-nav-link-wrap">
+      <div class="article-nav-caption">下一篇</div>
+      <div class="article-nav-title">
+        
+          python秒杀蓝墨云视频
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/04/16/%E4%BD%BF%E7%94%A8wordpress%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2-%E4%BA%94%E5%88%86%E9%92%9F%E5%BB%BA%E7%AB%99/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-caption">上一篇</div>
+      <div class="article-nav-title">使用wordpress搭建博客-五分钟建站</div>
+    </a>
   
 </nav>
 
 
 
-    
 
 </article>
 
 
 
+
 </div>
+        </section>
+      </section>
+      <aside class="sidebar">
+        <div class="widget">
+          
 
-        <footer class="footer">
-    <div class="top">
-        
-<p>
-    <span id="busuanzi_container_site_uv" style='display:none'>
-        小伙伴：<span id="busuanzi_value_site_uv"></span>
-    </span>
-    <span id="busuanzi_container_site_pv" style='display:none'>
-        浏览：<span id="busuanzi_value_site_pv"></span>
-    </span>
-</p>
-
-
-        <p>
-            
-            <span>博客内容遵循 <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
-        </p>
+  
+  <div class="widget-wrap">
+    <div class="widget-inner">
+      <div class="toc post-toc-html"></div>
     </div>
-    <div class="bottom">
-        <p><span>兔子翻书 &copy; 2020</span>
+  </div>
+
+
+  
+  <div class="widget-wrap widget-cate">
+    <div class="widget-title"><span>Tags</span></div>
+    <div class="widget-inner">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/">Blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MAC/">MAC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/PAT/">PAT</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%8B%E8%BD%BD%E5%B7%A5%E5%85%B7/">下载工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">数据分析</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%88%AC%E8%99%AB/">爬虫</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0C-C/">编程笔记C/C++</a></li></ul>
+    </div>
+  </div>
+
+
+
+        </div>
+        <div id="backtop"><i class="icon icon-arrow-up"></i></div>
+      </aside>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-info">
+            <span>&copy; 2020 MYJ&#39;s Blog</span>
             
-        </p>
+
+
+
+
+
+
+
+
+
+
+  <a class="social" href="https://github.com/xingkongyj2" target="_blank" rel="noopener">
+    <span class="n-icon n-icon-github"></span>
+  </a>
+
+        </div>
+        <div class="footer-powered">
+            <a href="https://mayujie321.com" target="_blank"> 新漫场</a> &nbsp;&nbsp;
+            <a href="mailto:2580130642@qq.com" target="_blank"> Email</a> 
+        </div>
     </div>
 </footer>
 
-    </main>
-    <div class="mask" id="mask"></div>
-<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
 
-    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
-<script>
-var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
+
+<script src="/dist/build.js?1.2.0.js"></script>
 
 
-</script>
-
-<script src="/js/main.min.js?v=1.7.2"></script>
-
-
-<div class="search-panel" id="search-panel">
-    <ul class="search-result" id="search-result"></ul>
-</div>
-<template id="search-tpl">
-<li class="item">
-    <a href="{path}" class="waves-block waves-effect">
-        <div class="title ellipsis" title="{title}">{title}</div>
-        <div class="flex-row flex-middle">
-            <div class="tags ellipsis">
-                {tags}
-            </div>
-            <time class="flex-col time">{date}</time>
-        </div>
-    </a>
-</li>
-</template>
-
-<script src="/js/search.min.js?v=1.7.2" async></script>
+<script src="/dist/custom.js?1.2.0.js"></script>
 
 
 
 
 
-
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-
-
-<script>
-(function() {
-    var OriginTitile = document.title, titleTime;
-    document.addEventListener('visibilitychange', function() {
-        if (document.hidden) {
-            document.title = '死鬼去哪里了！';
-            clearTimeout(titleTime);
-        } else {
-            document.title = '(つェ⊂)咦!又好了!';
-            titleTime = setTimeout(function() {
-                document.title = OriginTitile;
-            },2000);
-        }
-    });
-})();
-</script>
 
 
 
