@@ -7,15 +7,15 @@
     <title>PAT编程笔记 | MYJ&#39;s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta name="description" content="知识点总结 定义之后一定要初始化  尽量都使用vector，速度vector&gt;set&gt;map  两个关键字排序简洁写法 return (cnt!&#x3D;a.cnt)?cnt&gt;a.cnt:value">
+    <meta name="description" content="知识点总结 定义之后一定要初始化  尽量都使用vector，速度vector&gt;set&gt;map  两个关键字排序简洁写法 return a.height !&#x3D; b.height ? a.height &gt; b.height : a.name &lt; b.name;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PAT编程笔记">
 <meta property="og:url" content="http://yoursite.com/2020/02/06/PAT%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="MYJ&#39;s Blog">
-<meta property="og:description" content="知识点总结 定义之后一定要初始化  尽量都使用vector，速度vector&gt;set&gt;map  两个关键字排序简洁写法 return (cnt!&#x3D;a.cnt)?cnt&gt;a.cnt:value">
+<meta property="og:description" content="知识点总结 定义之后一定要初始化  尽量都使用vector，速度vector&gt;set&gt;map  两个关键字排序简洁写法 return a.height !&#x3D; b.height ? a.height &gt; b.height : a.name &lt; b.name;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-02-05T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-06-05T07:29:15.790Z">
+<meta property="article:modified_time" content="2020-07-02T10:15:25.254Z">
 <meta property="article:author" content="兔子翻书">
 <meta name="twitter:card" content="summary">
 
@@ -121,7 +121,7 @@
 <li><p>尽量都使用<code>vector</code>，速度<code>vector</code>&gt;<code>set</code>&gt;<code>map</code></p>
 </li>
 <li><p>两个关键字排序简洁写法</p>
-<p><code>return (cnt!=a.cnt)?cnt&gt;a.cnt:value</code></p>
+<p><code>return a.height != b.height ? a.height &gt; b.height : a.name &lt; b.name;</code></p>
 </li>
 </ul>
 <a id="more"></a>
@@ -529,13 +529,11 @@ int main()
     return 0;
 }</code></pre>
 <h3 id="map"><a href="#map" class="headerlink" title="map"></a>map</h3><blockquote>
-<p>注意事项：在map中，由key查找value时，首先要判断map中是否包含key。[<a href="https://blog.csdn.net/pzhw520hchy/article/details/77945713" target="_blank" rel="noopener">参考</a>]</p>
-</blockquote>
-<blockquote>
-<p>map中的元素是自动按Key升序排序，所以不能对map用sort函数</p>
-</blockquote>
-<blockquote>
-<p>unordered_map速度更快</p>
+<ul>
+<li>注意事项：在map中，由key查找value时，首先要判断map中是否包含key。[<a href="https://blog.csdn.net/pzhw520hchy/article/details/77945713" target="_blank" rel="noopener">参考</a>]</li>
+<li>map中的元素是自动按Key升序排序，所以不能对map用sort函数</li>
+<li>unordered_map速度更快。头函数<code>#include&lt;unordered_map&gt;</code>    </li>
+</ul>
 </blockquote>
 <p>map常见用途:</p>
 <ol>
@@ -603,10 +601,10 @@ int main()
 <li><code>size()</code></li>
 </ul>
 <blockquote>
-<p>使用<code>top()</code>必须用<code>empty()</code>判断是否为空</p>
-</blockquote>
-<blockquote>
-<p>默认是最大堆</p>
+<ul>
+<li>使用<code>top()</code>必须用<code>empty()</code>判断是否为空</li>
+<li>默认是最大堆</li>
+</ul>
 </blockquote>
 <p>元素优先级设置</p>
 <pre><code class="C++">#include &lt;iostream&gt;
