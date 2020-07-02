@@ -15,7 +15,7 @@
 <meta property="og:description" content="算法初步进制转换 十进制内任意进制转换">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-02-05T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-06-05T07:29:28.734Z">
+<meta property="article:modified_time" content="2020-07-02T10:50:10.420Z">
 <meta property="article:author" content="兔子翻书">
 <meta name="twitter:card" content="summary">
 
@@ -566,13 +566,14 @@ void del(node* head,int x)
 <br>
 
 <h2 id="树"><a href="#树" class="headerlink" title="树"></a>树</h2><blockquote>
-<p>树就是一个有方向的特殊图</p>
-</blockquote>
-<blockquote>
-<p>对于完全二叉树，数组的顺序访问就是层次遍历</p>
-</blockquote>
-<blockquote>
-<p>先序遍历的顺序访问就是分别依次访问左右子树</p>
+<ul>
+<li><p>树就是一个有方向的特殊图</p>
+</li>
+<li><p>对于完全二叉树，数组的顺序访问就是层次遍历</p>
+</li>
+<li><p>先序遍历的顺序访问就是分别依次访问左右子树</p>
+</li>
+</ul>
 </blockquote>
 <h3 id="二叉树与遍历"><a href="#二叉树与遍历" class="headerlink" title="二叉树与遍历"></a>二叉树与遍历</h3><blockquote>
 <p>树的五种遍历：</p>
@@ -843,10 +844,10 @@ Adj[1].push_back(3);
 Adj.push_back(GNode(3,4))
 </code></pre>
 <h3 id="图的遍历"><a href="#图的遍历" class="headerlink" title="图的遍历"></a>图的遍历</h3><blockquote>
-<p>vis数组的作用是保证每个节点都只能被访问一次，因为在图中一个节点可能有多条与它相连的节点。而在树中每个节点只有一条通向它的路，所以vis数组可以省略</p>
-</blockquote>
-<blockquote>
-<p>深度优先遍历比广度优先遍历更常用一些，但对于设置了遍历层数上限的题目，广度优先遍历要更加简洁，逻辑也更加清晰</p>
+<ul>
+<li>vis数组的作用是保证每个节点都只能被访问一次，因为在图中一个节点可能有多条与它相连的节点。而在树中每个节点只有一条通向它的路，所以vis数组可以省略</li>
+<li>深度优先遍历比广度优先遍历更常用一些，但对于设置了遍历层数上限的题目，广度优先遍历要更加简洁，逻辑也更加清晰</li>
+</ul>
 </blockquote>
 <ul>
 <li>DFS</li>
@@ -1108,19 +1109,19 @@ void Dijkstra(int s)    //s为起点
     
 <nav class="article-nav">
   
-    <a href="/2020/02/06/PAT%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/04/15/python%E4%BD%9C%E4%B8%9A/" id="article-nav-newer" class="article-nav-link-wrap">
       <div class="article-nav-caption">下一篇</div>
       <div class="article-nav-title">
         
-          PAT编程笔记
+          python作业
         
       </div>
     </a>
   
   
-    <a href="/2020/02/01/hexo%E5%91%BD%E4%BB%A4/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/02/06/PAT%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-caption">上一篇</div>
-      <div class="article-nav-title">hexo</div>
+      <div class="article-nav-title">PAT编程笔记</div>
     </a>
   
 </nav>
