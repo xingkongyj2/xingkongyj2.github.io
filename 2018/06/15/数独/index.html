@@ -1,13 +1,33 @@
 <!DOCTYPE html>
-<html>
-
-<head>
+<html lang="zh-CN">
+    <head>
     <meta charset="utf-8">
+
     
-    <title>数独 | MYJ&#39;s Blog</title>
+
+    <!--icon-->
+    
+        <link rel="shortcut icon" type='image/x-icon' href="/favicon.ico">
+    
+
+    <!-- 渲染优化 -->
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta name="description" content="思想：暴力，递归，DFS，回溯。填一个数字后检测是否满足条件，不满足就回溯">
+    <!-- meta -->
+    
+    <title>数独 | MYJ&#39;s Blog</title>
+    
+        <meta name="keywords" content="undefined">
+    
+
+    <!-- OpenGraph -->
+     
+        <meta name="description" content="思想：暴力，递归，DFS，回溯。填一个数字后检测是否满足条件，不满足就回溯">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数独">
 <meta property="og:url" content="http://yoursite.com/2018/06/15/%E6%95%B0%E7%8B%AC/index.html">
@@ -17,301 +37,250 @@
 <meta property="article:published_time" content="2018-06-14T16:00:00.000Z">
 <meta property="article:modified_time" content="2020-06-05T06:55:20.780Z">
 <meta property="article:author" content="兔子翻书">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+    
 
+    <!-- feed -->
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+ 
+    
+    
+        
+            <link rel="stylesheet" href="/css/note.css" crossorigin="anonymous" media="none" onload="this.media='all'">
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-cards@0.4/dist/css/github.min.css" crossorigin="anonymous" media="none" onload="this.media='all'">
     
 
     
 
+     
+
     
-
-    <link rel="stylesheet" href="/dist/build.css?1.2.0">
-
-    <script>
-        window.aomori = {
-            
-        }
-    </script>
 
 <meta name="generator" content="Hexo 4.2.0"></head>
 
-<body>
-
-  <div class="container">
-  <header class="header">
-    <div class="header-type">
-      
-      <a href="/">MYJ&#39;s Blog</a>
+    <body>
+        <div id="app">
+            <header class="header">
+    <div class="header__left">
+        <a href="/" class="button">
+            <span class="logo__text">
+                MYJ's Blog 
+            </span>
+        </a>
     </div>
-    <div class="header-menu">
-      
-        <a href="/">Home</a>
-      
-        <a href="/archives">Line</a>
-      
-    </div>
-    
-    <div class="header-menu-mobile">
-      <div class="header-menu-mobile-inner" id="mobile-menu-open">
-        <i class="icon icon-menu"></i>
-      </div>
-    </div>
-  </header>
-
-  <div class="header-menu-mobile-menu">
-    <div class="header-menu-mobile-menu-bg"></div>
-    <div class="header-menu-mobile-menu-wrap">
-      <div class="header-menu-mobile-menu-inner">
-        <div class="header-menu-mobile-menu-close" id="mobile-menu-close">
-          <i class="icon icon-cross"></i>
-        </div>
-        <div class="header-menu-mobile-menu-list">
-          
-            <a href="/">Home</a>
-          
-            <a href="/archives">Line</a>
-          
-        </div>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-  <div class="container">
-    <div class="main">
-      <section class="inner">
-        <section class="inner-main">
-          <div class="post">
-    <article id="post-数独" class="article article-type-post" itemscope
-    itemprop="blogPost">
-
-    <div class="article-inner">
-
+    <div class="header__right">
         
-
-        
-        <header class="article-header">
-            
-  
-    <h1 class="article-title" itemprop="name">
-      数独
-    </h1>
-  
-
-        </header>
-        
-
-        <div class="article-more-info article-more-info-post hairline">
-            <div class="article-date">
-  <time datetime="2018-06-14T16:00:00.000Z" itemprop="datePublished">2018-06-15</time>
-</div>
-            
-            <div class="article-category">
-                <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+            <div class="cover__menus">
+                
+                    <a href="/" class="cover-menu button">
+                        Home
+                    </a>
+                
+                    <a href="/categories/" class="cover-menu button">
+                        Tags
+                    </a>
+                
+                    <a href="/archives/" class="cover-menu button">
+                        Line
+                    </a>
+                
+                    <a href="/friends/" class="cover-menu button">
+                        Links
+                    </a>
+                
             </div>
-            
-            
-        </div>
+        
+        
+         
+            <a href="javaScript:void(0);" id="b2t" style="" aria-label="回到顶部" title="回到顶部">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='32' height='32' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M13.889,11.611c-0.17,0.17-0.443,0.17-0.612,0l-3.189-3.187l-3.363,3.36c-0.171,0.171-0.441,0.171-0.612,0c-0.172-0.169-0.172-0.443,0-0.611l3.667-3.669c0.17-0.17,0.445-0.172,0.614,0l3.496,3.493C14.058,11.167,14.061,11.443,13.889,11.611 M18.25,10c0,4.558-3.693,8.25-8.25,8.25c-4.557,0-8.25-3.692-8.25-8.25c0-4.557,3.693-8.25,8.25-8.25C14.557,1.75,18.25,5.443,18.25,10 M17.383,10c0-4.07-3.312-7.382-7.383-7.382S2.618,5.93,2.618,10S5.93,17.381,10,17.381S17.383,14.07,17.383,10"></path>
+                </svg>
+            </a>
+        
+        
+            <a class="dropdown-icon button" id="btn-dropdown">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round">
+                    <path fill="currentColor" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"></path>
+                </svg>
+            </a>
+            <div class="dropdown-menus" id="dropdown-menus">
+                <a class="dropback-icon button" id="btn-dropback">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round">
+                        <path fill="currentColor" d="M11.469,10l7.08-7.08c0.406-0.406,0.406-1.064,0-1.469c-0.406-0.406-1.063-0.406-1.469,0L10,8.53l-7.081-7.08c-0.406-0.406-1.064-0.406-1.469,0c-0.406,0.406-0.406,1.063,0,1.469L8.531,10L1.45,17.081c-0.406,0.406-0.406,1.064,0,1.469c0.203,0.203,0.469,0.304,0.735,0.304c0.266,0,0.531-0.101,0.735-0.304L10,11.469l7.08,7.081c0.203,0.203,0.469,0.304,0.735,0.304c0.267,0,0.532-0.101,0.735-0.304c0.406-0.406,0.406-1.064,0-1.469L11.469,10z"></path>
+                    </svg>
+                </a>
+                
+                    <a href="/" class="dropdown-menu button">
+                        Home
+                    </a>
+                
+                    <a href="/categories/" class="dropdown-menu button">
+                        Tags
+                    </a>
+                
+                    <a href="/archives/" class="dropdown-menu button">
+                        Line
+                    </a>
+                
+                    <a href="/friends/" class="dropdown-menu button">
+                        Links
+                    </a>
+                
+            </div>
+            <script>
+                document.getElementById('btn-dropdown').addEventListener('click', () => {
+                    const dd = document.getElementById('dropdown-menus');
+                    dd.style.display = 'flex';
+                    setTimeout(() => {dd.style.transform = 'translateY(0)';dd.style.opacity = '1';}, 1)
+                });
+                document.getElementById('btn-dropback').addEventListener('click', () => {
+                    const dd = document.getElementById('dropdown-menus');
+                    dd.style.transform = 'translateY(2.25rem)';                    
+                    dd.style.opacity = '0';
+                    setTimeout(() => {dd.style.display = 'none';}, 350);
+                });
+            </script>
+        
+    </div>
+</header>
 
-        <div class="article-entry post-inner-html hairline" itemprop="articleBody">
-            <p>思想：暴力，递归，DFS，回溯。填一个数字后检测是否满足条件，不满足就回溯</p>
+
+            <main class="main">
+    <div class="post-title">
+    <h1 class="post-title__text">
+        数独
+    </h1>
+    <div class="post-title__meta">
+        
+            <a href="/archives/2018/06/" class="button" style="color: #808080;">
+    2018-06-15
+</a>
+        
+        
+            
+    <span class="separate-dot"></span><a href="/categories/%E7%AE%97%E6%B3%95/" class="button">算法</a>
+
+ 
+        
+        
+     
+ 
+
+  
+    </div>
+</div>
+
+
+    <div class="post__with-side">
+        <aside class="post-side">
+            <div class="post-side__toc">
+                
+            </div>
+        </aside>
+        <article class="post content-card">
+            <div class="post__header">
+                
+                     
+                
+                
+                    
+                
+            </div>
+            <div class="post__content">
+                <div class="md-content">
+                    <p>思想：暴力，递归，DFS，回溯。填一个数字后检测是否满足条件，不满足就回溯</p>
 <a id="more"></a>
 
-<pre><code class="C++">#include &lt;iostream&gt;
-#include &lt;time.h&gt;
-using namespace std;
-
-int S[9][9];
-int Check(int Sum)
-{
-    int row=Sum/9,col=Sum%9;
-    int row2=row/3*3;
-    int col2=col/3*3;
-    int i=0,j=0,m=0,n=0;
-
-    for(i=0;i&lt;9;i++)//行检查
-        if(S[row][i]==S[row][col] &amp;&amp; col!=i)
-            return 1;
-    for(j=0;j&lt;9;j++)//检查列
-        if(S[j][col]==S[row][col] &amp;&amp; row!=j)
-            return 1;
-    for(m=row2;m&lt;row2+3;m++)//检查所在的九宫格
-    {
-        for(n=col2;n&lt;col2+3;n++)
-            if(S[row][col]==S[m][n]&amp;&amp;row!=m&amp;&amp;col!=m) return 1;
-    }
-    return 0;
-}
-
-int SD(int Sum)
-{
-    int row=Sum/9,col=Sum%9;
-    int flag=0;
-    if(Sum&gt;80)
-    {
-        printf(&quot;\\nanswer:\\n&quot;);
-        for(int i=0;i&lt;9;i++)
-        {
-
-            for(int j=0;j&lt;9;j++)
-                printf(&quot;%d &quot;,S[i][j]);
-            printf(&quot;\\n&quot;);
-        }
-        return 1;
-    }
-
-    if(S[row][col]==0)  //没有数字
-    {
-        for (int i=1; i&lt;10; i++)    //暴力
-        {
-            S[row][col]=i;
-            if(!Check(Sum))
-            {
-                flag=SD(Sum+1);     //满足三个条件就递归下一格
-                if (flag) return 1;     //递归返回
-
-            }
-            S[row][col]=0;      //注意：回溯后面的数据是要变为零的
-        }
-    }
-    else        //有数字
-    {
-        flag=SD(Sum+1);         //
-        if (flag) return 1;
-    }
-    return 0;
-}
-
-int main()
-{
-    clock_t Star,End;
-    Star=clock();
-    printf(&quot;请输入题目，空白用0代替:\\n&quot;);
-    for(int i=0;i&lt;9;i++)
-        for(int j=0;j&lt;9;j++)
-            scanf(&quot;%d&quot;,&amp;S[i][j]);
-    SD(0);
-    End=clock();
-    double Time=(double)(End-Star)/CLOCKS_PER_SEC;
-    printf(&quot;用时:%f秒\\n&quot;,Time);
-
-    return 0;
-}</code></pre>
-
-        </div>
-
-    </div>
-
-    
-
-    
-
-    
-
-    
-<div class="article-copyright hairline">
-  <p>
-    本作品采用 <a rel="license noopener" href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a> 进行许可。
-  </p>
-</div>
-
-
-    
-
-    
-<nav class="article-nav">
-  
-    <a href="/2018/06/17/%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D/" id="article-nav-newer" class="article-nav-link-wrap">
-      <div class="article-nav-caption">下一篇</div>
-      <div class="article-nav-title">
-        
-          模式匹配
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2017/11/11/Top%20K%E7%AE%97%E6%B3%95/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-caption">上一篇</div>
-      <div class="article-nav-title">Top K算法</div>
-    </a>
-  
-</nav>
-
-
-
-
-</article>
-
-
-
-
-</div>
-        </section>
-      </section>
-      <aside class="sidebar">
-        <div class="widget">
-          
-
-  
-  <div class="widget-wrap">
-    <div class="widget-inner">
-      <div class="toc post-toc-html"></div>
-    </div>
-  </div>
-
-
-  
-  <div class="widget-wrap widget-cate">
-    <div class="widget-title"><span>Tags</span></div>
-    <div class="widget-inner">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/">Blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MAC/">MAC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/PAT/">PAT</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%8B%E8%BD%BD%E5%B7%A5%E5%85%B7/">下载工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">数据分析</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%88%AC%E8%99%AB/">爬虫</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0C-C/">编程笔记C/C++</a></li></ul>
-    </div>
-  </div>
-
-
-
-        </div>
-        <div id="backtop"><i class="icon icon-arrow-up"></i></div>
-      </aside>
-    </div>
-  </div>
-
-  <footer class="footer">
-    <div class="footer-inner">
-        <div class="footer-info">
-            <span>&copy; 2020 MYJ&#39;s Blog</span>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;time.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> S[<span class="number">9</span>][<span class="number">9</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Check</span><span class="params">(<span class="keyword">int</span> Sum)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> row=Sum/<span class="number">9</span>,col=Sum%<span class="number">9</span>;</span><br><span class="line">    <span class="keyword">int</span> row2=row/<span class="number">3</span>*<span class="number">3</span>;</span><br><span class="line">    <span class="keyword">int</span> col2=col/<span class="number">3</span>*<span class="number">3</span>;</span><br><span class="line">    <span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>,m=<span class="number">0</span>,n=<span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">9</span>;i++)<span class="comment">//行检查</span></span><br><span class="line">        <span class="keyword">if</span>(S[row][i]==S[row][col] &amp;&amp; col!=i)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;<span class="number">9</span>;j++)<span class="comment">//检查列</span></span><br><span class="line">        <span class="keyword">if</span>(S[j][col]==S[row][col] &amp;&amp; row!=j)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(m=row2;m&lt;row2+<span class="number">3</span>;m++)<span class="comment">//检查所在的九宫格</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(n=col2;n&lt;col2+<span class="number">3</span>;n++)</span><br><span class="line">            <span class="keyword">if</span>(S[row][col]==S[m][n]&amp;&amp;row!=m&amp;&amp;col!=m) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">SD</span><span class="params">(<span class="keyword">int</span> Sum)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> row=Sum/<span class="number">9</span>,col=Sum%<span class="number">9</span>;</span><br><span class="line">    <span class="keyword">int</span> flag=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(Sum&gt;<span class="number">80</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"\\nanswer:\\n"</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">9</span>;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;<span class="number">9</span>;j++)</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"%d "</span>,S[i][j]);</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"\\n"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">   </span><br><span class="line">    <span class="keyword">if</span>(S[row][col]==<span class="number">0</span>)  <span class="comment">//没有数字</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;<span class="number">10</span>; i++)    <span class="comment">//暴力</span></span><br><span class="line">        &#123;</span><br><span class="line">            S[row][col]=i;</span><br><span class="line">            <span class="keyword">if</span>(!Check(Sum))</span><br><span class="line">            &#123;</span><br><span class="line">                flag=<span class="built_in">SD</span>(Sum+<span class="number">1</span>);     <span class="comment">//满足三个条件就递归下一格</span></span><br><span class="line">                <span class="keyword">if</span> (flag) <span class="keyword">return</span> <span class="number">1</span>;     <span class="comment">//递归返回</span></span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">            S[row][col]=<span class="number">0</span>;      <span class="comment">//注意：回溯后面的数据是要变为零的</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>        <span class="comment">//有数字</span></span><br><span class="line">    &#123;</span><br><span class="line">        flag=<span class="built_in">SD</span>(Sum+<span class="number">1</span>);         <span class="comment">//</span></span><br><span class="line">        <span class="keyword">if</span> (flag) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">clock_t</span> Star,End;</span><br><span class="line">    Star=clock();</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"请输入题目，空白用0代替:\\n"</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">9</span>;i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;<span class="number">9</span>;j++)</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;S[i][j]);</span><br><span class="line">    <span class="built_in">SD</span>(<span class="number">0</span>);</span><br><span class="line">    End=clock();</span><br><span class="line">    <span class="keyword">double</span> Time=(<span class="keyword">double</span>)(End-Star)/CLOCKS_PER_SEC;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"用时:%f秒\\n"</span>,Time);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+                </div>
+            </div>
             
-
-
-
-
-
-
-
-
-
-
-  <a class="social" href="https://github.com/xingkongyj2" target="_blank" rel="noopener">
-    <span class="n-icon n-icon-github"></span>
-  </a>
-
-        </div>
-        <div class="footer-powered">
-            <a href="https://mayujie321.com" target="_blank"> 新漫场</a> &nbsp;&nbsp;
-            <a href="mailto:2580130642@qq.com" target="_blank"> Email</a> 
-        </div>
+                 
+            
+            
+                <div class="post-meta post-footer__meta">
+    <p>
+        最后更新于：2020-06-05
+    </p>
+</div> 
+            
+            
+                <div class="post-cats post-card__cats">
+    
+        <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-cats__link button">算法</a>
+    
+</div> 
+                <div class="post-tags post-card__tags">
+    
+</div> 
+             
+        </article>
+        <br>
+        
     </div>
+
+
+</main>
+<footer class="footer">
+
+    
 </footer>
 
 
+        </div>
+        
+
+ 
+
+ 
+
+ 
+
+  
 
 
-<script src="/dist/build.js?1.2.0.js"></script>
+    <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.4.1/dist/jquery.fancybox.min.css">
 
 
-<script src="/dist/custom.js?1.2.0.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.4.1/dist/jquery.fancybox.min.js"></script>
+
+<script>
+    let lazyloadT = Boolean(''),
+        auto_fancybox = Boolean('true')
+    if (auto_fancybox) {
+        $(".post__content").find('img').each(function () {
+            var element = document.createElement("a");
+            $(element).attr("data-fancybox", "gallery");
+            $(element).attr("href", $(this).attr("src"));
+            if (lazyloadT) {
+                $(element).attr("href", $(this).attr("data-srcset"));
+            }
+            $(this).wrap(element);
+        });
+    } else {
+        $(".post__content").find("fancybox").find('img').each(function () {
+            var element = document.createElement("a");
+            $(element).attr("data-fancybox", "gallery");
+            $(element).attr("href", $(this).attr("src"));
+            if (lazyloadT) {
+                $(element).attr("href", $(this).attr("data-srcset"));
+            }
+            $(this).wrap(element);
+        });
+    }
+</script>
+ 
+ 
+
+ 
+    <script defer crossorigin="anonymous" src="/js/b2t.js"></script>
 
 
 
@@ -319,6 +288,5 @@ int main()
 
 
 
-
-</body>
+    </body>
 </html>

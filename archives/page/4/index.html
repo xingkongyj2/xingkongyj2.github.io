@@ -1,294 +1,1177 @@
 <!DOCTYPE html>
-<html>
-
-<head>
+<html lang="zh-CN">
+    <head>
     <meta charset="utf-8">
+
     
-    <title>Archive | MYJ&#39;s Blog</title>
+
+    <!--icon-->
+    
+        <link rel="shortcut icon" type='image/x-icon' href="/favicon.ico">
+    
+
+    <!-- 渲染优化 -->
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta property="og:type" content="website">
+    <!-- meta -->
+    
+    <title>归档 | MYJ&#39;s Blog</title>
+    
+        <meta name="keywords" content="undefined">
+    
+
+    <!-- OpenGraph -->
+     
+        <meta property="og:type" content="website">
 <meta property="og:title" content="MYJ&#39;s Blog">
 <meta property="og:url" content="http://yoursite.com/archives/page/4/index.html">
 <meta property="og:site_name" content="MYJ&#39;s Blog">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="兔子翻书">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+    
 
+    <!-- feed -->
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+ 
+    
     
 
     
 
+     
+
     
-
-    <link rel="stylesheet" href="/dist/build.css?1.2.0">
-
-    <script>
-        window.aomori = {
-            
-        }
-    </script>
 
 <meta name="generator" content="Hexo 4.2.0"></head>
 
-<body>
-
-  <div class="container">
-  <header class="header">
-    <div class="header-type">
-      
-      <a href="/">MYJ&#39;s Blog</a>
+    <body>
+        <div id="app">
+            <header class="header">
+    <div class="header__left">
+        <a href="/" class="button">
+            <span class="logo__text">
+                MYJ's Blog 
+            </span>
+        </a>
     </div>
-    <div class="header-menu">
-      
-        <a href="/">Home</a>
-      
-        <a href="/archives">Line</a>
-      
+    <div class="header__right">
+        
+            <div class="cover__menus">
+                
+                    <a href="/" class="cover-menu button">
+                        Home
+                    </a>
+                
+                    <a href="/categories/" class="cover-menu button">
+                        Tags
+                    </a>
+                
+                    <a href="/archives/" class="cover-menu button">
+                        Line
+                    </a>
+                
+                    <a href="/friends/" class="cover-menu button">
+                        Links
+                    </a>
+                
+            </div>
+        
+        
+         
+            <a href="javaScript:void(0);" id="b2t" style="" aria-label="回到顶部" title="回到顶部">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='32' height='32' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M13.889,11.611c-0.17,0.17-0.443,0.17-0.612,0l-3.189-3.187l-3.363,3.36c-0.171,0.171-0.441,0.171-0.612,0c-0.172-0.169-0.172-0.443,0-0.611l3.667-3.669c0.17-0.17,0.445-0.172,0.614,0l3.496,3.493C14.058,11.167,14.061,11.443,13.889,11.611 M18.25,10c0,4.558-3.693,8.25-8.25,8.25c-4.557,0-8.25-3.692-8.25-8.25c0-4.557,3.693-8.25,8.25-8.25C14.557,1.75,18.25,5.443,18.25,10 M17.383,10c0-4.07-3.312-7.382-7.383-7.382S2.618,5.93,2.618,10S5.93,17.381,10,17.381S17.383,14.07,17.383,10"></path>
+                </svg>
+            </a>
+        
+        
+            <a class="dropdown-icon button" id="btn-dropdown">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round">
+                    <path fill="currentColor" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"></path>
+                </svg>
+            </a>
+            <div class="dropdown-menus" id="dropdown-menus">
+                <a class="dropback-icon button" id="btn-dropback">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round">
+                        <path fill="currentColor" d="M11.469,10l7.08-7.08c0.406-0.406,0.406-1.064,0-1.469c-0.406-0.406-1.063-0.406-1.469,0L10,8.53l-7.081-7.08c-0.406-0.406-1.064-0.406-1.469,0c-0.406,0.406-0.406,1.063,0,1.469L8.531,10L1.45,17.081c-0.406,0.406-0.406,1.064,0,1.469c0.203,0.203,0.469,0.304,0.735,0.304c0.266,0,0.531-0.101,0.735-0.304L10,11.469l7.08,7.081c0.203,0.203,0.469,0.304,0.735,0.304c0.267,0,0.532-0.101,0.735-0.304c0.406-0.406,0.406-1.064,0-1.469L11.469,10z"></path>
+                    </svg>
+                </a>
+                
+                    <a href="/" class="dropdown-menu button">
+                        Home
+                    </a>
+                
+                    <a href="/categories/" class="dropdown-menu button">
+                        Tags
+                    </a>
+                
+                    <a href="/archives/" class="dropdown-menu button">
+                        Line
+                    </a>
+                
+                    <a href="/friends/" class="dropdown-menu button">
+                        Links
+                    </a>
+                
+            </div>
+            <script>
+                document.getElementById('btn-dropdown').addEventListener('click', () => {
+                    const dd = document.getElementById('dropdown-menus');
+                    dd.style.display = 'flex';
+                    setTimeout(() => {dd.style.transform = 'translateY(0)';dd.style.opacity = '1';}, 1)
+                });
+                document.getElementById('btn-dropback').addEventListener('click', () => {
+                    const dd = document.getElementById('dropdown-menus');
+                    dd.style.transform = 'translateY(2.25rem)';                    
+                    dd.style.opacity = '0';
+                    setTimeout(() => {dd.style.display = 'none';}, 350);
+                });
+            </script>
+        
     </div>
-    
-    <div class="header-menu-mobile">
-      <div class="header-menu-mobile-inner" id="mobile-menu-open">
-        <i class="icon icon-menu"></i>
-      </div>
-    </div>
-  </header>
-
-  <div class="header-menu-mobile-menu">
-    <div class="header-menu-mobile-menu-bg"></div>
-    <div class="header-menu-mobile-menu-wrap">
-      <div class="header-menu-mobile-menu-inner">
-        <div class="header-menu-mobile-menu-close" id="mobile-menu-close">
-          <i class="icon icon-cross"></i>
-        </div>
-        <div class="header-menu-mobile-menu-list">
-          
-            <a href="/">Home</a>
-          
-            <a href="/archives">Line</a>
-          
-        </div>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-  <div class="container">
-    <div class="main">
-      <section class="inner">
-        <section class="inner-main">
-          
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/09/%E6%96%87%E6%9C%AC%E8%BD%AC%E8%AF%AD%E9%9F%B3/">文本转语音</a>
-    </h1>
-  
-
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/07/%E8%AF%8D%E9%A2%91%E7%BB%9F%E8%AE%A1/">词频统计</a>
-    </h1>
-  
-
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/19/python%E8%AF%AD%E6%B3%95%E6%80%BB%E7%BB%93/">python语法总结</a>
-    </h1>
-  
-
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/08/N%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98/">N皇后问题</a>
-    </h1>
-  
-
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/05/python%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE/">python读取数据(待补充)</a>
-    </h1>
-  
-
-</article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/10/01/%E5%BF%AB%E9%80%9F%E5%B9%82/">快速幂</a>
-    </h1>
-  
-
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/23/%E6%A0%91/">树</a>
-    </h1>
-  
-
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/17/%E5%A0%86%E6%A0%88/">堆栈</a>
-    </h1>
-  
-
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/01/%E7%BC%96%E7%A8%8B%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9%E5%8F%8A%E6%8A%80%E5%B7%A7/">编程注意事项及技巧(C/C++)</a>
-    </h1>
-  
-
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/17/%E5%88%86%E6%B2%BB%E7%AD%96%E7%95%A5/">分治策略</a>
-    </h1>
-  
-
-</article>
-  
-  
-    </div></section>
-  
+</header>
 
 
-
-  <nav class="pagination">
-    
-    <a class="extend prev" rel="prev" href="/archives/page/3/">上一篇</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/archives/page/5/">5</a><a class="extend next" rel="next" href="/archives/page/5/">下一页</a>
-  </nav>
-
-
-        </section>
-      </section>
-      <aside class="sidebar">
-        <div class="widget">
-          
-
-  
-
-  
-  <div class="widget-wrap widget-cate">
-    <div class="widget-title"><span>Tags</span></div>
-    <div class="widget-inner">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/">Blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MAC/">MAC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/PAT/">PAT</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%8B%E8%BD%BD%E5%B7%A5%E5%85%B7/">下载工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">数据分析</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%88%AC%E8%99%AB/">爬虫</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0C-C/">编程笔记C/C++</a></li></ul>
-    </div>
-  </div>
-
-
-
-        </div>
-        <div id="backtop"><i class="icon icon-arrow-up"></i></div>
-      </aside>
-    </div>
-  </div>
-
-  <footer class="footer">
-    <div class="footer-inner">
-        <div class="footer-info">
-            <span>&copy; 2020 MYJ&#39;s Blog</span>
+    <div class="cover">
+        <div class="cover__logo">
             
-
-
-
-
-
-
-
-
-
-
-  <a class="social" href="https://github.com/xingkongyj2" target="_blank" rel="noopener">
-    <span class="n-icon n-icon-github"></span>
-  </a>
-
+                <h1> </h1>
+            
         </div>
-        <div class="footer-powered">
-            <a href="https://mayujie321.com" target="_blank"> 新漫场</a> &nbsp;&nbsp;
-            <a href="mailto:2580130642@qq.com" target="_blank"> Email</a> 
-        </div>
+        
     </div>
+
+            <main class='main'>
+    
+        <div class="archives">
+            
+                    <div class="archives-item">
+                        <div class="archives-left">
+                            <div class="archives-icon icon-lg"></div>
+                        </div>
+                        <div class="archives-content">
+                            <h3>2020</h3>
+                        </div>
+                    </div>
+                
+                <div class="archives-item">
+                    <div class="archives-left">
+                        <div class="archives-icon">
+
+                        </div>
+                    </div>
+                    <span class="archives-content">
+                        04-26
+                        &nbsp;
+                        <span>
+                        <a href="/2020/04/26/%E4%B8%8B%E8%BD%BD%E5%90%84%E4%B8%AA%E7%BD%91%E7%AB%99%E8%A7%86%E9%A2%91%E7%9A%84%E6%96%B9%E6%B3%95/">
+                            <span class="archives-title">
+                                
+                                    下载各个网站视频的方法
+                                
+                            </span>
+                        </a>
+                        <br><br>
+                    </span>
+                </div>
+            
+                <div class="archives-item">
+                    <div class="archives-left">
+                        <div class="archives-icon">
+
+                        </div>
+                    </div>
+                    <span class="archives-content">
+                        04-17
+                        &nbsp;
+                        <span>
+                        <a href="/2020/04/17/python%E7%A7%92%E6%9D%80%E8%93%9D%E5%A2%A8%E4%BA%91%E8%A7%86%E9%A2%91/">
+                            <span class="archives-title">
+                                
+                                    python秒杀蓝墨云视频
+                                
+                            </span>
+                        </a>
+                        <br><br>
+                    </span>
+                </div>
+            
+                <div class="archives-item">
+                    <div class="archives-left">
+                        <div class="archives-icon">
+
+                        </div>
+                    </div>
+                    <span class="archives-content">
+                        04-17
+                        &nbsp;
+                        <span>
+                        <a href="/2020/04/17/turtle%E7%94%BB%E7%94%BB/">
+                            <span class="archives-title">
+                                
+                                    使用turtle画画
+                                
+                            </span>
+                        </a>
+                        <br><br>
+                    </span>
+                </div>
+            
+                <div class="archives-item">
+                    <div class="archives-left">
+                        <div class="archives-icon">
+
+                        </div>
+                    </div>
+                    <span class="archives-content">
+                        04-16
+                        &nbsp;
+                        <span>
+                        <a href="/2020/04/16/%E4%BD%BF%E7%94%A8wordpress%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2-%E4%BA%94%E5%88%86%E9%92%9F%E5%BB%BA%E7%AB%99/">
+                            <span class="archives-title">
+                                
+                                    使用wordpress搭建博客-五分钟建站
+                                
+                            </span>
+                        </a>
+                        <br><br>
+                    </span>
+                </div>
+            
+                <div class="archives-item">
+                    <div class="archives-left">
+                        <div class="archives-icon">
+
+                        </div>
+                    </div>
+                    <span class="archives-content">
+                        04-16
+                        &nbsp;
+                        <span>
+                        <a href="/2020/04/16/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%AF%BE%E7%A8%8B/">
+                            <span class="archives-title">
+                                
+                                    机器学习课程
+                                
+                            </span>
+                        </a>
+                        <br><br>
+                    </span>
+                </div>
+            
+                <div class="archives-item">
+                    <div class="archives-left">
+                        <div class="archives-icon">
+
+                        </div>
+                    </div>
+                    <span class="archives-content">
+                        04-15
+                        &nbsp;
+                        <span>
+                        <a href="/2020/04/15/python%E4%BD%9C%E4%B8%9A/">
+                            <span class="archives-title">
+                                
+                                    python作业
+                                
+                            </span>
+                        </a>
+                        <br><br>
+                    </span>
+                </div>
+            
+                <div class="archives-item">
+                    <div class="archives-left">
+                        <div class="archives-icon">
+
+                        </div>
+                    </div>
+                    <span class="archives-content">
+                        02-06
+                        &nbsp;
+                        <span>
+                        <a href="/2020/02/06/PAT%E7%AE%97%E6%B3%95%E6%A8%A1%E7%89%88/">
+                            <span class="archives-title">
+                                
+                                    PAT算法模版
+                                
+                            </span>
+                        </a>
+                        <br><br>
+                    </span>
+                </div>
+            
+                <div class="archives-item">
+                    <div class="archives-left">
+                        <div class="archives-icon">
+
+                        </div>
+                    </div>
+                    <span class="archives-content">
+                        02-06
+                        &nbsp;
+                        <span>
+                        <a href="/2020/02/06/PAT%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/">
+                            <span class="archives-title">
+                                
+                                    PAT编程笔记
+                                
+                            </span>
+                        </a>
+                        <br><br>
+                    </span>
+                </div>
+            
+                <div class="archives-item">
+                    <div class="archives-left">
+                        <div class="archives-icon">
+
+                        </div>
+                    </div>
+                    <span class="archives-content">
+                        02-01
+                        &nbsp;
+                        <span>
+                        <a href="/2020/02/01/hexo%E5%91%BD%E4%BB%A4/">
+                            <span class="archives-title">
+                                
+                                    hexo
+                                
+                            </span>
+                        </a>
+                        <br><br>
+                    </span>
+                </div>
+            
+                <div class="archives-item">
+                    <div class="archives-left">
+                        <div class="archives-icon">
+
+                        </div>
+                    </div>
+                    <span class="archives-content">
+                        01-31
+                        &nbsp;
+                        <span>
+                        <a href="/2020/01/31/Mac%E5%8F%82%E8%80%83/">
+                            <span class="archives-title">
+                                
+                                    Mac参考
+                                
+                            </span>
+                        </a>
+                        <br><br>
+                    </span>
+                </div>
+            
+                <div class="archives-item">
+                    <div class="archives-left">
+                        <div class="archives-icon">
+
+                        </div>
+                    </div>
+                    <span class="archives-content">
+                        01-31
+                        &nbsp;
+                        <span>
+                        <a href="/2020/01/31/%E5%89%8D%E7%AB%AF/">
+                            <span class="archives-title">
+                                
+                                    前端资源&素材
+                                
+                            </span>
+                        </a>
+                        <br><br>
+                    </span>
+                </div>
+            
+                <div class="archives-item">
+                    <div class="archives-left">
+                        <div class="archives-icon">
+
+                        </div>
+                    </div>
+                    <span class="archives-content">
+                        01-31
+                        &nbsp;
+                        <span>
+                        <a href="/2020/01/31/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+                            <span class="archives-title">
+                                
+                                    动态规划
+                                
+                            </span>
+                        </a>
+                        <br><br>
+                    </span>
+                </div>
+            
+                <div class="archives-item">
+                    <div class="archives-left">
+                        <div class="archives-icon">
+
+                        </div>
+                    </div>
+                    <span class="archives-content">
+                        01-31
+                        &nbsp;
+                        <span>
+                        <a href="/2020/01/31/%E7%AE%97%E6%B3%95%E5%8D%9A%E5%AE%A2/">
+                            <span class="archives-title">
+                                
+                                    算法博客
+                                
+                            </span>
+                        </a>
+                        <br><br>
+                    </span>
+                </div>
+            
+                    <div class="archives-item">
+                        <div class="archives-left">
+                            <div class="archives-icon icon-lg"></div>
+                        </div>
+                        <div class="archives-content">
+                            <h3>2019</h3>
+                        </div>
+                    </div>
+                
+                <div class="archives-item">
+                    <div class="archives-left">
+                        <div class="archives-icon">
+
+                        </div>
+                    </div>
+                    <span class="archives-content">
+                        12-20
+                        &nbsp;
+                        <span>
+                        <a href="/2019/12/20/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99/">
+                            <span class="archives-title">
+                                
+                                    数据分析参考资料(待补充)
+                                
+                            </span>
+                        </a>
+                        <br><br>
+                    </span>
+                </div>
+            
+                <div class="archives-item">
+                    <div class="archives-left">
+                        <div class="archives-icon">
+
+                        </div>
+                    </div>
+                    <span class="archives-content">
+                        12-19
+                        &nbsp;
+                        <span>
+                        <a href="/2019/12/19/Pandas/">
+                            <span class="archives-title">
+                                
+                                    Pandas
+                                
+                            </span>
+                        </a>
+                        <br><br>
+                    </span>
+                </div>
+            
+                <div class="archives-item">
+                    <div class="archives-left">
+                        <div class="archives-icon">
+
+                        </div>
+                    </div>
+                    <span class="archives-content">
+                        12-18
+                        &nbsp;
+                        <span>
+                        <a href="/2019/12/18/Numpy/">
+                            <span class="archives-title">
+                                
+                                    Numpy
+                                
+                            </span>
+                        </a>
+                        <br><br>
+                    </span>
+                </div>
+            
+                <div class="archives-item">
+                    <div class="archives-left">
+                        <div class="archives-icon">
+
+                        </div>
+                    </div>
+                    <span class="archives-content">
+                        12-17
+                        &nbsp;
+                        <span>
+                        <a href="/2019/12/17/Matplotlib/">
+                            <span class="archives-title">
+                                
+                                    Matplotlib(待补充)
+                                
+                            </span>
+                        </a>
+                        <br><br>
+                    </span>
+                </div>
+            
+                <div class="archives-item">
+                    <div class="archives-left">
+                        <div class="archives-icon">
+
+                        </div>
+                    </div>
+                    <span class="archives-content">
+                        12-15
+                        &nbsp;
+                        <span>
+                        <a href="/2019/12/15/%E6%95%B0%E6%8D%AE%E5%BA%93(Mysql)%E4%B9%8B%E6%9D%83%E9%99%90/">
+                            <span class="archives-title">
+                                
+                                    数据库(Mysql)之权限
+                                
+                            </span>
+                        </a>
+                        <br><br>
+                    </span>
+                </div>
+            
+                <div class="archives-item">
+                    <div class="archives-left">
+                        <div class="archives-icon">
+
+                        </div>
+                    </div>
+                    <span class="archives-content">
+                        12-01
+                        &nbsp;
+                        <span>
+                        <a href="/2019/12/01/%E6%95%B0%E6%8D%AE%E5%BA%93(Mysql)%E4%B9%8B%E8%AF%AD%E5%8F%A5/">
+                            <span class="archives-title">
+                                
+                                    数据库(Mysql)之语句
+                                
+                            </span>
+                        </a>
+                        <br><br>
+                    </span>
+                </div>
+            
+                <div class="archives-item">
+                    <div class="archives-left">
+                        <div class="archives-icon">
+
+                        </div>
+                    </div>
+                    <span class="archives-content">
+                        11-17
+                        &nbsp;
+                        <span>
+                        <a href="/2019/11/17/pdf%E6%93%8D%E4%BD%9C/">
+                            <span class="archives-title">
+                                
+                                    pdf操作
+                                
+                            </span>
+                        </a>
+                        <br><br>
+                    </span>
+                </div>
+            
+                <div class="archives-item">
+                    <div class="archives-left">
+                        <div class="archives-icon">
+
+                        </div>
+                    </div>
+                    <span class="archives-content">
+                        11-15
+                        &nbsp;
+                        <span>
+                        <a href="/2019/11/15/%E6%95%B0%E6%8D%AE%E5%BA%93(Mysql)%E4%B9%8B%E8%AE%BE%E8%AE%A1/">
+                            <span class="archives-title">
+                                
+                                    数据库(Mysql)之设计
+                                
+                            </span>
+                        </a>
+                        <br><br>
+                    </span>
+                </div>
+            
+                <div class="archives-item">
+                    <div class="archives-left">
+                        <div class="archives-icon">
+
+                        </div>
+                    </div>
+                    <span class="archives-content">
+                        08-27
+                        &nbsp;
+                        <span>
+                        <a href="/2019/08/27/%E6%B7%98%E5%AE%9D%E7%A7%92%E6%9D%80/">
+                            <span class="archives-title">
+                                
+                                    淘宝秒杀
+                                
+                            </span>
+                        </a>
+                        <br><br>
+                    </span>
+                </div>
+            
+                <div class="archives-item">
+                    <div class="archives-left">
+                        <div class="archives-icon">
+
+                        </div>
+                    </div>
+                    <span class="archives-content">
+                        08-17
+                        &nbsp;
+                        <span>
+                        <a href="/2019/08/17/Email/">
+                            <span class="archives-title">
+                                
+                                    python发送Email
+                                
+                            </span>
+                        </a>
+                        <br><br>
+                    </span>
+                </div>
+            
+                <div class="archives-item">
+                    <div class="archives-left">
+                        <div class="archives-icon">
+
+                        </div>
+                    </div>
+                    <span class="archives-content">
+                        08-07
+                        &nbsp;
+                        <span>
+                        <a href="/2019/08/07/%E8%AF%8D%E4%BA%91/">
+                            <span class="archives-title">
+                                
+                                    词云
+                                
+                            </span>
+                        </a>
+                        <br><br>
+                    </span>
+                </div>
+            
+                <div class="archives-item">
+                    <div class="archives-left">
+                        <div class="archives-icon">
+
+                        </div>
+                    </div>
+                    <span class="archives-content">
+                        06-18
+                        &nbsp;
+                        <span>
+                        <a href="/2019/06/18/%E7%88%AC%E5%8F%96%E5%A4%A7%E7%94%B5%E5%95%86%E5%B9%B3%E5%8F%B0/">
+                            <span class="archives-title">
+                                
+                                    爬大电商平台
+                                
+                            </span>
+                        </a>
+                        <br><br>
+                    </span>
+                </div>
+            
+                <div class="archives-item">
+                    <div class="archives-left">
+                        <div class="archives-icon">
+
+                        </div>
+                    </div>
+                    <span class="archives-content">
+                        05-21
+                        &nbsp;
+                        <span>
+                        <a href="/2019/05/21/%E7%88%AC%E8%99%AB%E4%BB%A3%E7%90%86%E8%AE%BE%E7%BD%AE/">
+                            <span class="archives-title">
+                                
+                                    爬虫代理设置
+                                
+                            </span>
+                        </a>
+                        <br><br>
+                    </span>
+                </div>
+            
+                <div class="archives-item">
+                    <div class="archives-left">
+                        <div class="archives-icon">
+
+                        </div>
+                    </div>
+                    <span class="archives-content">
+                        05-17
+                        &nbsp;
+                        <span>
+                        <a href="/2019/05/17/%E8%B0%83%E7%94%A8API/">
+                            <span class="archives-title">
+                                
+                                    调用API
+                                
+                            </span>
+                        </a>
+                        <br><br>
+                    </span>
+                </div>
+            
+                <div class="archives-item">
+                    <div class="archives-left">
+                        <div class="archives-icon">
+
+                        </div>
+                    </div>
+                    <span class="archives-content">
+                        04-27
+                        &nbsp;
+                        <span>
+                        <a href="/2019/04/27/python%E6%93%8D%E4%BD%9COffice/">
+                            <span class="archives-title">
+                                
+                                    python操作Office
+                                
+                            </span>
+                        </a>
+                        <br><br>
+                    </span>
+                </div>
+            
+                <div class="archives-item">
+                    <div class="archives-left">
+                        <div class="archives-icon">
+
+                        </div>
+                    </div>
+                    <span class="archives-content">
+                        04-20
+                        &nbsp;
+                        <span>
+                        <a href="/2019/04/20/%E7%88%AC%E8%99%AB%E6%A8%A1%E7%89%88/">
+                            <span class="archives-title">
+                                
+                                    爬虫模版
+                                
+                            </span>
+                        </a>
+                        <br><br>
+                    </span>
+                </div>
+            
+                <div class="archives-item">
+                    <div class="archives-left">
+                        <div class="archives-icon">
+
+                        </div>
+                    </div>
+                    <span class="archives-content">
+                        04-18
+                        &nbsp;
+                        <span>
+                        <a href="/2019/04/18/%E7%88%AC%E8%99%AB%E5%BA%93%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/">
+                            <span class="archives-title">
+                                
+                                    爬虫库知识总结
+                                
+                            </span>
+                        </a>
+                        <br><br>
+                    </span>
+                </div>
+            
+                <div class="archives-item">
+                    <div class="archives-left">
+                        <div class="archives-icon">
+
+                        </div>
+                    </div>
+                    <span class="archives-content">
+                        04-09
+                        &nbsp;
+                        <span>
+                        <a href="/2019/04/09/%E6%96%87%E6%9C%AC%E8%BD%AC%E8%AF%AD%E9%9F%B3/">
+                            <span class="archives-title">
+                                
+                                    文本转语音
+                                
+                            </span>
+                        </a>
+                        <br><br>
+                    </span>
+                </div>
+            
+                <div class="archives-item">
+                    <div class="archives-left">
+                        <div class="archives-icon">
+
+                        </div>
+                    </div>
+                    <span class="archives-content">
+                        04-07
+                        &nbsp;
+                        <span>
+                        <a href="/2019/04/07/%E8%AF%8D%E9%A2%91%E7%BB%9F%E8%AE%A1/">
+                            <span class="archives-title">
+                                
+                                    词频统计
+                                
+                            </span>
+                        </a>
+                        <br><br>
+                    </span>
+                </div>
+            
+                <div class="archives-item">
+                    <div class="archives-left">
+                        <div class="archives-icon">
+
+                        </div>
+                    </div>
+                    <span class="archives-content">
+                        03-19
+                        &nbsp;
+                        <span>
+                        <a href="/2019/03/19/python%E8%AF%AD%E6%B3%95%E6%80%BB%E7%BB%93/">
+                            <span class="archives-title">
+                                
+                                    python语法总结
+                                
+                            </span>
+                        </a>
+                        <br><br>
+                    </span>
+                </div>
+            
+                <div class="archives-item">
+                    <div class="archives-left">
+                        <div class="archives-icon">
+
+                        </div>
+                    </div>
+                    <span class="archives-content">
+                        03-08
+                        &nbsp;
+                        <span>
+                        <a href="/2019/03/08/N%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98/">
+                            <span class="archives-title">
+                                
+                                    N皇后问题
+                                
+                            </span>
+                        </a>
+                        <br><br>
+                    </span>
+                </div>
+            
+                <div class="archives-item">
+                    <div class="archives-left">
+                        <div class="archives-icon">
+
+                        </div>
+                    </div>
+                    <span class="archives-content">
+                        03-05
+                        &nbsp;
+                        <span>
+                        <a href="/2019/03/05/python%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE/">
+                            <span class="archives-title">
+                                
+                                    python读取数据(待补充)
+                                
+                            </span>
+                        </a>
+                        <br><br>
+                    </span>
+                </div>
+            
+                    <div class="archives-item">
+                        <div class="archives-left">
+                            <div class="archives-icon icon-lg"></div>
+                        </div>
+                        <div class="archives-content">
+                            <h3>2018</h3>
+                        </div>
+                    </div>
+                
+                <div class="archives-item">
+                    <div class="archives-left">
+                        <div class="archives-icon">
+
+                        </div>
+                    </div>
+                    <span class="archives-content">
+                        10-01
+                        &nbsp;
+                        <span>
+                        <a href="/2018/10/01/%E5%BF%AB%E9%80%9F%E5%B9%82/">
+                            <span class="archives-title">
+                                
+                                    快速幂
+                                
+                            </span>
+                        </a>
+                        <br><br>
+                    </span>
+                </div>
+            
+                <div class="archives-item">
+                    <div class="archives-left">
+                        <div class="archives-icon">
+
+                        </div>
+                    </div>
+                    <span class="archives-content">
+                        08-23
+                        &nbsp;
+                        <span>
+                        <a href="/2018/08/23/%E6%A0%91/">
+                            <span class="archives-title">
+                                
+                                    树
+                                
+                            </span>
+                        </a>
+                        <br><br>
+                    </span>
+                </div>
+            
+                <div class="archives-item">
+                    <div class="archives-left">
+                        <div class="archives-icon">
+
+                        </div>
+                    </div>
+                    <span class="archives-content">
+                        08-17
+                        &nbsp;
+                        <span>
+                        <a href="/2018/08/17/%E5%A0%86%E6%A0%88/">
+                            <span class="archives-title">
+                                
+                                    堆栈
+                                
+                            </span>
+                        </a>
+                        <br><br>
+                    </span>
+                </div>
+            
+                <div class="archives-item">
+                    <div class="archives-left">
+                        <div class="archives-icon">
+
+                        </div>
+                    </div>
+                    <span class="archives-content">
+                        07-01
+                        &nbsp;
+                        <span>
+                        <a href="/2018/07/01/%E7%BC%96%E7%A8%8B%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9%E5%8F%8A%E6%8A%80%E5%B7%A7/">
+                            <span class="archives-title">
+                                
+                                    编程注意事项及技巧(C/C++)
+                                
+                            </span>
+                        </a>
+                        <br><br>
+                    </span>
+                </div>
+            
+                <div class="archives-item">
+                    <div class="archives-left">
+                        <div class="archives-icon">
+
+                        </div>
+                    </div>
+                    <span class="archives-content">
+                        06-17
+                        &nbsp;
+                        <span>
+                        <a href="/2018/06/17/%E5%88%86%E6%B2%BB%E7%AD%96%E7%95%A5/">
+                            <span class="archives-title">
+                                
+                                    分治策略
+                                
+                            </span>
+                        </a>
+                        <br><br>
+                    </span>
+                </div>
+            
+                <div class="archives-item">
+                    <div class="archives-left">
+                        <div class="archives-icon">
+
+                        </div>
+                    </div>
+                    <span class="archives-content">
+                        06-17
+                        &nbsp;
+                        <span>
+                        <a href="/2018/06/17/%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D/">
+                            <span class="archives-title">
+                                
+                                    模式匹配
+                                
+                            </span>
+                        </a>
+                        <br><br>
+                    </span>
+                </div>
+            
+                <div class="archives-item">
+                    <div class="archives-left">
+                        <div class="archives-icon">
+
+                        </div>
+                    </div>
+                    <span class="archives-content">
+                        06-15
+                        &nbsp;
+                        <span>
+                        <a href="/2018/06/15/%E6%95%B0%E7%8B%AC/">
+                            <span class="archives-title">
+                                
+                                    数独
+                                
+                            </span>
+                        </a>
+                        <br><br>
+                    </span>
+                </div>
+            
+                    <div class="archives-item">
+                        <div class="archives-left">
+                            <div class="archives-icon icon-lg"></div>
+                        </div>
+                        <div class="archives-content">
+                            <h3>2017</h3>
+                        </div>
+                    </div>
+                
+                <div class="archives-item">
+                    <div class="archives-left">
+                        <div class="archives-icon">
+
+                        </div>
+                    </div>
+                    <span class="archives-content">
+                        11-11
+                        &nbsp;
+                        <span>
+                        <a href="/2017/11/11/Top%20K%E7%AE%97%E6%B3%95/">
+                            <span class="archives-title">
+                                
+                                    Top K算法
+                                
+                            </span>
+                        </a>
+                        <br><br>
+                    </span>
+                </div>
+            
+                <div class="archives-item">
+                    <div class="archives-left">
+                        <div class="archives-icon">
+
+                        </div>
+                    </div>
+                    <span class="archives-content">
+                        03-30
+                        &nbsp;
+                        <span>
+                        <a href="/2017/03/30/%E8%AE%A1%E7%AE%97%E5%87%BD%E6%95%B0%E8%BF%90%E8%A1%8C%E6%97%B6%E9%97%B4/">
+                            <span class="archives-title">
+                                
+                                    计算函数运行时间
+                                
+                            </span>
+                        </a>
+                        <br><br>
+                    </span>
+                </div>
+            
+        </div>
+    
+</main>
+<footer class="footer">
+
+    
 </footer>
 
 
+        </div>
+        
+
+ 
+
+ 
+
+ 
+
+  
 
 
-<script src="/dist/build.js?1.2.0.js"></script>
+    <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.4.1/dist/jquery.fancybox.min.css">
 
 
-<script src="/dist/custom.js?1.2.0.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.4.1/dist/jquery.fancybox.min.js"></script>
+
+<script>
+    let lazyloadT = Boolean(''),
+        auto_fancybox = Boolean('true')
+    if (auto_fancybox) {
+        $(".post__content").find('img').each(function () {
+            var element = document.createElement("a");
+            $(element).attr("data-fancybox", "gallery");
+            $(element).attr("href", $(this).attr("src"));
+            if (lazyloadT) {
+                $(element).attr("href", $(this).attr("data-srcset"));
+            }
+            $(this).wrap(element);
+        });
+    } else {
+        $(".post__content").find("fancybox").find('img').each(function () {
+            var element = document.createElement("a");
+            $(element).attr("data-fancybox", "gallery");
+            $(element).attr("href", $(this).attr("src"));
+            if (lazyloadT) {
+                $(element).attr("href", $(this).attr("data-srcset"));
+            }
+            $(this).wrap(element);
+        });
+    }
+</script>
+ 
+ 
+
+ 
+    <script defer crossorigin="anonymous" src="/js/b2t.js"></script>
 
 
 
@@ -296,6 +1179,5 @@
 
 
 
-
-</body>
+    </body>
 </html>

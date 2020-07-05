@@ -1,200 +1,385 @@
 <!DOCTYPE html>
-<html>
-
-<head>
+<html lang="zh-CN">
+    <head>
     <meta charset="utf-8">
+
     
-    <title>Archive | 2020 | MYJ&#39;s Blog</title>
+
+    <!--icon-->
+    
+        <link rel="shortcut icon" type='image/x-icon' href="/favicon.ico">
+    
+
+    <!-- 渲染优化 -->
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta property="og:type" content="website">
+    <!-- meta -->
+    
+    <title>归档：2020 | MYJ&#39;s Blog</title>
+    
+        <meta name="keywords" content="undefined">
+    
+
+    <!-- OpenGraph -->
+     
+        <meta property="og:type" content="website">
 <meta property="og:title" content="MYJ&#39;s Blog">
 <meta property="og:url" content="http://yoursite.com/archives/2020/page/2/index.html">
 <meta property="og:site_name" content="MYJ&#39;s Blog">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="兔子翻书">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+    
 
+    <!-- feed -->
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+ 
+    
     
 
     
 
+     
+
     
-
-    <link rel="stylesheet" href="/dist/build.css?1.2.0">
-
-    <script>
-        window.aomori = {
-            
-        }
-    </script>
 
 <meta name="generator" content="Hexo 4.2.0"></head>
 
-<body>
+    <body>
+        <div id="app">
+            <header class="header">
+    <div class="header__left">
+        <a href="/" class="button">
+            <span class="logo__text">
+                MYJ's Blog 
+            </span>
+        </a>
+    </div>
+    <div class="header__right">
+        
+            <div class="cover__menus">
+                
+                    <a href="/" class="cover-menu button">
+                        Home
+                    </a>
+                
+                    <a href="/categories/" class="cover-menu button">
+                        Tags
+                    </a>
+                
+                    <a href="/archives/" class="cover-menu button">
+                        Line
+                    </a>
+                
+                    <a href="/friends/" class="cover-menu button">
+                        Links
+                    </a>
+                
+            </div>
+        
+        
+         
+            <a href="javaScript:void(0);" id="b2t" style="" aria-label="回到顶部" title="回到顶部">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='32' height='32' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M13.889,11.611c-0.17,0.17-0.443,0.17-0.612,0l-3.189-3.187l-3.363,3.36c-0.171,0.171-0.441,0.171-0.612,0c-0.172-0.169-0.172-0.443,0-0.611l3.667-3.669c0.17-0.17,0.445-0.172,0.614,0l3.496,3.493C14.058,11.167,14.061,11.443,13.889,11.611 M18.25,10c0,4.558-3.693,8.25-8.25,8.25c-4.557,0-8.25-3.692-8.25-8.25c0-4.557,3.693-8.25,8.25-8.25C14.557,1.75,18.25,5.443,18.25,10 M17.383,10c0-4.07-3.312-7.382-7.383-7.382S2.618,5.93,2.618,10S5.93,17.381,10,17.381S17.383,14.07,17.383,10"></path>
+                </svg>
+            </a>
+        
+        
+            <a class="dropdown-icon button" id="btn-dropdown">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round">
+                    <path fill="currentColor" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"></path>
+                </svg>
+            </a>
+            <div class="dropdown-menus" id="dropdown-menus">
+                <a class="dropback-icon button" id="btn-dropback">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round">
+                        <path fill="currentColor" d="M11.469,10l7.08-7.08c0.406-0.406,0.406-1.064,0-1.469c-0.406-0.406-1.063-0.406-1.469,0L10,8.53l-7.081-7.08c-0.406-0.406-1.064-0.406-1.469,0c-0.406,0.406-0.406,1.063,0,1.469L8.531,10L1.45,17.081c-0.406,0.406-0.406,1.064,0,1.469c0.203,0.203,0.469,0.304,0.735,0.304c0.266,0,0.531-0.101,0.735-0.304L10,11.469l7.08,7.081c0.203,0.203,0.469,0.304,0.735,0.304c0.267,0,0.532-0.101,0.735-0.304c0.406-0.406,0.406-1.064,0-1.469L11.469,10z"></path>
+                    </svg>
+                </a>
+                
+                    <a href="/" class="dropdown-menu button">
+                        Home
+                    </a>
+                
+                    <a href="/categories/" class="dropdown-menu button">
+                        Tags
+                    </a>
+                
+                    <a href="/archives/" class="dropdown-menu button">
+                        Line
+                    </a>
+                
+                    <a href="/friends/" class="dropdown-menu button">
+                        Links
+                    </a>
+                
+            </div>
+            <script>
+                document.getElementById('btn-dropdown').addEventListener('click', () => {
+                    const dd = document.getElementById('dropdown-menus');
+                    dd.style.display = 'flex';
+                    setTimeout(() => {dd.style.transform = 'translateY(0)';dd.style.opacity = '1';}, 1)
+                });
+                document.getElementById('btn-dropback').addEventListener('click', () => {
+                    const dd = document.getElementById('dropdown-menus');
+                    dd.style.transform = 'translateY(2.25rem)';                    
+                    dd.style.opacity = '0';
+                    setTimeout(() => {dd.style.display = 'none';}, 350);
+                });
+            </script>
+        
+    </div>
+</header>
 
-  <div class="container">
-  <header class="header">
-    <div class="header-type">
-      
-      <a href="/">MYJ&#39;s Blog</a>
+
+    <div class="cover">
+        <div class="cover__logo">
+            
+                <h1> </h1>
+            
+        </div>
+        
     </div>
-    <div class="header-menu">
-      
-        <a href="/">Home</a>
-      
-        <a href="/archives">Line</a>
-      
-    </div>
+
+            <main class='main'>
     
-    <div class="header-menu-mobile">
-      <div class="header-menu-mobile-inner" id="mobile-menu-open">
-        <i class="icon icon-menu"></i>
-      </div>
-    </div>
-  </header>
+		
+    <div class="posts">
+        
+        
+            
+                
+                <div class='post-card content-card'>
+                    <div class="post-card__header">
+    
+         
+    
+</div>
+<div class="post-card__content">
+    <a href="/2020/01/31/%E5%89%8D%E7%AB%AF/" class="index-title">
+        <h2 class="post-card__title">
+            前端资源&素材
+        </h2>
+    </a>
+    <p class="post-card__descrption">
+        
+            <div class="md-content">
+                
+                    <ul>
+<li><a href="https://www.waerfa.com/add-dark-mode-to-your-website" target="_blank" rel="noopener">网站添加 Dark Mode</a></li>
+</ul>
+<h2 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h2><ul>
+<li><a href="http://www.jq22.com/" target="_blank" rel="noopener">jQuery插件库-收集最全最新最好的jQuery插件</a></li>
+<li><a href="http://www.bootcss.com/p/stickup/#one-pager" target="_blank" rel="noopener">stickUp - 一个 jQuery 插件</a></li>
+</ul>
+                
+            </div>
+           
+    </p>
+</div>
+<div class="post-card__meta">
+    
+        <a href="/archives/2020/01/" class="button" style="color: #808080;">
+    2020-01-31
+</a>
+    
+    
+        
+    <span class="separate-dot"></span><a href="/categories/%E5%89%8D%E7%AB%AF/" class="button">前端</a>
 
-  <div class="header-menu-mobile-menu">
-    <div class="header-menu-mobile-menu-bg"></div>
-    <div class="header-menu-mobile-menu-wrap">
-      <div class="header-menu-mobile-menu-inner">
-        <div class="header-menu-mobile-menu-close" id="mobile-menu-close">
-          <i class="icon icon-cross"></i>
-        </div>
-        <div class="header-menu-mobile-menu-list">
-          
-            <a href="/">Home</a>
-          
-            <a href="/archives">Line</a>
-          
-        </div>
-      </div>
-    </div>
-  </div>
-
+ 
+    
 </div>
 
-  <div class="container">
-    <div class="main">
-      <section class="inner">
-        <section class="inner-main">
-          
-  
-  
+    <div class="post-tags post-card__tags">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/01/31/%E5%89%8D%E7%AB%AF/">前端资源&amp;素材</a>
-    </h1>
-  
-
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/01/31/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>
-    </h1>
-  
-
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/01/31/%E7%AE%97%E6%B3%95%E5%8D%9A%E5%AE%A2/">算法博客</a>
-    </h1>
-  
-
-</article>
-  
-  
-    </div></section>
-  
+</div> 
 
 
-
-  <nav class="pagination">
-    
-    <a class="extend prev" rel="prev" href="/archives/2020/">上一篇</a><a class="page-number" href="/archives/2020/">1</a><span class="page-number current">2</span>
-  </nav>
-
-
-        </section>
-      </section>
-      <aside class="sidebar">
-        <div class="widget">
-          
-
-  
-
-  
-  <div class="widget-wrap widget-cate">
-    <div class="widget-title"><span>Tags</span></div>
-    <div class="widget-inner">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Blog/">Blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MAC/">MAC</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/PAT/">PAT</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%8B%E8%BD%BD%E5%B7%A5%E5%85%B7/">下载工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">数据分析</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%88%AC%E8%99%AB/">爬虫</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0C-C/">编程笔记C/C++</a></li></ul>
-    </div>
-  </div>
-
-
-
-        </div>
-        <div id="backtop"><i class="icon icon-arrow-up"></i></div>
-      </aside>
-    </div>
-  </div>
-
-  <footer class="footer">
-    <div class="footer-inner">
-        <div class="footer-info">
-            <span>&copy; 2020 MYJ&#39;s Blog</span>
+                </div>
+                
             
+                
+                <div class='post-card content-card'>
+                    <div class="post-card__header">
+    
+         
+    
+</div>
+<div class="post-card__content">
+    <a href="/2020/01/31/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="index-title">
+        <h2 class="post-card__title">
+            动态规划
+        </h2>
+    </a>
+    <p class="post-card__descrption">
+        
+            <div class="md-content">
+                
+                    <h2 id="递归型"><a href="#递归型" class="headerlink" title="递归型"></a>递归型</h2><p><strong>记忆递归型</strong></p>
+<p>优点：只经过有用的状态，没有浪费。递推型会查看一些 没用的状态，有浪费。</p>
+<p>缺点：可能会因递归层数太深导致栈溢出，函数调用带来额外时间开销。总体来说，比递推型慢</p>
+                
+            </div>
+           
+    </p>
+</div>
+<div class="post-card__meta">
+    
+        <a href="/archives/2020/01/" class="button" style="color: #808080;">
+    2020-01-31
+</a>
+    
+    
+        
+    <span class="separate-dot"></span><a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="button">数据结构</a>
+
+ 
+    
+</div>
+
+    <div class="post-tags post-card__tags">
+    
+</div> 
 
 
+                </div>
+                
+            
+                
+                <div class='post-card content-card'>
+                    <div class="post-card__header">
+    
+         
+    
+</div>
+<div class="post-card__content">
+    <a href="/2020/01/31/%E7%AE%97%E6%B3%95%E5%8D%9A%E5%AE%A2/" class="index-title">
+        <h2 class="post-card__title">
+            算法博客
+        </h2>
+    </a>
+    <p class="post-card__descrption">
+        
+            <div class="md-content">
+                
+                    <ul>
+<li><a href="https://blog.csdn.net/hy1405430407/article/details/47420921" target="_blank" rel="noopener">ACM所有算法</a></li>
+<li><a href="https://blog.csdn.net/v_july_v" target="_blank" rel="noopener">结构之法 算法之道</a></li>
+<li><a href="https://blog.csdn.net/jiyanfeng1/article/details/8543846" target="_blank" rel="noopener">乘法算法-Karatsuba算法 - jiyanfeng1的专栏 - CSDN博客</a></li>
+<li><a href="https://blog.csdn.net/oDoJi/article/details/79532915" target="_blank" rel="noopener">Karatsuba 算法 - oDoJi的博客 - CSDN博客</a></li>
+</ul>
+                
+            </div>
+           
+    </p>
+</div>
+<div class="post-card__meta">
+    
+        <a href="/archives/2020/01/" class="button" style="color: #808080;">
+    2020-01-31
+</a>
+    
+    
+        
+    <span class="separate-dot"></span><a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="button">数据结构</a>
+
+ 
+    
+</div>
+
+    <div class="post-tags post-card__tags">
+    
+</div> 
 
 
-
-
-
-
-
-
-  <a class="social" href="https://github.com/xingkongyj2" target="_blank" rel="noopener">
-    <span class="n-icon n-icon-github"></span>
-  </a>
-
-        </div>
-        <div class="footer-powered">
-            <a href="https://mayujie321.com" target="_blank"> 新漫场</a> &nbsp;&nbsp;
-            <a href="mailto:2580130642@qq.com" target="_blank"> Email</a> 
-        </div>
+                </div>
+                
+            
+        
     </div>
+    
+        
+            <br>
+            <nav role="navigation" aria-label="Pagination Navigation">
+                
+                    <a href="/archives/2020/" class="button">
+                        上一页
+                    </a>
+                
+                <span>2 / 2</span>
+                
+            </nav>
+        
+    
+
+
+	
+</main>
+<footer class="footer">
+
+    
 </footer>
 
 
+        </div>
+        
+
+ 
+
+ 
+
+ 
+
+  
 
 
-<script src="/dist/build.js?1.2.0.js"></script>
+    <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.4.1/dist/jquery.fancybox.min.css">
 
 
-<script src="/dist/custom.js?1.2.0.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.4.1/dist/jquery.fancybox.min.js"></script>
+
+<script>
+    let lazyloadT = Boolean(''),
+        auto_fancybox = Boolean('true')
+    if (auto_fancybox) {
+        $(".post__content").find('img').each(function () {
+            var element = document.createElement("a");
+            $(element).attr("data-fancybox", "gallery");
+            $(element).attr("href", $(this).attr("src"));
+            if (lazyloadT) {
+                $(element).attr("href", $(this).attr("data-srcset"));
+            }
+            $(this).wrap(element);
+        });
+    } else {
+        $(".post__content").find("fancybox").find('img').each(function () {
+            var element = document.createElement("a");
+            $(element).attr("data-fancybox", "gallery");
+            $(element).attr("href", $(this).attr("src"));
+            if (lazyloadT) {
+                $(element).attr("href", $(this).attr("data-srcset"));
+            }
+            $(this).wrap(element);
+        });
+    }
+</script>
+ 
+ 
+
+ 
+    <script defer crossorigin="anonymous" src="/js/b2t.js"></script>
 
 
 
@@ -202,6 +387,5 @@
 
 
 
-
-</body>
+    </body>
 </html>
