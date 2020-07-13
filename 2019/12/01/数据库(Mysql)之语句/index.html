@@ -1,33 +1,27 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-    <head>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
     <meta charset="utf-8">
-
     
-
-    <!--icon-->
     
-        <link rel="shortcut icon" type='image/x-icon' href="/favicon.ico">
     
-
-    <!-- 渲染优化 -->
-    <meta name="renderer" content="webkit">
-    <meta name="force-rendering" content="webkit">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <meta name="HandheldFriendly" content="True" >
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-    <!-- meta -->
     
     <title>数据库(Mysql)之语句 | 兔子翻书</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="undefined">
+    <meta name="theme-color" content="#FF007B">
     
-
-    <!-- OpenGraph -->
-     
-        <meta name="description" content="SQL语句语法&amp;实例 语句结束后要加封号 一个数据库在打开的时候是不能删除的">
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="SQL语句语法&amp;实例 语句结束后要加封号 一个数据库在打开的时候是不能删除的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据库(Mysql)之语句">
 <meta property="og:url" content="http://yoursite.com/2019/12/01/%E6%95%B0%E6%8D%AE%E5%BA%93(Mysql)%E4%B9%8B%E8%AF%AD%E5%8F%A5/index.html">
@@ -37,163 +31,130 @@
 <meta property="article:published_time" content="2019-11-30T16:00:00.000Z">
 <meta property="article:modified_time" content="2020-06-05T06:51:25.048Z">
 <meta property="article:author" content="兔子翻书">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary">
     
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
 
-    <!-- feed -->
-    
-
-    
-<link rel="stylesheet" href="/css/style.css">
- 
-    
-    
-        
-            <link rel="stylesheet" href="/css/note.css" crossorigin="anonymous" media="none" onload="this.media='all'">
-        
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-cards@0.4/dist/css/github.min.css" crossorigin="anonymous" media="none" onload="this.media='all'">
-    
-
-    
-
-     
-
+    <!-- custom head -->
     
 
 <meta name="generator" content="Hexo 4.2.0"></head>
 
-    <body>
-        <div id="app">
-            <header class="header">
-    <div class="header__left">
-        <a href="/" class="button">
-            <span class="logo__text">
-                兔子翻书 
-            </span>
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
         </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">兔子翻书</h5>
+          <a href="mailto:2580130642@qq.com" title="2580130642@qq.com" class="mail">2580130642@qq.com</a>
+        </hgroup>
+      </div>
     </div>
-    <div class="header__right">
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
         
-            <div class="cover__menus">
-                
-                    <a href="/" class="cover-menu button">
-                        首页
-                    </a>
-                
-                    <a href="/categories/" class="cover-menu button">
-                        分类
-                    </a>
-                
-                    <a href="/archives/" class="cover-menu button">
-                        时间线
-                    </a>
-                
-                    <a href="/friends/" class="cover-menu button">
-                        链接🔗
-                    </a>
-                
-            </div>
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
         
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
         
-         
-            <a href="javaScript:void(0);" id="b2t" style="" aria-label="回到顶部" title="回到顶部">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='32' height='32' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M13.889,11.611c-0.17,0.17-0.443,0.17-0.612,0l-3.189-3.187l-3.363,3.36c-0.171,0.171-0.441,0.171-0.612,0c-0.172-0.169-0.172-0.443,0-0.611l3.667-3.669c0.17-0.17,0.445-0.172,0.614,0l3.496,3.493C14.058,11.167,14.061,11.443,13.889,11.611 M18.25,10c0,4.558-3.693,8.25-8.25,8.25c-4.557,0-8.25-3.692-8.25-8.25c0-4.557,3.693-8.25,8.25-8.25C14.557,1.75,18.25,5.443,18.25,10 M17.383,10c0-4.07-3.312-7.382-7.383-7.382S2.618,5.93,2.618,10S5.93,17.381,10,17.381S17.383,14.07,17.383,10"></path>
-                </svg>
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">数据库(Mysql)之语句</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-        
-        
-            <a class="dropdown-icon button" id="btn-dropdown">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round">
-                    <path fill="currentColor" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"></path>
-                </svg>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
             </a>
-            <div class="dropdown-menus" id="dropdown-menus">
-                <a class="dropback-icon button" id="btn-dropback">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round">
-                        <path fill="currentColor" d="M11.469,10l7.08-7.08c0.406-0.406,0.406-1.064,0-1.469c-0.406-0.406-1.063-0.406-1.469,0L10,8.53l-7.081-7.08c-0.406-0.406-1.064-0.406-1.469,0c-0.406,0.406-0.406,1.063,0,1.469L8.531,10L1.45,17.081c-0.406,0.406-0.406,1.064,0,1.469c0.203,0.203,0.469,0.304,0.735,0.304c0.266,0,0.531-0.101,0.735-0.304L10,11.469l7.08,7.081c0.203,0.203,0.469,0.304,0.735,0.304c0.267,0,0.532-0.101,0.735-0.304c0.406-0.406,0.406-1.064,0-1.469L11.469,10z"></path>
-                    </svg>
-                </a>
-                
-                    <a href="/" class="dropdown-menu button">
-                        首页
-                    </a>
-                
-                    <a href="/categories/" class="dropdown-menu button">
-                        分类
-                    </a>
-                
-                    <a href="/archives/" class="dropdown-menu button">
-                        时间线
-                    </a>
-                
-                    <a href="/friends/" class="dropdown-menu button">
-                        链接🔗
-                    </a>
-                
-            </div>
-            <script>
-                document.getElementById('btn-dropdown').addEventListener('click', () => {
-                    const dd = document.getElementById('dropdown-menus');
-                    dd.style.display = 'flex';
-                    setTimeout(() => {dd.style.transform = 'translateY(0)';dd.style.opacity = '1';}, 1)
-                });
-                document.getElementById('btn-dropback').addEventListener('click', () => {
-                    const dd = document.getElementById('dropdown-menus');
-                    dd.style.transform = 'translateY(2.25rem)';                    
-                    dd.style.opacity = '0';
-                    setTimeout(() => {dd.style.display = 'none';}, 350);
-                });
-            </script>
+        </div>
+        
         
     </div>
 </header>
+<header class="content-header post-header">
 
-
-            <main class="main">
-    <div class="post-title">
-    <h1 class="post-title__text">
-        数据库(Mysql)之语句
-    </h1>
-    <div class="post-title__meta">
-        
-            <a href="/archives/2019/12/" class="button" style="color: #808080;">
-    2019-12-01
-</a>
-        
-        
+    <div class="container fade-scale">
+        <h1 class="title">数据库(Mysql)之语句</h1>
+        <h5 class="subtitle">
             
-    <span class="separate-dot"></span><a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="button">数据库</a>
+                <time datetime="2019-11-30T16:00:00.000Z" itemprop="datePublished" class="page-time">
+  2019-12-01
+</time>
 
- 
-        
-        
-     
- 
 
-  
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li></ul>
+
+            
+        </h5>
     </div>
-</div>
+
+    
 
 
-    <div class="post__with-side">
-        <aside class="post-side">
-            <div class="post-side__toc">
-                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL语句语法-amp-实例"><span class="toc-number">1.</span> <span class="toc-text">SQL语句语法&amp;实例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CREAT"><span class="toc-number">1.1.</span> <span class="toc-text">CREAT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LATER"><span class="toc-number">1.2.</span> <span class="toc-text">LATER</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DORP"><span class="toc-number">1.3.</span> <span class="toc-text">DORP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#INSTER"><span class="toc-number">1.4.</span> <span class="toc-text">INSTER</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DELETE"><span class="toc-number">1.5.</span> <span class="toc-text">DELETE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SELECT"><span class="toc-number">1.6.</span> <span class="toc-text">SELECT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UPDATA"><span class="toc-number">1.7.</span> <span class="toc-text">UPDATA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#聚集函数"><span class="toc-number">1.8.</span> <span class="toc-text">聚集函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#视图"><span class="toc-number">2.</span> <span class="toc-text">视图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#视图查询"><span class="toc-number">2.1.</span> <span class="toc-text">视图查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#视图修改"><span class="toc-number">2.2.</span> <span class="toc-text">视图修改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#视图删除"><span class="toc-number">2.3.</span> <span class="toc-text">视图删除</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#视图的作用"><span class="toc-number">2.4.</span> <span class="toc-text">视图的作用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#索引"><span class="toc-number">3.</span> <span class="toc-text">索引</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#索引类型"><span class="toc-number">3.1.</span> <span class="toc-text">索引类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#索引创建"><span class="toc-number">3.2.</span> <span class="toc-text">索引创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看索引"><span class="toc-number">3.3.</span> <span class="toc-text">查看索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除索引"><span class="toc-number">3.4.</span> <span class="toc-text">删除索引</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#存储过程"><span class="toc-number">4.</span> <span class="toc-text">存储过程</span></a></li></ol>
-            </div>
-        </aside>
-        <article class="post content-card">
-            <div class="post__header">
-                
-                     
-                
-                
-                    
-                
-            </div>
-            <div class="post__content">
-                <div class="md-content">
-                    <h2 id="SQL语句语法-amp-实例"><a href="#SQL语句语法-amp-实例" class="headerlink" title="SQL语句语法&amp;实例"></a>SQL语句语法&amp;实例</h2><blockquote>
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#SQL语句语法-amp-实例"><span class="post-toc-number">1.</span> <span class="post-toc-text">SQL语句语法&amp;实例</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#CREAT"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">CREAT</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#LATER"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">LATER</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#DORP"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">DORP</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#INSTER"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">INSTER</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#DELETE"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">DELETE</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#SELECT"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">SELECT</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#UPDATA"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">UPDATA</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#聚集函数"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">聚集函数</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#视图"><span class="post-toc-number">2.</span> <span class="post-toc-text">视图</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#视图查询"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">视图查询</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#视图修改"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">视图修改</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#视图删除"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">视图删除</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#视图的作用"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">视图的作用</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#索引"><span class="post-toc-number">3.</span> <span class="post-toc-text">索引</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#索引类型"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">索引类型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#索引创建"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">索引创建</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#查看索引"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">查看索引</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#删除索引"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">删除索引</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#存储过程"><span class="post-toc-number">4.</span> <span class="post-toc-text">存储过程</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-数据库(Mysql)之语句"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">数据库(Mysql)之语句</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-12-01 00:00:00" datetime="2019-11-30T16:00:00.000Z"  itemprop="datePublished">2019-12-01</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li></ul>
+
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="SQL语句语法-amp-实例"><a href="#SQL语句语法-amp-实例" class="headerlink" title="SQL语句语法&amp;实例"></a>SQL语句语法&amp;实例</h2><blockquote>
 <p>语句结束后要加封号</p>
 <p>一个数据库在打开的时候是不能删除的</p>
 </blockquote>
@@ -382,96 +343,136 @@
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">//创建存储过程</span><br><span class="line"><span class="keyword">CREATE</span>  <span class="keyword">PROCEDURE</span>  sp_price(<span class="keyword">in</span> pb <span class="built_in">char</span>(<span class="number">30</span>),<span class="keyword">out</span>  <span class="keyword">avg</span>  <span class="built_in">decimal</span>(<span class="number">6</span>,<span class="number">2</span>) )</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">select</span>  <span class="keyword">avg</span>(price)  <span class="keyword">into</span>  <span class="keyword">avg</span></span><br><span class="line">    <span class="keyword">from</span>  books</span><br><span class="line">    <span class="keyword">where</span>  publish=pb;</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">//  调用存储过程</span><br><span class="line"><span class="keyword">call</span> sp_price(<span class="string">'清华大学出版社'</span>,@avgprice);		//avgprice是定义的一个局部变量</span><br><span class="line"><span class="keyword">select</span> @avgprice;</span><br><span class="line"></span><br><span class="line">//删除存储过程</span><br><span class="line"><span class="keyword">Drop</span>  <span class="keyword">procedure</span>  sp_name;</span><br></pre></td></tr></table></figure>
 
 
-                </div>
-            </div>
-            
-                 
-            
-            
-                <div class="post-meta post-footer__meta">
-    <p>
-        最后更新于：2020-06-05
-    </p>
-</div> 
-            
-            
-                <div class="post-cats post-card__cats">
+        </div>
+
+        <blockquote class="post-copyright">
     
-        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-cats__link button">数据库</a>
-    
-</div> 
-                <div class="post-tags post-card__tags">
-    
-</div> 
-             
-        </article>
-        <br>
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="兔子翻书">
+            兔子翻书
+        </a>
+    </footer>
+</blockquote>
+
         
-    </div>
 
 
-</main>
-<footer class="footer">
+        <div class="post-footer">
+            
 
-    
-</footer>
+            
 
 
         </div>
-        
+    </div>
 
- 
-
- 
-
- 
-
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/12/15/%E6%95%B0%E6%8D%AE%E5%BA%93(Mysql)%E4%B9%8B%E6%9D%83%E9%99%90/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">数据库(Mysql)之权限</h4>
+      </a>
+    </div>
   
 
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/11/17/pdf%E6%93%8D%E4%BD%9C/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">pdf操作</h4>
+      </a>
+    </div>
+  
+</nav>
 
-    <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+
     
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.4.1/dist/jquery.fancybox.min.css">
+
+</article>
 
 
-<script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.4.1/dist/jquery.fancybox.min.js"></script>
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            
+            <span>博客内容遵循 <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>兔子翻书 &copy; 2020</span>
+            
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+
 
 <script>
-    let lazyloadT = Boolean(''),
-        auto_fancybox = Boolean('true')
-    if (auto_fancybox) {
-        $(".post__content").find('img').each(function () {
-            var element = document.createElement("a");
-            $(element).attr("data-fancybox", "gallery");
-            $(element).attr("href", $(this).attr("src"));
-            if (lazyloadT) {
-                $(element).attr("href", $(this).attr("data-srcset"));
-            }
-            $(this).wrap(element);
-        });
-    } else {
-        $(".post__content").find("fancybox").find('img').each(function () {
-            var element = document.createElement("a");
-            $(element).attr("data-fancybox", "gallery");
-            $(element).attr("href", $(this).attr("src"));
-            if (lazyloadT) {
-                $(element).attr("href", $(this).attr("data-srcset"));
-            }
-            $(this).wrap(element);
-        });
-    }
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
 </script>
- 
- 
-
- 
-    <script defer crossorigin="anonymous" src="/js/b2t.js"></script>
 
 
 
-
-
-
-
-    </body>
+</body>
 </html>
