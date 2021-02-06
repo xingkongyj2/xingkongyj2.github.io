@@ -1,26 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html  lang="zh">
 <head>
-    
+    <meta charset="utf-8" />
 
-    
+<meta name="generator" content="Hexo 4.2.0" />
 
-    
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>PAT编程笔记 - 兔子翻书</title>
 
 
-
-    <meta charset="utf-8">
-    
-    
-    
-    
-    <title>PAT编程笔记 | 兔子翻书</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
-    <meta name="theme-color" content="#FF007B">
-    
-    
-    <meta name="keywords" content="">
     <meta name="description" content="知识点总结 定义之后一定要初始化  尽量都使用vector，速度vector&gt;set&gt;map  两个关键字排序简洁写法 return a.height !&#x3D; b.height ? a.height &gt; b.height : a.name &lt; b.name;  使用10*1.0的方式去输出小数，除非必要。否则可以不用定义double  一定要考虑到为0或1这些边界条件  传参">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PAT编程笔记">
@@ -28,132 +17,162 @@
 <meta property="og:site_name" content="兔子翻书">
 <meta property="og:description" content="知识点总结 定义之后一定要初始化  尽量都使用vector，速度vector&gt;set&gt;map  两个关键字排序简洁写法 return a.height !&#x3D; b.height ? a.height &gt; b.height : a.name &lt; b.name;  使用10*1.0的方式去输出小数，除非必要。否则可以不用定义double  一定要考虑到为0或1这些边界条件  传参">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/images/og_image.png">
 <meta property="article:published_time" content="2020-02-05T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-07-20T03:41:27.903Z">
+<meta property="article:modified_time" content="2020-07-23T15:35:35.325Z">
 <meta property="article:author" content="兔子翻书">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
     
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
-    <script>window.lazyScripts=[]</script>
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
 
-    <!-- custom head -->
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     
 
-<meta name="generator" content="Hexo 4.2.0"></head>
 
-<body>
-    <div id="loading" class="active"></div>
-
-    <aside id="menu" class="hide" >
-  <div class="inner flex-row-vertical">
-    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
-        <i class="icon icon-lg icon-close"></i>
-    </a>
-    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
-      <div class="brand">
-        <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="http://xingkong-images.test.upcdn.net/uPic/7df8f0e1-d88a-4fa4-acd8-d8e270d165e6_200x200.png">
-        </a>
-        <hgroup class="introduce">
-          <h5 class="nickname">兔子翻书</h5>
-          <a href="mailto:2580130642@qq.com" title="2580130642@qq.com" class="mail">2580130642@qq.com</a>
-        </hgroup>
-      </div>
-    </div>
-    <div class="scroll-wrap flex-col">
-      <ul class="nav">
-        
-            <li class="waves-block waves-effect">
-              <a href="/"  >
-                <i class="icon icon-lg icon-home"></i>
-                Home
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/categories"  >
-                <i class="icon icon-lg icon-tags"></i>
-                Tags
-              </a>
-            </li>
-        
-      </ul>
-    </div>
-  </div>
-</aside>
-
-    <main id="main">
-        <header class="top-header" id="header">
-    <div class="flex-row">
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
-          <i class="icon icon-lg icon-navicon"></i>
-        </a>
-        <div class="flex-col header-title ellipsis">PAT编程笔记</div>
-        
-        <div class="search-wrap" id="search-wrap">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
-                <i class="icon icon-lg icon-chevron-left"></i>
-            </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
-                <i class="icon icon-lg icon-search"></i>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="PAT编程笔记" height="28">
+            
             </a>
         </div>
-        
-        
-    </div>
-</header>
-<header class="content-header post-header">
-
-    <div class="container fade-scale">
-        <h1 class="title">PAT编程笔记</h1>
-        <h5 class="subtitle">
+        <div class="navbar-menu">
             
-                <time datetime="2020-02-05T16:00:00.000Z" itemprop="datePublished" class="page-time">
-  2020-02-06
-</time>
-
-
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/PAT/">PAT</a></li></ul>
-
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">主页</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+            </div>
             
-        </h5>
-    </div>
-
-    
-
-
-</header>
-
-
-<div class="container body-wrap">
-    
-    <aside class="post-widget">
-        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
-            <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#知识点总结"><span class="post-toc-number">1.</span> <span class="post-toc-text">知识点总结</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#int与string转换"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">int与string转换</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#字母转换大小写"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">字母转换大小写</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#结构体定义与初始化"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">结构体定义与初始化</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#输入输出函数"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">输入输出函数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#常用数学函数"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">常用数学函数</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#C-STl总结"><span class="post-toc-number">2.</span> <span class="post-toc-text">C++ STl总结</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#vector"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">vector</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#set"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">set</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#string"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">string</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#map"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">map</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#queue"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">queue</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#priority-queue"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">priority_queue</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#stack"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">stack</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#pair"><span class="post-toc-number">2.8.</span> <span class="post-toc-text">pair</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#algorithm"><span class="post-toc-number">2.9.</span> <span class="post-toc-text">algorithm</span></a></li></ol></li></ol>
-        </nav>
-    </aside>
-
-
-<article id="post-PAT算法笔记"
-  class="post-article article-type-post fade" itemprop="blogPost">
-
-    <div class="post-card">
-        <h1 class="post-card-title">PAT编程笔记</h1>
-        <div class="post-meta">
-            <time class="post-time" title="2020-02-06 00:00:00" datetime="2020-02-05T16:00:00.000Z"  itemprop="datePublished">2020-02-06</time>
-
-            
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/PAT/">PAT</a></li></ul>
-
-
-
-            
-
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/xingkongyj2">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
         </div>
-        <div class="post-content" id="post-content" itemprop="postContent">
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>PAT编程笔记
+            
+        </h1>
+
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                
+                <time class="level-item has-text-grey" datetime="2020-02-05T16:00:00.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-02-06</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-07-23T15:35:35.325Z"><i class="far fa-calendar-check">&nbsp;</i>2020-07-23</time>
+                
+
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/PAT/">PAT</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    19 分钟 读完 (大约 2828 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+
+        <div class="content">
             <h2 id="知识点总结"><a href="#知识点总结" class="headerlink" title="知识点总结"></a>知识点总结</h2><ul>
 <li><p>定义之后一定要初始化</p>
 </li>
@@ -168,15 +187,7 @@
 </li>
 <li><p>传参数尽量使用引用来加快速度</p>
 </li>
-<li><p>先存进<code>vector</code>再排序比直接使用<code>set</code>要快</p>
-</li>
 <li><p>将字母编号时。字母和数字都进行映射，这样方便根据字母取数字，根据数字取字母</p>
-</li>
-<li><p>堆栈不要用<code>for</code></p>
-</li>
-<li><p>设置无限大统一使用<code>10亿</code></p>
-</li>
-<li><p>尽量使用<code>c</code>的输出。必要时输入输出可以<code>C/C++</code>混用</p>
 </li>
 <li><p><code>string name(ch)</code> 将字符数组<code>ch</code>转化为<code>string</code>字符串</p>
 </li>
@@ -195,8 +206,6 @@
 </li>
 <li><p>碰到浮点都用<code>double</code></p>
 </li>
-<li><p><code>while(get(str) !=NULL)</code></p>
-</li>
 <li><p>宏定义后面不需要加分号</p>
 </li>
 <li><p>使用数学函数加<code>math.h</code></p>
@@ -208,8 +217,6 @@
 <li><p>如果数组有10^6需要定义在主函数外面</p>
 </li>
 <li><p>用<code>getchar</code>和<code>putchar</code>来输入输出单个字符，可以读取回车</p>
-</li>
-<li><p>在多个测试案例时注意重置变量与数组（使用<code>memset</code>，<code>fill</code>函数）</p>
 </li>
 <li><p><code>void change(int a[],int b[][5])</code> 数组作为参数时，数组的第一维不需要填写长度</p>
 </li>
@@ -226,8 +233,6 @@
 </li>
 <li><p>堆是一个完全二叉树，要用数组存储</p>
 </li>
-<li><p>一般学号或者编号的题注意打印格式</p>
-</li>
 <li><p>尽量使用<code>fill()</code>,少使用<code>meset()</code></p>
 <p>C++使用fill初始化二维数组<br><code>fill(dis[0], dis[0]+maxn*maxn, INF);</code></p>
 </li>
@@ -236,17 +241,11 @@
 <li><p><code>typedef</code>给数据类型起别名</p>
 <p><code>typedef long long LL;</code></p>
 </li>
-<li><p><code>memset</code>对数组数组中的元素赋相同的值,需要添加<code>string.h</code>头文件，建议赋值位<code>0</code>或<code>-1</code></p>
-<p><code>memset(数组名,值,sizeof(数组名));</code></p>
-</li>
-<li><p><code>gets</code>输入一行，<code>gets</code>识别换行符<code>\n</code>位输入结束。<code>scanf</code>完一个整数后，如果要受用<code>gets</code>，需要先用<code>getchar</code>接受整数后面的换行符</p>
-</li>
-<li><p>getline,gets[<a href="https://blog.csdn.net/JIEJINQUANIL/article/details/50802902" target="_blank" rel="noopener">参考</a>]</p>
+<li><p>getline,gets[<a href="https://blog.csdn.net/JIEJINQUANIL/article/details/50802902">参考</a>]</p>
 <p><code>getline(cin,query);</code></p>
 <p><code>cin.getline(S1,10010);</code> S1为数组，10010是数组大小</p>
-<p><code>gets(m);</code> m是字符数组(不推荐)</p>
 </li>
-<li><p><code>scanf</code>与<code>cin</code>都以空白格为结束标志，不会读取他们，所以它们会遗留在读取缓存中。但是只有在<code>scanf</code>与<code>gets</code>使用或<code>cin</code>使用后紧接着又使用<code>getline</code>时，就需要吸收掉它们后面的字符<code>tmp=getchar()</code>[<a href="https://blog.csdn.net/sinat_40043477/article/details/77748944" target="_blank" rel="noopener">参考</a>]</p>
+<li><p><code>scanf</code>与<code>cin</code>都以空白格为结束标志，不会读取他们，所以它们会遗留在读取缓存中。但是只有在<code>scanf</code>与<code>gets</code>使用或<code>cin</code>使用后紧接着又使用<code>getline</code>时，就需要吸收掉它们后面的字符<code>tmp=getchar()</code>[<a href="https://blog.csdn.net/sinat_40043477/article/details/77748944">参考</a>]</p>
 </li>
 <li><p><code>string.h</code>头文件</p>
 <p><code>strcmp()</code>比较两个字符串</p>
@@ -264,7 +263,7 @@
 </ol>
 </li>
 </ul>
-<h3 id="int与string转换"><a href="#int与string转换" class="headerlink" title="int与string转换"></a>int与string转换</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">voidtestTypeConvert()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//int --&gt; string</span></span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">5</span>;</span><br><span class="line">    <span class="built_in">string</span> s = to_string(i);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; s &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="comment">//double --&gt; string</span></span><br><span class="line">    doubled = <span class="number">3.14</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; to_string(d) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="comment">//long --&gt; string</span></span><br><span class="line">    longl = <span class="number">123234567</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; to_string(l) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="comment">//char --&gt; string</span></span><br><span class="line">    charc = <span class="string">'a'</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; to_string(c) &lt;&lt; <span class="built_in">endl</span>;   <span class="comment">//自动转换成int类型的参数</span></span><br><span class="line">    <span class="comment">//char --&gt; string</span></span><br><span class="line">    <span class="built_in">string</span> cStr; cStr += c;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; cStr &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"> </span><br><span class="line">    s = <span class="string">"123.257"</span>;</span><br><span class="line">    <span class="comment">//string --&gt; int;</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; stoi(s) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="comment">//string --&gt; int</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; stol(s) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="comment">//string --&gt; float</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; stof(s) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="comment">//string --&gt; doubel</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; stod(s) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  	<span class="comment">//string --&gt; char*</span></span><br><span class="line">  	<span class="keyword">char</span> *p=(<span class="keyword">char</span>*)s.c_str();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="int与string转换"><a href="#int与string转换" class="headerlink" title="int与string转换"></a>int与string转换</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">voidtestTypeConvert()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//int --&gt; string</span></span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">5</span>;</span><br><span class="line">    <span class="built_in">string</span> s = to_string(i);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; s &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="comment">//double --&gt; string</span></span><br><span class="line">    doubled = <span class="number">3.14</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; to_string(d) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="comment">//long --&gt; string</span></span><br><span class="line">    longl = <span class="number">123234567</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; to_string(l) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="comment">//char --&gt; string</span></span><br><span class="line">    charc = <span class="string">'a'</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; to_string(c) &lt;&lt; <span class="built_in">endl</span>;   <span class="comment">//自动转换成int类型的参数</span></span><br><span class="line">    <span class="comment">//char --&gt; string</span></span><br><span class="line">    <span class="built_in">string</span> cStr; cStr += c;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; cStr &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"> </span><br><span class="line">    s = <span class="string">"123.257"</span>;</span><br><span class="line">    <span class="comment">//string --&gt; int;</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; stoi(s) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="comment">//string --&gt; float</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; stof(s) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="comment">//string --&gt; doubel</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; stod(s) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  	<span class="comment">//string --&gt; char*</span></span><br><span class="line">  	<span class="keyword">char</span> *p=(<span class="keyword">char</span>*)s.c_str();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="字母转换大小写"><a href="#字母转换大小写" class="headerlink" title="字母转换大小写"></a>字母转换大小写</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="built_in">string</span> str=<span class="string">"how are you"</span>;</span><br><span class="line">  transform(str.<span class="built_in">begin</span>(),str.<span class="built_in">end</span>(),str.<span class="built_in">begin</span>(),::<span class="built_in">toupper</span>);   <span class="comment">//转大写</span></span><br><span class="line">  transform(str.<span class="built_in">begin</span>(), str.<span class="built_in">end</span>(), str.<span class="built_in">begin</span>(), ::<span class="built_in">tolower</span>); <span class="comment">//转小写</span></span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; str &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -400,8 +399,8 @@
 <h3 id="set"><a href="#set" class="headerlink" title="set"></a>set</h3><blockquote>
 <p>内部自动有序且不含重复元素</p>
 </blockquote>
-<p>set使用方法详细常用[<a href="https://blog.csdn.net/changjiale110/article/details/79108447" target="_blank" rel="noopener">参考</a>]</p>
-<p>set集合的交并补[<a href="https://blog.csdn.net/woai233/article/details/79413936" target="_blank" rel="noopener">参考2</a>]</p>
+<p>set使用方法详细常用[<a href="https://blog.csdn.net/changjiale110/article/details/79108447">参考</a>]</p>
+<p>set集合的交并补[<a href="https://blog.csdn.net/woai233/article/details/79413936">参考2</a>]</p>
 <p><strong>set常见用途</strong></p>
 <p>自动去重并按升序排列。要处理不唯一的情况适用<code>multiset</code></p>
 <p><strong>set常用函数</strong></p>
@@ -439,7 +438,7 @@
 
 <h3 id="map"><a href="#map" class="headerlink" title="map"></a>map</h3><blockquote>
 <ul>
-<li>注意事项：在map中，由key查找value时，首先要判断map中是否包含key。[<a href="https://blog.csdn.net/pzhw520hchy/article/details/77945713" target="_blank" rel="noopener">参考</a>]</li>
+<li>注意事项：在map中，由key查找value时，首先要判断map中是否包含key。[<a href="https://blog.csdn.net/pzhw520hchy/article/details/77945713">参考</a>]</li>
 <li>map中的元素是自动按Key升序排序，所以不能对map用sort函数</li>
 <li>unordered_map速度更快。头函数<code>#include&lt;unordered_map&gt;</code>    </li>
 </ul>
@@ -560,135 +559,318 @@
 </ul>
 
         </div>
+        
+        
+        
+    </div>
+</div>
 
-        <blockquote class="post-copyright">
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/04/15/python%E4%BD%9C%E4%B8%9A/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">python作业</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/02/06/PAT%E7%AE%97%E6%B3%95%E6%A8%A1%E7%89%88/">
+                <span class="level-item">PAT算法模版</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: false,
+        app_id: '9a8UsSRbBVmCDFHRrVHg5nUp-gzGzoHsz',
+        app_key: 'An5aJ6yR12XjMvKTrT9QoYmg',
+        placeholder: 'Say something...'
+    });
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
     
-    <footer>
-        <a href="http://yoursite.com">
-            <img src="http://xingkong-images.test.upcdn.net/uPic/7df8f0e1-d88a-4fa4-acd8-d8e270d165e6_200x200.png" alt="兔子翻书">
-            兔子翻书
-        </a>
-    </footer>
-</blockquote>
-
         
 
-
-        <div class="post-footer">
-            
-
-            
-
-
+    <div class="card widget column-left is-sticky" id="toc">
+        <div class="card-content">
+            <div class="menu">
+                <h3 class="menu-label">
+                    目录
+                </h3>
+                <ul class="menu-list"><li>
+        <a class="is-flex" href="#知识点总结">
+        <span class="has-mr-6">1</span>
+        <span>知识点总结</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#int与string转换">
+        <span class="has-mr-6">1.1</span>
+        <span>int与string转换</span>
+        </a></li><li>
+        <a class="is-flex" href="#字母转换大小写">
+        <span class="has-mr-6">1.2</span>
+        <span>字母转换大小写</span>
+        </a></li><li>
+        <a class="is-flex" href="#结构体定义与初始化">
+        <span class="has-mr-6">1.3</span>
+        <span>结构体定义与初始化</span>
+        </a></li><li>
+        <a class="is-flex" href="#输入输出函数">
+        <span class="has-mr-6">1.4</span>
+        <span>输入输出函数</span>
+        </a></li><li>
+        <a class="is-flex" href="#常用数学函数">
+        <span class="has-mr-6">1.5</span>
+        <span>常用数学函数</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#C-STl总结">
+        <span class="has-mr-6">2</span>
+        <span>C++ STl总结</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#vector">
+        <span class="has-mr-6">2.1</span>
+        <span>vector</span>
+        </a></li><li>
+        <a class="is-flex" href="#set">
+        <span class="has-mr-6">2.2</span>
+        <span>set</span>
+        </a></li><li>
+        <a class="is-flex" href="#string">
+        <span class="has-mr-6">2.3</span>
+        <span>string</span>
+        </a></li><li>
+        <a class="is-flex" href="#map">
+        <span class="has-mr-6">2.4</span>
+        <span>map</span>
+        </a></li><li>
+        <a class="is-flex" href="#queue">
+        <span class="has-mr-6">2.5</span>
+        <span>queue</span>
+        </a></li><li>
+        <a class="is-flex" href="#priority-queue">
+        <span class="has-mr-6">2.6</span>
+        <span>priority_queue</span>
+        </a></li><li>
+        <a class="is-flex" href="#stack">
+        <span class="has-mr-6">2.7</span>
+        <span>stack</span>
+        </a></li><li>
+        <a class="is-flex" href="#pair">
+        <span class="has-mr-6">2.8</span>
+        <span>pair</span>
+        </a></li><li>
+        <a class="is-flex" href="#algorithm">
+        <span class="has-mr-6">2.9</span>
+        <span>algorithm</span>
+        </a></li></ul></li></ul>
+            </div>
         </div>
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="/2020/04/15/python%E4%BD%9C%E4%B8%9A/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">python作业</h4>
-      </a>
-    </div>
-  
-
-  
-    <div class="waves-block waves-effect next">
-      <a href="/2020/02/06/PAT%E7%AE%97%E6%B3%95%E6%A8%A1%E7%89%88/" id="post-next" class="post-nav-link">
-        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">PAT算法模版</h4>
-      </a>
-    </div>
-  
-</nav>
-
-
-
     
-
-</article>
-
-
-
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
 </div>
 
-        <footer class="footer">
-    <div class="top">
-        
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="PAT编程笔记" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2021 兔子翻书&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="external nofollow">Icarus</a>
+                
+                <br>
 
-        <p>
+                <span id="busuanzi_container_site_uv">
+                    <span id="busuanzi_value_site_uv">0</span>
+                    位小伙伴的
+                </span>
+                <span id="busuanzi_container_site_pv">
+                    <span id="busuanzi_value_site_pv">0</span>
+                    次陪伴
+                </span>
+
+
+                
+                </p>
+            </div>
+            <div class="level-end">
             
-            <span>博客内容遵循 <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
-        </p>
-    </div>
-    <div class="bottom">
-        <p><span>兔子翻书 &copy; 2020</span>
-            
-        </p>
+            </div>
+        </div>
     </div>
 </footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
 
-    </main>
-    <div class="mask" id="mask"></div>
-<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
 
-
-    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
 <script>
-var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
-
-
+var IcarusThemeSettings = {
+    site: {
+        url: 'http://yoursite.com',
+        external_link: {"enable":true,"exclude":[]}
+    },
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
 </script>
 
-<script src="/js/main.min.js?v=1.7.2"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
 
 
-<div class="search-panel" id="search-panel">
-    <ul class="search-result" id="search-result"></ul>
+
+
+
+<script src="/js/animation.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
 </div>
-<template id="search-tpl">
-<li class="item">
-    <a href="{path}" class="waves-block waves-effect">
-        <div class="title ellipsis" title="{title}">{title}</div>
-        <div class="flex-row flex-middle">
-            <div class="tags ellipsis">
-                {tags}
-            </div>
-            <time class="flex-col time">{date}</time>
-        </div>
-    </a>
-</li>
-</template>
-
-<script src="/js/search.min.js?v=1.7.2" async></script>
-
-
-
-
-
-
-
-
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
 <script>
-(function() {
-    var OriginTitile = document.title, titleTime;
-    document.addEventListener('visibilitychange', function() {
-        if (document.hidden) {
-            document.title = '死鬼去哪里了！';
-            clearTimeout(titleTime);
-        } else {
-            document.title = '(つェ⊂)咦!又好了!';
-            titleTime = setTimeout(function() {
-                document.title = OriginTitile;
-            },2000);
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
         }
     });
-})();
+});
 </script>
 
 
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
 </body>
 </html>
