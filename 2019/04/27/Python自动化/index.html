@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Office创建excel表格import openpyxlworkbook&#x3D;openpyxl.Workbook()     #创建文件worksheet &#x3D; workbook.active         #激活表格1worksheet.title&#x3D;&quot;mySheet&quot;worksheet.cell(1, 1, &quot;askgdajds&quot;)workbook.save(filename&#x3D;&#39;&#x2F;Users&#x2F;x">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python自动化.md">
+<meta property="og:url" content="https://xingkongyj2.github.io/2019/04/27/Python%E8%87%AA%E5%8A%A8%E5%8C%96/index.html">
+<meta property="og:site_name" content="兔子翻书">
+<meta property="og:description" content="Office创建excel表格import openpyxlworkbook&#x3D;openpyxl.Workbook()     #创建文件worksheet &#x3D; workbook.active         #激活表格1worksheet.title&#x3D;&quot;mySheet&quot;worksheet.cell(1, 1, &quot;askgdajds&quot;)workbook.save(filename&#x3D;&#39;&#x2F;Users&#x2F;x">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-04-26T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-02-06T13:45:21.541Z">
+<meta property="article:author" content="兔子翻书">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Python自动化.md</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Tags</a></li>
+         
+          <li><a href="http://101.132.226.32/search_simple" target="_blank" rel="noopener">Project</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/06/18/%E7%88%AC%E5%8F%96%E5%A4%A7%E7%94%B5%E5%95%86%E5%B9%B3%E5%8F%B0/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/04/20/%20%E7%88%AC%E8%99%AB%E6%A8%A1%E7%89%88&%E4%BB%A3%E7%90%86/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://xingkongyj2.github.io/2019/04/27/Python%E8%87%AA%E5%8A%A8%E5%8C%96/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://xingkongyj2.github.io/2019/04/27/Python%E8%87%AA%E5%8A%A8%E5%8C%96/&text=Python自动化.md" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://xingkongyj2.github.io/2019/04/27/Python%E8%87%AA%E5%8A%A8%E5%8C%96/&title=Python自动化.md" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://xingkongyj2.github.io/2019/04/27/Python%E8%87%AA%E5%8A%A8%E5%8C%96/&is_video=false&description=Python自动化.md" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Python自动化.md&body=Check out this article: https://xingkongyj2.github.io/2019/04/27/Python%E8%87%AA%E5%8A%A8%E5%8C%96/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://xingkongyj2.github.io/2019/04/27/Python%E8%87%AA%E5%8A%A8%E5%8C%96/&title=Python自动化.md" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://xingkongyj2.github.io/2019/04/27/Python%E8%87%AA%E5%8A%A8%E5%8C%96/&title=Python自动化.md" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://xingkongyj2.github.io/2019/04/27/Python%E8%87%AA%E5%8A%A8%E5%8C%96/&title=Python自动化.md" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://xingkongyj2.github.io/2019/04/27/Python%E8%87%AA%E5%8A%A8%E5%8C%96/&title=Python自动化.md" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://xingkongyj2.github.io/2019/04/27/Python%E8%87%AA%E5%8A%A8%E5%8C%96/&name=Python自动化.md&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://xingkongyj2.github.io/2019/04/27/Python%E8%87%AA%E5%8A%A8%E5%8C%96/&t=Python自动化.md" target="_blank" rel="noopener"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Office"><span class="toc-number">1.</span> <span class="toc-text">Office</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建excel表格"><span class="toc-number">1.1.</span> <span class="toc-text">创建excel表格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#json数据写入excel"><span class="toc-number">1.2.</span> <span class="toc-text">json数据写入excel</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#excel数据去重"><span class="toc-number">1.3.</span> <span class="toc-text">excel数据去重</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#淘宝秒杀"><span class="toc-number">2.</span> <span class="toc-text">淘宝秒杀</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PDF操作"><span class="toc-number">3.</span> <span class="toc-text">PDF操作</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Python自动化.md
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">兔子翻书</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-04-26T16:00:00.000Z" itemprop="datePublished">2019-04-27</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/python/">python</a>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="Office"><a href="#Office" class="headerlink" title="Office"></a>Office</h2><h3 id="创建excel表格"><a href="#创建excel表格" class="headerlink" title="创建excel表格"></a>创建excel表格</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> openpyxl</span><br><span class="line"></span><br><span class="line">workbook=openpyxl.Workbook()     <span class="comment">#创建文件</span></span><br><span class="line">worksheet = workbook.active         <span class="comment">#激活表格1</span></span><br><span class="line">worksheet.title=<span class="string">"mySheet"</span></span><br><span class="line"></span><br><span class="line">worksheet.cell(<span class="number">1</span>, <span class="number">1</span>, <span class="string">"askgdajds"</span>)</span><br><span class="line"></span><br><span class="line">workbook.save(filename=<span class="string">'/Users/xingkong2/Desktop/haha.xlsx'</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="json数据写入excel"><a href="#json数据写入excel" class="headerlink" title="json数据写入excel"></a>json数据写入excel</h3><p>需要创建新表</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> openpyxl</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#鄂州 黄冈 黄石 荆门 十堰 咸宁 襄阳 孝感 宜昌</span></span><br><span class="line"></span><br><span class="line">position=<span class="string">'长沙'</span></span><br><span class="line"></span><br><span class="line">path=<span class="string">'/Users/xingkong2/Desktop/湖南/'</span>+position+<span class="string">'/content2.json'</span></span><br><span class="line">path2=<span class="string">'/Users/xingkong2/Desktop/湖南/'</span>+position+<span class="string">'/all.xlsx'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(path,  encoding=<span class="string">'utf-8-sig'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    data = json.load(f)</span><br><span class="line"></span><br><span class="line">rows=data[<span class="string">'dataPack'</span>][<span class="string">'rows'</span>]</span><br><span class="line"></span><br><span class="line">allInfo=[]</span><br><span class="line">info=[]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> rows:</span><br><span class="line">    info.append(row[<span class="string">'FNAME'</span>])</span><br><span class="line">    info.append(row[<span class="string">'FC47'</span>])</span><br><span class="line">    info.append(row[<span class="string">'FTEL'</span>])</span><br><span class="line">    info.append(row[<span class="string">'FPHONE'</span>])</span><br><span class="line">    allInfo.append(info)</span><br><span class="line">    info=[]</span><br><span class="line"></span><br><span class="line"><span class="comment">#当表格已经存在时，不需要再创建</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">workbook=openpyxl.Workbook()     #创建文件         </span></span><br><span class="line"><span class="string">worksheet = workbook.active         #激活表格1</span></span><br><span class="line"><span class="string">worksheet.title="Sheet1"</span></span><br><span class="line"><span class="string">workbook.save(filename='/Users/xingkong2/Desktop/table.xlsx')</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"></span><br><span class="line">workbook=openpyxl.load_workbook(path2)</span><br><span class="line">worksheet=workbook.worksheets[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> info <span class="keyword">in</span> allInfo:</span><br><span class="line">    worksheet.append(info)    <span class="comment">#添加已经存在的表格</span></span><br><span class="line"></span><br><span class="line">workbook.save(filename=path2)</span><br><span class="line">print(position+<span class="string">"将json数据写入Excel成功"</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="excel数据去重"><a href="#excel数据去重" class="headerlink" title="excel数据去重"></a>excel数据去重</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">positions=[<span class="string">'安阳'</span>, <span class="string">'鹤壁'</span>, <span class="string">'济源'</span>, <span class="string">'焦作'</span>, <span class="string">'开封'</span>, <span class="string">'洛阳'</span>, <span class="string">'漯河'</span>, <span class="string">'南阳'</span>, <span class="string">'平顶山'</span>, <span class="string">'濮阳'</span>, <span class="string">'三门峡'</span>,<span class="string">'商丘'</span>,<span class="string">'新乡'</span>,<span class="string">'信阳'</span>,<span class="string">'许昌'</span>,<span class="string">'郑州'</span>,<span class="string">'周口'</span>,<span class="string">'驻马店'</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> position <span class="keyword">in</span> positions:</span><br><span class="line"></span><br><span class="line">    path=<span class="string">'/Users/xingkong2/Desktop/河南/'</span>+position+<span class="string">'/all.xlsx'</span></span><br><span class="line"></span><br><span class="line">    path2=<span class="string">'/Users/xingkong2/Desktop/河南/'</span>+position+<span class="string">'/'</span>+position+<span class="string">'唯一化.xlsx'</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 读取Excel中Sheet1中的数据</span></span><br><span class="line">    data = pd.DataFrame(pd.read_excel(path, <span class="string">'Sheet1'</span>))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 查看基于[物品]列去除重复行的数据</span></span><br><span class="line">    wp = data.drop_duplicates([<span class="string">'客户名称'</span>])</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 将去除重复行的数据输出到excel表中</span></span><br><span class="line">    wp.to_excel(path)</span><br><span class="line">    print(position+<span class="string">"去重完成"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#positions=['安阳', '鹤壁', '济源', '焦作', '开封', '洛阳', '漯河', '南阳', '平顶山', '濮阳', '三门峡','商丘','新乡','信阳','许昌','郑州','周口','驻马店']</span></span><br><span class="line"><span class="comment">#positions=['常德', '郴州', '衡阳', '怀化', '娄底', '邵阳', '湘潭', '益阳', '永州', '岳阳', '张家界','长沙','株洲']</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="淘宝秒杀"><a href="#淘宝秒杀" class="headerlink" title="淘宝秒杀"></a>淘宝秒杀</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">login</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="comment"># 打开淘宝登录页，并进行扫码登录</span></span><br><span class="line">    browser.get(<span class="string">"https://login.taobao.com/member/login.jhtml?redirectURL=http%3A%2F%2Fcart.taobao.com%2Fcart.htm"</span>)</span><br><span class="line">    time.sleep(<span class="number">15</span>)</span><br><span class="line">    browser.get(<span class="string">"https://cart.taobao.com/cart.htm"</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">buy</span><span class="params">(times, choose)</span>:</span></span><br><span class="line">    <span class="comment"># 点击购物车里全选按钮</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        now = datetime.datetime.now().strftime(<span class="string">'%Y-%m-%d %H:%M:%S.%f'</span>)</span><br><span class="line">        <span class="comment"># 对比时间，时间到的话就点击结算</span></span><br><span class="line">        <span class="keyword">if</span> now &gt; times:                 <span class="comment">#bug:00:00:00   是特殊点</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> choose == <span class="number">1</span>:</span><br><span class="line">                <span class="keyword">while</span> <span class="literal">True</span>:         <span class="comment">#一直循环直到元素出现</span></span><br><span class="line">                    <span class="keyword">try</span>:</span><br><span class="line">                        <span class="keyword">if</span> browser.find_element_by_id(<span class="string">"J_SelectAll1"</span>):</span><br><span class="line">                            browser.find_element_by_id(<span class="string">"J_SelectAll1"</span>).click()</span><br><span class="line">                            print(<span class="string">"全选点击成功"</span>)</span><br><span class="line">                            <span class="keyword">break</span></span><br><span class="line">                    <span class="keyword">except</span>:</span><br><span class="line">                        print(<span class="string">"找不到全选按钮"</span>)</span><br><span class="line">            <span class="comment"># 点击结算按钮</span></span><br><span class="line">            time.sleep(<span class="number">0.15</span>)</span><br><span class="line">            <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">                <span class="keyword">try</span>:</span><br><span class="line">                    <span class="keyword">if</span> browser.find_element_by_id(<span class="string">"J_Go"</span>):</span><br><span class="line">                        browser.find_element_by_id(<span class="string">"J_Go"</span>).click()</span><br><span class="line">                        print(<span class="string">"结算成功"</span>)</span><br><span class="line">                        <span class="keyword">break</span></span><br><span class="line">                <span class="keyword">except</span>:</span><br><span class="line">                    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">                <span class="keyword">try</span>:</span><br><span class="line">                    <span class="keyword">if</span> browser.find_element_by_link_text(<span class="string">'提交订单'</span>):</span><br><span class="line">                        browser.find_element_by_link_text(<span class="string">'提交订单'</span>).click()</span><br><span class="line">                        <span class="keyword">break</span></span><br><span class="line">                <span class="keyword">except</span>:</span><br><span class="line">                    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">                <span class="keyword">try</span>:</span><br><span class="line">                    pswInput = browser.find_element_by_id(<span class="string">'payPassword_rsainput'</span>)</span><br><span class="line">                    pswInput.send_keys(<span class="string">'999999'</span>)</span><br><span class="line">                    J_authSubmit = browser.find_element_by_id(<span class="string">'J_authSubmit'</span>)</span><br><span class="line">                    J_authSubmit.click()</span><br><span class="line">                    print(<span class="string">"支付成功"</span>)</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                <span class="keyword">except</span>:</span><br><span class="line">                    <span class="keyword">pass</span></span><br><span class="line">            time.sleep(<span class="number">0.09</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    times = <span class="string">"2018-12-12 08:51:00.000000"</span></span><br><span class="line">    browser = webdriver.Chrome()</span><br><span class="line">    browser.maximize_window()</span><br><span class="line">    login()</span><br><span class="line">    buy(times, <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="PDF操作"><a href="#PDF操作" class="headerlink" title="PDF操作"></a>PDF操作</h2><p><a href="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ac4eaf12-c6b7-46d0-bc8f-9b2aa8d9674f/pdfminer-docs.pdf" target="_blank" rel="noopener">pdfminer-docs.pdf</a></p>
+<p>在pdf中找到想找的关键字，并且将找到的页面合并成为一个新的pdf</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">1 拿到文件并且pdfminer解析</span></span><br><span class="line"><span class="string">2 遍历每一页，碰到关键字就退出，记录关键所在的位置，页面（上中下三个）</span></span><br><span class="line"><span class="string">3 去重记录信息 把相应的页面截取并重组</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="keyword">from</span> pdfminer.pdfinterp <span class="keyword">import</span> PDFResourceManager, PDFPageInterpreter</span><br><span class="line"><span class="keyword">from</span> pdfminer.converter <span class="keyword">import</span> PDFPageAggregator</span><br><span class="line"><span class="keyword">from</span> pdfminer.layout <span class="keyword">import</span> LTTextBoxHorizontal,LAParams</span><br><span class="line"><span class="keyword">from</span> pdfminer.pdfpage <span class="keyword">import</span> PDFPage</span><br><span class="line"><span class="keyword">from</span> PyPDF2 <span class="keyword">import</span> PdfFileReader, PdfFileWriter</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> logging</span><br><span class="line">logging.Logger.propagate = <span class="literal">False</span></span><br><span class="line">logging.getLogger().setLevel(logging.ERROR)   <span class="comment">#消除警告信息</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Input</span><span class="params">()</span>:</span></span><br><span class="line">    path=input(<span class="string">"请输入PDF文件路径:"</span>)</span><br><span class="line">    path = path+<span class="string">".pdf"</span></span><br><span class="line">    keyword=input(<span class="string">"请输入要搜索的关键字:"</span>)</span><br><span class="line">    output_path = input(<span class="string">"请输入合并文件需要存放的路径:"</span>)</span><br><span class="line">    output_path = output_path+<span class="string">".pdf"</span></span><br><span class="line">    <span class="keyword">return</span> path, keyword,output_path</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">PDF</span><span class="params">(path,keyword)</span>:</span>        <span class="comment">#输入：文档路径 关键字 输出：关键字所在的页面</span></span><br><span class="line">    info=[]</span><br><span class="line">    pdfFileReader = PdfFileReader(path)            <span class="comment">#如果文档加密了就会出错</span></span><br><span class="line">    numPages = pdfFileReader.getNumPages()</span><br><span class="line"></span><br><span class="line">    document = open(path, <span class="string">'rb'</span>)</span><br><span class="line">    rsrcmgr = PDFResourceManager()  <span class="comment"># 创建PDf 资源管理器 来管理共享资源</span></span><br><span class="line">		<span class="comment">#创建一个PDF设备对象</span></span><br><span class="line">    laparams = LAParams()   </span><br><span class="line">    device = PDFPageAggregator(rsrcmgr, laparams=laparams)</span><br><span class="line">		<span class="comment"># 创建一个PDF解释器对象</span></span><br><span class="line">    interpreter = PDFPageInterpreter(rsrcmgr, device)</span><br><span class="line"></span><br><span class="line">    page_count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> page <span class="keyword">in</span> PDFPage.get_pages(document):</span><br><span class="line">        page_count = page_count + <span class="number">1</span></span><br><span class="line">        interpreter.process_page(page)</span><br><span class="line">        layout = device.get_result()</span><br><span class="line">        <span class="keyword">for</span> element <span class="keyword">in</span> layout:</span><br><span class="line">            <span class="keyword">if</span> isinstance(element, LTTextBoxHorizontal):</span><br><span class="line">                bulk=element.get_text().strip()</span><br><span class="line">                match=re.search(keyword,str(bulk),flags=<span class="number">0</span>)</span><br><span class="line">                <span class="keyword">if</span> match:</span><br><span class="line">                    <span class="comment">#if page_count!=1:             #如果匹配  就将前后页面和当前页面保存</span></span><br><span class="line">                        <span class="comment">#info.append(page_count-1)</span></span><br><span class="line">                    info.append(page_count)</span><br><span class="line">                    <span class="comment">#if page_count!=numPages:</span></span><br><span class="line">                        <span class="comment">#info.append(page_count+1)</span></span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">    info=list(set(info))     <span class="comment">#截取上中下界面可能会有页面重合，需要去重</span></span><br><span class="line">    info.sort()</span><br><span class="line">    <span class="keyword">return</span> info</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">merge</span><span class="params">(path,page_index,output_path)</span>:</span>    <span class="comment">#输入：文件路径，需要合并的页面，输出路径</span></span><br><span class="line">    pdfFileWriter = PdfFileWriter()</span><br><span class="line">    <span class="comment"># 获取 PdfFileReader 对象</span></span><br><span class="line">    pdfFileReader = PdfFileReader(path)  <span class="comment"># 或者这个方式：pdfFileReader = PdfFileReader(open(readFile, 'rb'))</span></span><br><span class="line">    <span class="comment"># 获取 PDF 文件的文档信息</span></span><br><span class="line">    <span class="keyword">if</span> len(page_index):</span><br><span class="line">        <span class="keyword">for</span> index <span class="keyword">in</span> page_index:      <span class="comment">#注意：序号是从零开始</span></span><br><span class="line">            pageObj = pdfFileReader.getPage(index<span class="number">-1</span>)  <span class="comment"># 获取某一个页面</span></span><br><span class="line">            pdfFileWriter.addPage(pageObj)</span><br><span class="line">        pdfFileWriter.write(open(output_path, <span class="string">'wb'</span>))  <span class="comment"># 添加完每页，再一起保存至文件中</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">"页数为空"</span>)</span><br><span class="line">    print(<span class="string">"完成"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    path,keyword,output_path=Input()</span><br><span class="line">    page_index=PDF(path,keyword)</span><br><span class="line">    merge(path,page_index,output_path)</span><br></pre></td></tr></table></figure>
+
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Tags</a></li>
+         
+          <li><a href="http://101.132.226.32/search_simple" target="_blank" rel="noopener">Project</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Office"><span class="toc-number">1.</span> <span class="toc-text">Office</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建excel表格"><span class="toc-number">1.1.</span> <span class="toc-text">创建excel表格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#json数据写入excel"><span class="toc-number">1.2.</span> <span class="toc-text">json数据写入excel</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#excel数据去重"><span class="toc-number">1.3.</span> <span class="toc-text">excel数据去重</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#淘宝秒杀"><span class="toc-number">2.</span> <span class="toc-text">淘宝秒杀</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PDF操作"><span class="toc-number">3.</span> <span class="toc-text">PDF操作</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://xingkongyj2.github.io/2019/04/27/Python%E8%87%AA%E5%8A%A8%E5%8C%96/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://xingkongyj2.github.io/2019/04/27/Python%E8%87%AA%E5%8A%A8%E5%8C%96/&text=Python自动化.md" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://xingkongyj2.github.io/2019/04/27/Python%E8%87%AA%E5%8A%A8%E5%8C%96/&title=Python自动化.md" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://xingkongyj2.github.io/2019/04/27/Python%E8%87%AA%E5%8A%A8%E5%8C%96/&is_video=false&description=Python自动化.md" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Python自动化.md&body=Check out this article: https://xingkongyj2.github.io/2019/04/27/Python%E8%87%AA%E5%8A%A8%E5%8C%96/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://xingkongyj2.github.io/2019/04/27/Python%E8%87%AA%E5%8A%A8%E5%8C%96/&title=Python自动化.md" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://xingkongyj2.github.io/2019/04/27/Python%E8%87%AA%E5%8A%A8%E5%8C%96/&title=Python自动化.md" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://xingkongyj2.github.io/2019/04/27/Python%E8%87%AA%E5%8A%A8%E5%8C%96/&title=Python自动化.md" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://xingkongyj2.github.io/2019/04/27/Python%E8%87%AA%E5%8A%A8%E5%8C%96/&title=Python自动化.md" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://xingkongyj2.github.io/2019/04/27/Python%E8%87%AA%E5%8A%A8%E5%8C%96/&name=Python自动化.md&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://xingkongyj2.github.io/2019/04/27/Python%E8%87%AA%E5%8A%A8%E5%8C%96/&t=Python自动化.md" target="_blank" rel="noopener"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2020-2021
+    兔子翻书
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Tags</a></li>
+         
+          <li><a href="http://101.132.226.32/search_simple" target="_blank" rel="noopener">Project</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

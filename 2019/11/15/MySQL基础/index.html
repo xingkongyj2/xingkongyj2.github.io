@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="1.参考资料MySQL教程™ MySQL 教程 CyC2018&#x2F;CS-Notes 2.数据库设计步骤 先根据文字描述找出主体与主体之间的关系，画出ER图  将ER图转化为数据模型，标出主码外码   1:n:将1的主键添加到n的表中作为外键   n:m :将两个的关系新建成表，再将两个实体的主键都插入到新表  规范每一张数据模型表：使它们都满足第三范式  为每个属性规划好字段，设置主键、是否为空、自">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mysql基础">
+<meta property="og:url" content="https://xingkongyj2.github.io/2019/11/15/MySQL%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="兔子翻书">
+<meta property="og:description" content="1.参考资料MySQL教程™ MySQL 教程 CyC2018&#x2F;CS-Notes 2.数据库设计步骤 先根据文字描述找出主体与主体之间的关系，画出ER图  将ER图转化为数据模型，标出主码外码   1:n:将1的主键添加到n的表中作为外键   n:m :将两个的关系新建成表，再将两个实体的主键都插入到新表  规范每一张数据模型表：使它们都满足第三范式  为每个属性规划好字段，设置主键、是否为空、自">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/xingkongyj2/PicGo/master/Diagram.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/xingkongyj2/PicGo/master/%E6%88%AA%E5%B1%8F2019-12-15%E4%B8%8A%E5%8D%8811.36.48.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/xingkongyj2/PicGo/master/%E6%88%AA%E5%B1%8F2019-12-15%E4%B8%8A%E5%8D%8811.42.33.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/xingkongyj2/PicGo/master/%E6%88%AA%E5%B1%8F2019-12-15%E4%B8%8A%E5%8D%8811.42.42.png">
+<meta property="article:published_time" content="2019-11-14T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-02-06T13:26:09.927Z">
+<meta property="article:author" content="兔子翻书">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/xingkongyj2/PicGo/master/Diagram.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Mysql基础</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Tags</a></li>
+         
+          <li><a href="http://101.132.226.32/search_simple" target="_blank" rel="noopener">Project</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/12/20/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/06/18/%E7%88%AC%E5%8F%96%E5%A4%A7%E7%94%B5%E5%95%86%E5%B9%B3%E5%8F%B0/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://xingkongyj2.github.io/2019/11/15/MySQL%E5%9F%BA%E7%A1%80/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://xingkongyj2.github.io/2019/11/15/MySQL%E5%9F%BA%E7%A1%80/&text=Mysql基础" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://xingkongyj2.github.io/2019/11/15/MySQL%E5%9F%BA%E7%A1%80/&title=Mysql基础" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://xingkongyj2.github.io/2019/11/15/MySQL%E5%9F%BA%E7%A1%80/&is_video=false&description=Mysql基础" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Mysql基础&body=Check out this article: https://xingkongyj2.github.io/2019/11/15/MySQL%E5%9F%BA%E7%A1%80/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://xingkongyj2.github.io/2019/11/15/MySQL%E5%9F%BA%E7%A1%80/&title=Mysql基础" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://xingkongyj2.github.io/2019/11/15/MySQL%E5%9F%BA%E7%A1%80/&title=Mysql基础" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://xingkongyj2.github.io/2019/11/15/MySQL%E5%9F%BA%E7%A1%80/&title=Mysql基础" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://xingkongyj2.github.io/2019/11/15/MySQL%E5%9F%BA%E7%A1%80/&title=Mysql基础" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://xingkongyj2.github.io/2019/11/15/MySQL%E5%9F%BA%E7%A1%80/&name=Mysql基础&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://xingkongyj2.github.io/2019/11/15/MySQL%E5%9F%BA%E7%A1%80/&t=Mysql基础" target="_blank" rel="noopener"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-参考资料"><span class="toc-number">1.</span> <span class="toc-text">1.参考资料</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-数据库设计步骤"><span class="toc-number">2.</span> <span class="toc-text">2.数据库设计步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#数据库的三级模式结构"><span class="toc-number">2.1.</span> <span class="toc-text">数据库的三级模式结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#范式"><span class="toc-number">2.2.</span> <span class="toc-text">范式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-SQL语句分类"><span class="toc-number">3.</span> <span class="toc-text">3.SQL语句分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#数据定义-DDL"><span class="toc-number">3.1.</span> <span class="toc-text">数据定义(DDL)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据操纵-DML"><span class="toc-number">3.2.</span> <span class="toc-text">数据操纵(DML)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据控制-DCL"><span class="toc-number">3.3.</span> <span class="toc-text">数据控制(DCL)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-数据库完整性约束"><span class="toc-number">4.</span> <span class="toc-text">4.数据库完整性约束</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#建外键约束"><span class="toc-number">4.1.</span> <span class="toc-text">建外键约束</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Mysql常用字段"><span class="toc-number">5.</span> <span class="toc-text">5.Mysql常用字段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-SQL语句语法-amp-实例"><span class="toc-number">6.</span> <span class="toc-text">6.SQL语句语法&amp;实例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#注释"><span class="toc-number">6.1.</span> <span class="toc-text">注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CREAT"><span class="toc-number">6.2.</span> <span class="toc-text">CREAT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LATER"><span class="toc-number">6.3.</span> <span class="toc-text">LATER</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DORP"><span class="toc-number">6.4.</span> <span class="toc-text">DORP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#INSTER"><span class="toc-number">6.5.</span> <span class="toc-text">INSTER</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DELETE"><span class="toc-number">6.6.</span> <span class="toc-text">DELETE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SELECT"><span class="toc-number">6.7.</span> <span class="toc-text">SELECT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UPDATA"><span class="toc-number">6.8.</span> <span class="toc-text">UPDATA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#聚集函数"><span class="toc-number">6.9.</span> <span class="toc-text">聚集函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-视图"><span class="toc-number">7.</span> <span class="toc-text">7.视图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#视图查询"><span class="toc-number">7.1.</span> <span class="toc-text">视图查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#视图修改"><span class="toc-number">7.2.</span> <span class="toc-text">视图修改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#视图删除"><span class="toc-number">7.3.</span> <span class="toc-text">视图删除</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#视图的作用"><span class="toc-number">7.4.</span> <span class="toc-text">视图的作用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-索引"><span class="toc-number">8.</span> <span class="toc-text">8.索引</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#索引类型"><span class="toc-number">8.1.</span> <span class="toc-text">索引类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#索引创建"><span class="toc-number">8.2.</span> <span class="toc-text">索引创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看索引"><span class="toc-number">8.3.</span> <span class="toc-text">查看索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除索引"><span class="toc-number">8.4.</span> <span class="toc-text">删除索引</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-存储过程"><span class="toc-number">9.</span> <span class="toc-text">9.存储过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-数据库安全权限管理"><span class="toc-number">10.</span> <span class="toc-text">10. 数据库安全权限管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用create-user创建用户账号"><span class="toc-number">10.1.</span> <span class="toc-text">使用create user创建用户账号:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用Insert语句建用户"><span class="toc-number">10.2.</span> <span class="toc-text">使用Insert语句建用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Grant语句"><span class="toc-number">10.3.</span> <span class="toc-text">Grant语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改用户账号"><span class="toc-number">10.4.</span> <span class="toc-text">修改用户账号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改用户口令"><span class="toc-number">10.5.</span> <span class="toc-text">修改用户口令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除用户"><span class="toc-number">10.6.</span> <span class="toc-text">删除用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#权限授予"><span class="toc-number">10.7.</span> <span class="toc-text">权限授予</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#收回权限"><span class="toc-number">10.8.</span> <span class="toc-text">收回权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看权限"><span class="toc-number">10.9.</span> <span class="toc-text">查看权限</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-备份恢复"><span class="toc-number">11.</span> <span class="toc-text">11. 备份恢复</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-事务及并发控制"><span class="toc-number">12.</span> <span class="toc-text">12 .事务及并发控制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-建表代码实例"><span class="toc-number">13.</span> <span class="toc-text">13.建表代码实例</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Mysql基础
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">兔子翻书</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-11-14T16:00:00.000Z" itemprop="datePublished">2019-11-15</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="1-参考资料"><a href="#1-参考资料" class="headerlink" title="1.参考资料"></a>1.参考资料</h2><p><a href="https://www.yiibai.com/mysql" target="_blank" rel="noopener">MySQL教程™</a></p>
+<p><a href="https://www.runoob.com/mysql/mysql-tutorial.html" target="_blank" rel="noopener">MySQL 教程</a></p>
+<p><a href="https://github.com/CyC2018/CS-Notes/blob/master/notes/SQL.md#%E5%8D%81%E5%9B%9B%E5%AD%90%E6%9F%A5%E8%AF%A2" target="_blank" rel="noopener">CyC2018/CS-Notes</a></p>
+<h2 id="2-数据库设计步骤"><a href="#2-数据库设计步骤" class="headerlink" title="2.数据库设计步骤"></a>2.数据库设计步骤</h2><ul>
+<li><p>先根据文字描述找出主体与主体之间的关系，画出ER图</p>
+</li>
+<li><p>将ER图转化为数据模型，标出主码外码</p>
+<p>  <code>1:n</code>:将1的主键添加到n的表中作为外键</p>
+<p>  <code>n:m</code> :将两个的关系新建成表，再将两个实体的主键都插入到新表</p>
+</li>
+<li><p>规范每一张数据模型表：使它们都满足第三范式</p>
+</li>
+<li><p>为每个属性规划好字段，设置主键、是否为空、自增长</p>
+</li>
+<li><p>使用sql语句建表</p>
+</li>
+</ul>
+<h3 id="数据库的三级模式结构"><a href="#数据库的三级模式结构" class="headerlink" title="数据库的三级模式结构"></a>数据库的三级模式结构</h3><p><img src="https://raw.githubusercontent.com/xingkongyj2/PicGo/master/Diagram.png" alt=""></p>
+<h3 id="范式"><a href="#范式" class="headerlink" title="范式"></a>范式</h3><p><strong>函数依赖: X–&gt;Y</strong></p>
+<p>解释: Y依赖X，对于每个X都只能有唯一的Y与之对应</p>
+<p><strong>部分函数依赖: X–&gt;Y</strong></p>
+<p>解释: X的任何一个真子集都能函数依赖于Y，那么Y部分依赖X</p>
+<p><strong>第一范式(1NF)</strong>:每个属性都不能再分</p>
+<p><strong>第二范式(2NF)</strong>:对于表中组合主键，其他列应该依赖于组合主键中每个列，若某个列只依赖组合主键中的某个列，则需要把他们拿出来单独再建一个表。主键只有一个肯定满足第二范式</p>
+<p><strong>第三范式(3NF)</strong>:表˙中的非主键列没有依赖关系</p>
+<blockquote>
+<p>有时候需要反范式设计。不能过度范式，也不能过度反范式</p>
+</blockquote>
+<h2 id="3-SQL语句分类"><a href="#3-SQL语句分类" class="headerlink" title="3.SQL语句分类"></a>3.SQL语句分类</h2><h3 id="数据定义-DDL"><a href="#数据定义-DDL" class="headerlink" title="数据定义(DDL)"></a>数据定义(DDL)</h3><ul>
+<li>定义、删除、修改数据库</li>
+<li>定义、删除、修改表(Table)、视图（View）</li>
+<li>定义、删除、修改索引（Index）</li>
+<li>关键字: <code>CREAT</code>  <code>ALTER</code>  <code>DROP</code></li>
+</ul>
+<h3 id="数据操纵-DML"><a href="#数据操纵-DML" class="headerlink" title="数据操纵(DML)"></a>数据操纵(DML)</h3><ul>
+<li>数据增、删、改、查</li>
+<li>关键字: <code>INSERT</code>  <code>UPDATA</code> <code>DELETE</code> <code>SELECT</code></li>
+</ul>
+<h3 id="数据控制-DCL"><a href="#数据控制-DCL" class="headerlink" title="数据控制(DCL)"></a>数据控制(DCL)</h3><ul>
+<li>用户访问权限的授予、收回</li>
+<li>关键字: <code>REVOKE</code>  <code>GRANT</code></li>
+</ul>
+<h2 id="4-数据库完整性约束"><a href="#4-数据库完整性约束" class="headerlink" title="4.数据库完整性约束"></a>4.数据库完整性约束</h2><p><a href="https://blog.csdn.net/qq_41386917/article/details/88105278" target="_blank" rel="noopener">[添加约束参考]</a></p>
+<blockquote>
+<ul>
+<li><p>如果某字段设置为not null，则设置默认约束没有任何意义</p>
+</li>
+<li><p>一个属性如果是主键，not null没有必要设置</p>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li>主码: <code>PRIMARY KEY</code></li>
+<li>唯一: <code>UNIQUE</code></li>
+<li>外码:  <code>foreign key···references···</code></li>
+<li>非空: <code>NOT NULL</code></li>
+<li>缺省值: <code>DEFAULT</code></li>
+<li>核查: <code>CHECK</code></li>
+<li>自增: <code>auto_increment</code></li>
+</ul>
+<h3 id="建外键约束"><a href="#建外键约束" class="headerlink" title="建外键约束"></a>建外键约束</h3><p><a href="https://blog.csdn.net/qilin001cs/article/details/79108613" target="_blank" rel="noopener">[资料参考]</a></p>
+<p>语法: <code>FOREIGN KEY (外键约束的列名) REFERENCES 主键表 (主键表中的主键列名)</code></p>
+<p>级联更新、删除: <code>ALTER TABLE &lt;表名&gt; ADD [CONSTRAINT &lt;约束名&gt;] Foreign Key(列名[,…n]) references 主表表名(主表的列名) [on update cascade][ on delete cascade];</code></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> sc(</span><br><span class="line">sno <span class="built_in">char</span>(<span class="number">7</span>)          //注意:建立这个sno时名字可以与students表中sno名字不一样，但是字段一定要相同            </span><br><span class="line">cno	<span class="built_in">char</span>(<span class="number">7</span>)             </span><br><span class="line">score	<span class="built_in">decimal</span>(<span class="number">4</span>,<span class="number">1</span>),</span><br><span class="line">point	<span class="built_in">decimal</span>(<span class="number">2</span>,<span class="number">1</span>),</span><br><span class="line">primary <span class="keyword">key</span>(sno,cno),   //设置组合属性为主码</span><br><span class="line"><span class="keyword">foreign</span> <span class="keyword">key</span> (sno) <span class="keyword">references</span> students(sno),     //外码建立</span><br><span class="line"><span class="keyword">foreign</span> <span class="keyword">key</span> (cno) <span class="keyword">references</span> course(cno)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="5-Mysql常用字段"><a href="#5-Mysql常用字段" class="headerlink" title="5.Mysql常用字段"></a>5.Mysql常用字段</h2><p><strong>数值形字段</strong></p>
+<ul>
+<li><code>INT</code> - 范围是从-2147483648到2147483647</li>
+<li><code>TINYINT</code> - 范围是从-128到127</li>
+<li><code>Decimal（p,q)</code> - 小数型</li>
+</ul>
+<p><strong>日期形字段</strong></p>
+<ul>
+<li><code>DATE</code> - 以YYYY-MM-DD格式的日期，在1000-01-01和9999-12-31之间。 例如，1973年12月30日将被存储为1973-12-30</li>
+<li><code>DATETIME</code> - 日期和时间组合以YYYY-MM-DD HH:MM:SS格式，在1000-01-01 00:00:00 到9999-12-31 23:59:59之间。例如，1973年12月30日下午3:30，会被存储为1973-12-30 15:30:00</li>
+<li><code>TIME</code> - 存储时间在HH:MM:SS格式</li>
+<li><code>YEAR(M)</code> - 以2位或4位数字格式来存储年份。如果长度指定为2(例如YEAR(2))，年份就可以为1970至2069(70〜69)。如果长度指定为4，年份范围是1901-2155，默认长度为4</li>
+</ul>
+<p><strong>字符型字段</strong></p>
+<ul>
+<li><code>CHAR(M)</code> - 固定长度的字符串是以长度为1到255之间个字符长度(例如：CHAR(5))，存储右空格填充到指定的长度。 限定长度不是必需的，它会默认为1</li>
+<li><code>VARCHAR(M)</code> - 可变长度的字符串是以长度为1到255之间字符数(高版本的MySQL超过255); 例如： VARCHAR(25). 创建VARCHAR类型字段时，必须定义长度</li>
+</ul>
+<h2 id="6-SQL语句语法-amp-实例"><a href="#6-SQL语句语法-amp-实例" class="headerlink" title="6.SQL语句语法&amp;实例"></a>6.SQL语句语法&amp;实例</h2><h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><ul>
+<li>– xxxx</li>
+<li>/**/</li>
+</ul>
+<blockquote>
+<p>语句结束后要加封号</p>
+<p>一个数据库在打开的时候是不能删除的</p>
+</blockquote>
+<h3 id="CREAT"><a href="#CREAT" class="headerlink" title="CREAT"></a>CREAT</h3><p>创建库: <code>CREATE DATABASE &lt;数据库名&gt; default charset=utf8;</code></p>
+<p>创建表：<code>CREATE TABLE IF NOT EXISTS 表名();</code></p>
+<p>打开数据库: <code>USE &lt;数据库名&gt;;</code> </p>
+<p>复制表结构: <code>CREATE TABLE 新表名 LIKE 已有表名;</code></p>
+<p>复制表结构&amp;数据: <code>CREATE TABLE 新表名 AS SELECT 语句;</code></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">//打开数据库</span><br><span class="line"><span class="keyword">USE</span> XSCJ;<span class="comment">/*最好在开头加上这行代码，明确操作哪一个数据库*/</span></span><br><span class="line"></span><br><span class="line">//创建表</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> students(  <span class="comment">/*如果这个表不存在才建立这个表*/</span></span><br><span class="line">	sno  <span class="built_in">char</span>(<span class="number">7</span>)   <span class="keyword">not</span>  <span class="literal">null</span>,     //设置字段和约束。设置约束的第一种方式。</span><br><span class="line">	sname   <span class="keyword">nvarchar</span>(<span class="number">8</span>)  <span class="keyword">not</span>  <span class="literal">null</span>,       </span><br><span class="line">	ssex    <span class="keyword">nchar</span>(<span class="number">2</span>)  <span class="keyword">not</span>  <span class="literal">null</span> <span class="keyword">DEFAULT</span> ‘男’,   </span><br><span class="line">	score  <span class="built_in">decimal</span>(<span class="number">4</span>,<span class="number">1</span>) ,</span><br><span class="line">	<span class="keyword">class</span>  <span class="keyword">nvarchar</span>(<span class="number">10</span>)  <span class="keyword">not</span> <span class="literal">null</span> ,</span><br><span class="line">	<span class="keyword">SID</span>  <span class="built_in">char</span>(<span class="number">18</span>)  <span class="keyword">not</span>  <span class="literal">null</span> ,</span><br><span class="line">	PHOTO  <span class="built_in">varchar</span>(<span class="number">50</span>),</span><br><span class="line"></span><br><span class="line">	PRIMARY <span class="keyword">KEY</span> (task_id) //设置约束的第二种方式</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">//复制表结构</span><br><span class="line"><span class="keyword">Create</span> <span class="keyword">table</span> student1 <span class="keyword">like</span> students;</span><br><span class="line"></span><br><span class="line">//复制表结构&amp;数据</span><br><span class="line"><span class="keyword">Create</span> <span class="keyword">table</span> student2 </span><br><span class="line">             <span class="keyword">as</span> <span class="keyword">select</span> * <span class="keyword">from</span> students;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="LATER"><a href="#LATER" class="headerlink" title="LATER"></a>LATER</h3><p>修改表名: <code>ALTER TABLE 旧表名 RENAME [TO] 新表名;</code></p>
+<p>增加新列:  <code>ALTER TABLE 表名 ADD 属性名 数据类型 [列的完整性约束];</code></p>
+<p>修改表—修改字段名: <code>ALTER TABLE 表名 CHANGE 旧属性名 新属性名 数据类型;</code></p>
+<p>修改表—修改字段数据类型: <code>ALTER TABLE 表名 MODIFY 属性名 新数据类型;</code></p>
+<p>修改表—删除字段: <code>ALTER TABLE 表名 DROP 属性名;</code></p>
+<p>在已创建的表中设置主键: <code>Alter table 表名 Add primary key(字段名);</code></p>
+<p>在已创建的表中设置唯一键: <code>Alter table 表名 Add unique(字段名);</code></p>
+<p>添加、修改的默认值: <code>Alter table 表名 alter 列名 set default 默认值;</code></p>
+<p>修改列的非空约束: <code>Alter table 表名 Modify 列名 数据类型 not null;</code></p>
+<p>删除表的主键: <code>ALTER TABLE 表名 DROP PRIMARY KEY;</code></p>
+<p>删除表的唯一约束: <code>ALTER TABLE 表名 DROP INDEX 唯一约束自动生成的索引名;</code></p>
+<p>删除表的外键: <code>ALTER TABLE 表名 DROP FOREIGN KEY 外键名;</code></p>
+<p>删除表: <code>DROP TABLE &lt;表名&gt;;</code></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">//修改表名</span><br><span class="line"><span class="keyword">ALTER</span>  <span class="keyword">TABLE</span>  studnet  <span class="keyword">RENAME</span>  students;</span><br><span class="line"></span><br><span class="line"> //增加新列。注意不要一行写到底</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> students      </span><br><span class="line">       <span class="keyword">ADD</span> phone <span class="built_in">VARCHAR</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> students </span><br><span class="line">			<span class="keyword">ADD</span> <span class="keyword">num</span> <span class="built_in">INT</span> PRIMARY <span class="keyword">KEY</span> <span class="keyword">FIRST</span>; //在表的第一个位置增加字段</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> students </span><br><span class="line">			<span class="keyword">ADD</span> address <span class="built_in">VARCHAR</span>(<span class="number">30</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">AFTER</span> phone;//表的指定位置之后增加字段</span><br><span class="line"></span><br><span class="line">//修改表—修改字段名:</span><br><span class="line"><span class="keyword">ALTER</span>  <span class="keyword">TABLE</span>  students  </span><br><span class="line">       <span class="keyword">CHANGE</span>  grade  score  <span class="built_in">int</span>;//将grade字段改名为score</span><br><span class="line"></span><br><span class="line">//修改表—修改字段数据类型</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> students</span><br><span class="line">     <span class="keyword">MODIFY</span> phone  <span class="built_in">char</span>(<span class="number">13</span>);//将phone字段的数据类型改为char（13）</span><br><span class="line"></span><br><span class="line">//修改表—删除字段</span><br><span class="line"><span class="keyword">ALTER</span>  <span class="keyword">TABLE</span>  students  </span><br><span class="line">      <span class="keyword">DROP</span>  sage;</span><br><span class="line"></span><br><span class="line">//在已创建的表中设置主键</span><br><span class="line"><span class="keyword">Alter</span> <span class="keyword">table</span> <span class="keyword">user</span></span><br><span class="line">			<span class="keyword">Add</span> primary <span class="keyword">key</span>(userid);  //方式一</span><br><span class="line"></span><br><span class="line">//在已创建的表中设置唯一键: </span><br><span class="line"><span class="keyword">Alter</span> <span class="keyword">table</span> <span class="keyword">user</span></span><br><span class="line">			<span class="keyword">Add</span> <span class="keyword">unique</span>(email);</span><br><span class="line"></span><br><span class="line"><span class="keyword">Alter</span> <span class="keyword">table</span> <span class="keyword">user</span></span><br><span class="line">			<span class="keyword">Add</span> primary <span class="keyword">key</span>(userid),</span><br><span class="line">			<span class="keyword">Add</span>  <span class="keyword">unique</span>(email);     //一次添加多个约束的方式</span><br><span class="line"></span><br><span class="line">//添加、修改的默认值</span><br><span class="line"><span class="keyword">Alter</span> <span class="keyword">table</span> <span class="keyword">user</span></span><br><span class="line">			<span class="keyword">alter</span> <span class="keyword">column</span> <span class="keyword">password</span> <span class="keyword">set</span> <span class="keyword">default</span> <span class="string">'12345'</span>;</span><br><span class="line"></span><br><span class="line">//修改列的非空约束</span><br><span class="line"><span class="keyword">Alter</span> <span class="keyword">table</span> <span class="keyword">user</span></span><br><span class="line">			<span class="keyword">MODIFY</span> <span class="keyword">password</span> <span class="built_in">varchar</span>(<span class="number">20</span>) <span class="keyword">not</span> <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">//删除表的主键</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="keyword">user</span> <span class="keyword">DROP</span> PRIMARY <span class="keyword">KEY</span>;</span><br><span class="line"></span><br><span class="line">//删除user表email列的唯一约束</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="keyword">user</span> <span class="keyword">DROP</span> <span class="keyword">INDEX</span> email;</span><br><span class="line"></span><br><span class="line">//删除user表userid列的外键</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="keyword">user</span> </span><br><span class="line">			 <span class="keyword">DROP</span> <span class="keyword">FOREIGN</span> <span class="keyword">KEY</span> userid;</span><br><span class="line"></span><br><span class="line">//删除表</span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> book,reader,borrow; //一次删除多个表</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="DORP"><a href="#DORP" class="headerlink" title="DORP"></a>DORP</h3><p>删除数据库: <code>DROP DATABASE &lt;数据库名&gt;;</code></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">DATABASE</span> XSCJ;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="INSTER"><a href="#INSTER" class="headerlink" title="INSTER"></a>INSTER</h3><p><code>INSERT INTO&lt;表名&gt; [(&lt;列名表&gt;)] VALUES （对应列的值）</code></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">//插入一行</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> tasks(subject,start_date,end_date,description)</span><br><span class="line"><span class="keyword">VALUES</span>(<span class="string">'Learn MySQL INSERT'</span>,<span class="string">'2017-07-21'</span>,<span class="string">'2017-07-22'</span>,<span class="string">'Start learning..'</span>);</span><br><span class="line"></span><br><span class="line">//插入多行</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> tasks(subject,start_date,end_date,description)</span><br><span class="line"><span class="keyword">VALUES</span> (<span class="string">'任务-1'</span>,<span class="string">'2017-01-01'</span>,<span class="string">'2017-01-02'</span>,<span class="string">'Description 1'</span>),</span><br><span class="line">       (<span class="string">'任务-2'</span>,<span class="string">'2017-01-01'</span>,<span class="string">'2017-01-02'</span>,<span class="string">'Description 2'</span>),</span><br><span class="line">       (<span class="string">'任务-3'</span>,<span class="string">'2017-01-01'</span>,<span class="string">'2017-01-02'</span>,<span class="string">'Description 3'</span>);</span><br><span class="line"></span><br><span class="line">//如果为表中的所有列指定相应列的值，则可以忽略<span class="keyword">INSERT</span>语句中的列列表</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="keyword">table</span></span><br><span class="line"><span class="keyword">VALUES</span> (value1,value2,...),</span><br><span class="line">       (value1,value2,...),</span><br><span class="line">...;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="DELETE"><a href="#DELETE" class="headerlink" title="DELETE"></a>DELETE</h3><p>如果省略<code>WHERE</code>子句，<code>DELETE</code>语句将删除表中的所有行</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> table_name</span><br><span class="line"><span class="keyword">WHERE</span> condition;</span><br><span class="line"></span><br><span class="line">//使用LIMIT子句时，应始终使用ORDER BY子句</span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> customers</span><br><span class="line"><span class="keyword">WHERE</span> country = <span class="string">'France'</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> creditLimit</span><br><span class="line"><span class="keyword">LIMIT</span> <span class="number">5</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="SELECT"><a href="#SELECT" class="headerlink" title="SELECT"></a>SELECT</h3><p><strong>1.单表查询</strong></p>
+<p><code>SELECT &lt;目标列名序列&gt;</code> </p>
+<p><code>FROM &lt;数据源&gt;</code> </p>
+<p><code>[WHERE &lt;检索条件表达式&gt;]</code></p>
+<p><code>[ORDER BY &lt;排序依据列&gt;]</code></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">//根据生日计算年龄</span><br><span class="line">(YEAR(CURDATE())-YEAR(bday))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//使用limit关键字</span><br><span class="line"><span class="keyword">select</span>  *  <span class="keyword">form</span>  Books <span class="keyword">limit</span> <span class="number">10</span></span><br><span class="line"></span><br><span class="line">//对price进行一个四则运算后</span><br><span class="line">，price所形成的表达式将成为查询表的显示字段</span><br><span class="line"><span class="keyword">SELECT</span> bookID,bookname,price*<span class="number">0.9</span> <span class="keyword">FROM</span> Books</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//常量列，生日为常量。字段需要用加上单引号</span><br><span class="line"><span class="keyword">SELECT</span> rname,<span class="string">'生日'</span>,birthday <span class="keyword">FROM</span> Readers</span><br><span class="line"></span><br><span class="line">//<span class="keyword">as</span>起别名</span><br><span class="line"><span class="keyword">SELECT</span> bno <span class="keyword">as</span> 编号,bname 书名,author <span class="keyword">FROM</span> Books</span><br><span class="line"></span><br><span class="line">//<span class="keyword">where</span>使用</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Books</span><br><span class="line"><span class="keyword">WHERE</span> price <span class="keyword">BETWEEN</span> <span class="number">25</span> <span class="keyword">AND</span> <span class="number">50</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Books </span><br><span class="line"><span class="keyword">WHERE</span> publish <span class="keyword">IN</span>(<span class="string">'上海人民出版社'</span>,<span class="string">'清华大学出版社'</span>,<span class="string">'高等教育出版社'</span>)</span><br><span class="line"></span><br><span class="line">//模糊查询  <span class="string">'_'</span>代表任意一个字符    <span class="string">'%'</span>代表任意多个字符     Escape定义转义符</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Readers</span><br><span class="line"><span class="keyword">WHERE</span> rname <span class="keyword">LIKE</span> <span class="string">'/%王%'</span> ESCAPE <span class="string">'/'</span>     //搜索以 %王 开头的所有值</span><br><span class="line"></span><br><span class="line">//<span class="keyword">IS</span> <span class="literal">NULL</span>  查询藏书量为空的图书信息</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Books </span><br><span class="line"><span class="keyword">WHERE</span> csl <span class="keyword">IS</span> <span class="literal">NULL</span></span><br><span class="line"></span><br><span class="line">//<span class="keyword">ORDER</span> <span class="keyword">BY</span>子句</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Readers</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> birthday <span class="keyword">ASC</span>   //默认是升序，可省略</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Readers </span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> bday <span class="keyword">DESC</span>  //降序排序</span><br><span class="line"></span><br><span class="line">//多关键字排序:首先按第一关键字排序，当第一关键字相同的时候，会按照第二关键字排序</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Books </span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> classid <span class="keyword">ASC</span>,price <span class="keyword">DESC</span></span><br><span class="line"></span><br><span class="line">//聚集函数</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">AVG</span>(price) <span class="keyword">AS</span> 平均价格 </span><br><span class="line"><span class="keyword">FROM</span> Books</span><br><span class="line"></span><br><span class="line">//分组查询(<span class="keyword">GROUP</span> <span class="keyword">BY</span> 子句)    <span class="keyword">GROUP</span> <span class="keyword">BY</span> &lt;列名&gt;进行分组</span><br><span class="line"><span class="keyword">SELECT</span> spet 专业, <span class="keyword">COUNT</span>(*)  //统计每个专业的读者的人数</span><br><span class="line"><span class="keyword">FROM</span> Readers </span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> spet</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> publish, <span class="keyword">COUNT</span>(*)   //统计每个出版社的出版图书的数目</span><br><span class="line"><span class="keyword">FROM</span> Books </span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> publish</span><br><span class="line"></span><br><span class="line">//分组查询(<span class="keyword">Having</span>子句)   <span class="keyword">HAVING</span> 子句可以对分组统计后的结果进行筛选</span><br><span class="line"><span class="keyword">SELECT</span> rno,<span class="keyword">COUNT</span>(bno)</span><br><span class="line"><span class="keyword">FROM</span> borrow</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> rno</span><br><span class="line"><span class="keyword">having</span> <span class="keyword">COUNT</span>(bno)&gt;<span class="number">2</span>    //<span class="keyword">having</span>一定只能与<span class="keyword">GROUP</span> <span class="keyword">BY</span>出现</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>2.多表查询</strong></p>
+<p>第一种写法</p>
+<p><code>Select 显示的列</code></p>
+<p><code>FROM 表1 JOIN 表2 ON &lt;连接条件&gt;</code></p>
+<p><code>Where 查询条件</code></p>
+<p><code>Group by分组列</code></p>
+<p><code>Having 组筛选条件</code></p>
+<p><code>Order by 排序列</code></p>
+<p>第二种写法</p>
+<p><code>Select 显示的列</code></p>
+<p><code>FROM 表1 , 表2</code></p>
+<p><code>Where &lt;连接条件&gt; and &lt;查询条件&gt;</code></p>
+<p>三表连接</p>
+<p><code>Select 列名,……</code></p>
+<p><code>FROM 表1 JOIN 表2 ON &lt;连接条件&gt;join 表3 on &lt;连接条件&gt;</code></p>
+<p><strong>3.多表连接类型</strong></p>
+<p>内连接: <code>inner join on</code></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> a_table a <span class="keyword">inner</span> <span class="keyword">join</span> b_table <span class="keyword">on</span>  a.a_id = b.b_id;</span><br></pre></td></tr></table></figure>
+
+<p>外连接</p>
+<ul>
+<li>左连接: <code>left join on</code></li>
+<li>右连接: <code>right join on</code></li>
+</ul>
+<p>自连接</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> e1.name</span><br><span class="line"><span class="keyword">FROM</span> employee <span class="keyword">AS</span> e1 <span class="keyword">INNER</span> <span class="keyword">JOIN</span> employee <span class="keyword">AS</span> e2</span><br><span class="line"><span class="keyword">ON</span> e1.department = e2.department</span><br><span class="line">      <span class="keyword">AND</span> e2.name = <span class="string">"Jim"</span>;</span><br></pre></td></tr></table></figure>
+
+<p>嵌套查询</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> *</span><br><span class="line"><span class="keyword">FROM</span> mytable1</span><br><span class="line"><span class="keyword">WHERE</span> col1 <span class="keyword">IN</span> (<span class="keyword">SELECT</span> col2 <span class="keyword">FROM</span> mytable2);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="UPDATA"><a href="#UPDATA" class="headerlink" title="UPDATA"></a>UPDATA</h3><blockquote>
+<p><code>WHERE</code>子句非常重要。少写<code>WHERE</code>会导致意外更新表中的所有行</p>
+</blockquote>
+<p><code>UPDATE &lt;表名&gt;</code></p>
+<p><code>SET &lt;列名＝表达式&gt; [,… n]</code></p>
+<p><code>[FROM &lt;更新条件所在的表&gt;]</code></p>
+<p><code>[WHERE &lt;更新条件&gt;]</code></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> [<span class="keyword">LOW_PRIORITY</span>] [<span class="keyword">IGNORE</span>] table_name </span><br><span class="line"><span class="keyword">SET</span> </span><br><span class="line">    column_name1 = expr1,</span><br><span class="line">    column_name2 = expr2,</span><br><span class="line">    ...</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">    condition;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//一次修改多列</span><br><span class="line"><span class="keyword">Update</span> students </span><br><span class="line"><span class="keyword">set</span> sname=<span class="string">'李凯'</span>,bday=<span class="string">'1994-10-11'</span>   </span><br><span class="line"><span class="keyword">Where</span> sno=<span class="string">'0801102'</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="聚集函数"><a href="#聚集函数" class="headerlink" title="聚集函数"></a>聚集函数</h3><ul>
+<li><p><code>COUNT(列名)</code>: 统计表中元组个数</p>
+</li>
+<li><p><code>SUM(列名）</code>:计算列值总和（必须是数值型列）</p>
+</li>
+<li><p><code>AVG(列名）</code>:计算列值平均值（必须是数值型列）</p>
+</li>
+<li><p><code>MAX(列名）</code>: 求列值最大值</p>
+</li>
+<li><p><code>MIN(列名）</code>: 求列值最小值</p>
+</li>
+</ul>
+<h2 id="7-视图"><a href="#7-视图" class="headerlink" title="7.视图"></a>7.视图</h2><h3 id="视图查询"><a href="#视图查询" class="headerlink" title="视图查询"></a>视图查询</h3><p><code>CREATE VIEW &lt;视图名&gt; [(视图列名表)]</code></p>
+<p><code>AS</code> </p>
+<p><code>SELECT 查询语句</code> </p>
+<p><code>[WITH CHECK OPTION]</code></p>
+<blockquote>
+<ul>
+<li>视图实际就是sql语句的封装，保证安全性</li>
+<li>视图取自一个基本表一般可看可改</li>
+<li>视图取自多个表一般可看不可改</li>
+<li>子查询中含GROUP BY子句数据只可看不可改</li>
+<li>表达式最好起一个列名</li>
+</ul>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">//单表查询</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> VBook1</span><br><span class="line"><span class="keyword">AS</span></span><br><span class="line"><span class="keyword">SELECT</span> *</span><br><span class="line"><span class="keyword">FROM</span> Books</span><br><span class="line"><span class="keyword">WHERE</span> price&gt;<span class="number">30</span></span><br><span class="line"></span><br><span class="line">//多表查询</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span>  R_B_Book2 (读者编号,姓名,图书编号,</span><br><span class="line">书名,出版社,价格,借阅日期)</span><br><span class="line"><span class="keyword">AS</span> </span><br><span class="line"><span class="keyword">SELECT</span> R.rno, R.rname, B.bno, B.bname, publish, </span><br><span class="line">price, lenddate</span><br><span class="line"><span class="keyword">FROM</span> readers <span class="keyword">as</span> R <span class="keyword">JOIN</span> borrow <span class="keyword">as</span> W</span><br><span class="line"><span class="keyword">ON</span> R.rno = W.rno  <span class="keyword">JOIN</span> Books <span class="keyword">as</span> B</span><br><span class="line"><span class="keyword">ON</span> B.bno=W.bno</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="视图修改"><a href="#视图修改" class="headerlink" title="视图修改"></a>视图修改</h3><blockquote>
+<p>修改视图是指修改数据库中已存在的表的定义(修改查询语句)</p>
+</blockquote>
+<p><code>ALTER VIEW 视图名[(列名1[,…n])]</code><br><code>AS SELECT查询语句</code><br><code>[WITH CHECK OPTION]</code></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">//修改视图</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">VIEW</span> v_sc_stat</span><br><span class="line"><span class="keyword">AS</span></span><br><span class="line"><span class="keyword">SELECT</span> cno,<span class="keyword">COUNT</span>(cno),<span class="keyword">COUNT</span>(cno)</span><br><span class="line"><span class="keyword">FROM</span> sc</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> cno;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="视图删除"><a href="#视图删除" class="headerlink" title="视图删除"></a>视图删除</h3><p><code>DROP VIEW &lt;视图名&gt;</code></p>
+<h3 id="视图的作用"><a href="#视图的作用" class="headerlink" title="视图的作用"></a>视图的作用</h3><ul>
+<li><p>简化数据查询语句 </p>
+</li>
+<li><p>使用户能从多角度看待同一数据 </p>
+</li>
+<li><p>提高了数据的安全性 </p>
+</li>
+<li><p>提供了一定程度的逻辑独立性 </p>
+</li>
+</ul>
+<h2 id="8-索引"><a href="#8-索引" class="headerlink" title="8.索引"></a>8.索引</h2><h3 id="索引类型"><a href="#索引类型" class="headerlink" title="索引类型"></a>索引类型</h3><ul>
+<li>普通索引</li>
+<li>唯一索引</li>
+<li>全文索引（char、varchar、text型字段）</li>
+</ul>
+<h3 id="索引创建"><a href="#索引创建" class="headerlink" title="索引创建"></a>索引创建</h3><blockquote>
+<p>主键默认已经创建了索引</p>
+</blockquote>
+<ul>
+<li><p>使用<code>CREATE INDEX</code>创建</p>
+<p>  <code>CREATE [UNIQUE |  FULLTEXT ] INDEX 索引名</code></p>
+<p>   <code>[USING index_type]</code></p>
+<p>  <code>ON 表名 (列名 [ASC|DESC]  [,…n])</code></p>
+<p>  index_type默认是B+数索引</p>
+</li>
+<li><p>创建联合索引:<code>CREATE INDEX| 索引名 ON 表名(字段名1，字段名2)</code></p>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">//例：在表book的bookname字段上建立名为BkNameIdx的索引。</span><br><span class="line"><span class="keyword">CREATE</span>	<span class="keyword">INDEX</span>	BkNameIdx   </span><br><span class="line"><span class="keyword">ON</span>	book (bookname);</span><br><span class="line"></span><br><span class="line">//在book表的bookId字段上建立唯一索引</span><br><span class="line"><span class="keyword">CREATE</span>	<span class="keyword">UNIQUE</span>	<span class="keyword">INDEX</span>	UniqueIdx    </span><br><span class="line"><span class="keyword">ON</span>	book	(bookId);</span><br><span class="line"></span><br><span class="line">//创建联合索引</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">INDEX</span> ix_scs</span><br><span class="line"><span class="keyword">ON</span> students(sname,<span class="keyword">class</span>,sdept);</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看索引"><a href="#查看索引" class="headerlink" title="查看索引"></a>查看索引</h3><p><code>show index from &lt;表名&gt;</code></p>
+<h3 id="删除索引"><a href="#删除索引" class="headerlink" title="删除索引"></a>删除索引</h3><ul>
+<li><p>方法一</p>
+<p>  <code>DROP  INDEX  索引名 ON  表名;</code></p>
+</li>
+<li><p>方法二</p>
+<p>  <code>ALTER TABLE  表名 DROP INDEX  索引名;</code></p>
+</li>
+</ul>
+<blockquote>
+<p>注意：主键索引的删除有所不同</p>
+<p>ALTER TABLE 表名  DROP PRIMARY KEY; </p>
+<p>例：alter table book  drop PRIMARY KEY; </p>
+</blockquote>
+<h2 id="9-存储过程"><a href="#9-存储过程" class="headerlink" title="9.存储过程"></a>9.存储过程</h2><p><code>CREATE    PROCEDURE   存储过程名     ([ IN | OUT | INOUT ]   参数名  参数的数据类型)</code><br><code>begin</code></p>
+<p>​                <code>sql语句</code></p>
+<p><code>end</code></p>
+<p>IN : 该参数可以作为输入，也就是需要调用方传入值 , 默认</p>
+<p>OUT: 该参数作为输出，也就是该参数可以作为返回值</p>
+<p>INOUT: 既可以作为输入参数，也可以作为输出参数</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">//把默认的;结束符变成$为结束符</span><br><span class="line">delimiter $</span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> pro_test5(<span class="keyword">in</span> height <span class="built_in">int</span> , <span class="keyword">out</span> description <span class="built_in">varchar</span>(<span class="number">100</span>))</span><br><span class="line"> <span class="keyword">begin</span></span><br><span class="line">  <span class="keyword">if</span> height &gt;= <span class="number">180</span> <span class="keyword">then</span></span><br><span class="line">  	<span class="keyword">set</span> description=<span class="string">'身材高挑'</span>;</span><br><span class="line">  elseif height &gt;= 170 and height &lt; 180 then </span><br><span class="line">  	<span class="keyword">set</span> description=<span class="string">'标准身材'</span>;</span><br><span class="line">  else</span><br><span class="line">  	<span class="keyword">set</span> description=<span class="string">'一般身材'</span>;</span><br><span class="line">  <span class="keyword">end</span> <span class="keyword">if</span>;</span><br><span class="line"> <span class="keyword">end</span>$</span><br><span class="line"> </span><br><span class="line"> delimiter ;</span><br><span class="line"> </span><br><span class="line"> //调用</span><br><span class="line"> // @description自定义的用户变量，用来接收输出值</span><br><span class="line"> <span class="keyword">call</span> pro_test5(<span class="number">168</span>, @description)$</span><br><span class="line"> </span><br><span class="line"> //删除存储过程</span><br><span class="line"><span class="keyword">Drop</span>  <span class="keyword">procedure</span>  pro_test5;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="10-数据库安全权限管理"><a href="#10-数据库安全权限管理" class="headerlink" title="10. 数据库安全权限管理"></a>10. 数据库安全权限管理</h2><h3 id="使用create-user创建用户账号"><a href="#使用create-user创建用户账号" class="headerlink" title="使用create user创建用户账号:"></a>使用create user创建用户账号:</h3><p><code>create user ‘user’@’localhost’ identified by [password] &#39;password&#39;</code></p>
+<p><code>[,user identified by [password] &#39;password&#39;] …</code> </p>
+<h3 id="使用Insert语句建用户"><a href="#使用Insert语句建用户" class="headerlink" title="使用Insert语句建用户"></a>使用Insert语句建用户</h3><blockquote>
+<p>实质就是在mysql.user表中插入一条语句</p>
+</blockquote>
+<h3 id="Grant语句"><a href="#Grant语句" class="headerlink" title="Grant语句"></a>Grant语句</h3><blockquote>
+<p>8.0版本后语句发生了改变[<a href="https://juejin.im/post/5b6eec2cf265da0f5e3315a6#heading-2" target="_blank" rel="noopener">参考</a>]</p>
+</blockquote>
+<p><code>Grant 权限 on 对象 to 用户 indentified by ‘密码’</code></p>
+<p> <code>[with grant option]</code></p>
+<h3 id="修改用户账号"><a href="#修改用户账号" class="headerlink" title="修改用户账号"></a>修改用户账号</h3><blockquote>
+<p>要使用rename user语句，必须拥有mysql数据库的update权限或全局create user权限  </p>
+</blockquote>
+<p><code>rename user old_user to new_user [，old_user to new_user]</code></p>
+<h3 id="修改用户口令"><a href="#修改用户口令" class="headerlink" title="修改用户口令"></a>修改用户口令</h3><blockquote>
+<p>在命令行运行 </p>
+</blockquote>
+<p><strong>mysqladmin修改</strong></p>
+<p> <code>mysqladmin –u username p password</code></p>
+<p><strong>使用set语句来修改密码</strong>  </p>
+<p><code>set password [for &#39;username&#39;@&#39;hostname&#39;] =password(&#39;new_password&#39;);</code></p>
+<p> <strong>Update mysql.user表修改</strong>  </p>
+<p><code>Update mysql.user set password=‘新密码’</code></p>
+<p><code>Where host=? and user=?;</code></p>
+<h3 id="删除用户"><a href="#删除用户" class="headerlink" title="删除用户"></a>删除用户</h3><p><strong>用drop user语句来删除普通用户</strong></p>
+<p><code>drop user user[,user]…</code></p>
+<p><strong>使用delete语句来删除普通用户</strong> </p>
+<p><code>delete  from mysql.user where user=&#39;xiaoming&#39; and host=&#39;localhost&#39;</code></p>
+<h3 id="权限授予"><a href="#权限授予" class="headerlink" title="权限授予"></a>权限授予</h3><p><code>Grant 权限名[(列名)] on 对象 To 用户</code></p>
+<p><code>[With grant option]</code></p>
+<h3 id="收回权限"><a href="#收回权限" class="headerlink" title="收回权限"></a>收回权限</h3><p><code>Revoke 权限 on 对象 from 用户</code></p>
+<h3 id="查看权限"><a href="#查看权限" class="headerlink" title="查看权限"></a>查看权限</h3><p><code>show grants FOR &#39;user&#39;@&#39;host&#39;;</code> </p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">//创建用户账号</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">user</span> <span class="string">'xixixi'</span>@<span class="string">'localhost'</span> <span class="keyword">identified</span> <span class="keyword">by</span> <span class="string">'xingkong22'</span></span><br><span class="line"></span><br><span class="line">//<span class="keyword">Grant</span>语句</span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">select</span> <span class="keyword">on</span> jxgl.* <span class="keyword">to</span> <span class="string">'newuser'</span>@<span class="string">'localhost'</span> </span><br><span class="line"><span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'111'</span>;</span><br><span class="line"></span><br><span class="line">//修改用户账号</span><br><span class="line"><span class="keyword">RENAME</span> <span class="keyword">USER</span> <span class="string">'xixixi'</span>@<span class="string">'localhost'</span> <span class="keyword">to</span> <span class="string">'hahaha'</span>@<span class="string">'localhost'</span>;</span><br><span class="line"></span><br><span class="line">//修改用户口令</span><br><span class="line">mysqladmin -uhahaha -p password</span><br><span class="line"></span><br><span class="line">//使用<span class="keyword">set</span>语句来修改密码</span><br><span class="line"><span class="keyword">set</span> <span class="keyword">password</span> <span class="keyword">for</span> <span class="string">'xixixi'</span>@<span class="string">'localhost'</span> = <span class="keyword">password</span>(<span class="string">'123'</span>)</span><br><span class="line"></span><br><span class="line">//授予用户newuser对jxgl数据库students表上sno列和sname列的查询权限</span><br><span class="line"><span class="keyword">Grant</span> <span class="keyword">select</span>(sno,sname) <span class="keyword">on</span> jxgl.students </span><br><span class="line"><span class="keyword">to</span> ‘newuser’@’localhost’</span><br><span class="line"></span><br><span class="line">//授予用户newuser对jxgl数据库students表上sno列和sname列的查询权限，并允许其将权限授予其他用户</span><br><span class="line"><span class="keyword">Grant</span> <span class="keyword">select</span>(sno,sname) <span class="keyword">on</span> jxgl.students </span><br><span class="line"><span class="keyword">to</span> ‘newuser’@’localhost’ </span><br><span class="line"><span class="keyword">with</span> <span class="keyword">grant</span> <span class="keyword">option</span></span><br><span class="line"></span><br><span class="line">//授予所有权限</span><br><span class="line"><span class="keyword">Grant</span> <span class="keyword">all</span> <span class="keyword">on</span> 对象 <span class="keyword">to</span> 用户 [<span class="keyword">with</span> <span class="keyword">grant</span> <span class="keyword">option</span>]</span><br><span class="line">//mysql <span class="number">8.0</span>之后</span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">ALL</span> <span class="keyword">ON</span> *.* <span class="keyword">TO</span> <span class="string">'Testuser1'</span>@<span class="string">'localhost'</span>;</span><br><span class="line"></span><br><span class="line">收回用户jack的所有的删除权限</span><br><span class="line">//<span class="keyword">revoke</span> <span class="keyword">delete</span> <span class="keyword">on</span> *.* <span class="keyword">from</span> <span class="string">'jack'</span>@<span class="string">'localhost'</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="11-备份恢复"><a href="#11-备份恢复" class="headerlink" title="11. 备份恢复"></a>11. 备份恢复</h2><p><strong>Reference</strong></p>
+<p><a href="https://juejin.im/post/5dbb084d5188250d2134ab09" target="_blank" rel="noopener">mysql导入导出设置</a></p>
+<p><strong>备份类型</strong>  </p>
+<ul>
+<li>冷备（cold backup）：需要关mysql服务，读写请求均不允许状态下进行；  </li>
+<li>温备（warm backup）： 服务在线，但仅支持读请求，不允许写请求；  </li>
+<li>热备（hot backup）：备份的同时，业务不受影响。</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">//备份数据库一个数据库</span><br><span class="line">//在终端下运行此命令</span><br><span class="line">mysqldump -uroot -p@Xingkong22 SearchAndNavAPP &gt; SearchAndNavAPP.sql;</span><br><span class="line"></span><br><span class="line">//对数据jxgl进行还原</span><br><span class="line">mysql -u root -p SearchAndNavAPP &lt; /Users/xingkong2/SearchAndNavAPP.sql;</span><br><span class="line"></span><br><span class="line">//备份本地数据库jxgl中students表</span><br><span class="line">Mysqldump –hlocalhost –uroot –p1234 jxgl students &gt; d:\backup\studentsbak.sql</span><br><span class="line"></span><br><span class="line">//备份本地服务器上的所有数据库</span><br><span class="line">Mysqldump –uroot –p1234 <span class="comment">--all-databases &gt; backup_151211.sql</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="12-事务及并发控制"><a href="#12-事务及并发控制" class="headerlink" title="12 .事务及并发控制"></a>12 .事务及并发控制</h2><p>事务：数据库执行操作的最小逻辑单元，可以包含条或多条SQL语句</p>
+<p> <strong>事务并发的问题</strong></p>
+<ul>
+<li>丢失修改</li>
+<li>读“脏”数据</li>
+<li>不可重复读</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/xingkongyj2/PicGo/master/%E6%88%AA%E5%B1%8F2019-12-15%E4%B8%8A%E5%8D%8811.36.48.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/xingkongyj2/PicGo/master/%E6%88%AA%E5%B1%8F2019-12-15%E4%B8%8A%E5%8D%8811.42.33.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/xingkongyj2/PicGo/master/%E6%88%AA%E5%B1%8F2019-12-15%E4%B8%8A%E5%8D%8811.42.42.png" alt=""></p>
+<h2 id="13-建表代码实例"><a href="#13-建表代码实例" class="headerlink" title="13.建表代码实例"></a>13.建表代码实例</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">确定使用的库</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">USE</span> readbook;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">Navicat MySQL Data Transfer</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">Source Server         : mysql</span></span><br><span class="line"><span class="comment">Source Server Version : 50624</span></span><br><span class="line"><span class="comment">Source Host           : localhost:3306</span></span><br><span class="line"><span class="comment">Source Database       : ss</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">Target Server Type    : MYSQL</span></span><br><span class="line"><span class="comment">Target Server Version : 50624</span></span><br><span class="line"><span class="comment">File Encoding         : 65001</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">Date: 2019-09-03 20:11:49</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SET</span> FOREIGN_KEY_CHECKS=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- ----------------------------</span></span><br><span class="line"><span class="comment">-- Table structure for books</span></span><br><span class="line"><span class="comment">-- ----------------------------</span></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">EXISTS</span> <span class="string">`books`</span>;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`books`</span> (</span><br><span class="line">  <span class="string">`bno`</span> <span class="built_in">varchar</span>(<span class="number">8</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">''</span>,</span><br><span class="line">  <span class="string">`classid`</span> <span class="built_in">char</span>(<span class="number">5</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`bname`</span> <span class="built_in">varchar</span>(<span class="number">30</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`author`</span> <span class="built_in">varchar</span>(<span class="number">30</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`price`</span> <span class="built_in">decimal</span>(<span class="number">8</span>,<span class="number">1</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`publish`</span> <span class="built_in">varchar</span>(<span class="number">30</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`csl`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="string">`bno`</span>)</span><br><span class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span> <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- ----------------------------</span></span><br><span class="line"><span class="comment">-- Records of books</span></span><br><span class="line"><span class="comment">-- ----------------------------</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`books`</span> <span class="keyword">VALUES</span> (<span class="string">'sn9001  '</span>, <span class="string">'jsj'</span>, <span class="string">'SQL SERVER2005教程'</span>, <span class="string">'龚波'</span>, <span class="string">'10.5'</span>, <span class="string">'北京希望出版社'</span>, <span class="string">'5'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`books`</span> <span class="keyword">VALUES</span> (<span class="string">'sn9002  '</span>, <span class="string">'jsj'</span>, <span class="string">'Delphi数据库开发指南'</span>, <span class="string">'万科'</span>, <span class="string">'26.4'</span>, <span class="string">'清华大学出版社'</span>, <span class="string">'5'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- ----------------------------</span></span><br><span class="line"><span class="comment">-- Table structure for borrow</span></span><br><span class="line"><span class="comment">-- ----------------------------</span></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">EXISTS</span> <span class="string">`borrow`</span>;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`borrow`</span> (</span><br><span class="line">  <span class="string">`rno`</span> <span class="built_in">varchar</span>(<span class="number">7</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">''</span>,</span><br><span class="line">  <span class="string">`bno`</span> <span class="built_in">varchar</span>(<span class="number">8</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">''</span>,</span><br><span class="line">  <span class="string">`lenddate`</span> datetime <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`limitdate`</span> datetime <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`returndate`</span> datetime <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`fine`</span> <span class="built_in">decimal</span>(<span class="number">10</span>,<span class="number">2</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`renew`</span> <span class="built_in">int</span>(<span class="number">2</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="string">`rno`</span>,<span class="string">`bno`</span>,<span class="string">`lenddate`</span>),</span><br><span class="line">  <span class="keyword">KEY</span> <span class="string">`fk_br_bno_idx`</span> (<span class="string">`bno`</span>),</span><br><span class="line">  <span class="keyword">CONSTRAINT</span> <span class="string">`borrow_ibfk_1`</span> <span class="keyword">FOREIGN</span> <span class="keyword">KEY</span> (<span class="string">`rno`</span>) <span class="keyword">REFERENCES</span> <span class="string">`readers`</span> (<span class="string">`rno`</span>),</span><br><span class="line">  <span class="keyword">CONSTRAINT</span> <span class="string">`borrow_ibfk_2`</span> <span class="keyword">FOREIGN</span> <span class="keyword">KEY</span> (<span class="string">`bno`</span>) <span class="keyword">REFERENCES</span> <span class="string">`books`</span> (<span class="string">`bno`</span>)</span><br><span class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span> <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- ----------------------------</span></span><br><span class="line"><span class="comment">-- Records of borrow</span></span><br><span class="line"><span class="comment">-- ----------------------------</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`borrow`</span> <span class="keyword">VALUES</span> (<span class="string">'1022203'</span>, <span class="string">'sn9010'</span>, <span class="string">'2013-02-26 00:00:00'</span>, <span class="string">'2013-08-26 00:00:00'</span>, <span class="string">'2013-07-01 00:00:00'</span>, <span class="string">'0.00'</span>, <span class="literal">null</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`borrow`</span> <span class="keyword">VALUES</span> (<span class="string">'1022203'</span>, <span class="string">'sn9013'</span>, <span class="string">'2013-02-26 00:00:00'</span>, <span class="string">'2013-08-26 00:00:00'</span>, <span class="string">'2013-07-01 00:00:00'</span>, <span class="string">'0.00'</span>, <span class="literal">null</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- ----------------------------</span></span><br><span class="line"><span class="comment">-- Table structure for readers</span></span><br><span class="line"><span class="comment">-- ----------------------------</span></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">EXISTS</span> <span class="string">`readers`</span>;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`readers`</span> (</span><br><span class="line">  <span class="string">`rno`</span> <span class="built_in">varchar</span>(<span class="number">7</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`rname`</span> <span class="built_in">char</span>(<span class="number">15</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`rsex`</span> <span class="built_in">varchar</span>(<span class="number">2</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`spet`</span> <span class="built_in">char</span>(<span class="number">20</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`dept`</span> <span class="built_in">char</span>(<span class="number">20</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`birthday`</span> datetime <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`tel`</span> <span class="built_in">char</span>(<span class="number">11</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'电话'</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="string">`rno`</span>)</span><br><span class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span> <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- ----------------------------</span></span><br><span class="line"><span class="comment">-- Records of readers</span></span><br><span class="line"><span class="comment">-- ----------------------------</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`readers`</span> <span class="keyword">VALUES</span> (<span class="string">'1022102'</span>, <span class="string">'王铮亮'</span>, <span class="string">'男'</span>, <span class="string">'国贸'</span>, <span class="string">'经济与管理'</span>, <span class="string">'1992-07-15 00:00:00'</span>, <span class="string">'674576'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`readers`</span> <span class="keyword">VALUES</span> (<span class="string">'1022201'</span>, <span class="string">'佟大为'</span>, <span class="string">'男'</span>, <span class="string">'国贸'</span>, <span class="string">'经济与管理'</span>, <span class="string">'1992-10-19 00:00:00'</span>, <span class="string">'674334'</span>);</span><br></pre></td></tr></table></figure>
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Tags</a></li>
+         
+          <li><a href="http://101.132.226.32/search_simple" target="_blank" rel="noopener">Project</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-参考资料"><span class="toc-number">1.</span> <span class="toc-text">1.参考资料</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-数据库设计步骤"><span class="toc-number">2.</span> <span class="toc-text">2.数据库设计步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#数据库的三级模式结构"><span class="toc-number">2.1.</span> <span class="toc-text">数据库的三级模式结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#范式"><span class="toc-number">2.2.</span> <span class="toc-text">范式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-SQL语句分类"><span class="toc-number">3.</span> <span class="toc-text">3.SQL语句分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#数据定义-DDL"><span class="toc-number">3.1.</span> <span class="toc-text">数据定义(DDL)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据操纵-DML"><span class="toc-number">3.2.</span> <span class="toc-text">数据操纵(DML)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据控制-DCL"><span class="toc-number">3.3.</span> <span class="toc-text">数据控制(DCL)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-数据库完整性约束"><span class="toc-number">4.</span> <span class="toc-text">4.数据库完整性约束</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#建外键约束"><span class="toc-number">4.1.</span> <span class="toc-text">建外键约束</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Mysql常用字段"><span class="toc-number">5.</span> <span class="toc-text">5.Mysql常用字段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-SQL语句语法-amp-实例"><span class="toc-number">6.</span> <span class="toc-text">6.SQL语句语法&amp;实例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#注释"><span class="toc-number">6.1.</span> <span class="toc-text">注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CREAT"><span class="toc-number">6.2.</span> <span class="toc-text">CREAT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LATER"><span class="toc-number">6.3.</span> <span class="toc-text">LATER</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DORP"><span class="toc-number">6.4.</span> <span class="toc-text">DORP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#INSTER"><span class="toc-number">6.5.</span> <span class="toc-text">INSTER</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DELETE"><span class="toc-number">6.6.</span> <span class="toc-text">DELETE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SELECT"><span class="toc-number">6.7.</span> <span class="toc-text">SELECT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UPDATA"><span class="toc-number">6.8.</span> <span class="toc-text">UPDATA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#聚集函数"><span class="toc-number">6.9.</span> <span class="toc-text">聚集函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-视图"><span class="toc-number">7.</span> <span class="toc-text">7.视图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#视图查询"><span class="toc-number">7.1.</span> <span class="toc-text">视图查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#视图修改"><span class="toc-number">7.2.</span> <span class="toc-text">视图修改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#视图删除"><span class="toc-number">7.3.</span> <span class="toc-text">视图删除</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#视图的作用"><span class="toc-number">7.4.</span> <span class="toc-text">视图的作用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-索引"><span class="toc-number">8.</span> <span class="toc-text">8.索引</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#索引类型"><span class="toc-number">8.1.</span> <span class="toc-text">索引类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#索引创建"><span class="toc-number">8.2.</span> <span class="toc-text">索引创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看索引"><span class="toc-number">8.3.</span> <span class="toc-text">查看索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除索引"><span class="toc-number">8.4.</span> <span class="toc-text">删除索引</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-存储过程"><span class="toc-number">9.</span> <span class="toc-text">9.存储过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-数据库安全权限管理"><span class="toc-number">10.</span> <span class="toc-text">10. 数据库安全权限管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用create-user创建用户账号"><span class="toc-number">10.1.</span> <span class="toc-text">使用create user创建用户账号:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用Insert语句建用户"><span class="toc-number">10.2.</span> <span class="toc-text">使用Insert语句建用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Grant语句"><span class="toc-number">10.3.</span> <span class="toc-text">Grant语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改用户账号"><span class="toc-number">10.4.</span> <span class="toc-text">修改用户账号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改用户口令"><span class="toc-number">10.5.</span> <span class="toc-text">修改用户口令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除用户"><span class="toc-number">10.6.</span> <span class="toc-text">删除用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#权限授予"><span class="toc-number">10.7.</span> <span class="toc-text">权限授予</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#收回权限"><span class="toc-number">10.8.</span> <span class="toc-text">收回权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看权限"><span class="toc-number">10.9.</span> <span class="toc-text">查看权限</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-备份恢复"><span class="toc-number">11.</span> <span class="toc-text">11. 备份恢复</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-事务及并发控制"><span class="toc-number">12.</span> <span class="toc-text">12 .事务及并发控制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-建表代码实例"><span class="toc-number">13.</span> <span class="toc-text">13.建表代码实例</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://xingkongyj2.github.io/2019/11/15/MySQL%E5%9F%BA%E7%A1%80/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://xingkongyj2.github.io/2019/11/15/MySQL%E5%9F%BA%E7%A1%80/&text=Mysql基础" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://xingkongyj2.github.io/2019/11/15/MySQL%E5%9F%BA%E7%A1%80/&title=Mysql基础" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://xingkongyj2.github.io/2019/11/15/MySQL%E5%9F%BA%E7%A1%80/&is_video=false&description=Mysql基础" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Mysql基础&body=Check out this article: https://xingkongyj2.github.io/2019/11/15/MySQL%E5%9F%BA%E7%A1%80/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://xingkongyj2.github.io/2019/11/15/MySQL%E5%9F%BA%E7%A1%80/&title=Mysql基础" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://xingkongyj2.github.io/2019/11/15/MySQL%E5%9F%BA%E7%A1%80/&title=Mysql基础" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://xingkongyj2.github.io/2019/11/15/MySQL%E5%9F%BA%E7%A1%80/&title=Mysql基础" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://xingkongyj2.github.io/2019/11/15/MySQL%E5%9F%BA%E7%A1%80/&title=Mysql基础" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://xingkongyj2.github.io/2019/11/15/MySQL%E5%9F%BA%E7%A1%80/&name=Mysql基础&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://xingkongyj2.github.io/2019/11/15/MySQL%E5%9F%BA%E7%A1%80/&t=Mysql基础" target="_blank" rel="noopener"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2020-2021
+    兔子翻书
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Tags</a></li>
+         
+          <li><a href="http://101.132.226.32/search_simple" target="_blank" rel="noopener">Project</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

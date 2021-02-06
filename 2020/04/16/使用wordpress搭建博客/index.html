@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="购买服务器买香港的Linux系统，免备案 服务器推荐：  野草主机[首选] 主机壳 老薛主机 必盛互联[贵]">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用wordpress搭建博客">
+<meta property="og:url" content="https://xingkongyj2.github.io/2020/04/16/%E4%BD%BF%E7%94%A8wordpress%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/index.html">
+<meta property="og:site_name" content="兔子翻书">
+<meta property="og:description" content="购买服务器买香港的Linux系统，免备案 服务器推荐：  野草主机[首选] 主机壳 老薛主机 必盛互联[贵]">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/04/04/NTHwIOeaJFlvzrk.png">
+<meta property="og:image" content="https://i.loli.net/2020/04/04/DJFKOWo56dITEpG.png">
+<meta property="og:image" content="https://i.loli.net/2020/04/04/XWUCG3f9ri8yhBd.png">
+<meta property="og:image" content="https://static.bisend.cn/img/201704/201704123shtgeuxpnjcsw5x.png">
+<meta property="og:image" content="https://static.bisend.cn/img/201704/20170412hctbfgidyb2a0oer.png">
+<meta property="og:image" content="https://static.bisend.cn/img/201704/20170412wgyhi4qrvct1uhd2.JPG">
+<meta property="article:published_time" content="2020-04-15T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-02-06T13:37:16.221Z">
+<meta property="article:author" content="兔子翻书">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/04/04/NTHwIOeaJFlvzrk.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>使用wordpress搭建博客</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Tags</a></li>
+         
+          <li><a href="http://101.132.226.32/search_simple" target="_blank" rel="noopener">Project</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2021/01/01/Mysql%E5%AE%9E%E8%B7%B5/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2020/04/15/python%E4%BD%9C%E4%B8%9A/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://xingkongyj2.github.io/2020/04/16/%E4%BD%BF%E7%94%A8wordpress%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://xingkongyj2.github.io/2020/04/16/%E4%BD%BF%E7%94%A8wordpress%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/&text=使用wordpress搭建博客" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://xingkongyj2.github.io/2020/04/16/%E4%BD%BF%E7%94%A8wordpress%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/&title=使用wordpress搭建博客" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://xingkongyj2.github.io/2020/04/16/%E4%BD%BF%E7%94%A8wordpress%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/&is_video=false&description=使用wordpress搭建博客" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=使用wordpress搭建博客&body=Check out this article: https://xingkongyj2.github.io/2020/04/16/%E4%BD%BF%E7%94%A8wordpress%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://xingkongyj2.github.io/2020/04/16/%E4%BD%BF%E7%94%A8wordpress%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/&title=使用wordpress搭建博客" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://xingkongyj2.github.io/2020/04/16/%E4%BD%BF%E7%94%A8wordpress%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/&title=使用wordpress搭建博客" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://xingkongyj2.github.io/2020/04/16/%E4%BD%BF%E7%94%A8wordpress%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/&title=使用wordpress搭建博客" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://xingkongyj2.github.io/2020/04/16/%E4%BD%BF%E7%94%A8wordpress%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/&title=使用wordpress搭建博客" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://xingkongyj2.github.io/2020/04/16/%E4%BD%BF%E7%94%A8wordpress%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/&name=使用wordpress搭建博客&description=&lt;h2 id=&#34;购买服务器&#34;&gt;&lt;a href=&#34;#购买服务器&#34; class=&#34;headerlink&#34; title=&#34;购买服务器&#34;&gt;&lt;/a&gt;购买服务器&lt;/h2&gt;&lt;p&gt;买香港的Linux系统，免备案&lt;/p&gt;
+&lt;p&gt;服务器推荐：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://my.yecaoyun.com/aff.php?aff=109&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;野草主机&lt;/a&gt;[首选]&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.zhujike.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;主机壳&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.mywpku.com/go/laoxuehost&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;老薛主机&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.bisend.cn/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;必盛互联&lt;/a&gt;[贵]&lt;/li&gt;
+&lt;/ul&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://xingkongyj2.github.io/2020/04/16/%E4%BD%BF%E7%94%A8wordpress%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/&t=使用wordpress搭建博客" target="_blank" rel="noopener"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#购买服务器"><span class="toc-number">1.</span> <span class="toc-text">购买服务器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#购买域名"><span class="toc-number">2.</span> <span class="toc-text">购买域名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#域名与服务器相互绑"><span class="toc-number">3.</span> <span class="toc-text">域名与服务器相互绑</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在主机上安装wordpress"><span class="toc-number">4.</span> <span class="toc-text">在主机上安装wordpress</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置数据库"><span class="toc-number">5.</span> <span class="toc-text">配置数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#通过浏览器访问域名"><span class="toc-number">6.</span> <span class="toc-text">通过浏览器访问域名</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        使用wordpress搭建博客
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">兔子翻书</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-04-15T16:00:00.000Z" itemprop="datePublished">2020-04-16</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/Blog/">Blog</a>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="购买服务器"><a href="#购买服务器" class="headerlink" title="购买服务器"></a>购买服务器</h2><p>买香港的Linux系统，免备案</p>
+<p>服务器推荐：</p>
+<ul>
+<li><a href="http://my.yecaoyun.com/aff.php?aff=109" target="_blank" rel="noopener">野草主机</a>[首选]</li>
+<li><a href="https://www.zhujike.com/" target="_blank" rel="noopener">主机壳</a></li>
+<li><a href="https://www.mywpku.com/go/laoxuehost" target="_blank" rel="noopener">老薛主机</a></li>
+<li><a href="https://www.bisend.cn/" target="_blank" rel="noopener">必盛互联</a>[贵]</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="购买域名"><a href="#购买域名" class="headerlink" title="购买域名"></a>购买域名</h2><p>如果购买的域名跟主机是在同一个服务商，配置方便一些。<br>如果购买的域名跟主机不在同一个服务商，比如域名在阿里云，主机在必盛互联。那么需要将域名与服务器相互绑定</p>
+<h2 id="域名与服务器相互绑"><a href="#域名与服务器相互绑" class="headerlink" title="域名与服务器相互绑"></a>域名与服务器相互绑</h2><p>必盛互联的主机够买时会帮你设置绑定域名。只需要将阿里云上的域名解析到必盛互联的主机</p>
+<p>在域名解析中添加如下记录</p>
+<ul>
+<li>记录值：代表购买的主机的ip地址</li>
+</ul>
+<p><img src="https://i.loli.net/2020/04/04/NTHwIOeaJFlvzrk.png" alt=""></p>
+<p>然后去修改DNS服务器，DNS服务器是用来解析域名的服务器。买了必盛互联的主机，那么他会有对应的DNS服务器。所以这里需要填上必盛互联的DNS服务器。这样就把域名绑到了服务器</p>
+<p><img src="https://i.loli.net/2020/04/04/DJFKOWo56dITEpG.png" alt=""></p>
+<h2 id="在主机上安装wordpress"><a href="#在主机上安装wordpress" class="headerlink" title="在主机上安装wordpress"></a>在主机上安装wordpress</h2><p>下载wordpress主题，在必盛互联主机的public_html文件中上传wordpress压缩包。在public_html中解压</p>
+<blockquote>
+<p>注意：此时wordpress在public_html文件夹下。需要把wordpress文件下的全部文件移到public_html文件夹下。简单的说就是解压之后，把wordpress里面的主题移到public_html文件夹下</p>
+</blockquote>
+<p><img src="https://i.loli.net/2020/04/04/XWUCG3f9ri8yhBd.png" alt="public_html文件夹下的文件"></p>
+<h2 id="配置数据库"><a href="#配置数据库" class="headerlink" title="配置数据库"></a>配置数据库</h2><p>创建数据库、用户名、密码之后，还需要将数据库的所有权限赋予该用户</p>
+<p><img src="https://static.bisend.cn/img/201704/201704123shtgeuxpnjcsw5x.png" alt="mysql创建"></p>
+<p>在文本编辑器中打开wp-config-sample.php文件，将数据库，用户名和密码填写。保存为一个新的名为wp-config.php的文件。和wp-config-sample.php放在同一目录下</p>
+<p><img src="https://static.bisend.cn/img/201704/20170412hctbfgidyb2a0oer.png" alt="wp-config-sample.php文件"></p>
+<h2 id="通过浏览器访问域名"><a href="#通过浏览器访问域名" class="headerlink" title="通过浏览器访问域名"></a>通过浏览器访问域名</h2><p>按照WordPress安装提示完成安装。</p>
+<p><img src="https://static.bisend.cn/img/201704/20170412wgyhi4qrvct1uhd2.JPG" alt=""></p>
+<blockquote>
+<p>配置好后，需要去控制面板里面配置<code>多 PHP INI 编辑器</code>，将<code>upload_max_filesize</code>修改成<code>200M</code></p>
+</blockquote>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Tags</a></li>
+         
+          <li><a href="http://101.132.226.32/search_simple" target="_blank" rel="noopener">Project</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#购买服务器"><span class="toc-number">1.</span> <span class="toc-text">购买服务器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#购买域名"><span class="toc-number">2.</span> <span class="toc-text">购买域名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#域名与服务器相互绑"><span class="toc-number">3.</span> <span class="toc-text">域名与服务器相互绑</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在主机上安装wordpress"><span class="toc-number">4.</span> <span class="toc-text">在主机上安装wordpress</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置数据库"><span class="toc-number">5.</span> <span class="toc-text">配置数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#通过浏览器访问域名"><span class="toc-number">6.</span> <span class="toc-text">通过浏览器访问域名</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://xingkongyj2.github.io/2020/04/16/%E4%BD%BF%E7%94%A8wordpress%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://xingkongyj2.github.io/2020/04/16/%E4%BD%BF%E7%94%A8wordpress%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/&text=使用wordpress搭建博客" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://xingkongyj2.github.io/2020/04/16/%E4%BD%BF%E7%94%A8wordpress%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/&title=使用wordpress搭建博客" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://xingkongyj2.github.io/2020/04/16/%E4%BD%BF%E7%94%A8wordpress%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/&is_video=false&description=使用wordpress搭建博客" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=使用wordpress搭建博客&body=Check out this article: https://xingkongyj2.github.io/2020/04/16/%E4%BD%BF%E7%94%A8wordpress%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://xingkongyj2.github.io/2020/04/16/%E4%BD%BF%E7%94%A8wordpress%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/&title=使用wordpress搭建博客" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://xingkongyj2.github.io/2020/04/16/%E4%BD%BF%E7%94%A8wordpress%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/&title=使用wordpress搭建博客" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://xingkongyj2.github.io/2020/04/16/%E4%BD%BF%E7%94%A8wordpress%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/&title=使用wordpress搭建博客" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://xingkongyj2.github.io/2020/04/16/%E4%BD%BF%E7%94%A8wordpress%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/&title=使用wordpress搭建博客" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://xingkongyj2.github.io/2020/04/16/%E4%BD%BF%E7%94%A8wordpress%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/&name=使用wordpress搭建博客&description=&lt;h2 id=&#34;购买服务器&#34;&gt;&lt;a href=&#34;#购买服务器&#34; class=&#34;headerlink&#34; title=&#34;购买服务器&#34;&gt;&lt;/a&gt;购买服务器&lt;/h2&gt;&lt;p&gt;买香港的Linux系统，免备案&lt;/p&gt;
+&lt;p&gt;服务器推荐：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://my.yecaoyun.com/aff.php?aff=109&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;野草主机&lt;/a&gt;[首选]&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.zhujike.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;主机壳&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.mywpku.com/go/laoxuehost&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;老薛主机&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.bisend.cn/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;必盛互联&lt;/a&gt;[贵]&lt;/li&gt;
+&lt;/ul&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://xingkongyj2.github.io/2020/04/16/%E4%BD%BF%E7%94%A8wordpress%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/&t=使用wordpress搭建博客" target="_blank" rel="noopener"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2020-2021
+    兔子翻书
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Tags</a></li>
+         
+          <li><a href="http://101.132.226.32/search_simple" target="_blank" rel="noopener">Project</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

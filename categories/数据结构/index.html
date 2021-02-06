@@ -1,1090 +1,311 @@
 <!DOCTYPE html>
-<html  lang="zh">
+<html lang=zh>
 <head>
-    <meta charset="utf-8" />
-
-<meta name="generator" content="Hexo 4.2.0" />
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-
-<title>分类: 数据结构 - 兔子翻书</title>
-
-
-    <meta property="og:type" content="website">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="每个优秀的人都有一段沉默的时光。那段时光是付出了很多努力，却得不到结果的日子。我们把它叫做扎根">
+<meta property="og:type" content="website">
 <meta property="og:title" content="兔子翻书">
-<meta property="og:url" content="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/index.html">
+<meta property="og:url" content="https://xingkongyj2.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/index.html">
 <meta property="og:site_name" content="兔子翻书">
+<meta property="og:description" content="每个优秀的人都有一段沉默的时光。那段时光是付出了很多努力，却得不到结果的日子。我们把它叫做扎根">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://yoursite.com/images/og_image.png">
 <meta property="article:author" content="兔子翻书">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
-
-
-
-
-
-
-
-<link rel="icon" href="/images/favicon.svg">
-
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
-
-
     
     
-<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
-
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
     
+    <!-- title -->
+    <title>Tags: 数据结构</title>
+    <!-- styles -->
     
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
-
-    
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
-
-    
-    
-    
-    
-<link rel="stylesheet" href="/css/back-to-top.css">
-
-    
-    
-    
-    
-    
-    
-    
-    <link rel="stylesheet" href="/css/progressbar.css">
-<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
-    
-    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    
-
-
 <link rel="stylesheet" href="/css/style.css">
-</head>
-<body class="is-3-column">
-    <nav class="navbar navbar-main">
-    <div class="container">
-        <div class="navbar-brand is-flex-center">
-            <a class="navbar-item navbar-logo" href="/">
-            
-                <img src="/images/logo.svg" alt="兔子翻书" height="28">
-            
-            </a>
-        </div>
-        <div class="navbar-menu">
-            
-            <div class="navbar-start">
-                
-                <a class="navbar-item"
-                href="/">主页</a>
-                
-                <a class="navbar-item"
-                href="/categories">分类</a>
-                
-                <a class="navbar-item"
-                href="/tags">标签</a>
-                
-                <a class="navbar-item"
-                href="/archives">归档</a>
-                
-            </div>
-            
-            <div class="navbar-end">
-                
-                    
-                    <a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/xingkongyj2">
-                        
-                        <i class="fab fa-github"></i>
-                        
-                    </a>
-                    
-                
-                
-                
-                <a class="navbar-item search" title="搜索" href="javascript:;">
-                    <i class="fas fa-search"></i>
-                </a>
-                
-            </div>
-        </div>
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+    <div class="content index py4">
+        
+          <header id="header">
+  <a href="/">
+  
+    
+      <div id="logo" style="background-image: url(http://xingkong-images.test.upcdn.net/PicGo/20210206142638.png);"></div>
+    
+  
+    <div id="title">
+      <h1>兔子翻书</h1>
     </div>
-</nav>
+  </a>
+  <div id="nav">
+    <ul>
+      <li class="icon">
+        <a href="#"><i class="fas fa-bars fa-2x"></i></a>
+      </li>
+       
+        <li><a href="/">Home</a></li>
+       
+        <li><a href="/archives/">Writing</a></li>
+       
+        <li><a href="/categories/">Tags</a></li>
+       
+        <li><a href="http://101.132.226.32/search_simple" target="_blank" rel="noopener">Project</a></li>
+       
+        <li><a href="/search/">Search</a></li>
+      
+    </ul>
+  </div>
+</header>
+
+        
+        <div id="archive">
+  <ul class="post-list">
     
-    <section class="section">
-        <div class="container">
-            <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/categories">分类</a></li>
-            
-            <li class="is-active"><a href="#" aria-current="page">数据结构</a></li>
-        </ul>
-        </nav>
+    
+    
+    
+      
+      
+      
+      
+        <h2>2020</h2>
+      
+      <li class="post-item">
+        
+    <div class="meta">
+      
+        
+          <time datetime="2020-01-31T13:26:46.568Z" itemprop="datePublished">2020-01-31</time>
+        
+      
     </div>
-</div>
 
+
+        <span>
     
-<div class="card">
+        <a class="" href="/2020/01/31/%E4%BC%98%E8%B4%A8%E5%8D%9A%E5%AE%A2/">算法博客</a>
     
-    <div class="card-content article ">
 
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/01/31/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"><i class="fas fa-angle-double-right"></i>动态规划</a>
-            
-        </h1>
 
+</span>
+      </li>
+    
+      
+      
+      
+      
+      <li class="post-item">
         
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                
-                <time class="level-item has-text-grey" datetime="2020-01-31T13:26:46.568Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-31</time>
-                
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-07-05T09:43:27.464Z"><i class="far fa-calendar-check">&nbsp;</i>2020-07-05</time>
-                
-
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    3 分钟 读完 (大约 387 个字)
-                </span>
-                
-                
-            </div>
-        </div>
+    <div class="meta">
+      
         
-
-        <div class="content">
-            <h2 id="递归型"><a href="#递归型" class="headerlink" title="递归型"></a>递归型</h2><p><strong>记忆递归型</strong></p>
-<p>优点：只经过有用的状态，没有浪费。递推型会查看一些 没用的状态，有浪费。</p>
-<p>缺点：可能会因递归层数太深导致栈溢出，函数调用带来额外时间开销。总体来说，比递推型慢</p>
-        </div>
+          <time datetime="2020-01-31T13:26:46.568Z" itemprop="datePublished">2020-01-31</time>
         
-        
-        
-        <hr style="height:1px;margin:1rem 0"/>
-        <div class="level is-mobile is-flex">
-            <div class="level-start">
-                
-            </div>
-
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2020/01/31/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
+      
     </div>
-</div>
 
 
-
-
-
-
+        <span>
     
-<div class="card">
+        <a class="" href="/2020/01/31/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">动态规划</a>
     
-    <div class="card-content article ">
 
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2020/01/31/%E7%AE%97%E6%B3%95%E5%8D%9A%E5%AE%A2/"><i class="fas fa-angle-double-right"></i>算法博客</a>
-            
-        </h1>
 
+</span>
+      </li>
+    
+      
+      
+      
+      
+        <h2>2018</h2>
+      
+      <li class="post-item">
         
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                
-                <time class="level-item has-text-grey" datetime="2020-01-31T13:26:46.568Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-01-31</time>
-                
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-07-05T09:48:00.108Z"><i class="far fa-calendar-check">&nbsp;</i>2020-07-05</time>
-                
-
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    1 分钟 读完 (大约 170 个字)
-                </span>
-                
-                
-            </div>
-        </div>
+    <div class="meta">
+      
         
-
-        <div class="content">
-            <ul>
-<li><a href="https://blog.csdn.net/hy1405430407/article/details/47420921">ACM所有算法</a></li>
-<li><a href="https://blog.csdn.net/v_july_v">结构之法 算法之道</a></li>
-<li><a href="https://blog.csdn.net/jiyanfeng1/article/details/8543846">乘法算法-Karatsuba算法 - jiyanfeng1的专栏 - CSDN博客</a></li>
-<li><a href="https://blog.csdn.net/oDoJi/article/details/79532915">Karatsuba 算法 - oDoJi的博客 - CSDN博客</a></li>
-</ul>
-<h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><ul>
-<li><a href="https://www.kancloud.cn/kancloud/pack/70125">背包问题九讲 </a></li>
-</ul>
-<h2 id="树"><a href="#树" class="headerlink" title="树"></a>树</h2><ul>
-<li><a href="https://www.cnblogs.com/vincently/p/4526560.html">B树与B+树</a></li>
-<li><a href="https://segmentfault.com/a/1190000020416577?utm_source=weekly&utm_medium=email&utm_campaign=email_weekly">B树和B+树2</a></li>
-<li><a href="https://blog.csdn.net/qq_26768741/article/details/53164202">B树，B+树，B*树以及分析MySQL的两种引擎</a></li>
-</ul>
-<h2 id="汇编"><a href="#汇编" class="headerlink" title="汇编"></a>汇编</h2><ul>
-<li><p><a href="https://blog.csdn.net/baishuiniyaonulia/article/details/78504758">汇编语言的所有指令</a></p>
-</li>
-<li><p><a href="https://www.cnblogs.com/YukiJohnson/archive/2012/10/27/2741836.html">X86汇编快速入门</a></p>
-</li>
-</ul>
-
-        </div>
+          <time datetime="2018-08-22T16:00:00.000Z" itemprop="datePublished">2018-08-23</time>
         
-        
-        
+      
     </div>
-</div>
 
 
-
-
-
-
+        <span>
     
-<div class="card">
+        <a class="" href="/2018/08/23/%E6%A0%91/">树</a>
     
-    <div class="card-content article ">
 
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2018/08/23/%E6%A0%91/"><i class="fas fa-angle-double-right"></i>树</a>
-            
-        </h1>
 
+</span>
+      </li>
+    
+      
+      
+      
+      
+      <li class="post-item">
         
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                
-                <time class="level-item has-text-grey" datetime="2018-08-22T16:00:00.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2018-08-23</time>
-                
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-07-05T09:44:18.817Z"><i class="far fa-calendar-check">&nbsp;</i>2020-07-05</time>
-                
-
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    6 分钟 读完 (大约 950 个字)
-                </span>
-                
-                
-            </div>
-        </div>
+    <div class="meta">
+      
         
-
-        <div class="content">
-            <h2 id="重点树"><a href="#重点树" class="headerlink" title="重点树"></a>重点树</h2><ol>
-<li>bst</li>
-<li>bbst（AVL）</li>
-<li>红黑树</li>
-<li>伸展树</li>
-<li>B树</li>
-<li><a href="http://www.sohu.com/a/156886901_479559">B+树</a></li>
-<li>B*树</li>
-<li>k-d树</li>
-<li>trie树（字典树）</li>
-<li>区间树与线段树</li>
-</ol>
-<h2 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h2><p><a href="https://segmentfault.com/a/1190000008850005">二叉树的操作</a></p>
-<ol>
-<li>一个一般意义上的多叉树是可以转换为一个二叉树的</li>
-<li>根据中序遍历+前序或后续的一个，就可以构造出一颗树</li>
-<li>前序+后序 与 真二叉树 是可以还原真二叉树</li>
-<li>真二叉树：每个节点的出度都是偶数，要么是0，要么是2，不可能是1</li>
-</ol>
-<h2 id="树的同构"><a href="#树的同构" class="headerlink" title="树的同构"></a>树的同构</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">define</span> Null -1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">     <span class="keyword">char</span> Data;</span><br><span class="line">     <span class="keyword">char</span> Left;</span><br><span class="line">     <span class="keyword">char</span> Right;</span><br><span class="line">&#125;Node;</span><br><span class="line"></span><br><span class="line">Node T1[<span class="number">10</span>],T2[<span class="number">10</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">CreatTree</span><span class="params">(Node T[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> N,Cheak[<span class="number">10</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span> i,Root=Null;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d\\n"</span>,&amp;N);</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%c %c %c\\n"</span>,&amp;T[i].Data,&amp;T[i].Left,&amp;T[i].Right);</span><br><span class="line">        <span class="keyword">if</span>(T[i].Left==<span class="string">'-'</span>)</span><br><span class="line">            T[i].Left=Null;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            T[i].Left=T[i].Left-<span class="string">'0'</span>;</span><br><span class="line">            Cheak[T[i].Left]=<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(T[i].Right==<span class="string">'-'</span>)</span><br><span class="line">            T[i].Right=Null;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            T[i].Right=T[i].Right-<span class="string">'0'</span>;</span><br><span class="line">            Cheak[T[i].Right]=<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; N; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(!Cheak[i])</span><br><span class="line">        &#123;</span><br><span class="line">            Root=i;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> Root;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Isomprphic</span><span class="params">(<span class="keyword">int</span> root1,<span class="keyword">int</span> root2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>( (root1 == Null) &amp;&amp; (root2 == Null))<span class="comment">//都是空 ，同构 </span></span><br><span class="line">         <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">     <span class="keyword">if</span>( (root1 == Null) &amp;&amp; (root2 != Null) || (root1 != Null)&amp;&amp;(root2 == Null))<span class="comment">//其中一个为空，不同构 </span></span><br><span class="line">         <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">     <span class="keyword">if</span>(T1[root1].Data != T2[root2].Data)     <span class="comment">//根数据不同,不同构 </span></span><br><span class="line">         <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">     <span class="keyword">if</span>( (T1[root1].Left == Null) &amp;&amp; (T2[root2].Left == Null) ) <span class="comment">//左子树为空，则判断右子树 </span></span><br><span class="line">         <span class="keyword">return</span> Isomprphic(T1[root1].Right, T2[root2].Right);</span><br><span class="line">         </span><br><span class="line">    <span class="keyword">if</span>((T1[root1].Left != Null) &amp;&amp; (T2[root2].Left != Null) &amp;&amp;</span><br><span class="line">         ( T1[T1[root1].Left].Data == T2[T2[root2].Left].Data) )<span class="comment">//两树左子树皆不空，且值相等 </span></span><br><span class="line">         <span class="keyword">return</span> (Isomprphic(T1[root1].Left, T2[root2].Left) &amp;&amp;  <span class="comment">//判断其子树 </span></span><br><span class="line">                 Isomprphic(T1[root1].Right, T2[root2].Right) );</span><br><span class="line">     <span class="keyword">else</span> <span class="comment">//两树左子树有一个空  或者  皆不空但值不等  </span></span><br><span class="line">         <span class="keyword">return</span> (Isomprphic(T1[root1].Left, T2[root2].Right) &amp;&amp;  <span class="comment">//交换左右子树判断 </span></span><br><span class="line">                Isomprphic(T1[root1].Right, T2[root2].Left) );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span>  </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> Root1=CreatTree(T1);</span><br><span class="line">    <span class="keyword">int</span> Root2=CreatTree(T2);</span><br><span class="line">    <span class="keyword">if</span> (Isomprphic(Root1,Root2))</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"Yes\\n"</span>);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"No\\n"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="曼哈顿树的编码与解码"><a href="#曼哈顿树的编码与解码" class="headerlink" title="曼哈顿树的编码与解码"></a>曼哈顿树的编码与解码</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;         </span></span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">define</span> MaxSize 100</span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">define</span> MinWeight -1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">HuffmanNode</span>* <span class="title">HuffmanTree</span>;</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">HuffmanNode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">char</span> Data;</span><br><span class="line">	<span class="keyword">int</span> Weight;</span><br><span class="line">	HuffmanTree Left,Right;</span><br><span class="line">&#125; HuffmanNode;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">HeapNode</span>* <span class="title">MinHeap</span>;</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">HeapNode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">char</span>* Data;</span><br><span class="line">	<span class="keyword">int</span>* Weight;</span><br><span class="line">	HuffmanTree* P;</span><br><span class="line">	<span class="keyword">int</span> <span class="built_in">size</span>;</span><br><span class="line">	<span class="keyword">int</span> Capacity; </span><br><span class="line">&#125;HeapNode;</span><br><span class="line"></span><br><span class="line"><span class="function">MinHeap <span class="title">Creat</span><span class="params">(<span class="keyword">int</span> sum)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	MinHeap H=(MinHeap)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(HeapNode));</span><br><span class="line">	H-&gt;Weight=(<span class="keyword">int</span>*)<span class="built_in">malloc</span>((MaxSize+<span class="number">1</span>)*<span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">	H-&gt;Data=(<span class="keyword">char</span>*)<span class="built_in">malloc</span>((MaxSize+<span class="number">1</span>)*<span class="keyword">sizeof</span>(<span class="keyword">char</span>));</span><br><span class="line">	H-&gt;P=(HuffmanTree*)<span class="built_in">malloc</span>((MaxSize+<span class="number">1</span>)*<span class="keyword">sizeof</span>(HuffmanTree));</span><br><span class="line">	H-&gt;<span class="built_in">size</span>=<span class="number">0</span>;</span><br><span class="line">	H-&gt;Capacity=MaxSize;</span><br><span class="line">	H-&gt;Weight[<span class="number">0</span>]=MinWeight;</span><br><span class="line">	<span class="keyword">return</span> H;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Initialize</span><span class="params">(MinHeap H)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= H-&gt;<span class="built_in">size</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		H-&gt;P[i]=(HuffmanTree)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(HuffmanNode));</span><br><span class="line">		H-&gt;P[i]-&gt;Weight=H-&gt;Weight[i];</span><br><span class="line">		H-&gt;P[i]-&gt;Data=H-&gt;Data[i];</span><br><span class="line">		H-&gt;P[i]-&gt;Left=<span class="literal">NULL</span>;</span><br><span class="line">		H-&gt;P[i]-&gt;Right=<span class="literal">NULL</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PercDown</span><span class="params">(MinHeap H,<span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> Parent, Child;</span><br><span class="line">	 <span class="keyword">int</span> X;</span><br><span class="line">	 <span class="keyword">char</span> temp;</span><br><span class="line">   	HuffmanTree Change;</span><br><span class="line">    X = H-&gt;Weight[i]; <span class="comment">/* 取出根结点存放的值 */</span></span><br><span class="line">    <span class="keyword">for</span>( Parent=i; Parent*<span class="number">2</span>&lt;=H-&gt;<span class="built_in">size</span>; Parent=Child ) &#123;</span><br><span class="line">        Child = Parent * <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span>( (Child!=H-&gt;<span class="built_in">size</span>) &amp;&amp; (H-&gt;Weight[Child]&gt;H-&gt;Weight[Child+<span class="number">1</span>]) )</span><br><span class="line">            Child++;  <span class="comment">/* Child指向左右子结点的较小者 */</span></span><br><span class="line">        <span class="keyword">if</span>( X &lt;= H-&gt;Weight[Child] ) <span class="keyword">break</span>; <span class="comment">/* 找到了合适位置 */</span></span><br><span class="line">        <span class="keyword">else</span> </span><br><span class="line">        &#123;</span><br><span class="line">            H-&gt;Weight[Parent] = H-&gt;Weight[Child];</span><br><span class="line">            Change=H-&gt;P[Child];</span><br><span class="line">            H-&gt;P[Child]=H-&gt;P[Parent];</span><br><span class="line">            H-&gt;P[Parent]=Change;</span><br><span class="line">            temp=H-&gt;Data[Child];</span><br><span class="line">            H-&gt;Data[Child]=H-&gt;Data[Parent];</span><br><span class="line">            H-&gt;Data[Parent]=temp;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    H-&gt;Weight[Parent] = X;</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BuildMinHeap</span><span class="params">(MinHeap H)</span> <span class="comment">//建立最小堆</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">for</span> (i = H-&gt;<span class="built_in">size</span>/<span class="number">2</span>; i &gt;<span class="number">0</span>; i--)</span><br><span class="line">		PercDown(H,i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">IsEmpty</span><span class="params">(MinHeap H)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (H-&gt;<span class="built_in">size</span>==<span class="number">0</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">HuffmanTree <span class="title">DeletMin</span><span class="params">(MinHeap H)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> Parent,Child;</span><br><span class="line">	<span class="keyword">int</span> MaxItem,temp;</span><br><span class="line">	<span class="keyword">char</span> temp2;</span><br><span class="line">	HuffmanTree MaxItemP,Change;</span><br><span class="line">	<span class="keyword">if</span> (IsEmpty(H))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"堆为空\\n"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	MaxItemP=H-&gt;P[<span class="number">1</span>];</span><br><span class="line">	H-&gt;P[<span class="number">1</span>]=H-&gt;P[H-&gt;<span class="built_in">size</span>];</span><br><span class="line">	H-&gt;Data[<span class="number">1</span>]=H-&gt;Data[H-&gt;<span class="built_in">size</span>];</span><br><span class="line">	temp=H-&gt;Weight[H-&gt;<span class="built_in">size</span>--];</span><br><span class="line">	<span class="keyword">for</span>( Parent=<span class="number">1</span>; Parent*<span class="number">2</span>&lt;=H-&gt;<span class="built_in">size</span>; Parent=Child ) &#123;</span><br><span class="line">		 Child = Parent * <span class="number">2</span>;</span><br><span class="line">		 <span class="keyword">if</span>( (Child!=H-&gt;<span class="built_in">size</span>) &amp;&amp; (H-&gt;Weight[Child]&gt;H-&gt;Weight[Child+<span class="number">1</span>]) )</span><br><span class="line">		 Child++;  <span class="comment">/* Child指向左右子结点的较小者 */</span></span><br><span class="line">		 <span class="keyword">if</span>( temp &lt;= H-&gt;Weight[Child] ) <span class="keyword">break</span>; <span class="comment">/* 找到了合适位置 */</span></span><br><span class="line">	        <span class="keyword">else</span> </span><br><span class="line">	        &#123;</span><br><span class="line">	            H-&gt;Weight[Parent] = H-&gt;Weight[Child];</span><br><span class="line">	            Change=H-&gt;P[Child];</span><br><span class="line">	            H-&gt;P[Child]=H-&gt;P[Parent];</span><br><span class="line">	            H-&gt;P[Parent]=Change;</span><br><span class="line">	            temp2=H-&gt;Data[Child];</span><br><span class="line">	            H-&gt;Data[Child]=H-&gt;Data[Parent];</span><br><span class="line">	            H-&gt;Data[Parent]=temp2;</span><br><span class="line">	        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    H-&gt;Weight[Parent] = temp;</span><br><span class="line">    <span class="keyword">return</span> MaxItemP;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">IsFull</span><span class="params">(MinHeap H)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(H-&gt;<span class="built_in">size</span>==H-&gt;Capacity)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Insert</span><span class="params">(MinHeap H,HuffmanTree T)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">int</span> item=T-&gt;Weight;</span><br><span class="line">	<span class="keyword">char</span> temp;</span><br><span class="line">	HuffmanTree Change;</span><br><span class="line">	<span class="keyword">if</span>(IsFull(H))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"堆满\\n"</span>);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	i=++H-&gt;<span class="built_in">size</span>;</span><br><span class="line">	H-&gt;P[H-&gt;<span class="built_in">size</span>]=T;</span><br><span class="line">	<span class="keyword">for</span>(;H-&gt;Weight[i/<span class="number">2</span>]&gt;item;i/=<span class="number">2</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		H-&gt;Weight[i]=H-&gt;Weight[i/<span class="number">2</span>];</span><br><span class="line">		Change=H-&gt;P[i];</span><br><span class="line">		H-&gt;P[i]=H-&gt;P[i/<span class="number">2</span>];</span><br><span class="line">		H-&gt;P[i/<span class="number">2</span>]=Change;</span><br><span class="line">		temp=H-&gt;Data[i];</span><br><span class="line">		 H-&gt;Data[i]=H-&gt;Data[i/<span class="number">2</span>];</span><br><span class="line">		 H-&gt;Data[i/<span class="number">2</span>]=temp;</span><br><span class="line">	&#125;</span><br><span class="line">	H-&gt;Weight[i]=item;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">HuffmanTree <span class="title">Huffman</span><span class="params">(MinHeap H)</span> <span class="comment">//建立曼哈顿树(链表)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">int</span> m=H-&gt;<span class="built_in">size</span>;</span><br><span class="line">	HuffmanTree T;</span><br><span class="line">	BuildMinHeap(H);</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;m;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		T=(HuffmanTree)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(HuffmanNode));</span><br><span class="line">		T-&gt;Left=DeletMin(H);</span><br><span class="line">		T-&gt;Right=DeletMin(H);</span><br><span class="line">		T-&gt;Weight=T-&gt;Left-&gt;Weight+T-&gt;Right-&gt;Weight;</span><br><span class="line">		T-&gt;Data=<span class="string">'*'</span>;</span><br><span class="line">		Insert(H,T);</span><br><span class="line">	&#125;</span><br><span class="line">	T=DeletMin(H);</span><br><span class="line">	<span class="keyword">return</span> T;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Encode</span><span class="params">(HuffmanTree T,<span class="keyword">int</span> Level,<span class="keyword">char</span> str[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(T-&gt;Left==<span class="literal">NULL</span> &amp;&amp; T-&gt;Right==<span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		str[Level]='\\0';       //加‘\\0’表示结束</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%c %s\\n"</span>,T-&gt;Data,str);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		str[Level]=<span class="string">'0'</span>;</span><br><span class="line">		Encode(T-&gt;Left,Level+<span class="number">1</span>,str);</span><br><span class="line">		str[Level]=<span class="string">'1'</span>;</span><br><span class="line">		Encode(T-&gt;Right,Level+<span class="number">1</span>,str);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Decoded</span><span class="params">(HuffmanTree T,<span class="keyword">char</span> str2[])</span>     <span class="comment">//解码</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> pr[<span class="number">100</span>];</span><br><span class="line">	<span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">	HuffmanTree Head=T;</span><br><span class="line">	while(*str2!='\\0')</span><br><span class="line">	&#123;	</span><br><span class="line">			<span class="keyword">if</span> (*str2==<span class="string">'0'</span>)</span><br><span class="line">				Head=Head-&gt;Left;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">				Head=Head-&gt;Right;</span><br><span class="line">			<span class="keyword">if</span>(Head-&gt;Left==<span class="literal">NULL</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				</span><br><span class="line">				pr[i]=Head-&gt;Data;</span><br><span class="line">				i++;</span><br><span class="line">				pr[i+1]='\\0';</span><br><span class="line">				Head=T;</span><br><span class="line">			&#125;</span><br><span class="line">			str2++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(Head!=T)               <span class="comment">//当把最后一个数字遍历后，如果正好是在叶节点的位置，说明可以正好全部解码</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"解码失败\\n"</span>);</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%s\\n"</span>,pr);	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span>      <span class="comment">//未解决：如果是“AAAA”怎么办？</span></span></span><br><span class="line"><span class="function"></span>&#123;					<span class="comment">//编码：链表（表示曼哈顿树）+数组（用来做最小堆）</span></span><br><span class="line">	<span class="keyword">int</span> N=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;N);</span><br><span class="line">	<span class="keyword">int</span> i,j;</span><br><span class="line">	char str[100]=&#123;'\\0'&#125;,str2[100];</span><br><span class="line">	MinHeap H=Creat(MaxSize);</span><br><span class="line">	HuffmanTree T;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>,j=<span class="number">0</span>;i&lt;=N;i++,j++)</span><br><span class="line">	&#123;</span><br><span class="line">		getchar();</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%c %d"</span>,&amp;H-&gt;Data[i],&amp;H-&gt;Weight[i]);</span><br><span class="line">		H-&gt;<span class="built_in">size</span>++;</span><br><span class="line">	&#125;</span><br><span class="line">	Initialize(H);</span><br><span class="line">	T=Huffman(H);</span><br><span class="line">	Encode(T,<span class="number">0</span>,str);</span><br><span class="line"></span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%s"</span>,str2);</span><br><span class="line">	Decoded(T,str2);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        </div>
+          <time datetime="2018-08-16T16:00:00.000Z" itemprop="datePublished">2018-08-17</time>
         
-        
-        
+      
     </div>
-</div>
 
 
-
-
-
-
+        <span>
     
-<div class="card">
+        <a class="" href="/2018/08/17/%E5%A0%86%E6%A0%88/">堆栈</a>
     
-    <div class="card-content article ">
 
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2018/08/17/%E5%A0%86%E6%A0%88/"><i class="fas fa-angle-double-right"></i>堆栈</a>
-            
-        </h1>
 
+</span>
+      </li>
+    
+      
+      
+      
+      
+      <li class="post-item">
         
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                
-                <time class="level-item has-text-grey" datetime="2018-08-16T16:00:00.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2018-08-17</time>
-                
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-07-05T09:44:24.350Z"><i class="far fa-calendar-check">&nbsp;</i>2020-07-05</time>
-                
-
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    7 分钟 读完 (大约 1088 个字)
-                </span>
-                
-                
-            </div>
-        </div>
+    <div class="meta">
+      
         
-
-        <div class="content">
-            <h2 id="堆栈的应用场合"><a href="#堆栈的应用场合" class="headerlink" title="堆栈的应用场合"></a>堆栈的应用场合</h2><ol>
-<li>逆序输出：处理与输出次序的过程颠倒；递归深度与输出长度不易预知</li>
-<li>递归嵌套</li>
-<li>延迟缓存</li>
-<li>栈式计算</li>
-</ol>
-        </div>
+          <time datetime="2018-06-16T16:00:00.000Z" itemprop="datePublished">2018-06-17</time>
         
-        
-        
-        <hr style="height:1px;margin:1rem 0"/>
-        <div class="level is-mobile is-flex">
-            <div class="level-start">
-                
-            </div>
-
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2018/08/17/%E5%A0%86%E6%A0%88/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
+      
     </div>
-</div>
 
 
-
-
-
-
+        <span>
     
-<div class="card">
+        <a class="" href="/2018/06/17/%E5%88%86%E6%B2%BB%E7%AD%96%E7%95%A5/">分治策略</a>
     
-    <div class="card-content article ">
 
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2018/06/17/%E5%88%86%E6%B2%BB%E7%AD%96%E7%95%A5/"><i class="fas fa-angle-double-right"></i>分治策略</a>
-            
-        </h1>
 
+</span>
+      </li>
+    
+      
+      
+      
+      
+      <li class="post-item">
         
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                
-                <time class="level-item has-text-grey" datetime="2018-06-16T16:00:00.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2018-06-17</time>
-                
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-07-05T09:44:08.373Z"><i class="far fa-calendar-check">&nbsp;</i>2020-07-05</time>
-                
-
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    1 分钟 读完 (大约 144 个字)
-                </span>
-                
-                
-            </div>
-        </div>
+    <div class="meta">
+      
         
-
-        <div class="content">
-            <blockquote>
-<p>分治与减治是两种不同的策略</p>
-</blockquote>
-<h2 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h2><p>1:将原始问题划分或归纳总结为规模较小的子问题（可以减半，也可以减一）</p>
-<p>2:递归或迭代求解每个子问题</p>
-<p>3:将子问题的解综合得到原问题的解</p>
-        </div>
+          <time datetime="2018-06-16T16:00:00.000Z" itemprop="datePublished">2018-06-17</time>
         
-        
-        
-        <hr style="height:1px;margin:1rem 0"/>
-        <div class="level is-mobile is-flex">
-            <div class="level-start">
-                
-            </div>
-
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2018/06/17/%E5%88%86%E6%B2%BB%E7%AD%96%E7%95%A5/#more">阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
+      
     </div>
+
+
+        <span>
+    
+        <a class="" href="/2018/06/17/%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D/">模式匹配</a>
+    
+
+
+</span>
+      </li>
+    
+  </ul>
+  
+
 </div>
 
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2018/06/17/%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D/"><i class="fas fa-angle-double-right"></i>模式匹配</a>
-            
-        </h1>
-
         
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                
-                <time class="level-item has-text-grey" datetime="2018-06-16T16:00:00.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2018-06-17</time>
-                
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-11-07T01:38:28.630Z"><i class="far fa-calendar-check">&nbsp;</i>2020-11-07</time>
-                
-
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    4 分钟 读完 (大约 629 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-
-        <div class="content">
-            <h2 id="KMP"><a href="#KMP" class="headerlink" title="KMP"></a>KMP</h2><h3 id="KMP实现"><a href="#KMP实现" class="headerlink" title="KMP实现"></a>KMP实现</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//求一个字符串在另一个字符串出现的第一个位置       </span></span><br><span class="line"></span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span>* <span class="title">NextImprove</span><span class="params">(<span class="keyword">char</span> *P)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> m=<span class="built_in">strlen</span>(P),j=<span class="number">0</span>;	<span class="comment">//主串指针</span></span><br><span class="line">	<span class="keyword">int</span>* N=(<span class="keyword">int</span>*)<span class="built_in">malloc</span>(m*<span class="keyword">sizeof</span>(<span class="keyword">int</span>));  <span class="comment">//Next表</span></span><br><span class="line">	<span class="keyword">int</span> t=N[<span class="number">0</span>]=<span class="number">-1</span>;		<span class="comment">//P[-1]为通配符</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span>(j&lt;m<span class="number">-1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(t&lt;<span class="number">0</span> || P[j]==P[t])</span><br><span class="line">		&#123;</span><br><span class="line">			j++;</span><br><span class="line">			t++;</span><br><span class="line">			N[j]=P[j]!=P[t]?t:N[t];				<span class="comment">//改进版</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			t=N[t];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> N;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//next构建思路（递推结合画图）：next[j+1]&lt;=next[j]+1  </span></span><br><span class="line"><span class="comment">//当且仅当P[j]=P[next[j]]是取等号，即j对应的字符与next[j]对应的字符相同</span></span><br><span class="line"><span class="comment">//对next[j]的理解：即是在P[0,j)中，最大自匹配的真前缀和真后缀的长度</span></span><br><span class="line"><span class="comment">//next[j]即是最大自匹配的真前缀和真后缀的长度，也是比对失败时应该跳转到的位置</span></span><br><span class="line"><span class="function"><span class="keyword">int</span>* <span class="title">BuildNext</span><span class="params">(<span class="keyword">char</span> *P)</span>					<span class="comment">//未改进版</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> m=<span class="built_in">strlen</span>(P),j=<span class="number">0</span>;	<span class="comment">//主串指针</span></span><br><span class="line">	<span class="keyword">int</span>* N=(<span class="keyword">int</span>*)<span class="built_in">malloc</span>(m*<span class="keyword">sizeof</span>(<span class="keyword">int</span>));  <span class="comment">//Next表</span></span><br><span class="line">	<span class="keyword">int</span> t=N[<span class="number">0</span>]=<span class="number">-1</span>;		<span class="comment">//P[-1]为通配符</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span>(j&lt;m<span class="number">-1</span>)				<span class="comment">//因为根据m-1就可以算出m的值，所以只循环到m-1</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(t&lt;<span class="number">0</span> || P[j]==P[t])</span><br><span class="line">			N[++j]=++t;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			t=N[t];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> N;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">match</span><span class="params">(<span class="keyword">char</span>* P,<span class="keyword">char</span>* T)</span>	<span class="comment">//KMP主算法	P为模式串，T为为文本</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span>* Next=BuildNext(P);</span><br><span class="line">	<span class="keyword">int</span> n=<span class="built_in">strlen</span>(T),i=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> m=<span class="built_in">strlen</span>(P),j=<span class="number">0</span>;</span><br><span class="line">	 <span class="keyword">while</span>(i&lt;n &amp;&amp; j&lt;m)</span><br><span class="line">	 &#123;</span><br><span class="line">		<span class="keyword">if</span>(j&lt;<span class="number">0</span> || P[j]==T[i])</span><br><span class="line">		&#123;</span><br><span class="line">			i++;</span><br><span class="line">			j++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">	 		j=Next[j];</span><br><span class="line">	 &#125;</span><br><span class="line">	 <span class="keyword">return</span> i-j;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span>  </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> P[<span class="number">100</span>]=<span class="string">"myj"</span>;</span><br><span class="line">	<span class="keyword">char</span> T[<span class="number">100</span>]=<span class="string">"hahamyj"</span>;</span><br><span class="line">	<span class="keyword">int</span> len1=<span class="built_in">strlen</span>(P);</span><br><span class="line">	<span class="keyword">int</span> len2=<span class="built_in">strlen</span>(T);</span><br><span class="line">	<span class="keyword">int</span> Position=match(P,T);</span><br><span class="line">	<span class="keyword">if</span>(Position&lt;=len2-len1)			<span class="comment">//len1 和len2 位字符串的个数，如果返回的值超过len1-len2说明P不在T中</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d\\n"</span>,Position);</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"未出现\\n"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="KMP打表"><a href="#KMP打表" class="headerlink" title="KMP打表"></a>KMP打表</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">求循环周期</span></span><br><span class="line"><span class="comment">打表题：用快速幂求出前几百的结果，找规律。发现在42时结果是循环的。</span></span><br><span class="line"><span class="comment">        把前42的结果放入数组</span></span><br><span class="line"><span class="comment">知识点：快速求幂</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">KMP求最小循环节：</span></span><br><span class="line"><span class="comment">若知道字符串为循环字符串</span></span><br><span class="line"><span class="comment">对于next数组中的 i， 符合 i % ( i - next[i] ) == 0 &amp;&amp; next[i] != 0 , 则说明字符串循环</span></span><br><span class="line"><span class="comment">而且循环节长度为:   i - next[i]</span></span><br><span class="line"><span class="comment">循环次数为:       i / ( i - next[i] )</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">若i % ( i - next[i] )！=0 说明需要再添加几个字母才能补全</span></span><br><span class="line"><span class="comment">需要补的个数是循环节长度-余数</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">参考：</span></span><br><span class="line"><span class="comment">&lt;https://www.cnblogs.com/jackge/archive/2013/01/05/2846006.html&gt;</span></span><br><span class="line"><span class="comment">讲解：&lt;https://segmentfault.com/a/1190000008575379&gt;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">题目：poj 3461、poj 2752、poj 2406、poj1961</span></span><br><span class="line"><span class="comment">代码参考：&lt;https://blog.csdn.net/guhaiteng/article/details/52108690&gt;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">补：扩展KMP</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> tmp;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">BuildNext</span><span class="params">(<span class="keyword">char</span> *P)</span>         <span class="comment">//未改进版</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> m=<span class="built_in">strlen</span>(P),j=<span class="number">0</span>;  <span class="comment">//主串指针</span></span><br><span class="line">  <span class="keyword">int</span>* N=(<span class="keyword">int</span>*)<span class="built_in">malloc</span>(m*<span class="keyword">sizeof</span>(<span class="keyword">int</span>));  <span class="comment">//Next表</span></span><br><span class="line">  <span class="keyword">int</span> t=N[<span class="number">0</span>]=<span class="number">-1</span>;    <span class="comment">//P[-1]为通配符</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span>(j&lt;m)        <span class="comment">//因为根据m-1就可以算出m的值，所以只循环到m-1</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">if</span>(t&lt;<span class="number">0</span> || P[j]==P[t])</span><br><span class="line">    &#123;</span><br><span class="line">      N[++j]=++t;</span><br><span class="line">      <span class="keyword">if</span>(j%(j-N[j])==<span class="number">0</span> &amp;&amp; N[j] != <span class="number">0</span>)  <span class="comment">//求循环最小节条件，比如12341234123 求得循环点为4.因为是循环点，所以循环次数至少为2才能求的出来</span></span><br><span class="line">      &#123;</span><br><span class="line">        tmp=j-N[j];</span><br><span class="line">        <span class="keyword">return</span> tmp;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      t=N[t];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">pow_mod</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> a,<span class="keyword">long</span> <span class="keyword">long</span> i,<span class="keyword">long</span> <span class="keyword">long</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(i==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>%n;</span><br><span class="line">    <span class="keyword">int</span> temp=pow_mod(a,i&gt;&gt;<span class="number">1</span>,n);</span><br><span class="line">        temp=temp*temp%n;</span><br><span class="line">    <span class="keyword">if</span>(i&amp;<span class="number">1</span>) temp=(<span class="keyword">long</span> <span class="keyword">long</span>)temp*a%n;</span><br><span class="line">    <span class="keyword">return</span> temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span>  </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> i,j;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> sum=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">char</span> A[<span class="number">3000</span>];</span><br><span class="line">    A[<span class="number">0</span>]=<span class="string">'0'</span>;               <span class="comment">//注意，要把今天也算进去</span></span><br><span class="line">    <span class="keyword">int</span> m;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (i=<span class="number">1</span>; i &lt; <span class="number">300</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        A[i]=pow_mod(i,i,<span class="number">7</span>)+<span class="string">'0'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    BuildNext(A);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\\n"</span>,tmp);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="KMP匹配串次数"><a href="#KMP匹配串次数" class="headerlink" title="KMP匹配串次数"></a>KMP匹配串次数</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//一个字符串在另外一个字符串出现的次数</span></span><br><span class="line"></span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span>* <span class="title">BuildNext</span><span class="params">(<span class="keyword">char</span> *P)</span>					<span class="comment">//未改进版</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> m=<span class="built_in">strlen</span>(P),j=<span class="number">0</span>;	<span class="comment">//主串指针</span></span><br><span class="line">	<span class="keyword">int</span>* N=(<span class="keyword">int</span>*)<span class="built_in">malloc</span>(m*<span class="keyword">sizeof</span>(<span class="keyword">int</span>));  <span class="comment">//Next表</span></span><br><span class="line">	<span class="keyword">int</span> t=N[<span class="number">0</span>]=<span class="number">-1</span>;		<span class="comment">//P[-1]为通配符</span></span><br><span class="line">    </span><br><span class="line">	<span class="keyword">while</span>(j&lt;m)					<span class="comment">//把m-1改为了m，是为了算N[m]，算出这个串整体的最大公共前缀和后缀。</span></span><br><span class="line">								<span class="comment">//假想法：假想P[m]添加一个跟任何字符都匹配失败的字符，然后把添加后的P正常使用KMP就好。只是，在j==m时，sum++</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(t&lt;<span class="number">0</span> || P[j]==P[t])</span><br><span class="line">			N[++j]=++t;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			t=N[t];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> N;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">match</span><span class="params">(<span class="keyword">char</span>* P,<span class="keyword">char</span>* T)</span>	</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> sum=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span>* Next=BuildNext(P);</span><br><span class="line">    </span><br><span class="line">	<span class="keyword">int</span> n=<span class="built_in">strlen</span>(T),i=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> m=<span class="built_in">strlen</span>(P),j=<span class="number">0</span>;     </span><br><span class="line">	 <span class="keyword">while</span>(i&lt;n)</span><br><span class="line">	 &#123;</span><br><span class="line">         </span><br><span class="line">		<span class="keyword">if</span>(j&lt;<span class="number">0</span> || P[j]==T[i])</span><br><span class="line">		&#123;</span><br><span class="line">			i++;</span><br><span class="line">			j++;</span><br><span class="line">            </span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">	 		j=Next[j];</span><br><span class="line">        <span class="keyword">if</span>(j&gt;=m)		<span class="comment">//当j==m说明字符串与母串匹配成功。假想P[m]有一个跟任何字符都匹配失败的字符，</span></span><br><span class="line">        				<span class="comment">//于是把模式串进行与普通失败时同样的移动，也就是j=Next[j]，</span></span><br><span class="line">	 	&#123;</span><br><span class="line">            sum++;</span><br><span class="line">	 		j=Next[j];</span><br><span class="line">	 	&#125;</span><br><span class="line">         </span><br><span class="line">	 &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d\\n"</span>,sum);</span><br><span class="line">	 <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span>  </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> P[<span class="number">10010</span>];</span><br><span class="line">	<span class="keyword">char</span> T[<span class="number">1000010</span>];</span><br><span class="line">	<span class="keyword">int</span> N;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;N);</span><br><span class="line">	<span class="keyword">while</span>(N--)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%s"</span>,P);</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%s"</span>,T);</span><br><span class="line">		<span class="keyword">int</span> len1=<span class="built_in">strlen</span>(P);</span><br><span class="line">		<span class="keyword">int</span> len2=<span class="built_in">strlen</span>(T);</span><br><span class="line">		match(P,T);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="字符串所有公共前缀后缀"><a href="#字符串所有公共前缀后缀" class="headerlink" title="字符串所有公共前缀后缀"></a>字符串所有公共前缀后缀</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">POJ 2752</span></span><br><span class="line"><span class="comment">给一个字符串，求它的所有公共前缀后缀的长度（其中包括了最大公共前缀后缀）</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span>* <span class="title">BuildNext</span><span class="params">(<span class="keyword">char</span> *P)</span>					<span class="comment">//未改进版</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> m=<span class="built_in">strlen</span>(P),j=<span class="number">0</span>;	<span class="comment">//主串指针</span></span><br><span class="line">	<span class="keyword">int</span>* N=(<span class="keyword">int</span>*)<span class="built_in">malloc</span>(m*<span class="keyword">sizeof</span>(<span class="keyword">int</span>));  <span class="comment">//Next表</span></span><br><span class="line">	<span class="keyword">int</span> t=N[<span class="number">0</span>]=<span class="number">-1</span>;		<span class="comment">//P[-1]为通配符</span></span><br><span class="line">    </span><br><span class="line">	<span class="keyword">while</span>(j&lt;m)					<span class="comment">//把m-1改为了m，是为了算N[m]，算出这个串整体的最大公共前缀和后缀。</span></span><br><span class="line">								<span class="comment">//假想法：假想P[m]添加一个跟任何字符都匹配失败的字符，然后把添加后的P正常使用KMP就好。只是，在j==m时，sum++</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(t&lt;<span class="number">0</span> || P[j]==P[t])</span><br><span class="line">			N[++j]=++t;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			t=N[t];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> N;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span>  </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> P[<span class="number">10010</span>];</span><br><span class="line">	<span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%s"</span>,P)!=EOF)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> len1=<span class="built_in">strlen</span>(P);</span><br><span class="line">		BuildNext(P);</span><br><span class="line">		<span class="keyword">while</span>(P[len1]!=<span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d\\n"</span>,P[len1]);</span><br><span class="line">			len1=P[len1];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="BM"><a href="#BM" class="headerlink" title="BM"></a>BM</h2><ol>
-<li>区别：KMP:善于利用经验          BM：乐于借鉴教训</li>
-<li>单次匹配概率越小，BM性能越明显（字母表越大，匹配概率越小）</li>
-<li>BM_GC(好后缀策略)：最好n/m，最坏n*m</li>
-</ol>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-</div>
-                
-
-
-
-
-<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <nav class="level">
-            <div class="level-item has-text-centered" style="flex-shrink: 1">
-                <div>
-                    
-                    <figure class="image is-128x128 has-mb-6">
-                        <img class="" src="/images/logo.png" alt="兔子翻书">
-                    </figure>
-                    
-                    <p class="is-size-4 is-block">
-                        兔子翻书
-                    </p>
-                    
-                    
-                    <p class="is-size-6 is-block">
-                        👨‍🎓
-                    </p>
-                    
-                    
-                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
-                        <i class="fas fa-map-marker-alt has-mr-7"></i>
-                        <span>宁波</span>
-                    </p>
-                    
-                </div>
-            </div>
-        </nav>
-        <nav class="level is-mobile">
-            <div class="level-item has-text-centered is-marginless">
-                <div>
-                    <p class="heading">
-                        文章
-                    </p>
-                    <a href="/archives">
-                        <p class="title has-text-weight-normal">
-                            44
-                        </p>
-                    </a>
-                </div>
-            </div>
-            <div class="level-item has-text-centered is-marginless">
-                <div>
-                    <p class="heading">
-                        分类
-                    </p>
-                    <a href="/categories">
-                        <p class="title has-text-weight-normal">
-                            13
-                        </p>
-                    </a>
-                </div>
-            </div>
-            <div class="level-item has-text-centered is-marginless">
-                <div>
-                    <p class="heading">
-                        标签
-                    </p>
-                    <a href="/tags">
-                        <p class="title has-text-weight-normal">
-                            0
-                        </p>
-                    </a>
-                </div>
-            </div>
-        </nav>
-        
-        <div class="level">
-            <a class="level-item button is-link is-rounded" href="mailto:2580130642@qq.com" target="_blank" rel="noopener">
-                联系我</a>
-        </div>
-        
-        
-        
-    </div>
-</div>
-    
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                标签
-            </h3>
-            <div class="field is-grouped is-grouped-multiline">
-                
-            </div>
-        </div>
-    </div>
-</div>
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
     
     
-        <div class="column-right-shadow is-hidden-widescreen ">
+    2020-2021
+    兔子翻书
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Tags</a></li>
+         
+          <li><a href="http://101.132.226.32/search_simple" target="_blank" rel="noopener">Project</a></li>
+         
+          <li><a href="/search/">Search</a></li>
         
-            
-        
-            
-<div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                分类
-            </h3>
-            <ul class="menu-list">
-            <li>
-        <a class="level is-marginless" href="/categories/Blog/">
-            <span class="level-start">
-                <span class="level-item">Blog</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/MAC/">
-            <span class="level-start">
-                <span class="level-item">MAC</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/PAT/">
-            <span class="level-start">
-                <span class="level-item">PAT</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/python/">
-            <span class="level-start">
-                <span class="level-item">python</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">13</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E4%B8%8B%E8%BD%BD%E5%B7%A5%E5%85%B7/">
-            <span class="level-start">
-                <span class="level-item">下载工具</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E5%89%8D%E7%AB%AF/">
-            <span class="level-start">
-                <span class="level-item">前端</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">
-            <span class="level-start">
-                <span class="level-item">数据分析</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">4</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
-            <span class="level-start">
-                <span class="level-item">数据库</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">3</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-            <span class="level-start">
-                <span class="level-item">数据结构</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">6</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
-            <span class="level-start">
-                <span class="level-item">机器学习</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E7%88%AC%E8%99%AB/">
-            <span class="level-start">
-                <span class="level-item">爬虫</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">4</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E7%AE%97%E6%B3%95/">
-            <span class="level-start">
-                <span class="level-item">算法</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">5</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0C-C/">
-            <span class="level-start">
-                <span class="level-item">编程笔记C/C++</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li>
-            </ul>
-        </div>
-    </div>
-</div>
-        
-            
-        
-        </div>
-    
-</div>
-
-                
-
-
-
-
-<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
-    
-        
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                分类
-            </h3>
-            <ul class="menu-list">
-            <li>
-        <a class="level is-marginless" href="/categories/Blog/">
-            <span class="level-start">
-                <span class="level-item">Blog</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/MAC/">
-            <span class="level-start">
-                <span class="level-item">MAC</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/PAT/">
-            <span class="level-start">
-                <span class="level-item">PAT</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/python/">
-            <span class="level-start">
-                <span class="level-item">python</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">13</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E4%B8%8B%E8%BD%BD%E5%B7%A5%E5%85%B7/">
-            <span class="level-start">
-                <span class="level-item">下载工具</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E5%89%8D%E7%AB%AF/">
-            <span class="level-start">
-                <span class="level-item">前端</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">
-            <span class="level-start">
-                <span class="level-item">数据分析</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">4</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
-            <span class="level-start">
-                <span class="level-item">数据库</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">3</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-            <span class="level-start">
-                <span class="level-item">数据结构</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">6</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
-            <span class="level-start">
-                <span class="level-item">机器学习</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E7%88%AC%E8%99%AB/">
-            <span class="level-start">
-                <span class="level-item">爬虫</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">4</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E7%AE%97%E6%B3%95/">
-            <span class="level-start">
-                <span class="level-item">算法</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">5</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0C-C/">
-            <span class="level-start">
-                <span class="level-item">编程笔记C/C++</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li>
-            </ul>
-        </div>
-    </div>
-</div>
-    
-        
-    
-    
-</div>
-
-            </div>
-        </div>
-    </section>
-    <footer class="footer">
-    <div class="container">
-        <div class="level">
-            <div class="level-start has-text-centered-mobile">
-                <a class="footer-logo is-block has-mb-6" href="/">
-                
-                    <img src="/images/logo.svg" alt="兔子翻书" height="28">
-                
-                </a>
-                <p class="is-size-7">
-                &copy; 2021 兔子翻书&nbsp;
-                Powered by <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> & <a
-                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="external nofollow">Icarus</a>
-                
-                <br>
-
-                <span id="busuanzi_container_site_uv">
-                    <span id="busuanzi_value_site_uv">0</span>
-                    位小伙伴的
-                </span>
-                <span id="busuanzi_container_site_pv">
-                    <span id="busuanzi_value_site_pv">0</span>
-                    次陪伴
-                </span>
-
-
-                
-                </p>
-            </div>
-            <div class="level-end">
-            
-            </div>
-        </div>
-    </div>
+      </ul>
+    </nav>
+  </div>
 </footer>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
-<script>moment.locale("zh-CN");</script>
 
-
-<script>
-var IcarusThemeSettings = {
-    site: {
-        url: 'http://yoursite.com',
-        external_link: {"enable":true,"exclude":[]}
-    },
-    article: {
-        highlight: {
-            clipboard: true,
-            fold: 'unfolded'
-        }
-    }
-};
-</script>
-
-
-<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
-
-
-
-
-
-<script src="/js/animation.js"></script>
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
-<script src="/js/gallery.js" defer></script>
-
-
-
-<div id="outdated">
-    <h6>Your browser is out-of-date!</h6>
-    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
-            my browser now </a></p>
-    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        outdatedBrowser({
-            bgColor: '#f25648',
-            color: '#ffffff',
-            lowerThan: 'flex'
-        });
-    });
-</script>
-
-
-<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    MathJax.Hub.Config({
-        'HTML-CSS': {
-            matchFontHeight: false
-        },
-        SVG: {
-            matchFontHeight: false
-        },
-        CommonHTML: {
-            matchFontHeight: false
-        },
-        tex2jax: {
-            inlineMath: [
-                ['$','$'],
-                ['\\(','\\)']
-            ]
-        }
-    });
-});
-</script>
-
-
-<a id="back-to-top" title="回到顶端" href="javascript:;">
-    <i class="fas fa-chevron-up"></i>
-</a>
-<script src="/js/back-to-top.js" defer></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script src="/js/main.js" defer></script>
-
-    
-    <div class="searchbox ins-search">
-    <div class="searchbox-container ins-search-container">
-        <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
-            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="searchbox-result-wrapper ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
     </div>
-</div>
-<script>
-    (function (window) {
-        var INSIGHT_CONFIG = {
-            TRANSLATION: {
-                POSTS: '文章',
-                PAGES: '页面',
-                CATEGORIES: '分类',
-                TAGS: '标签',
-                UNTITLED: '(无标题)',
-            },
-            CONTENT_URL: '/content.json',
-        };
-        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-    })(window);
-</script>
-<script src="/js/insight.js" defer></script>
-<link rel="stylesheet" href="/css/search.css">
-<link rel="stylesheet" href="/css/insight.css">
-    
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
 </body>
 </html>

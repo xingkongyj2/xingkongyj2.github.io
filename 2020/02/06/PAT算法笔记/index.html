@@ -1,179 +1,159 @@
 <!DOCTYPE html>
-<html  lang="zh">
+<html lang=zh>
 <head>
-    <meta charset="utf-8" />
-
-<meta name="generator" content="Hexo 4.2.0" />
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-
-<title>PAT编程笔记 - 兔子翻书</title>
-
-
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="知识点总结 定义之后一定要初始化  尽量都使用vector，速度vector&gt;set&gt;map  两个关键字排序简洁写法 return a.height !&#x3D; b.height ? a.height &gt; b.height : a.name &lt; b.name;  使用10*1.0的方式去输出小数，除非必要。否则可以不用定义double  一定要考虑到为0或1这些边界条件  传参">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PAT编程笔记">
-<meta property="og:url" content="http://yoursite.com/2020/02/06/PAT%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:url" content="https://xingkongyj2.github.io/2020/02/06/PAT%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="兔子翻书">
 <meta property="og:description" content="知识点总结 定义之后一定要初始化  尽量都使用vector，速度vector&gt;set&gt;map  两个关键字排序简洁写法 return a.height !&#x3D; b.height ? a.height &gt; b.height : a.name &lt; b.name;  使用10*1.0的方式去输出小数，除非必要。否则可以不用定义double  一定要考虑到为0或1这些边界条件  传参">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://yoursite.com/images/og_image.png">
 <meta property="article:published_time" content="2020-02-05T16:00:00.000Z">
 <meta property="article:modified_time" content="2020-07-23T15:35:35.325Z">
 <meta property="article:author" content="兔子翻书">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
-
-
-
-
-
-
-
-<link rel="icon" href="/images/favicon.svg">
-
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
-
-
     
     
-<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
-
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
     
+    <!-- title -->
+    <title>PAT编程笔记</title>
+    <!-- styles -->
     
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
-
-    
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
-
-    
-    
-    
-    
-<link rel="stylesheet" href="/css/back-to-top.css">
-
-    
-    
-    
-    
-    
-    
-    
-    <link rel="stylesheet" href="/css/progressbar.css">
-<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
-    
-    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    
-
-
 <link rel="stylesheet" href="/css/style.css">
-</head>
-<body class="is-3-column">
-    <nav class="navbar navbar-main">
-    <div class="container">
-        <div class="navbar-brand is-flex-center">
-            <a class="navbar-item navbar-logo" href="/">
-            
-                <img src="/images/logo.svg" alt="PAT编程笔记" height="28">
-            
-            </a>
-        </div>
-        <div class="navbar-menu">
-            
-            <div class="navbar-start">
-                
-                <a class="navbar-item"
-                href="/">主页</a>
-                
-                <a class="navbar-item"
-                href="/categories">分类</a>
-                
-                <a class="navbar-item"
-                href="/tags">标签</a>
-                
-                <a class="navbar-item"
-                href="/archives">归档</a>
-                
-            </div>
-            
-            <div class="navbar-end">
-                
-                    
-                    <a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/xingkongyj2">
-                        
-                        <i class="fab fa-github"></i>
-                        
-                    </a>
-                    
-                
-                
-                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
-                    <i class="fas fa-list-ul"></i>
-                </a>
-                
-                
-                <a class="navbar-item search" title="搜索" href="javascript:;">
-                    <i class="fas fa-search"></i>
-                </a>
-                
-            </div>
-        </div>
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Tags</a></li>
+         
+          <li><a href="http://101.132.226.32/search_simple" target="_blank" rel="noopener">Project</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2020/04/15/python%E4%BD%9C%E4%B8%9A/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2020/02/06/PAT%E7%AE%97%E6%B3%95%E6%A8%A1%E7%89%88/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://xingkongyj2.github.io/2020/02/06/PAT%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://xingkongyj2.github.io/2020/02/06/PAT%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/&text=PAT编程笔记" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://xingkongyj2.github.io/2020/02/06/PAT%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/&title=PAT编程笔记" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://xingkongyj2.github.io/2020/02/06/PAT%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/&is_video=false&description=PAT编程笔记" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=PAT编程笔记&body=Check out this article: https://xingkongyj2.github.io/2020/02/06/PAT%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://xingkongyj2.github.io/2020/02/06/PAT%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/&title=PAT编程笔记" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://xingkongyj2.github.io/2020/02/06/PAT%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/&title=PAT编程笔记" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://xingkongyj2.github.io/2020/02/06/PAT%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/&title=PAT编程笔记" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://xingkongyj2.github.io/2020/02/06/PAT%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/&title=PAT编程笔记" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://xingkongyj2.github.io/2020/02/06/PAT%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/&name=PAT编程笔记&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://xingkongyj2.github.io/2020/02/06/PAT%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/&t=PAT编程笔记" target="_blank" rel="noopener"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
     </div>
-</nav>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结"><span class="toc-number">1.</span> <span class="toc-text">知识点总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#int与string转换"><span class="toc-number">1.1.</span> <span class="toc-text">int与string转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字母转换大小写"><span class="toc-number">1.2.</span> <span class="toc-text">字母转换大小写</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#结构体定义与初始化"><span class="toc-number">1.3.</span> <span class="toc-text">结构体定义与初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输入输出函数"><span class="toc-number">1.4.</span> <span class="toc-text">输入输出函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用数学函数"><span class="toc-number">1.5.</span> <span class="toc-text">常用数学函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-STl总结"><span class="toc-number">2.</span> <span class="toc-text">C++ STl总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vector"><span class="toc-number">2.1.</span> <span class="toc-text">vector</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#set"><span class="toc-number">2.2.</span> <span class="toc-text">set</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#string"><span class="toc-number">2.3.</span> <span class="toc-text">string</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#map"><span class="toc-number">2.4.</span> <span class="toc-text">map</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#queue"><span class="toc-number">2.5.</span> <span class="toc-text">queue</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#priority-queue"><span class="toc-number">2.6.</span> <span class="toc-text">priority_queue</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#stack"><span class="toc-number">2.7.</span> <span class="toc-text">stack</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pair"><span class="toc-number">2.8.</span> <span class="toc-text">pair</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#algorithm"><span class="toc-number">2.9.</span> <span class="toc-text">algorithm</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
     
-    <section class="section">
-        <div class="container">
-            <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main">
-<div class="card">
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
     
-    <div class="card-content article ">
+    <h1 class="posttitle" itemprop="name headline">
+        PAT编程笔记
+    </h1>
 
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <i class="fas fa-angle-double-right"></i>PAT编程笔记
-            
-        </h1>
 
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">兔子翻书</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-02-05T16:00:00.000Z" itemprop="datePublished">2020-02-06</time>
         
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                
-                <time class="level-item has-text-grey" datetime="2020-02-05T16:00:00.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-02-06</time>
-                
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-07-23T15:35:35.325Z"><i class="far fa-calendar-check">&nbsp;</i>2020-07-23</time>
-                
+      
+    </div>
 
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/PAT/">PAT</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    19 分钟 读完 (大约 2828 个字)
-                </span>
-                
-                
-                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
-                    <i class="far fa-eye"></i>
-                    <span id="busuanzi_value_page_pv">0</span>次访问
-                </span>
-                
-            </div>
-        </div>
-        
 
-        <div class="content">
-            <h2 id="知识点总结"><a href="#知识点总结" class="headerlink" title="知识点总结"></a>知识点总结</h2><ul>
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/PAT/">PAT</a>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="知识点总结"><a href="#知识点总结" class="headerlink" title="知识点总结"></a>知识点总结</h2><ul>
 <li><p>定义之后一定要初始化</p>
 </li>
 <li><p>尽量都使用<code>vector</code>，速度<code>vector</code>&gt;<code>set</code>&gt;<code>map</code></p>
@@ -241,11 +221,11 @@
 <li><p><code>typedef</code>给数据类型起别名</p>
 <p><code>typedef long long LL;</code></p>
 </li>
-<li><p>getline,gets[<a href="https://blog.csdn.net/JIEJINQUANIL/article/details/50802902">参考</a>]</p>
+<li><p>getline,gets[<a href="https://blog.csdn.net/JIEJINQUANIL/article/details/50802902" target="_blank" rel="noopener">参考</a>]</p>
 <p><code>getline(cin,query);</code></p>
 <p><code>cin.getline(S1,10010);</code> S1为数组，10010是数组大小</p>
 </li>
-<li><p><code>scanf</code>与<code>cin</code>都以空白格为结束标志，不会读取他们，所以它们会遗留在读取缓存中。但是只有在<code>scanf</code>与<code>gets</code>使用或<code>cin</code>使用后紧接着又使用<code>getline</code>时，就需要吸收掉它们后面的字符<code>tmp=getchar()</code>[<a href="https://blog.csdn.net/sinat_40043477/article/details/77748944">参考</a>]</p>
+<li><p><code>scanf</code>与<code>cin</code>都以空白格为结束标志，不会读取他们，所以它们会遗留在读取缓存中。但是只有在<code>scanf</code>与<code>gets</code>使用或<code>cin</code>使用后紧接着又使用<code>getline</code>时，就需要吸收掉它们后面的字符<code>tmp=getchar()</code>[<a href="https://blog.csdn.net/sinat_40043477/article/details/77748944" target="_blank" rel="noopener">参考</a>]</p>
 </li>
 <li><p><code>string.h</code>头文件</p>
 <p><code>strcmp()</code>比较两个字符串</p>
@@ -399,8 +379,8 @@
 <h3 id="set"><a href="#set" class="headerlink" title="set"></a>set</h3><blockquote>
 <p>内部自动有序且不含重复元素</p>
 </blockquote>
-<p>set使用方法详细常用[<a href="https://blog.csdn.net/changjiale110/article/details/79108447">参考</a>]</p>
-<p>set集合的交并补[<a href="https://blog.csdn.net/woai233/article/details/79413936">参考2</a>]</p>
+<p>set使用方法详细常用[<a href="https://blog.csdn.net/changjiale110/article/details/79108447" target="_blank" rel="noopener">参考</a>]</p>
+<p>set集合的交并补[<a href="https://blog.csdn.net/woai233/article/details/79413936" target="_blank" rel="noopener">参考2</a>]</p>
 <p><strong>set常见用途</strong></p>
 <p>自动去重并按升序排列。要处理不唯一的情况适用<code>multiset</code></p>
 <p><strong>set常用函数</strong></p>
@@ -438,7 +418,7 @@
 
 <h3 id="map"><a href="#map" class="headerlink" title="map"></a>map</h3><blockquote>
 <ul>
-<li>注意事项：在map中，由key查找value时，首先要判断map中是否包含key。[<a href="https://blog.csdn.net/pzhw520hchy/article/details/77945713">参考</a>]</li>
+<li>注意事项：在map中，由key查找value时，首先要判断map中是否包含key。[<a href="https://blog.csdn.net/pzhw520hchy/article/details/77945713" target="_blank" rel="noopener">参考</a>]</li>
 <li>map中的元素是自动按Key升序排序，所以不能对map用sort函数</li>
 <li>unordered_map速度更快。头函数<code>#include&lt;unordered_map&gt;</code>    </li>
 </ul>
@@ -558,319 +538,146 @@
 </li>
 </ul>
 
-        </div>
+  </div>
+</article>
+
+
+
         
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Tags</a></li>
+         
+          <li><a href="http://101.132.226.32/search_simple" target="_blank" rel="noopener">Project</a></li>
+         
+          <li><a href="/search/">Search</a></li>
         
-        
-    </div>
-</div>
-
-
-
-<div class="card card-transparent">
-    <div class="level post-navigation is-flex-wrap is-mobile">
-        
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/04/15/python%E4%BD%9C%E4%B8%9A/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">python作业</span>
-            </a>
-        </div>
-        
-        
-        <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2020/02/06/PAT%E7%AE%97%E6%B3%95%E6%A8%A1%E7%89%88/">
-                <span class="level-item">PAT算法模版</span>
-                <i class="level-item fas fa-chevron-right"></i>
-            </a>
-        </div>
-        
-    </div>
-</div>
-
-
-
-<div class="card">
-    <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">评论</h3>
-        
-<div id="valine-thread" class="content"></div>
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
-<script>
-    new Valine({
-        el: '#valine-thread' ,
-        notify: true,
-        verify: false,
-        app_id: '9a8UsSRbBVmCDFHRrVHg5nUp-gzGzoHsz',
-        app_key: 'An5aJ6yR12XjMvKTrT9QoYmg',
-        placeholder: 'Say something...'
-    });
-</script>
-
-    </div>
-</div>
-</div>
-                
-
-
-
-
-<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
-    
-        
-
-    <div class="card widget column-left is-sticky" id="toc">
-        <div class="card-content">
-            <div class="menu">
-                <h3 class="menu-label">
-                    目录
-                </h3>
-                <ul class="menu-list"><li>
-        <a class="is-flex" href="#知识点总结">
-        <span class="has-mr-6">1</span>
-        <span>知识点总结</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#int与string转换">
-        <span class="has-mr-6">1.1</span>
-        <span>int与string转换</span>
-        </a></li><li>
-        <a class="is-flex" href="#字母转换大小写">
-        <span class="has-mr-6">1.2</span>
-        <span>字母转换大小写</span>
-        </a></li><li>
-        <a class="is-flex" href="#结构体定义与初始化">
-        <span class="has-mr-6">1.3</span>
-        <span>结构体定义与初始化</span>
-        </a></li><li>
-        <a class="is-flex" href="#输入输出函数">
-        <span class="has-mr-6">1.4</span>
-        <span>输入输出函数</span>
-        </a></li><li>
-        <a class="is-flex" href="#常用数学函数">
-        <span class="has-mr-6">1.5</span>
-        <span>常用数学函数</span>
-        </a></li></ul></li><li>
-        <a class="is-flex" href="#C-STl总结">
-        <span class="has-mr-6">2</span>
-        <span>C++ STl总结</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#vector">
-        <span class="has-mr-6">2.1</span>
-        <span>vector</span>
-        </a></li><li>
-        <a class="is-flex" href="#set">
-        <span class="has-mr-6">2.2</span>
-        <span>set</span>
-        </a></li><li>
-        <a class="is-flex" href="#string">
-        <span class="has-mr-6">2.3</span>
-        <span>string</span>
-        </a></li><li>
-        <a class="is-flex" href="#map">
-        <span class="has-mr-6">2.4</span>
-        <span>map</span>
-        </a></li><li>
-        <a class="is-flex" href="#queue">
-        <span class="has-mr-6">2.5</span>
-        <span>queue</span>
-        </a></li><li>
-        <a class="is-flex" href="#priority-queue">
-        <span class="has-mr-6">2.6</span>
-        <span>priority_queue</span>
-        </a></li><li>
-        <a class="is-flex" href="#stack">
-        <span class="has-mr-6">2.7</span>
-        <span>stack</span>
-        </a></li><li>
-        <a class="is-flex" href="#pair">
-        <span class="has-mr-6">2.8</span>
-        <span>pair</span>
-        </a></li><li>
-        <a class="is-flex" href="#algorithm">
-        <span class="has-mr-6">2.9</span>
-        <span>algorithm</span>
-        </a></li></ul></li></ul>
-            </div>
-        </div>
+      </ul>
     </div>
 
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#知识点总结"><span class="toc-number">1.</span> <span class="toc-text">知识点总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#int与string转换"><span class="toc-number">1.1.</span> <span class="toc-text">int与string转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字母转换大小写"><span class="toc-number">1.2.</span> <span class="toc-text">字母转换大小写</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#结构体定义与初始化"><span class="toc-number">1.3.</span> <span class="toc-text">结构体定义与初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#输入输出函数"><span class="toc-number">1.4.</span> <span class="toc-text">输入输出函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用数学函数"><span class="toc-number">1.5.</span> <span class="toc-text">常用数学函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-STl总结"><span class="toc-number">2.</span> <span class="toc-text">C++ STl总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vector"><span class="toc-number">2.1.</span> <span class="toc-text">vector</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#set"><span class="toc-number">2.2.</span> <span class="toc-text">set</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#string"><span class="toc-number">2.3.</span> <span class="toc-text">string</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#map"><span class="toc-number">2.4.</span> <span class="toc-text">map</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#queue"><span class="toc-number">2.5.</span> <span class="toc-text">queue</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#priority-queue"><span class="toc-number">2.6.</span> <span class="toc-text">priority_queue</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#stack"><span class="toc-number">2.7.</span> <span class="toc-text">stack</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pair"><span class="toc-number">2.8.</span> <span class="toc-text">pair</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#algorithm"><span class="toc-number">2.9.</span> <span class="toc-text">algorithm</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://xingkongyj2.github.io/2020/02/06/PAT%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://xingkongyj2.github.io/2020/02/06/PAT%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/&text=PAT编程笔记" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://xingkongyj2.github.io/2020/02/06/PAT%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/&title=PAT编程笔记" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://xingkongyj2.github.io/2020/02/06/PAT%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/&is_video=false&description=PAT编程笔记" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=PAT编程笔记&body=Check out this article: https://xingkongyj2.github.io/2020/02/06/PAT%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://xingkongyj2.github.io/2020/02/06/PAT%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/&title=PAT编程笔记" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://xingkongyj2.github.io/2020/02/06/PAT%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/&title=PAT编程笔记" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://xingkongyj2.github.io/2020/02/06/PAT%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/&title=PAT编程笔记" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://xingkongyj2.github.io/2020/02/06/PAT%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/&title=PAT编程笔记" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://xingkongyj2.github.io/2020/02/06/PAT%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/&name=PAT编程笔记&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://xingkongyj2.github.io/2020/02/06/PAT%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/&t=PAT编程笔记" target="_blank" rel="noopener"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
     
     
-        <div class="column-right-shadow is-hidden-widescreen ">
+    2020-2021
+    兔子翻书
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Tags</a></li>
+         
+          <li><a href="http://101.132.226.32/search_simple" target="_blank" rel="noopener">Project</a></li>
+         
+          <li><a href="/search/">Search</a></li>
         
-        </div>
-    
-</div>
-
-                
-            </div>
-        </div>
-    </section>
-    <footer class="footer">
-    <div class="container">
-        <div class="level">
-            <div class="level-start has-text-centered-mobile">
-                <a class="footer-logo is-block has-mb-6" href="/">
-                
-                    <img src="/images/logo.svg" alt="PAT编程笔记" height="28">
-                
-                </a>
-                <p class="is-size-7">
-                &copy; 2021 兔子翻书&nbsp;
-                Powered by <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a> & <a
-                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="external nofollow">Icarus</a>
-                
-                <br>
-
-                <span id="busuanzi_container_site_uv">
-                    <span id="busuanzi_value_site_uv">0</span>
-                    位小伙伴的
-                </span>
-                <span id="busuanzi_container_site_pv">
-                    <span id="busuanzi_value_site_pv">0</span>
-                    次陪伴
-                </span>
-
-
-                
-                </p>
-            </div>
-            <div class="level-end">
-            
-            </div>
-        </div>
-    </div>
+      </ul>
+    </nav>
+  </div>
 </footer>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
-<script>moment.locale("zh-CN");</script>
 
-
-<script>
-var IcarusThemeSettings = {
-    site: {
-        url: 'http://yoursite.com',
-        external_link: {"enable":true,"exclude":[]}
-    },
-    article: {
-        highlight: {
-            clipboard: true,
-            fold: 'unfolded'
-        }
-    }
-};
-</script>
-
-
-<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
-
-
-
-
-
-<script src="/js/animation.js"></script>
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
-<script src="/js/gallery.js" defer></script>
-
-
-
-<div id="outdated">
-    <h6>Your browser is out-of-date!</h6>
-    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
-            my browser now </a></p>
-    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        outdatedBrowser({
-            bgColor: '#f25648',
-            color: '#ffffff',
-            lowerThan: 'flex'
-        });
-    });
-</script>
-
-
-<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    MathJax.Hub.Config({
-        'HTML-CSS': {
-            matchFontHeight: false
-        },
-        SVG: {
-            matchFontHeight: false
-        },
-        CommonHTML: {
-            matchFontHeight: false
-        },
-        tex2jax: {
-            inlineMath: [
-                ['$','$'],
-                ['\\(','\\)']
-            ]
-        }
-    });
-});
-</script>
-
-
-<a id="back-to-top" title="回到顶端" href="javascript:;">
-    <i class="fas fa-chevron-up"></i>
-</a>
-<script src="/js/back-to-top.js" defer></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script src="/js/main.js" defer></script>
-
-    
-    <div class="searchbox ins-search">
-    <div class="searchbox-container ins-search-container">
-        <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
-            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="searchbox-result-wrapper ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
     </div>
-</div>
-<script>
-    (function (window) {
-        var INSIGHT_CONFIG = {
-            TRANSLATION: {
-                POSTS: '文章',
-                PAGES: '页面',
-                CATEGORIES: '分类',
-                TAGS: '标签',
-                UNTITLED: '(无标题)',
-            },
-            CONTENT_URL: '/content.json',
-        };
-        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-    })(window);
-</script>
-<script src="/js/insight.js" defer></script>
-<link rel="stylesheet" href="/css/search.css">
-<link rel="stylesheet" href="/css/insight.css">
-    
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
 </body>
 </html>
