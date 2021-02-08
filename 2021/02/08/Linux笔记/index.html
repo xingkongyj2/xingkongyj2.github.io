@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="本地连接远程Linux服务器 ssh的公钥加密，私钥解密 电脑中的公钥私钥是用来免密码登陆的  Mac使用ssh公钥登录Linux SSH提示Permission denied ssh免密码登录Permission denied (publickey,gssapi-keyex,gssapi-with-mic) 的解决方案! 在本地生成密钥。密钥默认保存位置在 ~&#x2F;.ssh 目录下，打开后会看到私钥">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux笔记">
+<meta property="og:url" content="https://xingkongyj2.github.io/2021/02/08/Linux%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="兔子翻书">
+<meta property="og:description" content="本地连接远程Linux服务器 ssh的公钥加密，私钥解密 电脑中的公钥私钥是用来免密码登陆的  Mac使用ssh公钥登录Linux SSH提示Permission denied ssh免密码登录Permission denied (publickey,gssapi-keyex,gssapi-with-mic) 的解决方案! 在本地生成密钥。密钥默认保存位置在 ~&#x2F;.ssh 目录下，打开后会看到私钥">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://xingkong-images.test.upcdn.net/PicGo/20210205134936.png">
+<meta property="og:image" content="http://xingkong-images.test.upcdn.net/PicGo/20210205132859.png">
+<meta property="og:image" content="http://xingkong-images.test.upcdn.net/PicGo/20210205134428.png">
+<meta property="og:image" content="http://xingkong-images.test.upcdn.net/PicGo/20210206101019.png">
+<meta property="og:image" content="http://xingkong-images.test.upcdn.net/PicGo/20210206101434.png">
+<meta property="og:image" content="http://xingkong-images.test.upcdn.net/PicGo/20210205200948.png">
+<meta property="og:image" content="http://xingkong-images.test.upcdn.net/PicGo/20210205200947.png">
+<meta property="og:image" content="http://xingkong-images.test.upcdn.net/PicGo/20210205183213.png">
+<meta property="article:published_time" content="2021-02-08T15:23:42.000Z">
+<meta property="article:modified_time" content="2021-02-08T15:24:42.966Z">
+<meta property="article:author" content="兔子翻书">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://xingkong-images.test.upcdn.net/PicGo/20210205134936.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Linux笔记</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Tags</a></li>
+         
+          <li><a href="http://101.132.226.32/search_simple" target="_blank" rel="noopener">Project</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2021/01/01/Mysql%E5%AE%9E%E8%B7%B5/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://xingkongyj2.github.io/2021/02/08/Linux%E7%AC%94%E8%AE%B0/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://xingkongyj2.github.io/2021/02/08/Linux%E7%AC%94%E8%AE%B0/&text=Linux笔记" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://xingkongyj2.github.io/2021/02/08/Linux%E7%AC%94%E8%AE%B0/&title=Linux笔记" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://xingkongyj2.github.io/2021/02/08/Linux%E7%AC%94%E8%AE%B0/&is_video=false&description=Linux笔记" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Linux笔记&body=Check out this article: https://xingkongyj2.github.io/2021/02/08/Linux%E7%AC%94%E8%AE%B0/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://xingkongyj2.github.io/2021/02/08/Linux%E7%AC%94%E8%AE%B0/&title=Linux笔记" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://xingkongyj2.github.io/2021/02/08/Linux%E7%AC%94%E8%AE%B0/&title=Linux笔记" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://xingkongyj2.github.io/2021/02/08/Linux%E7%AC%94%E8%AE%B0/&title=Linux笔记" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://xingkongyj2.github.io/2021/02/08/Linux%E7%AC%94%E8%AE%B0/&title=Linux笔记" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://xingkongyj2.github.io/2021/02/08/Linux%E7%AC%94%E8%AE%B0/&name=Linux笔记&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://xingkongyj2.github.io/2021/02/08/Linux%E7%AC%94%E8%AE%B0/&t=Linux笔记" target="_blank" rel="noopener"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#本地连接远程Linux服务器"><span class="toc-number">1.</span> <span class="toc-text">本地连接远程Linux服务器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#软件仓库"><span class="toc-number">1.1.</span> <span class="toc-text">软件仓库</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#命令行"><span class="toc-number">2.</span> <span class="toc-text">命令行</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查找命令和快捷键"><span class="toc-number">2.1.</span> <span class="toc-text">查找命令和快捷键</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件"><span class="toc-number">2.2.</span> <span class="toc-text">文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#压缩和解压文件"><span class="toc-number">2.3.</span> <span class="toc-text">压缩和解压文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#权限管理"><span class="toc-number">2.4.</span> <span class="toc-text">权限管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据操作"><span class="toc-number">2.5.</span> <span class="toc-text">数据操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#流、管道、重定向"><span class="toc-number">2.6.</span> <span class="toc-text">流、管道、重定向</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#进程管理"><span class="toc-number">2.7.</span> <span class="toc-text">进程管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定时和延迟执行"><span class="toc-number">2.8.</span> <span class="toc-text">定时和延迟执行</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网络与FTP"><span class="toc-number">3.</span> <span class="toc-text">网络与FTP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#防火墙"><span class="toc-number">3.1.</span> <span class="toc-text">防火墙</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进程管理-1"><span class="toc-number">4.</span> <span class="toc-text">进程管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#systemd"><span class="toc-number">4.1.</span> <span class="toc-text">systemd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SELINUX-安全子系统"><span class="toc-number">4.2.</span> <span class="toc-text">SELINUX 安全子系统</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开发环境的搭建"><span class="toc-number">5.</span> <span class="toc-text">开发环境的搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vim"><span class="toc-number">5.1.</span> <span class="toc-text">vim</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Git"><span class="toc-number">5.2.</span> <span class="toc-text">Git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Nginx"><span class="toc-number">5.3.</span> <span class="toc-text">Nginx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Squid"><span class="toc-number">5.4.</span> <span class="toc-text">Squid</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker"><span class="toc-number">5.5.</span> <span class="toc-text">Docker</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#shell脚本"><span class="toc-number">6.</span> <span class="toc-text">shell脚本</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Linux笔记
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">兔子翻书</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2021-02-08T15:23:42.000Z" itemprop="datePublished">2021-02-08</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/Linux/">Linux</a>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="本地连接远程Linux服务器"><a href="#本地连接远程Linux服务器" class="headerlink" title="本地连接远程Linux服务器"></a>本地连接远程Linux服务器</h2><blockquote>
+<p>ssh的公钥加密，私钥解密</p>
+<p>电脑中的公钥私钥是用来免密码登陆的</p>
+</blockquote>
+<p><a href="https://segmentfault.com/a/1190000015369885" target="_blank" rel="noopener">Mac使用ssh公钥登录Linux</a></p>
+<p><a href="https://blog.csdn.net/bobpen/article/details/78455601" target="_blank" rel="noopener">SSH提示Permission denied</a></p>
+<p><a href="https://www.jianshu.com/p/bdc9d76da3f1" target="_blank" rel="noopener">ssh免密码登录Permission denied (publickey,gssapi-keyex,gssapi-with-mic) 的解决方案!</a></p>
+<p>在本地生成密钥。密钥默认保存位置在 <code>~/.ssh</code> 目录下，打开后会看到私钥文件 <code>id_rsa</code> 和公钥文件 <code>id_rsa.pub</code>。生成过程中会提示输入密码两次，如果不想在使用公钥的时候输入密码，可以回车跳过</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C  'your email@domain.com'</span><br></pre></td></tr></table></figure>
+
+<p>把公钥 <code>id_rsa.pub</code>复制到远程服务器<code>终端默认文件夹</code>下面，然后把公钥追加到服务器ssh认证文件中</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">//就是把id_rsa.pub里面的内容放到authorized_keys文件中</span><br><span class="line">//如果.ssh(隐藏文件夹)文件夹不存在就自己创建一个</span><br><span class="line">//手动复制也可以</span><br><span class="line">cat /home/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys</span><br></pre></td></tr></table></figure>
+
+<p>查看服务器ip，终端输入<code>ifconfig</code>，看<code>inet x.x.x.x</code>后面的<code>ip地址</code>。如果<code>ifconfig</code>没有结果，则先安装ssh服务</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum -y install openssh-server</span><br></pre></td></tr></table></figure>
+
+<p>在本地终端输入以下命令连接至远程服务器</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ssh &lt;服务器用户名&gt;@&lt;服务器ip&gt;</span><br></pre></td></tr></table></figure>
+
+<p>如果出现拒绝访问的情况解决方法如下:</p>
+<p>在终端输入<code>sudo vi /etc/ssh/sshd_config</code>，编辑<code>sshd_config</code>文件，修以下几个字段为<code>yes</code>。</p>
+<p>在<code>vim</code>中打开<code>sshd_config</code>文件后直接按<code>i</code>键进行编辑，按<code>:wq</code>进行保存并退出</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">PermitRootLogin yes</span><br><span class="line">PasswordAuthentication yes</span><br><span class="line">PubkeyAuthentication yes</span><br></pre></td></tr></table></figure>
+
+<p>修改文件后需要重启ssh服务</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">systemctl restart sshd.service</span><br><span class="line">systemctl status sshd.service #查看ssh服务的状态</span><br><span class="line">systemctl start sshd.service  #开启ssh服务</span><br><span class="line">sytemctl enable sshd.service #ssh服务随开机启动，还有个disabled</span><br><span class="line">systemctl stop sshd.ervice #停止</span><br><span class="line">//正常情况下应该是Active：active（running）</span><br></pre></td></tr></table></figure>
+
+<p>同时修改文件的权限。<code>.ssh文件夹</code>的权限为<code>700</code>，<code>.ssh</code>下的<code>authorized_keys</code>文件权限为<code>600</code>或<code>644</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">chmod 700 ~/.ssh</span><br><span class="line">chmod 0600 ~/.ssh/authorized_keys</span><br></pre></td></tr></table></figure>
+
+<h3 id="软件仓库"><a href="#软件仓库" class="headerlink" title="软件仓库"></a>软件仓库</h3><p><a href="https://blog.csdn.net/inslow/article/details/54177191" target="_blank" rel="noopener">修改CentOS默认yum源为国内yum镜像源</a></p>
+<h2 id="命令行"><a href="#命令行" class="headerlink" title="命令行"></a>命令行</h2><h3 id="查找命令和快捷键"><a href="#查找命令和快捷键" class="headerlink" title="查找命令和快捷键"></a>查找命令和快捷键</h3><ul>
+<li><p>切换成root用户：<code>sudo su</code></p>
+</li>
+<li><p>退出root用户：<code>exit</code></p>
+</li>
+<li><p><code>-</code>和<code>--</code>分别代表短参数和长参数</p>
+</li>
+<li><p>按两次<code>Tab</code>给提示</p>
+</li>
+<li><p>显示全部文件包括隐藏文件：<code>ls -a</code></p>
+</li>
+<li><p>显示文件详情信息：<code>ll</code></p>
+</li>
+<li><p>查找用过的指令</p>
+<ul>
+<li><code>Ctrl+R</code></li>
+<li><code>history</code>  // <code>!+数字</code> 执行命令</li>
+</ul>
+</li>
+<li><p>清除终端：<code>Ctrl+L</code> or <code>clear</code> </p>
+</li>
+<li><p>关闭终端：<code>Ctrl+D</code></p>
+</li>
+<li><p>跳到命令开头：<code>Ctrl+A</code> </p>
+</li>
+<li><p>跳到命令结尾：<code>Ctrl+E</code></p>
+</li>
+<li><p>删除光标左侧的所有字符：<code>Ctrl+U</code></p>
+</li>
+<li><p>删除光标右侧的所有字符：<code>Ctrl+K</code></p>
+</li>
+<li><p>删除光标左侧的一个单词：<code>Ctrl+W</code> </p>
+</li>
+</ul>
+<h3 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h3><ul>
+<li>Linux <code>/</code>为根目录   </li>
+<li>所有的用户都在<code>home</code>下，<code>root</code>除外</li>
+<li>当前位置：<code>pwd</code></li>
+<li>获取文件的位置：<code>which</code></li>
+<li>显示目录文件大小：<code>du</code> (参考书籍)</li>
+<li>显示文件内容：<code>cat</code> or <code>less</code> (参考书籍)</li>
+<li>显示文件开头：<code>head</code></li>
+<li>显示文件结尾：<code>tail</code></li>
+<li>创建文件：<code>touch</code></li>
+<li>创建目录：<code>mkdir</code></li>
+<li>拷贝文件或者目录：<code>cp</code></li>
+<li>移动文件：<code>mv</code></li>
+<li>删除文件：<code>rm</code> (谨慎使用)<ul>
+<li>极度危险的命令：<code>rm -rf /</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="压缩和解压文件"><a href="#压缩和解压文件" class="headerlink" title="压缩和解压文件"></a>压缩和解压文件</h3><ul>
+<li>打包：多个文件变成一个总文件</li>
+<li>归档：<code>tar</code></li>
+<li>压缩：<code>tar</code>和<code>gzip</code></li>
+</ul>
+<p><img src="http://xingkong-images.test.upcdn.net/PicGo/20210205134936.png" alt=""></p>
+<h3 id="权限管理"><a href="#权限管理" class="headerlink" title="权限管理"></a>权限管理</h3><ul>
+<li>群组管理</li>
+<li>文件权限：<ul>
+<li>d： 目录</li>
+<li>l：链接</li>
+<li>r：读</li>
+<li>w：写</li>
+<li>x：执行</li>
+<li>-：没有相应权限</li>
+</ul>
+</li>
+<li>修改文件权限：<code>chmod</code></li>
+</ul>
+<h3 id="数据操作"><a href="#数据操作" class="headerlink" title="数据操作"></a>数据操作</h3><ul>
+<li>搜索文本：<code>grep</code><ul>
+<li>可配合正则表达式</li>
+</ul>
+</li>
+<li>文件统计：<code>wc</code></li>
+</ul>
+<h3 id="流、管道、重定向"><a href="#流、管道、重定向" class="headerlink" title="流、管道、重定向"></a>流、管道、重定向</h3><ul>
+<li>大于<code>&gt;</code>：将结果重定向到文件中      <code>&gt;&gt;</code>：追加到末尾</li>
+<li>将两个命令连成管道，也就是将一个命令的输出当成另外一个命令的输入：<code>|</code></li>
+</ul>
+<h3 id="进程管理"><a href="#进程管理" class="headerlink" title="进程管理"></a>进程管理</h3><p>软件：glances，htop</p>
+<ul>
+<li>显示系统当前活动的用户：<code>w</code></li>
+<li>进程静态列表：<code>ps</code></li>
+<li>进程动态列表：<code>top</code><ul>
+<li>按k结束某个进程</li>
+</ul>
+</li>
+<li>结束进程：<code>kill</code></li>
+<li>后台运行进程：<code>&amp;</code>符号和<code>nohup</code><ul>
+<li>要运行的命令+<code>&amp;</code>(后台与终端关联)</li>
+<li><code>nohup</code>：关闭终端后程序依然运行</li>
+<li>可以<code>nohup</code>和<code>&amp;</code>一起使用</li>
+</ul>
+</li>
+<li>使前台转后台：先<code>Ctrl+z</code>：转到后台，并停止运行，然后用<code>bg</code>命令使进程重新运行起来</li>
+<li>显示后台进程状态：<code>jobs</code></li>
+<li>使进程转到前台：<code>fg</code></li>
+</ul>
+<p><img src="http://xingkong-images.test.upcdn.net/PicGo/20210205132859.png" alt=""></p>
+<h3 id="定时和延迟执行"><a href="#定时和延迟执行" class="headerlink" title="定时和延迟执行"></a>定时和延迟执行</h3><ul>
+<li>在制定时刻运行一次程序：<code>at</code></li>
+<li>列出正在等待的at任务：<code>atq</code></li>
+<li>删除正在等待的at任务：<code>atrm</code></li>
+<li>定时执行程序：<code>crontab</code>(重复执行)</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">安装crontab</span></span><br><span class="line">sudo yum install vixie-cron crontabs</span><br><span class="line">chkconfig crond on #开机自启</span><br><span class="line">service crond start</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://xingkong-images.test.upcdn.net/PicGo/20210205134428.png" alt=""></p>
+<h2 id="网络与FTP"><a href="#网络与FTP" class="headerlink" title="网络与FTP"></a>网络与FTP</h2><ul>
+<li>下载文件：<code>wegt</code></li>
+<li>网间拷贝：<code>scp</code></li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">默认端口22</span></span><br><span class="line"><span class="meta">#</span><span class="bash">从自己电脑拷贝文件到另一台电脑</span></span><br><span class="line">scp file.txt root@192.168.1.5:/root</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">从另一台电脑拷贝文件到自己电脑</span></span><br><span class="line">scp root@192.168.1.5:/root/file.txt file_copy.txt</span><br></pre></td></tr></table></figure>
+
+<h3 id="防火墙"><a href="#防火墙" class="headerlink" title="防火墙"></a>防火墙</h3><h2 id="进程管理-1"><a href="#进程管理-1" class="headerlink" title="进程管理"></a>进程管理</h2><h3 id="systemd"><a href="#systemd" class="headerlink" title="systemd"></a>systemd</h3><p>Apache</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">安装Apache</span></span><br><span class="line">sudo yum install httpd</span><br><span class="line"><span class="meta">#</span><span class="bash">查看Apache运行状况</span></span><br><span class="line">ps -aux | grep httpd</span><br><span class="line"><span class="meta">#</span><span class="bash">开启Apache</span></span><br><span class="line">systemctl start httpd</span><br><span class="line"><span class="meta">#</span><span class="bash">开启后可用127.0.0.1访问</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">按道理开启服务之后别的主机也应该能访问？但是因为防火墙80端口默认关闭。</span></span><br><span class="line"><span class="meta">#</span><span class="bash">在自己电脑配置需要在同一局域网下去访问。互联网访问就需要一个公网IP</span></span><br><span class="line"><span class="meta">#</span><span class="bash">查看开放的端口</span></span><br><span class="line">sudo firewall-cmd --list-port</span><br><span class="line"><span class="meta">#</span><span class="bash">开放80端口，两种方式。https默认端口443</span></span><br><span class="line">systemctl stop firewalld #1 直接关闭防火墙</span><br><span class="line">sudo firewall-cmd --zone=public --add-port=80/tcp --permanent #2 只开放80端口</span><br><span class="line">sudo firewall-cmd --reload #重载配置的防火墙策略</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">sudo systemctl reload  httpd #重新加载 Apache 服务的配置文件</span><br><span class="line">sudo systemctl status httpd #状态查看详情信息</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">放行数据库</span></span><br><span class="line">firewall-cmd --zone=public --add-port=3306/tcp --permanent</span><br></pre></td></tr></table></figure>
+
+<p>Apache配置文件</p>
+<p><img src="http://xingkong-images.test.upcdn.net/PicGo/20210206101019.png" alt=""></p>
+<p>主配置文件三类参数</p>
+<ul>
+<li>注释</li>
+<li>全局配置</li>
+<li>区域配置：Directory</li>
+</ul>
+<h3 id="SELINUX-安全子系统"><a href="#SELINUX-安全子系统" class="headerlink" title="SELINUX 安全子系统"></a>SELINUX 安全子系统</h3><ul>
+<li>使得Apache只能访问指定的目录，别的文件不能访问。所以修改Apache配置后可能不能起作用</li>
+<li>查看状态：命令行<code>sestatus</code></li>
+<li>通过<code>semanage</code>包去管理SELINUX</li>
+</ul>
+<p><img src="http://xingkong-images.test.upcdn.net/PicGo/20210206101434.png" alt=""></p>
+<p><img src="http://xingkong-images.test.upcdn.net/PicGo/20210205200948.png" alt=""></p>
+<p><img src="http://xingkong-images.test.upcdn.net/PicGo/20210205200947.png" alt=""></p>
+<h2 id="开发环境的搭建"><a href="#开发环境的搭建" class="headerlink" title="开发环境的搭建"></a>开发环境的搭建</h2><h3 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h3><p><img src="http://xingkong-images.test.upcdn.net/PicGo/20210205183213.png" alt=""></p>
+<h3 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h3><p><a href="https://blog.csdn.net/guoxiaorui666/article/details/99623023?ops_request_misc=%25257B%252522request%25255Fid%252522%25253A%252522161252351916780261966618%252522%25252C%252522scm%252522%25253A%25252220140713.130102334.pc%25255Fall.%252522%25257D&request_id=161252351916780261966618&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_v2~rank_v29-1-99623023.first_rank_v2_pc_rank_v29_10&utm_term=%25E4%25BD%25BF%25E7%2594%25A8Github+Pages%252Bhexo+%25E6%2590%25AD%25E5%25BB%25BA%25E4%25B8%25AA%25E4%25BA%25BA%25E7%25BD%2591%25E7%25AB%2599" target="_blank" rel="noopener">Git连接GitHub </a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#初始化</span><br><span class="line">git init</span><br><span class="line"></span><br><span class="line">#激活颜色选项：</span><br><span class="line">git config --global color.ui auto</span><br></pre></td></tr></table></figure>
+
+<p>git与github绑定：把本地的共钥复制到github中的ssh设置中</p>
+<h3 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h3><p><a href="https://www.cnblogs.com/wcwnina/p/8728391.html" target="_blank" rel="noopener">Nginx 相关介绍(Nginx是什么?能干嘛?)</a></p>
+<p><a href="https://www.cnblogs.com/wcwnina/p/9906081.html" target="_blank" rel="noopener">Django Linux+Nginx+uWSGI环境下部署(含Nginx返回400问题处理、防火墙管理)</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#安装Nginx，默认80端口</span><br><span class="line">#80与Apache可能冲突了，但是修改端口时要先把修改的端口用SELINUX子系统开放，并且打开防火墙</span><br><span class="line">yum install epel-release</span><br><span class="line">yum install nginx</span><br><span class="line"></span><br><span class="line">#查看Nginx相关文件</span><br><span class="line">rpm -ql nginx</span><br><span class="line">&#x2F;etc&#x2F;nginx&#x2F;nginx.conf为主要配置文件</span><br></pre></td></tr></table></figure>
+
+<h3 id="Squid"><a href="#Squid" class="headerlink" title="Squid"></a>Squid</h3><h3 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h3><p>寻找云平台操作Docker</p>
+<h2 id="shell脚本"><a href="#shell脚本" class="headerlink" title="shell脚本"></a>shell脚本</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"><span class="meta">#</span><span class="bash">第一行用来指明用那个shell运行脚本</span></span><br><span class="line"><span class="meta">#</span><span class="bash">如果文件在环境变量所包含的文件夹下，那么可以直接输入文件名就能执行脚本了</span></span><br></pre></td></tr></table></figure>
+
+<p>运行之前要给脚本加可执行权限</p>
+<p>使用<code>./test.sh</code>运行脚本<code>test.sh</code></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Tags</a></li>
+         
+          <li><a href="http://101.132.226.32/search_simple" target="_blank" rel="noopener">Project</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#本地连接远程Linux服务器"><span class="toc-number">1.</span> <span class="toc-text">本地连接远程Linux服务器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#软件仓库"><span class="toc-number">1.1.</span> <span class="toc-text">软件仓库</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#命令行"><span class="toc-number">2.</span> <span class="toc-text">命令行</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#查找命令和快捷键"><span class="toc-number">2.1.</span> <span class="toc-text">查找命令和快捷键</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件"><span class="toc-number">2.2.</span> <span class="toc-text">文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#压缩和解压文件"><span class="toc-number">2.3.</span> <span class="toc-text">压缩和解压文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#权限管理"><span class="toc-number">2.4.</span> <span class="toc-text">权限管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据操作"><span class="toc-number">2.5.</span> <span class="toc-text">数据操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#流、管道、重定向"><span class="toc-number">2.6.</span> <span class="toc-text">流、管道、重定向</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#进程管理"><span class="toc-number">2.7.</span> <span class="toc-text">进程管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定时和延迟执行"><span class="toc-number">2.8.</span> <span class="toc-text">定时和延迟执行</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网络与FTP"><span class="toc-number">3.</span> <span class="toc-text">网络与FTP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#防火墙"><span class="toc-number">3.1.</span> <span class="toc-text">防火墙</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进程管理-1"><span class="toc-number">4.</span> <span class="toc-text">进程管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#systemd"><span class="toc-number">4.1.</span> <span class="toc-text">systemd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SELINUX-安全子系统"><span class="toc-number">4.2.</span> <span class="toc-text">SELINUX 安全子系统</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开发环境的搭建"><span class="toc-number">5.</span> <span class="toc-text">开发环境的搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vim"><span class="toc-number">5.1.</span> <span class="toc-text">vim</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Git"><span class="toc-number">5.2.</span> <span class="toc-text">Git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Nginx"><span class="toc-number">5.3.</span> <span class="toc-text">Nginx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Squid"><span class="toc-number">5.4.</span> <span class="toc-text">Squid</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker"><span class="toc-number">5.5.</span> <span class="toc-text">Docker</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#shell脚本"><span class="toc-number">6.</span> <span class="toc-text">shell脚本</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://xingkongyj2.github.io/2021/02/08/Linux%E7%AC%94%E8%AE%B0/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://xingkongyj2.github.io/2021/02/08/Linux%E7%AC%94%E8%AE%B0/&text=Linux笔记" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://xingkongyj2.github.io/2021/02/08/Linux%E7%AC%94%E8%AE%B0/&title=Linux笔记" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://xingkongyj2.github.io/2021/02/08/Linux%E7%AC%94%E8%AE%B0/&is_video=false&description=Linux笔记" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Linux笔记&body=Check out this article: https://xingkongyj2.github.io/2021/02/08/Linux%E7%AC%94%E8%AE%B0/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://xingkongyj2.github.io/2021/02/08/Linux%E7%AC%94%E8%AE%B0/&title=Linux笔记" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://xingkongyj2.github.io/2021/02/08/Linux%E7%AC%94%E8%AE%B0/&title=Linux笔记" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://xingkongyj2.github.io/2021/02/08/Linux%E7%AC%94%E8%AE%B0/&title=Linux笔记" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://xingkongyj2.github.io/2021/02/08/Linux%E7%AC%94%E8%AE%B0/&title=Linux笔记" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://xingkongyj2.github.io/2021/02/08/Linux%E7%AC%94%E8%AE%B0/&name=Linux笔记&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://xingkongyj2.github.io/2021/02/08/Linux%E7%AC%94%E8%AE%B0/&t=Linux笔记" target="_blank" rel="noopener"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2020-2021
+    兔子翻书
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Tags</a></li>
+         
+          <li><a href="http://101.132.226.32/search_simple" target="_blank" rel="noopener">Project</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
