@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="本地连接远程Linux服务器(CentOS) ssh的公钥加密，私钥解密 电脑中的公钥私钥是用来免密码登陆的  Mac使用ssh公钥登录Linux SSH提示Permission denied ssh免密码登录Permission denied (publickey,gssapi-keyex,gssapi-with-mic) 的解决方案! 在本地生成密钥。密钥默认保存位置在 ~&#x2F;.ssh 目录下，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux基础">
+<meta property="og:url" content="https://xingkongyj2.github.io/2021/02/08/Linux%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="兔子翻书">
+<meta property="og:description" content="本地连接远程Linux服务器(CentOS) ssh的公钥加密，私钥解密 电脑中的公钥私钥是用来免密码登陆的  Mac使用ssh公钥登录Linux SSH提示Permission denied ssh免密码登录Permission denied (publickey,gssapi-keyex,gssapi-with-mic) 的解决方案! 在本地生成密钥。密钥默认保存位置在 ~&#x2F;.ssh 目录下，">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://xingkong-images.test.upcdn.net/PicGo/20210205134936.png">
+<meta property="og:image" content="http://xingkong-images.test.upcdn.net/PicGo/20210205132859.png">
+<meta property="og:image" content="http://xingkong-images.test.upcdn.net/PicGo/20210205134428.png">
+<meta property="og:image" content="http://xingkong-images.test.upcdn.net/PicGo/20210206101019.png">
+<meta property="og:image" content="http://xingkong-images.test.upcdn.net/PicGo/20210206101434.png">
+<meta property="og:image" content="http://xingkong-images.test.upcdn.net/PicGo/20210205200948.png">
+<meta property="og:image" content="http://xingkong-images.test.upcdn.net/PicGo/20210205200947.png">
+<meta property="og:image" content="http://xingkong-images.test.upcdn.net/PicGo/20210205183213.png">
+<meta property="article:published_time" content="2021-02-08T15:23:42.000Z">
+<meta property="article:modified_time" content="2021-03-02T11:29:22.209Z">
+<meta property="article:author" content="兔子翻书">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://xingkong-images.test.upcdn.net/PicGo/20210205134936.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Linux基础</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Tags</a></li>
+         
+          <li><a href="http://101.132.226.32/search_simple" target="_blank" rel="noopener">Project</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2021/02/08/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91%E4%B8%80%E5%9F%BA%E7%A1%80(%E8%BD%AC%E8%BD%BD)/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://xingkongyj2.github.io/2021/02/08/Linux%E5%9F%BA%E7%A1%80/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://xingkongyj2.github.io/2021/02/08/Linux%E5%9F%BA%E7%A1%80/&text=Linux基础" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://xingkongyj2.github.io/2021/02/08/Linux%E5%9F%BA%E7%A1%80/&title=Linux基础" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://xingkongyj2.github.io/2021/02/08/Linux%E5%9F%BA%E7%A1%80/&is_video=false&description=Linux基础" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Linux基础&body=Check out this article: https://xingkongyj2.github.io/2021/02/08/Linux%E5%9F%BA%E7%A1%80/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://xingkongyj2.github.io/2021/02/08/Linux%E5%9F%BA%E7%A1%80/&title=Linux基础" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://xingkongyj2.github.io/2021/02/08/Linux%E5%9F%BA%E7%A1%80/&title=Linux基础" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://xingkongyj2.github.io/2021/02/08/Linux%E5%9F%BA%E7%A1%80/&title=Linux基础" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://xingkongyj2.github.io/2021/02/08/Linux%E5%9F%BA%E7%A1%80/&title=Linux基础" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://xingkongyj2.github.io/2021/02/08/Linux%E5%9F%BA%E7%A1%80/&name=Linux基础&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://xingkongyj2.github.io/2021/02/08/Linux%E5%9F%BA%E7%A1%80/&t=Linux基础" target="_blank" rel="noopener"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#本地连接远程Linux服务器-CentOS"><span class="toc-number">1.</span> <span class="toc-text">本地连接远程Linux服务器(CentOS)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#软件仓库"><span class="toc-number">1.1.</span> <span class="toc-text">软件仓库</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#命令行"><span class="toc-number">2.</span> <span class="toc-text">命令行</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#快捷键"><span class="toc-number">2.1.</span> <span class="toc-text">快捷键</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux-目录"><span class="toc-number">2.2.</span> <span class="toc-text">Linux 目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件命令"><span class="toc-number">2.3.</span> <span class="toc-text">文件命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#压缩和解压文件"><span class="toc-number">2.4.</span> <span class="toc-text">压缩和解压文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#用户管理"><span class="toc-number">2.5.</span> <span class="toc-text">用户管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#权限管理"><span class="toc-number">2.6.</span> <span class="toc-text">权限管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据操作"><span class="toc-number">2.7.</span> <span class="toc-text">数据操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#流、管道、重定向"><span class="toc-number">2.8.</span> <span class="toc-text">流、管道、重定向</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#进程管理"><span class="toc-number">2.9.</span> <span class="toc-text">进程管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定时和延迟执行"><span class="toc-number">2.10.</span> <span class="toc-text">定时和延迟执行</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网络与FTP"><span class="toc-number">3.</span> <span class="toc-text">网络与FTP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#防火墙"><span class="toc-number">3.1.</span> <span class="toc-text">防火墙</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#搭建FTP"><span class="toc-number">3.2.</span> <span class="toc-text">搭建FTP</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#服务区管理"><span class="toc-number">4.</span> <span class="toc-text">服务区管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#systemd"><span class="toc-number">4.1.</span> <span class="toc-text">systemd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SELINUX-安全子系统"><span class="toc-number">4.2.</span> <span class="toc-text">SELINUX 安全子系统</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vim"><span class="toc-number">5.</span> <span class="toc-text">Vim</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GCC"><span class="toc-number">6.</span> <span class="toc-text">GCC</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#静态库"><span class="toc-number">7.</span> <span class="toc-text">静态库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#动态库"><span class="toc-number">8.</span> <span class="toc-text">动态库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gdb调试"><span class="toc-number">9.</span> <span class="toc-text">gdb调试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Git"><span class="toc-number">10.</span> <span class="toc-text">Git</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nginx"><span class="toc-number">11.</span> <span class="toc-text">Nginx</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Squid"><span class="toc-number">12.</span> <span class="toc-text">Squid</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker"><span class="toc-number">13.</span> <span class="toc-text">Docker</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shell"><span class="toc-number">14.</span> <span class="toc-text">Shell</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Linux基础
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">兔子翻书</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2021-02-08T15:23:42.000Z" itemprop="datePublished">2021-02-08</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/Linux/">Linux</a>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="本地连接远程Linux服务器-CentOS"><a href="#本地连接远程Linux服务器-CentOS" class="headerlink" title="本地连接远程Linux服务器(CentOS)"></a>本地连接远程Linux服务器(CentOS)</h2><blockquote>
+<p>ssh的公钥加密，私钥解密</p>
+<p>电脑中的公钥私钥是用来免密码登陆的</p>
+</blockquote>
+<p><a href="https://segmentfault.com/a/1190000015369885" target="_blank" rel="noopener">Mac使用ssh公钥登录Linux</a></p>
+<p><a href="https://blog.csdn.net/bobpen/article/details/78455601" target="_blank" rel="noopener">SSH提示Permission denied</a></p>
+<p><a href="https://www.jianshu.com/p/bdc9d76da3f1" target="_blank" rel="noopener">ssh免密码登录Permission denied (publickey,gssapi-keyex,gssapi-with-mic) 的解决方案!</a></p>
+<p>在本地生成密钥。密钥默认保存位置在 <code>~/.ssh</code> 目录下，打开后会看到私钥文件 <code>id_rsa</code> 和公钥文件 <code>id_rsa.pub</code>。生成过程中会提示输入密码两次，如果不想在使用公钥的时候输入密码，可以回车跳过</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C  'your email@domain.com'</span><br></pre></td></tr></table></figure>
+
+<p>把公钥 <code>id_rsa.pub</code>复制到远程服务器<code>终端默认文件夹</code>下面，然后把公钥追加到服务器ssh认证文件中</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">//就是把id_rsa.pub里面的内容放到authorized_keys文件中</span><br><span class="line">//如果.ssh(隐藏文件夹)文件夹不存在就自己创建一个</span><br><span class="line">//手动复制也可以</span><br><span class="line">cat /home/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys</span><br></pre></td></tr></table></figure>
+
+<p>查看服务器ip，终端输入<code>ifconfig</code>，看<code>inet x.x.x.x</code>后面的<code>ip地址</code>。如果<code>ifconfig</code>没有结果，则先安装ssh服务</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum -y install openssh-server</span><br></pre></td></tr></table></figure>
+
+<p>在本地终端输入以下命令连接至远程服务器</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ssh &lt;服务器用户名&gt;@&lt;服务器ip&gt;</span><br></pre></td></tr></table></figure>
+
+<p>如果出现拒绝访问的情况解决方法如下:</p>
+<p>在终端输入<code>sudo vi /etc/ssh/sshd_config</code>，编辑<code>sshd_config</code>文件，修以下几个字段为<code>yes</code>。</p>
+<p>在<code>vim</code>中打开<code>sshd_config</code>文件后直接按<code>i</code>键进行编辑，按<code>:wq</code>进行保存并退出</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">PermitRootLogin yes</span><br><span class="line">PasswordAuthentication yes</span><br><span class="line">PubkeyAuthentication yes</span><br></pre></td></tr></table></figure>
+
+<p>修改文件后需要重启ssh服务</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">systemctl restart sshd.service</span><br><span class="line">systemctl status sshd.service #查看ssh服务的状态</span><br><span class="line">systemctl start sshd.service  #开启ssh服务</span><br><span class="line">sytemctl enable sshd.service #ssh服务随开机启动，还有个disabled</span><br><span class="line">systemctl stop sshd.ervice #停止</span><br><span class="line">//正常情况下应该是Active：active（running）</span><br></pre></td></tr></table></figure>
+
+<p>同时修改文件的权限。<code>.ssh文件夹</code>的权限为<code>700</code>，<code>.ssh</code>下的<code>authorized_keys</code>文件权限为<code>600</code>或<code>644</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">chmod 700 ~/.ssh</span><br><span class="line">chmod 0600 ~/.ssh/authorized_keys</span><br></pre></td></tr></table></figure>
+
+<h3 id="软件仓库"><a href="#软件仓库" class="headerlink" title="软件仓库"></a>软件仓库</h3><p><a href="https://blog.csdn.net/inslow/article/details/54177191" target="_blank" rel="noopener">修改CentOS默认yum源为国内yum镜像源</a></p>
+<h2 id="命令行"><a href="#命令行" class="headerlink" title="命令行"></a>命令行</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">命令关键字 [选项] [参数]</span><br><span class="line"></span><br><span class="line">短格式  -单词简写     ls -a</span><br><span class="line">长格式  --单词全拼    ls --all</span><br><span class="line">组合 ls -a -l =&gt; ls -al</span><br></pre></td></tr></table></figure>
+
+<h3 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h3><p>编辑命令</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Ctrl + a          移到命令行首, ahead，与home键功能相同</span><br><span class="line">Ctrl + e          移到命令行尾, end， 与end键功能相同</span><br><span class="line">Ctrl + f          按字符前移（右向）, forward, 与方向键left功能相同</span><br><span class="line">Ctrl + b          按字符后移（左向）, back, 与方向键right功能相同</span><br><span class="line">Alt  + f          按单词前移（右向）</span><br><span class="line">Alt  + b          按单词后移（左向）</span><br><span class="line">Ctrl + xx         在命令行首和光标之间移动</span><br><span class="line">Ctrl + u          从光标处删除至命令行首</span><br><span class="line">Ctrl + k          从光标处删除至命令行尾</span><br><span class="line">Ctrl + w          从光标处删除至字首</span><br><span class="line">Alt  + d          从光标处删除至字尾</span><br><span class="line">Ctrl + d          删除光标处的字符, 与delete键功能相同</span><br><span class="line">Ctrl + h          删除光标前的字符, 与backspace键功能相同</span><br><span class="line">Ctrl + y          粘贴至光标后, yank</span><br><span class="line">Alt  + c          从光标处更改为首字母大写的单词</span><br><span class="line">Alt  + u          从光标处更改为全部大写的单词, uppercase</span><br><span class="line">Alt  + l          从光标处更改为全部小写的单词, lowercase</span><br><span class="line">Ctrl + t          交换光标处和之前的字符</span><br><span class="line">Alt  + t          交换光标处和之前的单词</span><br><span class="line">Alt  + Backspace  与 Ctrl + w 类似，分隔符有些差别</span><br><span class="line">按两次Tab给提示</span><br></pre></td></tr></table></figure>
+
+<p>重新执行命令</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Ctrl + r          逆向搜索命令历史</span><br><span class="line">Ctrl + g          从历史搜索模式退出</span><br><span class="line">Ctrl + p          历史中的上一条命令, previous，与方向键up功能相同</span><br><span class="line">Ctrl + n          历史中的下一条命令, next， 与方向键down功能相同</span><br><span class="line">Alt  + .          使用上一条命令的最后一个参数</span><br></pre></td></tr></table></figure>
+
+<p>控制命令</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Ctrl + l          清屏, clear</span><br><span class="line">Ctrl + o          执行当前命令，并选择上一条命令</span><br><span class="line">Ctrl + s          阻止屏幕输出</span><br><span class="line">Ctrl + q          允许屏幕输出</span><br><span class="line">Ctrl + c          终止命令</span><br><span class="line">Ctrl + z          挂起命令</span><br></pre></td></tr></table></figure>
+
+<h3 id="Linux-目录"><a href="#Linux-目录" class="headerlink" title="Linux 目录"></a>Linux 目录</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">/</span><br><span class="line">    root --- 启动Linux时使用的一些核心文件。如操作系统内核、引导程序Grub等。</span><br><span class="line">    home --- 存储普通用户的个人文件</span><br><span class="line">        ftp --- 用户所有服务</span><br><span class="line">        httpd</span><br><span class="line">        samba</span><br><span class="line">        user1</span><br><span class="line">        user2</span><br><span class="line">    bin --- 系统启动时需要的执行文件（二进制）</span><br><span class="line">    sbin --- 可执行程序的目录，但大多存放涉及系统管理的命令。只有root权限才能执行</span><br><span class="line">    proc --- 虚拟，存在linux内核镜像；保存所有内核参数以及系统配置信息</span><br><span class="line">        1 --- 进程编号</span><br><span class="line">    usr --- 用户目录，存放用户级的文件</span><br><span class="line">        bin --- 几乎所有用户所用命令，另外存在与/bin，/usr/local/bin</span><br><span class="line">        sbin --- 系统管理员命令，与用户相关，例如，大部分服务器程序</span><br><span class="line">        include --- 存放C/C++头文件的目录</span><br><span class="line">        lib --- 固定的程序数据</span><br><span class="line">        local --- 本地安装软件保存位置</span><br><span class="line">        man --- 手工生成的目录</span><br><span class="line">        info --- 信息文档</span><br><span class="line">        doc --- 不同包文档信息</span><br><span class="line">        tmp</span><br><span class="line">        X11R6 ---  该目录用于保存运行X-Window所需的所有文件。该目录中还包含用于运行GUI要的配置文件和二进制文件。</span><br><span class="line">        X386　--- 功能同X11R6，X11 发行版5 的系统文件</span><br><span class="line">    boot --- 引导加载器所需文件，系统所需图片保存于此</span><br><span class="line">    lib --- 根文件系统目录下程序和核心模块的公共库</span><br><span class="line">        modules --- 可加载模块，系统崩溃后重启所需模块</span><br><span class="line">    dev --- 设备文件目录</span><br><span class="line">    etc --- 配置文件</span><br><span class="line">        skel --- home目录建立，该目录初始化</span><br><span class="line">        sysconfig --- 网络，时间，键盘等配置目录</span><br><span class="line">    var</span><br><span class="line">        file</span><br><span class="line">        lib --- 该目录下的文件在系统运行时，会改变</span><br><span class="line">        local --- 安装在/usr/local的程序数据，变化的</span><br><span class="line">        lock --- 文件使用特定外设或文件，为其上锁，其他文件暂时不能访问</span><br><span class="line">        log --- 记录日志</span><br><span class="line">        run --- 系统运行合法信息</span><br><span class="line">        spool --- 打印机、邮件、代理服务器等假脱机目录</span><br><span class="line">        tmp</span><br><span class="line">        catman --- 缓存目录</span><br><span class="line">    mnt --- 临时用于挂载文件系统的地方。一般情况下这个目录是空的。</span><br><span class="line">            在我们将要挂载分区时在这个目录下建立目录，再将我们将要访问的设备挂载在这个目录上，这样我们就可访问文件了。</span><br><span class="line">    tmp --- 临时文件目录，系统启动后的临时文件存放在/var/tmp</span><br><span class="line">    lost+found --- 在文件系统修复时恢复的文件</span><br></pre></td></tr></table></figure>
+
+<p><strong>/</strong></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">根目录，一般根目录下只存放目录，不要存放文件。</span><br><span class="line">/etc、/bin、/dev、/lib、/sbin应该和根目录放置在一个分区中。</span><br></pre></td></tr></table></figure>
+
+<p><strong>/bin, /usr/bin</strong></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">可执行二进制文件的目录，如常用的命令ls、tar、mv、cat等。</span><br></pre></td></tr></table></figure>
+
+<p><strong>/boot</strong></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">放置linux系统启动时用到的一些文件。/boot/vmlinuz为linux的内核文件，以及/boot/gurb。建议单独分区，分区大小100M即可。</span><br></pre></td></tr></table></figure>
+
+<p><strong>/dev</strong></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">存放linux系统下的设备文件，访问该目录下某个文件，相当于访问某个设备，常用的是挂载光驱mount:</span><br><span class="line">/dev/cdrom、/mnt</span><br></pre></td></tr></table></figure>
+
+<p><strong>/etc</strong></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">系统配置文件存放的目录，不建议在此目录下存放可执行文件。</span><br><span class="line">重要的配置文件有：/etc/inittab、/etc/fstab、/etc/init.d、/etc/X11、/etc/sysconfig、/etc/xinetd.d。</span><br><span class="line">修改配置文件之前记得备份。</span><br><span class="line"></span><br><span class="line">注：/etc/X11存放与x windows有关的设置。</span><br></pre></td></tr></table></figure>
+
+<p><strong>/home</strong></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">系统默认的用户家目录，新增用户账号时，用户的家目录都存放在此目录下。</span><br><span class="line">~表示当前用户的家目录，~test表示用户test的家目录。</span><br><span class="line">建议单独分区，并设置较大的磁盘空间，方便用户存放数据。</span><br></pre></td></tr></table></figure>
+
+<p><strong>/lib，/usr/lib，/usr/local/lib</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">系统使用的函数库的目录，程序在执行过程中，需要调用一些额外的参数时需要函数库的协助，比较重要的目录为&#x2F;lib&#x2F;modules。</span><br></pre></td></tr></table></figure>
+
+<p><strong>/lost+fount</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">系统异常产生错误时，会将一些遗失的片段放置于此目录下，通常这个目录会自动出现在装置目录下。</span><br><span class="line">如加载硬盘于&#x2F;disk 中，此目录下就会自动产生目录&#x2F;disk&#x2F;lost+found</span><br></pre></td></tr></table></figure>
+
+<p><strong>/mnt，/media</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">光盘默认挂载点，通常光盘挂载于&#x2F;mnt&#x2F;cdrom下，也不一定，可以选择任意位置进行挂载。</span><br></pre></td></tr></table></figure>
+
+<p><strong>/opt</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">给主机额外安装软件所摆放的目录。</span><br><span class="line">如：FC4使用的Fedora 社群开发软件，如果想要自行安装新的KDE 桌面软件，可以将该软件安装在该目录下。</span><br><span class="line">以前的 Linux 系统中，习惯放置在 &#x2F;usr&#x2F;local 目录下。</span><br></pre></td></tr></table></figure>
+
+<p><strong>/proc</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">此目录的数据都在内存中，如系统核心，外部设备，网络状态，由于数据都存放于内存中，所以不占用磁盘空间。</span><br><span class="line">比较重要的目录有&#x2F;proc&#x2F;cpuinfo、&#x2F;proc&#x2F;interrupts、&#x2F;proc&#x2F;dma、&#x2F;proc&#x2F;ioports、&#x2F;proc&#x2F;net&#x2F;*等。</span><br></pre></td></tr></table></figure>
+
+<p><strong>/root</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">系统管理员root的家目录，系统第一个启动的分区为&#x2F;，所以最好将&#x2F;root和&#x2F;放置在一个分区下。</span><br></pre></td></tr></table></figure>
+
+<p><strong>/sbin，/usr/sbin，/usr/local/sbin</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">放置系统管理员使用的可执行命令，如fdisk、shutdown、mount等。</span><br><span class="line">与&#x2F;bin不同的是，这几个目录是给系统管理员root使用的命令，一般用户只能&quot;查看&quot;而不能设置和使用。</span><br></pre></td></tr></table></figure>
+
+<p><strong>/tmp</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">一般用户或正在执行的程序临时存放文件的目录,任何人都可以访问,重要数据不可放置在此目录下。</span><br></pre></td></tr></table></figure>
+
+<p><strong>/srv</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">服务启动之后需要访问的数据目录，如www服务需要访问的网页数据存放在&#x2F;srv&#x2F;www内。</span><br></pre></td></tr></table></figure>
+
+<p><strong>/usr</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">应用程序存放目录。</span><br><span class="line">&#x2F;usr&#x2F;bin　存放应用程序。</span><br><span class="line">&#x2F;usr&#x2F;share　存放共享数据。</span><br><span class="line">&#x2F;usr&#x2F;lib　存放不能直接运行的，却是许多程序运行所必需的一些函数库文件。</span><br><span class="line">&#x2F;usr&#x2F;local　存放软件升级包。</span><br><span class="line">&#x2F;usr&#x2F;share&#x2F;doc　系统说明文件存放目录。</span><br><span class="line">&#x2F;usr&#x2F;share&#x2F;man　程序说明文件存放目录。</span><br><span class="line">使用 man ls时会查询&#x2F;usr&#x2F;share&#x2F;man&#x2F;man1&#x2F;ls.1.gz的内容。</span><br><span class="line">建议单独分区，设置较大的磁盘空间。</span><br></pre></td></tr></table></figure>
+
+<p><strong>/var</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">放置系统执行过程中经常变化的文件。</span><br><span class="line">&#x2F;var&#x2F;log　随时更改的日志文件。</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;message　所有的登录文件存放目录。</span><br><span class="line">&#x2F;var&#x2F;spool&#x2F;mail　邮件存放的目录。</span><br><span class="line">&#x2F;var&#x2F;run　程序或服务启动后，其PID存放在该目录下。</span><br><span class="line">建议单独分区，设置较大的磁盘空间。</span><br></pre></td></tr></table></figure>
+
+<p><strong>root@ubuntu:~#</strong></p>
+<ul>
+<li><code>root</code>: 当前用户名</li>
+<li><code>@</code>：at, 在</li>
+<li><code>ubuntu</code>：主机名</li>
+<li><code>~</code> : 当前用户home目录</li>
+<li><code>#</code>：超级用户</li>
+<li><code>$</code>：普通用户</li>
+</ul>
+<h3 id="文件命令"><a href="#文件命令" class="headerlink" title="文件命令"></a>文件命令</h3><ul>
+<li><p><code>sudo su</code>：切换成root用户</p>
+</li>
+<li><p><code>exit</code>：退出root用户</p>
+</li>
+<li><p>cd</p>
+</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">基本格式：cd 目录(绝对路径/相对路径)</span><br><span class="line">cd directory切换到当前目录下的子目录</span><br><span class="line">cd .. 返回上一级目录</span><br><span class="line">cd ../.. 返回上两级目录</span><br><span class="line">cd ~/cd：返回当前用户的家目录</span><br><span class="line">cd -:返回到上次的目录</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>ls</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ls [选项] [目录] 展示指定目录的内容</span><br><span class="line">ls 展示当前目录内容</span><br><span class="line">    -l：查看文件详细情况（可查看文件类型） 别名:ll</span><br><span class="line">    -a：显示所有文件（包含隐藏文件）</span><br><span class="line">    -A：显示所有文件（.和..不展示）</span><br><span class="line">    -h：友好易读的方式展示，必须和-l一起使用  ll -h</span><br><span class="line">    -R：递归展示所有文件</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>tree</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">tree path   显示指定路径的目录树结构</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>du：查看文件或目录磁盘的占用情况</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">du 文件</span><br><span class="line">    -a：展示文件大小</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>df</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">df -h       查看当前文件夹下的目录或文件所使用磁盘空间的详细情况。</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>pwd</code></li>
+<li><code>which</code></li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">which ls    查看外部命令的位置，内部命令无法查看。</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>head</code></li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">head -5 stdio.h     查看前五行内容，不加参数默认是10行。</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>tail</code></li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">tail -5 stdio.h     查看后5行内容， 不加参数默认是10行。</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>创建文件：<code>touch</code></li>
+<li>创建目录：<code>mkdir</code></li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mkdir dirname               创建目录。</span><br><span class="line">mkdir dir1/dir2/dir3 -p     按层次创建目录。</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>拷贝文件或者目录：<code>cp</code></li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cp 源文件 目标文件</span><br><span class="line">    -i 覆盖时提示</span><br><span class="line">    -f 强制覆盖</span><br><span class="line">    -r 递归复制</span><br><span class="line">cp hello.c temp     在当前目录下生成一个temp文件，并把hello.c的内容写入文件</span><br><span class="line">                      如果temp不存在，则创建文件；如果存在，则覆盖已有文件</span><br><span class="line">cp mydir newdir -r  在当前目录下生成一个newdir目录，并把mydir目录里面的目录或文件拷贝过去</span><br><span class="line">                      如果目录不存在，则创建；如果存在，则mydir目录本身也拷贝到newdir目录下</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>移动文件：<code>mv</code></li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mv 源文件 目标文件</span><br><span class="line">    -i 覆盖时提示</span><br><span class="line">    -f 强制覆盖</span><br><span class="line">    -r 递归复制</span><br><span class="line">    -u 目标文件不存在，源文件比目标文件要新的时候才移动</span><br><span class="line">mv test.c hello.c   移动到。多用于重命名目录或文件</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>删除文件：<code>rm</code> (谨慎使用)</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">rm  目标文件</span><br><span class="line">    -i 删除时提示</span><br><span class="line">    -f 强制删除</span><br><span class="line">    -r 递归删除整个目录树</span><br><span class="line">    -rf 递归强制删除</span><br><span class="line">rm -rf dirname      递归强制删除文件夹下的目录和文件，实际使用中常用</span><br><span class="line">rm -ri dirname      递归删除并提示用户删除了哪些目录或文件</span><br><span class="line">极度危险的命令：rm -rf /</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>cat</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cat test.txt        查看文件的内容，缺点内容太多时查看困难。</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>more</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">more stdio.h        分屏查看文件，Enter下翻一行，Space下翻一页，缺点不能往回看。</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>less</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">less stdio.h        分屏查看文件。比more更实用，可以来回翻页。</span><br><span class="line">ctrl + p    上翻一行</span><br><span class="line">ctrl + n    下翻一行</span><br><span class="line">ctrl + b    上翻一页</span><br><span class="line">ctrl + f    下翻一页</span><br><span class="line">q           退出</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>echo：输出指定字符串或者变量</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">echo "hello"	打印字符串</span><br><span class="line">echo $PATH		打印环境变量</span><br><span class="line">echo $?			显示上一次程序退出值</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>ln：创建连接</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ln -s ~/.vim/.vimrc .vimrc      创建软链接，相当于windows下的快捷方式,可用于目录或文件。</span><br><span class="line">                                路径要用绝对路径，这样软链接拷贝到哪里都是有效的。</span><br><span class="line">                                如果删除原文件，则软链接失效。</span><br><span class="line"> </span><br><span class="line">ln .vimrc .vimrc.hard           创建硬链接，只能用于文件。不必使用绝对路径。</span><br><span class="line">                                创建后生成的硬链接与原文件引用同一个inode，硬链接本身不占硬盘空间。</span><br><span class="line">                                如果删除原文件，硬链接仍然有效。</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>alias：查看别名</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">alias la='ls -a -l':设置别名</span><br><span class="line">unalias la：取消别名</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>|： 管道符，把前面命令的输出当做后面命令的输入</li>
+</ul>
+<h3 id="压缩和解压文件"><a href="#压缩和解压文件" class="headerlink" title="压缩和解压文件"></a>压缩和解压文件</h3><ul>
+<li>打包：多个文件变成一个总文件</li>
+<li>归档：<code>tar</code></li>
+<li>压缩：<code>tar</code>和<code>gzip</code></li>
+</ul>
+<p><img src="http://xingkong-images.test.upcdn.net/PicGo/20210205134936.png" alt=""></p>
+<ul>
+<li><p>tar – 不使用z或j参数，该命令只能对文件和目录打包</p>
+<ul>
+<li><p>参数</p>
+  <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">c       创建--压缩时使用。</span><br><span class="line">x       释放--解压缩时使用。</span><br><span class="line">v       显示提示信息--压缩和解压缩都可以使用，可以省略。</span><br><span class="line">f       指定压缩文件的名字</span><br><span class="line"></span><br><span class="line">z       使用gzip的方式压缩文件</span><br><span class="line">j       使用bzip2的方式压缩文件</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>压缩</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">用法：tar zcvf 生成的压缩包的名字（xxx.tar.gz） 要压缩的文件或目录</span><br><span class="line">示例：tar zcvf alltxt.tar.gz *.txt test&#x2F;		同时对文件和目录进行打包压缩</span><br><span class="line"></span><br><span class="line">用法：tar jcvf 生成的压缩包的名字（xxx.tar.bz2） 要压缩的文件或目录</span><br><span class="line">示例：tar jcvf alltxt.tar.bz2 *.txt test&#x2F;		同时对文件和目录进行打包压缩</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>解压缩</p>
+  <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">tar zxvf 压缩包的名字					解压到当前目录</span><br><span class="line">tar jxvf 压缩包的名字 -C 目录			解压到指定目录</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>rar</p>
+<ul>
+<li><p>参数</p>
+  <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">a		Add压缩</span><br><span class="line">x		Extract解压缩</span><br><span class="line">r		压缩时递归目录，不加这个参数默认就是递归的</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>压缩</p>
+  <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">用法：rar a 生成的压缩文件的名字 压缩的文件或目录</span><br><span class="line"></span><br><span class="line">示例：</span><br><span class="line">rar a all *.txt			打包压缩文件</span><br><span class="line">rar a dir dir/			打包压缩目录</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>解压缩</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">用法：rar x 压缩文件名 [解压缩目录]</span><br><span class="line">示例：rar x all.rar</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>zip</p>
+<ul>
+<li><p>参数</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">r		压缩目录时加个参数用于递归目录，不加不能压缩</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>压缩</p>
+  <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">用法：zip 压缩包的名字 压缩的文件或目录</span><br><span class="line">示例：zip all *.txt</span><br><span class="line">zip -r myzip mytest/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>解压缩</p>
+  <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">用法：unzip 压缩包的名字</span><br><span class="line">unzip 压缩包的名字 -d 解压的目录</span><br><span class="line">示例：unzip all.zip</span><br><span class="line">unzip all.zip -d test/</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h3><ul>
+<li><p>所有的用户都在<code>home</code>下，<code>root</code>除外</p>
+</li>
+<li><p>查看当前用户</p>
+  <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">whoami		查看当前用户名。</span><br><span class="line">id			查看当前用户信息，如用户名，所属群组，UID，GID等。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建用户</p>
+  <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">adduser super		用户名只能小写，不能大写</span><br><span class="line">useradd -s /bin/bash -g super -d /home/super -m super		用户名可以大写</span><br><span class="line">-s		指定新用户登陆时shell类型</span><br><span class="line">-g		指定所属组，该组必须已经存在</span><br><span class="line">-d		用户家目录</span><br><span class="line">-m		用户家目录不存在时，自动创建该目录</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置用户组</p>
+  <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">groupadd super</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除用户</p>
+  <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">deluser super</span><br><span class="line">userdel -r super		选项-r的作用是把用户的主目录一起删除</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>切换用户</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">su super</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改用户密码</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">passwd super</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>退出当前用户</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">exit</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看所有用户信息</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vi &#x2F;etc&#x2F;passwd</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="权限管理"><a href="#权限管理" class="headerlink" title="权限管理"></a>权限管理</h3><ul>
+<li><p>修改目录或文件权</p>
+<ul>
+<li><p>文字设定法</p>
+  <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">d： 目录</span><br><span class="line">l：链接</span><br><span class="line">r：读</span><br><span class="line">w：写</span><br><span class="line">x：执行</span><br><span class="line">-：没有相应权限</span><br><span class="line"></span><br><span class="line">chmod [who] [+|-|=] [mode]</span><br><span class="line">who : 不指定的话，默认是所有</span><br><span class="line">文件所有者：u</span><br><span class="line">文件所属组：g</span><br><span class="line">其他人：o</span><br><span class="line">所有人：a</span><br><span class="line">mode</span><br><span class="line">r : 读</span><br><span class="line">w : 写</span><br><span class="line">x : 执行</span><br><span class="line">chmod o+w temp		给其他人加写权限。</span><br><span class="line">chmod a-x temp		给所有人去除执行权限。</span><br><span class="line">chmod a=r temp		所有人只有读权限。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>数字设定法</p>
+  <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">-	0	没有权限</span><br><span class="line">r	4	读</span><br><span class="line">w	2	写</span><br><span class="line">x	1	执行</span><br><span class="line"></span><br><span class="line">chmod 755 temp		-rwxr-xr-x</span><br><span class="line">chmod -001 temp		-rwxr-xr--</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>修改目录或文件所有者与所属组</p>
+  <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">chown root temp			把文件temp的所有者修改为root。</span><br><span class="line">chown super:root temp	把文件temp的所有者修改super,所属组修改为root。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改目录或文件所属组</p>
+  <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">chgrp root temp			修改文件所属组为root</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="数据操作"><a href="#数据操作" class="headerlink" title="数据操作"></a>数据操作</h3><ul>
+<li>搜索文本：<code>grep</code><ul>
+<li>可配合正则表达式</li>
+</ul>
+</li>
+<li>文件统计：<code>wc</code></li>
+</ul>
+<h3 id="流、管道、重定向"><a href="#流、管道、重定向" class="headerlink" title="流、管道、重定向"></a>流、管道、重定向</h3><ul>
+<li>大于<code>&gt;</code>：将结果重定向到文件中      <code>&gt;&gt;</code>：追加到末尾</li>
+<li>将两个命令连成管道，也就是将一个命令的输出当成另外一个命令的输入：<code>|</code></li>
+</ul>
+<h3 id="进程管理"><a href="#进程管理" class="headerlink" title="进程管理"></a>进程管理</h3><p>软件：glances，htop</p>
+<ul>
+<li>显示系统当前活动的用户：<code>w</code></li>
+<li>后台运行进程：<code>&amp;</code>符号和<code>nohup</code><ul>
+<li>要运行的命令+<code>&amp;</code>(后台与终端关联)</li>
+<li><code>nohup</code>：关闭终端后程序依然运行</li>
+<li>可以<code>nohup</code>和<code>&amp;</code>一起使用</li>
+</ul>
+</li>
+<li>使前台转后台：先<code>Ctrl+z</code>：转到后台，并停止运行，然后用<code>bg</code>命令使进程重新运行起来</li>
+<li>显示后台进程状态：<code>jobs</code></li>
+<li>使进程转到前台：<code>fg</code></li>
+</ul>
+<p><img src="http://xingkong-images.test.upcdn.net/PicGo/20210205132859.png" alt=""></p>
+<ul>
+<li><p>查看在线用户状态</p>
+  <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">who					查看当前在线用户的状态</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看进程</p>
+  <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">//进程静态列表</span><br><span class="line">ps aux					查看在线用户下所有进程</span><br><span class="line">ps aux | grep bash		进程过滤</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>终止进程</p>
+  <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">kill -l					查看所有信号</span><br><span class="line">kill -SIGKILL 5179		终止进程</span><br><span class="line">kill -9 4678			终止进程</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看当前进程的环境变量</p>
+  <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">env						查看所有环境变量</span><br><span class="line">env | grep PATH			只查看PATH环境变量</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>进程动态列表：<code>top</code></p>
+</li>
+</ul>
+<h3 id="定时和延迟执行"><a href="#定时和延迟执行" class="headerlink" title="定时和延迟执行"></a>定时和延迟执行</h3><ul>
+<li>在制定时刻运行一次程序：<code>at</code></li>
+<li>列出正在等待的at任务：<code>atq</code></li>
+<li>删除正在等待的at任务：<code>atrm</code></li>
+<li>定时执行程序：<code>crontab</code>(重复执行)</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">安装crontab</span></span><br><span class="line">sudo yum install vixie-cron crontabs</span><br><span class="line">chkconfig crond on #开机自启</span><br><span class="line">service crond start</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://xingkong-images.test.upcdn.net/PicGo/20210205134428.png" alt=""></p>
+<h2 id="网络与FTP"><a href="#网络与FTP" class="headerlink" title="网络与FTP"></a>网络与FTP</h2><ul>
+<li>下载文件：<code>wegt</code></li>
+<li>网间拷贝：<code>scp</code></li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">默认端口22</span></span><br><span class="line"><span class="meta">#</span><span class="bash">从自己电脑拷贝文件到另一台电脑</span></span><br><span class="line">scp file.txt root@192.168.1.5:/root</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">从另一台电脑拷贝文件到自己电脑</span></span><br><span class="line">scp root@192.168.1.5:/root/file.txt file_copy.txt</span><br></pre></td></tr></table></figure>
+
+<h3 id="防火墙"><a href="#防火墙" class="headerlink" title="防火墙"></a>防火墙</h3><p>待补充</p>
+<h3 id="搭建FTP"><a href="#搭建FTP" class="headerlink" title="搭建FTP"></a>搭建FTP</h3><p>待补充</p>
+<h2 id="服务区管理"><a href="#服务区管理" class="headerlink" title="服务区管理"></a>服务区管理</h2><h3 id="systemd"><a href="#systemd" class="headerlink" title="systemd"></a>systemd</h3><p>Apache</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">安装Apache</span></span><br><span class="line">sudo yum install httpd</span><br><span class="line"><span class="meta">#</span><span class="bash">查看Apache运行状况</span></span><br><span class="line">ps -aux | grep httpd</span><br><span class="line"><span class="meta">#</span><span class="bash">开启Apache</span></span><br><span class="line">systemctl start httpd</span><br><span class="line"><span class="meta">#</span><span class="bash">开启后可用127.0.0.1访问</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">按道理开启服务之后别的主机也应该能访问？但是因为防火墙80端口默认关闭。</span></span><br><span class="line"><span class="meta">#</span><span class="bash">在自己电脑配置需要在同一局域网下去访问。互联网访问就需要一个公网IP</span></span><br><span class="line"><span class="meta">#</span><span class="bash">查看开放的端口</span></span><br><span class="line">sudo firewall-cmd --list-port</span><br><span class="line"><span class="meta">#</span><span class="bash">开放80端口，两种方式。https默认端口443</span></span><br><span class="line">systemctl stop firewalld #1 直接关闭防火墙</span><br><span class="line">sudo firewall-cmd --zone=public --add-port=80/tcp --permanent #2 只开放80端口</span><br><span class="line">sudo firewall-cmd --reload #重载配置的防火墙策略</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">sudo systemctl reload  httpd #重新加载 Apache 服务的配置文件</span><br><span class="line">sudo systemctl status httpd #状态查看详情信息</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">放行数据库</span></span><br><span class="line">firewall-cmd --zone=public --add-port=3306/tcp --permanent</span><br></pre></td></tr></table></figure>
+
+<p>Apache配置文件</p>
+<p><img src="http://xingkong-images.test.upcdn.net/PicGo/20210206101019.png" alt=""></p>
+<p>主配置文件三类参数</p>
+<ul>
+<li>注释</li>
+<li>全局配置</li>
+<li>区域配置：Directory</li>
+</ul>
+<h3 id="SELINUX-安全子系统"><a href="#SELINUX-安全子系统" class="headerlink" title="SELINUX 安全子系统"></a>SELINUX 安全子系统</h3><ul>
+<li>使得Apache只能访问指定的目录，别的文件不能访问。所以修改Apache配置后可能不能起作用</li>
+<li>查看状态：命令行<code>sestatus</code></li>
+<li>通过<code>semanage</code>包去管理SELINUX</li>
+</ul>
+<p><img src="http://xingkong-images.test.upcdn.net/PicGo/20210206101434.png" alt=""></p>
+<p><img src="http://xingkong-images.test.upcdn.net/PicGo/20210205200948.png" alt=""></p>
+<p><img src="http://xingkong-images.test.upcdn.net/PicGo/20210205200947.png" alt=""></p>
+<h2 id="Vim"><a href="#Vim" class="headerlink" title="Vim"></a>Vim</h2><p><img src="http://xingkong-images.test.upcdn.net/PicGo/20210205183213.png" alt=""></p>
+<p><strong>命令模式 – 打开文件之后，默认进入命令模式</strong></p>
+<ul>
+<li>移动光标</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">h           左</span><br><span class="line">j           下</span><br><span class="line">k           下</span><br><span class="line">l           右</span><br><span class="line">0           行首</span><br><span class="line"><span class="meta">$</span><span class="bash">           行尾</span></span><br><span class="line">gg          文件头部</span><br><span class="line">G           文件尾部</span><br><span class="line">5G          行跳转，移到第五行</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>删除操作（不是真正意义上的删除，更象是剪切操作）</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">x           删除光标后一个字符</span><br><span class="line">X           删除光标前一个字符</span><br><span class="line">dw          删除光标后一个单词</span><br><span class="line">d0          删除光标到行首的所有字符</span><br><span class="line"><span class="meta">D(d$</span><span class="bash">)       删除光标到行尾的所有字符</span></span><br><span class="line">dd          删除一行</span><br><span class="line">5dd         删除五行</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>撤消操作</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">u           撤消</span><br><span class="line">ctrl+r      还原前一个操作</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>复制粘贴</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">p           小写的p，粘贴到光标的下一行</span><br><span class="line">P           大写的p，粘贴到光标的所在行</span><br><span class="line">yy          复制一行</span><br><span class="line">5yy         复制五行</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>可视模式</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">v           切换到可视块模式</span><br><span class="line">h&#x2F;j&#x2F;k&#x2F;l     调整选中块</span><br><span class="line">y           复制</span><br><span class="line">d           删除</span><br><span class="line">p           粘贴</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查找模式</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;           切换到查找模式，向下查找</span><br><span class="line">？           切换到查找模式，向上查找</span><br><span class="line">n           下一个匹配</span><br><span class="line">N           上一个匹配</span><br><span class="line">#           移到要查找的单词上，按#号即可开启查找模式</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>字符替换</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">r           单个字符替换</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>行缩进</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;          向右缩进</span><br><span class="line">&lt;&lt;          向左缩进</span><br></pre></td></tr></table></figure>
+
+<p><strong>插入模式 – 需要输入一些命令，切换到编辑模式</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">a       在光标所在位置的后边插入</span><br><span class="line">A       在当前行的尾部插入</span><br><span class="line"></span><br><span class="line">i       在光标所在位置的前边插入</span><br><span class="line">I       在光标所在行的行首插入</span><br><span class="line"></span><br><span class="line">o       在光标所在行的下边开辟一个新的行</span><br><span class="line">O       在光标所在行的上边开辟一个新的行</span><br><span class="line"></span><br><span class="line">s       删除光标后边的字符</span><br><span class="line">S       删除光标所有的行</span><br></pre></td></tr></table></figure>
+
+<p><strong>交互模式 – 在末行模式下可以输入一些命令</strong></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">:s/tom/jack/g           把光标所在行的tom替换成jack</span><br><span class="line">:%s/tom/jack/g          把整个文档的tom替换成jack</span><br><span class="line">:25,30s/tom/jack/g      把25到30行的tom替换成jack</span><br><span class="line"></span><br><span class="line">:q          退出</span><br><span class="line">:q!         强制退出</span><br><span class="line">:w          保存</span><br><span class="line">:wq         保存并退出</span><br><span class="line">:x          相当于:wq</span><br><span class="line">ZZ          相当于:wq</span><br></pre></td></tr></table></figure>
+
+<p><strong>分屏操作</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">:sp [file]      将屏幕水平分成两部分</span><br><span class="line">:vsp [file]     交屏幕垂直分成两部分</span><br><span class="line">:wqall          同时保存打开文件</span><br><span class="line">ctrl+ww         切换两个屏幕</span><br></pre></td></tr></table></figure>
+
+<p><strong>vim打造成IDE</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;etc&#x2F;vim&#x2F;vimrc      系统级配置文件</span><br><span class="line">~&#x2F;.vim&#x2F;vimrc        用户级配置文件</span><br></pre></td></tr></table></figure>
+
+<h2 id="GCC"><a href="#GCC" class="headerlink" title="GCC"></a>GCC</h2><ul>
+<li>gcc编译的四个阶段</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hello.c  ----&gt;   hello.i  -----&gt;    hello.s  ----&gt;    hello.o  ----&gt;    hello.out</span><br><span class="line">     预处理编译器（cpp）   编译器（gcc）        汇编器（as）       链接器（ld）</span><br><span class="line">        gcc -E            gcc -S             gcc -c            gcc</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>编译工具链</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">预处理编译器：cpp     gcc -E hello.c -o hello.i   头文件展开，宏替换，注释去掉</span><br><span class="line">编译器：gcc     gcc -S hello.i -o hello.s   c文件变成汇编文件</span><br><span class="line">汇编器：as      gcc -c hello.s -o hello.o   汇编文件变成二进制文件</span><br><span class="line">链接器：ld      gcc hello.o -o hello        将函数库中相应的代码组合到目标文件中</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>直接编译生成可执行文件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gcc hello.c -o hello</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>编译时指定头文件目录-I</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gcc hello.c -I .&#x2F;include hello</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>编译时指定宏，通常用于调试代码-D</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gcc hello.c -D DEBUG</span><br><span class="line"></span><br><span class="line">在需要打印日志的代码中加上下面的语句：</span><br><span class="line">#ifdef DEBUG</span><br><span class="line">printf(&quot;debug info&quot;);</span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>编译时对代码进行优化-O3</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gcc hello.c -o hello -O3 </span><br><span class="line">级别：</span><br><span class="line">0   没有优化</span><br><span class="line">1   缺省值</span><br><span class="line">3   优化级别最高</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>编译时显示告警信息-Wall</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gcc hello.c -o hello -Wall</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>编译时包含调试信息-g（gdb）</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gcc hello.c -o hello -g</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查看编译版本</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gcc -v</span><br><span class="line">gcc --version</span><br></pre></td></tr></table></figure>
+
+<h2 id="静态库"><a href="#静态库" class="headerlink" title="静态库"></a>静态库</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">目录结构</span><br><span class="line">myCalc</span><br><span class="line">├── include</span><br><span class="line">│   └── head.h</span><br><span class="line">├── lib</span><br><span class="line">│   └── libMyCalc.a</span><br><span class="line">├── main.c</span><br><span class="line">└── src</span><br><span class="line">    ├── add.c</span><br><span class="line">    ├── div.c</span><br><span class="line">    ├── mul.c</span><br><span class="line">    ├── sub.c</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>命名格式</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1 以lib开头</span><br><span class="line">2 静态库名</span><br><span class="line">3 .a结尾</span><br><span class="line">示例 ：　libMyCalc.a</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>描述</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">优点</span><br><span class="line">寻址方便、速度快</span><br><span class="line">库被打包到可执行程序中，直接发布可执行程序即可使用</span><br><span class="line"></span><br><span class="line">缺点</span><br><span class="line">静态库的代码在编译过程中已经被载入可执行程序，因此体积较大</span><br><span class="line">如果静态函数库改变了，那么你的程序就必须重新编译</span><br><span class="line"></span><br><span class="line">使用场合</span><br><span class="line">在核心程序上使用，保证速度，忽略空间</span><br><span class="line">主流应用于80、90年代，现在很少使用</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>得到与位置有关的<code>*.o</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd ~&#x2F;myClac&#x2F;src</span><br><span class="line">gcc *.c -c -I ..&#x2F;include</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>将生成的<code>*.o</code>文件打包成静态库<code>libMyCalc.a</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ar rcs libMyCalc.a *.o</span><br><span class="line"></span><br><span class="line">ar工具不包含在一gcc中。</span><br><span class="line">参数：</span><br><span class="line">r       将文件夹插入到静态库中。</span><br><span class="line">c       创建静态库，不管库是否存在。</span><br><span class="line">s       写入一个目标文件索引到库中，或者更新一个存在的目标文件。</span><br><span class="line"></span><br><span class="line">制作好以后移动到lib目录中</span><br><span class="line">mv libMyCalc.a ..&#x2F;lib</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查看库中的符号（函数）</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nm libMyCalc.a</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>发布静态库，把<code>include</code>和<code>lib</code>目录打包给用户</li>
+<li>使用</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;在main.c中包含头文件</span><br><span class="line">#inlcude &quot;head.h&quot;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;两种编译方式</span><br><span class="line">gcc main.c lib&#x2F;libMyCalc.a -I include -o myapp</span><br><span class="line">gcc main.c -I include -L lib -l MyCalc -o myapp</span><br><span class="line">  </span><br><span class="line">&#x2F;&#x2F;执行myapp</span><br><span class="line">.&#x2F;myapp</span><br></pre></td></tr></table></figure>
+
+<h2 id="动态库"><a href="#动态库" class="headerlink" title="动态库"></a>动态库</h2><ul>
+<li>准备</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">目录结构</span><br><span class="line">myCalc</span><br><span class="line">├── include</span><br><span class="line">│   └── head.h</span><br><span class="line">├── lib</span><br><span class="line">│   └── libMyCalc.so</span><br><span class="line">├── main.c</span><br><span class="line">└── src</span><br><span class="line">    ├── add.c</span><br><span class="line">    ├── div.c</span><br><span class="line">    ├── mul.c</span><br><span class="line">    ├── sub.c</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>命名格式</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1 以lib开头</span><br><span class="line">2 静态库名</span><br><span class="line">3 .so结尾</span><br><span class="line">示例 ：　libMyCalc.so</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>描述</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">优点</span><br><span class="line">执行程序体积小</span><br><span class="line">动态库更新了，不需要重新编译程序，前提是函数接口不变</span><br><span class="line"></span><br><span class="line">缺点</span><br><span class="line">发布程序的时候，需要将动态库提供给用户</span><br><span class="line">动态库没有被打包到应用程序中，加载速度相对较慢</span><br><span class="line"></span><br><span class="line">使用场合</span><br><span class="line">现代应用程序中常用</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>生成与位置无关的<code>*.o</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd ~&#x2F;myClac&#x2F;src</span><br><span class="line">gcc -fPIC *.c -c -I ..&#x2F;include</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>将生成的<code>*.o</code>文件打包成共享库（动态库）<code>libMyCalc.so</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gcc -shared -o libMyCalc.so *.o -I ..&#x2F;include</span><br><span class="line"></span><br><span class="line">制作好以后移动到lib目录中</span><br><span class="line">mv libMyCalc.so ..&#x2F;lib</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查看库中的符号（函数）</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nm libMyCalc.so</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>发布静态库，把<code>include</code>和<code>lib</code>目录打包给用户</li>
+<li>使用</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;在main.c中包含头文件</span><br><span class="line">#inlcude &quot;head.h&quot;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;两种编译方式</span><br><span class="line">gcc main.c lib&#x2F;libMyCalc.so -I include -o myapp</span><br><span class="line">gcc main.c -I include -L lib -l MyCalc -o myapp</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;执行myapp</span><br><span class="line">.&#x2F;myapp</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;查看可执行文件夹所依赖的动态库</span><br><span class="line">ldd myapp</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>解决依赖的动态库无法加载的问题</p>
+<p>  1 把<code>libMyCalc.so</code>拷贝到<code>/lib</code>目录下(不推荐使用，容易与系统库冲突)</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cp lib&#x2F;libMyCalc.so &#x2F;lib</span><br></pre></td></tr></table></figure>
+
+<p>​        2 设置环境变量LD_LIBRARY_PATH（测试时使用）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export LD_LIBRARY_PATH&#x3D;.&#x2F;lib    只对当前会话有效</span><br></pre></td></tr></table></figure>
+
+<p>​        3 设置环境变量LD_LIBRARY_PATH到~/.bashrc中（测试时使用）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vi ~&#x2F;.bashrc</span><br><span class="line">export LD_LIBRARY_PATH&#x3D;&#x2F;home&#x2F;super&#x2F;myCalc&#x2F;lib       会话每次开启就会生效</span><br></pre></td></tr></table></figure>
+
+<p>​        4 设置配置文件<code>/etc/ld.so.conf</code>（推荐使用），重启终端</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;编辑动态连接器的配置文件</span><br><span class="line">vi &#x2F;etc&#x2F;ld.so.conf</span><br><span class="line">&#x2F;&#x2F;动态库的路径写到配置文件中</span><br><span class="line">&#x2F;home&#x2F;super&#x2F;myCalc&#x2F;lib</span><br><span class="line">&#x2F;&#x2F;更新动态库</span><br><span class="line">ldconfig -v</span><br></pre></td></tr></table></figure>
+
+<h2 id="gdb调试"><a href="#gdb调试" class="headerlink" title="gdb调试"></a>gdb调试</h2><p>启动gdb</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gdb app</span><br></pre></td></tr></table></figure>
+
+<p>查看代码</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt;(gdb) l          #list</span><br><span class="line">&gt;&gt;&gt;(gdb) l 行号或函数名</span><br><span class="line">&gt;&gt;&gt;(gdb) l 文件名:行号或函数名</span><br></pre></td></tr></table></figure>
+
+<p>设置断点</p>
+<ul>
+<li>设置当前文件断点</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt;(gdb) b      #break</span><br><span class="line">&gt;&gt;&gt;(gdb) b 行号或函数名</span><br><span class="line">&gt;&gt;&gt;(gdb) b 文件名:行号或函数名</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>设置条件断点</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt;(gdb) b 10 if value&#x3D;&#x3D;19</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>删除断点</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt;(gdb) d 断点的编号        #delete或del</span><br></pre></td></tr></table></figure>
+
+<p>查看设置的断点</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt;(gdb) i b            #info, 可以获取断点的编号，删除断点时用</span><br></pre></td></tr></table></figure>
+
+<p>开始执行gdb调试</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt;(gdb) start      #只执行一步</span><br><span class="line">&gt;&gt;&gt;(gdb) c          #continue，直接停在断点的位置</span><br><span class="line">&gt;&gt;&gt;(gdb) run        #有断点会停在断点处，没有会直接跑完程序，较少用</span><br></pre></td></tr></table></figure>
+
+<p>单步调试</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt;(gdb) s          #进入函数体内部</span><br><span class="line">&gt;&gt;&gt;(gdb) finish     #从函数体内部跳出</span><br><span class="line">&gt;&gt;&gt;(gdb) n          #不进入函数体内部</span><br><span class="line">&gt;&gt;&gt;(gdb) u          #退出当前循环</span><br></pre></td></tr></table></figure>
+
+<p>查看变量的值</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt;(gdb) p      print</span><br></pre></td></tr></table></figure>
+
+<p>查看变量的类型</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt;(gdb) ptype 变量名</span><br></pre></td></tr></table></figure>
+
+<p>设置变量的值</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt;(gdb) set var 变量&#x3D;值</span><br></pre></td></tr></table></figure>
+
+<p>设置追踪变量</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt;(gdb) display 变量        #设置追踪变量</span><br><span class="line">&gt;&gt;&gt;(gdb) info display        #获取变量的编号</span><br><span class="line">&gt;&gt;&gt;(gdb) undisplay 编号       #取消追踪变量</span><br></pre></td></tr></table></figure>
+
+<p>退出gdb调试</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt;(gdb) quit</span><br></pre></td></tr></table></figure>
+
+<h2 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h2><p><a href="https://blog.csdn.net/guoxiaorui666/article/details/99623023?ops_request_misc=%25257B%252522request%25255Fid%252522%25253A%252522161252351916780261966618%252522%25252C%252522scm%252522%25253A%25252220140713.130102334.pc%25255Fall.%252522%25257D&request_id=161252351916780261966618&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_v2~rank_v29-1-99623023.first_rank_v2_pc_rank_v29_10&utm_term=%25E4%25BD%25BF%25E7%2594%25A8Github+Pages%252Bhexo+%25E6%2590%25AD%25E5%25BB%25BA%25E4%25B8%25AA%25E4%25BA%25BA%25E7%25BD%2591%25E7%25AB%2599" target="_blank" rel="noopener">Git连接GitHub </a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#初始化</span><br><span class="line">git init</span><br><span class="line"></span><br><span class="line">#激活颜色选项：</span><br><span class="line">git config --global color.ui auto</span><br></pre></td></tr></table></figure>
+
+<p>git与github绑定：把本地的共钥复制到github中的ssh设置中</p>
+<h2 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h2><p><a href="https://www.cnblogs.com/wcwnina/p/8728391.html" target="_blank" rel="noopener">Nginx 相关介绍(Nginx是什么?能干嘛?)</a></p>
+<p><a href="https://www.cnblogs.com/wcwnina/p/9906081.html" target="_blank" rel="noopener">Django Linux+Nginx+uWSGI环境下部署(含Nginx返回400问题处理、防火墙管理)</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#安装Nginx，默认80端口</span><br><span class="line">#80与Apache可能冲突了，但是修改端口时要先把修改的端口用SELINUX子系统开放，并且打开防火墙</span><br><span class="line">yum install epel-release</span><br><span class="line">yum install nginx</span><br><span class="line"></span><br><span class="line">#查看Nginx相关文件</span><br><span class="line">rpm -ql nginx</span><br><span class="line">&#x2F;etc&#x2F;nginx&#x2F;nginx.conf为主要配置文件</span><br></pre></td></tr></table></figure>
+
+<h2 id="Squid"><a href="#Squid" class="headerlink" title="Squid"></a>Squid</h2><p>待补充</p>
+<h2 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h2><p>寻找云平台操作Docker</p>
+<p>待补充</p>
+<h2 id="Shell"><a href="#Shell" class="headerlink" title="Shell"></a>Shell</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"><span class="meta">#</span><span class="bash">第一行用来指明用那个shell运行脚本</span></span><br><span class="line"><span class="meta">#</span><span class="bash">如果文件在环境变量所包含的文件夹下，那么可以直接输入文件名就能执行脚本了</span></span><br></pre></td></tr></table></figure>
+
+<p>运行之前要给脚本加可执行权限</p>
+<p>使用<code>./test.sh</code>运行脚本<code>test.sh</code></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Tags</a></li>
+         
+          <li><a href="http://101.132.226.32/search_simple" target="_blank" rel="noopener">Project</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#本地连接远程Linux服务器-CentOS"><span class="toc-number">1.</span> <span class="toc-text">本地连接远程Linux服务器(CentOS)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#软件仓库"><span class="toc-number">1.1.</span> <span class="toc-text">软件仓库</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#命令行"><span class="toc-number">2.</span> <span class="toc-text">命令行</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#快捷键"><span class="toc-number">2.1.</span> <span class="toc-text">快捷键</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux-目录"><span class="toc-number">2.2.</span> <span class="toc-text">Linux 目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件命令"><span class="toc-number">2.3.</span> <span class="toc-text">文件命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#压缩和解压文件"><span class="toc-number">2.4.</span> <span class="toc-text">压缩和解压文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#用户管理"><span class="toc-number">2.5.</span> <span class="toc-text">用户管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#权限管理"><span class="toc-number">2.6.</span> <span class="toc-text">权限管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据操作"><span class="toc-number">2.7.</span> <span class="toc-text">数据操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#流、管道、重定向"><span class="toc-number">2.8.</span> <span class="toc-text">流、管道、重定向</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#进程管理"><span class="toc-number">2.9.</span> <span class="toc-text">进程管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定时和延迟执行"><span class="toc-number">2.10.</span> <span class="toc-text">定时和延迟执行</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网络与FTP"><span class="toc-number">3.</span> <span class="toc-text">网络与FTP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#防火墙"><span class="toc-number">3.1.</span> <span class="toc-text">防火墙</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#搭建FTP"><span class="toc-number">3.2.</span> <span class="toc-text">搭建FTP</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#服务区管理"><span class="toc-number">4.</span> <span class="toc-text">服务区管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#systemd"><span class="toc-number">4.1.</span> <span class="toc-text">systemd</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SELINUX-安全子系统"><span class="toc-number">4.2.</span> <span class="toc-text">SELINUX 安全子系统</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vim"><span class="toc-number">5.</span> <span class="toc-text">Vim</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GCC"><span class="toc-number">6.</span> <span class="toc-text">GCC</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#静态库"><span class="toc-number">7.</span> <span class="toc-text">静态库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#动态库"><span class="toc-number">8.</span> <span class="toc-text">动态库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gdb调试"><span class="toc-number">9.</span> <span class="toc-text">gdb调试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Git"><span class="toc-number">10.</span> <span class="toc-text">Git</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nginx"><span class="toc-number">11.</span> <span class="toc-text">Nginx</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Squid"><span class="toc-number">12.</span> <span class="toc-text">Squid</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker"><span class="toc-number">13.</span> <span class="toc-text">Docker</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shell"><span class="toc-number">14.</span> <span class="toc-text">Shell</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://xingkongyj2.github.io/2021/02/08/Linux%E5%9F%BA%E7%A1%80/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://xingkongyj2.github.io/2021/02/08/Linux%E5%9F%BA%E7%A1%80/&text=Linux基础" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://xingkongyj2.github.io/2021/02/08/Linux%E5%9F%BA%E7%A1%80/&title=Linux基础" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://xingkongyj2.github.io/2021/02/08/Linux%E5%9F%BA%E7%A1%80/&is_video=false&description=Linux基础" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Linux基础&body=Check out this article: https://xingkongyj2.github.io/2021/02/08/Linux%E5%9F%BA%E7%A1%80/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://xingkongyj2.github.io/2021/02/08/Linux%E5%9F%BA%E7%A1%80/&title=Linux基础" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://xingkongyj2.github.io/2021/02/08/Linux%E5%9F%BA%E7%A1%80/&title=Linux基础" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://xingkongyj2.github.io/2021/02/08/Linux%E5%9F%BA%E7%A1%80/&title=Linux基础" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://xingkongyj2.github.io/2021/02/08/Linux%E5%9F%BA%E7%A1%80/&title=Linux基础" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://xingkongyj2.github.io/2021/02/08/Linux%E5%9F%BA%E7%A1%80/&name=Linux基础&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://xingkongyj2.github.io/2021/02/08/Linux%E5%9F%BA%E7%A1%80/&t=Linux基础" target="_blank" rel="noopener"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2020-2021
+    兔子翻书
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Tags</a></li>
+         
+          <li><a href="http://101.132.226.32/search_simple" target="_blank" rel="noopener">Project</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

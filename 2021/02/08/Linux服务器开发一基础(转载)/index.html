@@ -1,0 +1,1785 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="转载自：Linux服务器开发一(基础) Linux 1、Linux介绍 Linux是类Unix计算机操作系统的统称。 Linux操作系统的内核的名字也是“Linux”。 Linux这个词本身只表示Linux内核，但在实际上人们已经习惯了用Linux来形容整个基于Linux内核的系统。 Linux是由芬兰大学Linus Torvalds于1991年编写的。   2、Linux发行版组成 Linux内">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux服务器开发一基础(转载)">
+<meta property="og:url" content="https://xingkongyj2.github.io/2021/02/08/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91%E4%B8%80%E5%9F%BA%E7%A1%80(%E8%BD%AC%E8%BD%BD)/index.html">
+<meta property="og:site_name" content="兔子翻书">
+<meta property="og:description" content="转载自：Linux服务器开发一(基础) Linux 1、Linux介绍 Linux是类Unix计算机操作系统的统称。 Linux操作系统的内核的名字也是“Linux”。 Linux这个词本身只表示Linux内核，但在实际上人们已经习惯了用Linux来形容整个基于Linux内核的系统。 Linux是由芬兰大学Linus Torvalds于1991年编写的。   2、Linux发行版组成 Linux内">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images.cnblogs.com/cnblogs_com/zfc2201/928468/o_C%e5%ba%93IO%e5%87%bd%e6%95%b0%e5%b7%a5%e4%bd%9c%e6%b5%81%e7%a8%8b.png">
+<meta property="og:image" content="https://images.cnblogs.com/cnblogs_com/zfc2201/928468/o_%e8%99%9a%e6%8b%9f%e5%86%85%e5%ad%98%e5%9c%b0%e5%9d%80%e7%a9%ba%e9%97%b4.png">
+<meta property="og:image" content="https://images.cnblogs.com/cnblogs_com/zfc2201/928468/o_pcb%e4%b8%8e%e6%96%87%e4%bb%b6%e6%8f%8f%e8%bf%b0%e7%ac%a6.png">
+<meta property="og:image" content="https://images.cnblogs.com/cnblogs_com/zfc2201/928468/o_%e5%ba%93%e5%87%bd%e6%95%b0%e4%b8%8e%e7%b3%bb%e7%bb%9f%e5%87%bd%e6%95%b0%e4%b9%8b%e9%97%b4%e7%9a%84%e5%85%b3%e7%b3%bb.png">
+<meta property="og:image" content="https://images.cnblogs.com/cnblogs_com/zfc2201/928468/o_st_mode.png">
+<meta property="og:image" content="https://images.cnblogs.com/cnblogs_com/zfc2201/928468/o_%e9%93%be%e6%8e%a5%e7%9a%84%e8%bf%bd%e8%b8%aa.png">
+<meta property="article:published_time" content="2021-02-08T15:23:42.000Z">
+<meta property="article:modified_time" content="2021-03-02T11:15:21.145Z">
+<meta property="article:author" content="兔子翻书">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images.cnblogs.com/cnblogs_com/zfc2201/928468/o_C%e5%ba%93IO%e5%87%bd%e6%95%b0%e5%b7%a5%e4%bd%9c%e6%b5%81%e7%a8%8b.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Linux服务器开发一基础(转载)</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Tags</a></li>
+         
+          <li><a href="http://101.132.226.32/search_simple" target="_blank" rel="noopener">Project</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2021/02/08/Linux%E5%9F%BA%E7%A1%80/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2021/01/01/Mysql%E5%AE%9E%E8%B7%B5/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://xingkongyj2.github.io/2021/02/08/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91%E4%B8%80%E5%9F%BA%E7%A1%80(%E8%BD%AC%E8%BD%BD)/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://xingkongyj2.github.io/2021/02/08/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91%E4%B8%80%E5%9F%BA%E7%A1%80(%E8%BD%AC%E8%BD%BD)/&text=Linux服务器开发一基础(转载)" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://xingkongyj2.github.io/2021/02/08/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91%E4%B8%80%E5%9F%BA%E7%A1%80(%E8%BD%AC%E8%BD%BD)/&title=Linux服务器开发一基础(转载)" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://xingkongyj2.github.io/2021/02/08/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91%E4%B8%80%E5%9F%BA%E7%A1%80(%E8%BD%AC%E8%BD%BD)/&is_video=false&description=Linux服务器开发一基础(转载)" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Linux服务器开发一基础(转载)&body=Check out this article: https://xingkongyj2.github.io/2021/02/08/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91%E4%B8%80%E5%9F%BA%E7%A1%80(%E8%BD%AC%E8%BD%BD)/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://xingkongyj2.github.io/2021/02/08/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91%E4%B8%80%E5%9F%BA%E7%A1%80(%E8%BD%AC%E8%BD%BD)/&title=Linux服务器开发一基础(转载)" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://xingkongyj2.github.io/2021/02/08/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91%E4%B8%80%E5%9F%BA%E7%A1%80(%E8%BD%AC%E8%BD%BD)/&title=Linux服务器开发一基础(转载)" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://xingkongyj2.github.io/2021/02/08/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91%E4%B8%80%E5%9F%BA%E7%A1%80(%E8%BD%AC%E8%BD%BD)/&title=Linux服务器开发一基础(转载)" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://xingkongyj2.github.io/2021/02/08/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91%E4%B8%80%E5%9F%BA%E7%A1%80(%E8%BD%AC%E8%BD%BD)/&title=Linux服务器开发一基础(转载)" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://xingkongyj2.github.io/2021/02/08/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91%E4%B8%80%E5%9F%BA%E7%A1%80(%E8%BD%AC%E8%BD%BD)/&name=Linux服务器开发一基础(转载)&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://xingkongyj2.github.io/2021/02/08/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91%E4%B8%80%E5%9F%BA%E7%A1%80(%E8%BD%AC%E8%BD%BD)/&t=Linux服务器开发一基础(转载)" target="_blank" rel="noopener"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux"><span class="toc-number">1.</span> <span class="toc-text">Linux</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#学习方法"><span class="toc-number">2.</span> <span class="toc-text">学习方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一、文件和目录操作"><span class="toc-number">3.</span> <span class="toc-text">一、文件和目录操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、打包压缩和常用服务器"><span class="toc-number">4.</span> <span class="toc-text">二、打包压缩和常用服务器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、vim和函数库"><span class="toc-number">5.</span> <span class="toc-text">三、vim和函数库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、vim编辑器的使用"><span class="toc-number">5.1.</span> <span class="toc-text">1、vim编辑器的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1、vim简介"><span class="toc-number">5.1.1.</span> <span class="toc-text">1.1、vim简介</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2、工作模式"><span class="toc-number">5.1.2.</span> <span class="toc-text">1.2、工作模式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、gcc编译器"><span class="toc-number">5.2.</span> <span class="toc-text">2、gcc编译器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、静态库的创建和使用"><span class="toc-number">5.3.</span> <span class="toc-text">3、静态库的创建和使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、动态库的创建和使用"><span class="toc-number">5.4.</span> <span class="toc-text">4、动态库的创建和使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、makefile和文件IO"><span class="toc-number">6.</span> <span class="toc-text">四、makefile和文件IO</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、gdb调试"><span class="toc-number">6.1.</span> <span class="toc-text">1、gdb调试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、makefile的编写"><span class="toc-number">6.2.</span> <span class="toc-text">2、makefile的编写</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1、makefile的命名"><span class="toc-number">6.2.1.</span> <span class="toc-text">2.1、makefile的命名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2、makefile的规则"><span class="toc-number">6.2.2.</span> <span class="toc-text">2.2、makefile的规则</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3、makefile的两个函数"><span class="toc-number">6.2.3.</span> <span class="toc-text">2.3、makefile的两个函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4、makefile的三个自动变量"><span class="toc-number">6.2.4.</span> <span class="toc-text">2.4、makefile的三个自动变量</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、系统IO函数"><span class="toc-number">6.3.</span> <span class="toc-text">3、系统IO函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1、一些概念"><span class="toc-number">6.3.1.</span> <span class="toc-text">3.1、一些概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2、open"><span class="toc-number">6.3.2.</span> <span class="toc-text">3.2、open</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3、read"><span class="toc-number">6.3.3.</span> <span class="toc-text">3.3、read</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4、write"><span class="toc-number">6.3.4.</span> <span class="toc-text">3.4、write</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-5、close"><span class="toc-number">6.3.5.</span> <span class="toc-text">3.5、close</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-6、lseek"><span class="toc-number">6.3.6.</span> <span class="toc-text">3.6、lseek</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、一些系统函数的使用"><span class="toc-number">7.</span> <span class="toc-text">五、一些系统函数的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、Linux文件操作相关函数"><span class="toc-number">7.1.</span> <span class="toc-text">1、Linux文件操作相关函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#stat函数"><span class="toc-number">7.1.1.</span> <span class="toc-text">stat函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#lstat函数"><span class="toc-number">7.1.2.</span> <span class="toc-text">lstat函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#access函数"><span class="toc-number">7.1.3.</span> <span class="toc-text">access函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#chmod函数"><span class="toc-number">7.1.4.</span> <span class="toc-text">chmod函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#chown函数"><span class="toc-number">7.1.5.</span> <span class="toc-text">chown函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#truncate函数"><span class="toc-number">7.1.6.</span> <span class="toc-text">truncate函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#连接函数"><span class="toc-number">7.1.7.</span> <span class="toc-text">连接函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#rename函数"><span class="toc-number">7.1.8.</span> <span class="toc-text">rename函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、Linux目录操作相关函数"><span class="toc-number">7.2.</span> <span class="toc-text">2、Linux目录操作相关函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#chdir函数"><span class="toc-number">7.2.1.</span> <span class="toc-text">chdir函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#getcwd函数"><span class="toc-number">7.2.2.</span> <span class="toc-text">getcwd函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mkdir函数"><span class="toc-number">7.2.3.</span> <span class="toc-text">mkdir函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#rmdir函数"><span class="toc-number">7.2.4.</span> <span class="toc-text">rmdir函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#opendir函数"><span class="toc-number">7.2.5.</span> <span class="toc-text">opendir函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#readdir函数"><span class="toc-number">7.2.6.</span> <span class="toc-text">readdir函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#colsedir函数"><span class="toc-number">7.2.7.</span> <span class="toc-text">colsedir函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6、fcntl函数"><span class="toc-number">7.3.</span> <span class="toc-text">6、fcntl函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7、dup-dup2函数"><span class="toc-number">7.4.</span> <span class="toc-text">7、dup, dup2函数</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Linux服务器开发一基础(转载)
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">兔子翻书</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2021-02-08T15:23:42.000Z" itemprop="datePublished">2021-02-08</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/Linux/">Linux</a>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>转载自：<a href="https://www.cnblogs.com/zfc2201/p/6804972.html" target="_blank" rel="noopener">Linux服务器开发一(基础)</a></p>
+<h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><ul>
+<li>1、Linux介绍<ul>
+<li>Linux是类Unix计算机操作系统的统称。</li>
+<li>Linux操作系统的内核的名字也是“Linux”。</li>
+<li>Linux这个词本身只表示Linux内核，但在实际上人们已经习惯了用Linux来形容整个基于Linux内核的系统。</li>
+<li>Linux是由芬兰大学Linus Torvalds于1991年编写的。</li>
+</ul>
+</li>
+<li>2、Linux发行版组成<ul>
+<li>Linux内核</li>
+<li>应用软件<ul>
+<li>一些GNU程序库和工具<ul>
+<li>emacs</li>
+<li>GCC</li>
+<li>GNOME</li>
+</ul>
+</li>
+<li>命令行shell</li>
+<li>图形桌面环境<ul>
+<li>KDE（qt编写）</li>
+<li>GNOME（GTK编写）</li>
+<li>Unity</li>
+</ul>
+</li>
+<li>一些办公软件<ul>
+<li>OpenOffice</li>
+</ul>
+</li>
+<li>编译器<ul>
+<li>gcc</li>
+<li>g++</li>
+</ul>
+</li>
+<li>文本编辑器到科学工具的应用软件<ul>
+<li>vi</li>
+<li>gedit</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>3、Linux版本<ul>
+<li>商业公司维护的发行版本<ul>
+<li><strong>RedHat</strong>（REHL）包管理方式采用基于RPM包的YUM包管理方式</li>
+</ul>
+</li>
+<li>社区组织维护的发行版本<ul>
+<li><strong>Debian</strong> 包管理方式采用的是：apt-get/dpkg xxx.deb</li>
+</ul>
+</li>
+<li>RedHat系列<ul>
+<li><strong>RHEL</strong>(RedHat Enterprice Linux, 也就是所谓的RedHat Advance Server收费版本)，稳定。</li>
+<li><strong>CentOS</strong>(RHEL的社区克隆版本，免费)，稳定。</li>
+<li><strong>FedoraCore</strong>(由原来的RedHat桌面版本发展而来，免费版本)，稳定性差，最好只用于桌面应用。</li>
+</ul>
+</li>
+<li>Debian系列<ul>
+<li><strong>Debian</strong></li>
+<li>Ubuntu<ul>
+<li>命名规则<ul>
+<li>前两位数字：发行时的年份的最后两位数字</li>
+<li>后两位数字：发行的月份</li>
+</ul>
+</li>
+<li>版本<ul>
+<li>桌面版（Desktop）：至少三年的技术支持</li>
+<li>服务器版（Server）：至少五年的技术支持</li>
+<li>LTS版本（Long Term Support）</li>
+</ul>
+</li>
+<li>版本发布频率，一年两次<ul>
+<li>主版本号（年份）<ul>
+<li>单数年：短期支持版</li>
+<li>双数年：长期支持版（LTS）</li>
+</ul>
+</li>
+<li>副版本号（月份）<ul>
+<li>四月份（xx.04）：该年度的稳定版</li>
+<li>十月份（xx.10）：该年度的测试版</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="学习方法"><a href="#学习方法" class="headerlink" title="学习方法"></a>学习方法</h2><ul>
+<li>要求<ul>
+<li>记好课堂笔记</li>
+<li>只听不练学不会Linux，多动手实践</li>
+<li>课上跟上思路，简单的命令跟着敲，多思考</li>
+<li>分清主次，重点记忆重要命令</li>
+</ul>
+</li>
+<li>资料<ul>
+<li>Linux自带帮助文档 - man</li>
+<li>鸟哥和私房菜</li>
+</ul>
+</li>
+</ul>
+<h2 id="一、文件和目录操作"><a href="#一、文件和目录操作" class="headerlink" title="一、文件和目录操作"></a>一、文件和目录操作</h2><ul>
+<li><p><strong>1、基本的shell操作</strong></p>
+<ul>
+<li><p>shell命令行快捷键</p>
+<ul>
+<li><p>编辑命令</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Ctrl + a          移到命令行首, ahead，与home键功能相同</span><br><span class="line">Ctrl + e          移到命令行尾, end， 与end键功能相同</span><br><span class="line">Ctrl + f          按字符前移（右向）, forward, 与方向键left功能相同</span><br><span class="line">Ctrl + b          按字符后移（左向）, back, 与方向键right功能相同</span><br><span class="line">Alt  + f          按单词前移（右向）</span><br><span class="line">Alt  + b          按单词后移（左向）</span><br><span class="line">Ctrl + xx         在命令行首和光标之间移动</span><br><span class="line">Ctrl + u          从光标处删除至命令行首</span><br><span class="line">Ctrl + k          从光标处删除至命令行尾</span><br><span class="line">Ctrl + w          从光标处删除至字首</span><br><span class="line">Alt  + d          从光标处删除至字尾</span><br><span class="line">Ctrl + d          删除光标处的字符, 与delete键功能相同</span><br><span class="line">Ctrl + h          删除光标前的字符, 与backspace键功能相同</span><br><span class="line">Ctrl + y          粘贴至光标后, yank</span><br><span class="line">Alt  + c          从光标处更改为首字母大写的单词</span><br><span class="line">Alt  + u          从光标处更改为全部大写的单词, uppercase</span><br><span class="line">Alt  + l          从光标处更改为全部小写的单词, lowercase</span><br><span class="line">Ctrl + t          交换光标处和之前的字符</span><br><span class="line">Alt  + t          交换光标处和之前的单词</span><br><span class="line">Alt  + Backspace  与 Ctrl + w 类似，分隔符有些差别</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重新执行命令</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Ctrl + r          逆向搜索命令历史</span><br><span class="line">Ctrl + g          从历史搜索模式退出</span><br><span class="line">Ctrl + p          历史中的上一条命令, previous，与方向键up功能相同</span><br><span class="line">Ctrl + n          历史中的下一条命令, next， 与方向键down功能相同</span><br><span class="line">Alt  + .          使用上一条命令的最后一个参数</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>控制命令</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Ctrl + l          清屏, clear</span><br><span class="line">Ctrl + o          执行当前命令，并选择上一条命令</span><br><span class="line">Ctrl + s          阻止屏幕输出</span><br><span class="line">Ctrl + q          允许屏幕输出</span><br><span class="line">Ctrl + c          终止命令</span><br><span class="line">Ctrl + z          挂起命令</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Bang (!) 命令</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">!!                执行上一条命令</span><br><span class="line">!blah             执行最近的以 blah 开头的命令，如 !ls</span><br><span class="line">!blah:p           仅打印输出，而不执行</span><br><span class="line">!$                上一条命令的最后一个参数，与 Alt + . 相同</span><br><span class="line">!$:p              打印输出 !$ 的内容</span><br><span class="line">!*                上一条命令的所有参数</span><br><span class="line">!*:p              打印输出 !* 的内容</span><br><span class="line">^blah             删除上一条命令中的 blah</span><br><span class="line">^blah^foo         将上一条命令中的 blah 替换为 foo</span><br><span class="line">^blah^foo^        将上一条命令中所有的 blah 都替换为 foo</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>虚拟终端(VT)</p>
+<ul>
+<li><p>简介</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">英文：Virtual Terminal</span><br><span class="line">解释：连接在远地的分时共用计算机系统的远程终端，它具有使用户感到是在计算机旁使用终端的功能。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>常用工具</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">XManager</span><br><span class="line">Putty</span><br><span class="line">SecureCRT</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>命令和路径补齐</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tab键按一次　　　　当只有一个匹配时，自动补全命令或路径</span><br><span class="line">tab键按两次　　　　当有多个匹配时，显示命令或路径列表</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>2、Linux 标准目录结构</strong></p>
+<p>  初学Linux，首先需要弄清Linux 标准目录结构：</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;</span><br><span class="line">	root --- 启动Linux时使用的一些核心文件。如操作系统内核、引导程序Grub等。</span><br><span class="line">	home --- 存储普通用户的个人文件</span><br><span class="line">		ftp --- 用户所有服务</span><br><span class="line">		httpd</span><br><span class="line">		samba</span><br><span class="line">		user1</span><br><span class="line">		user2</span><br><span class="line">	bin --- 系统启动时需要的执行文件（二进制）</span><br><span class="line">	sbin --- 可执行程序的目录，但大多存放涉及系统管理的命令。只有root权限才能执行</span><br><span class="line">	proc --- 虚拟，存在linux内核镜像；保存所有内核参数以及系统配置信息</span><br><span class="line">		1 --- 进程编号</span><br><span class="line">	usr --- 用户目录，存放用户级的文件</span><br><span class="line">		bin --- 几乎所有用户所用命令，另外存在与&#x2F;bin，&#x2F;usr&#x2F;local&#x2F;bin</span><br><span class="line">		sbin --- 系统管理员命令，与用户相关，例如，大部分服务器程序</span><br><span class="line">		include --- 存放C&#x2F;C++头文件的目录</span><br><span class="line">		lib --- 固定的程序数据</span><br><span class="line">		local --- 本地安装软件保存位置</span><br><span class="line">		man --- 手工生成的目录</span><br><span class="line">		info --- 信息文档</span><br><span class="line">		doc --- 不同包文档信息</span><br><span class="line">		tmp</span><br><span class="line">		X11R6 ---  该目录用于保存运行X-Window所需的所有文件。该目录中还包含用于运行GUI要的配置文件和二进制文件。</span><br><span class="line">		X386　--- 功能同X11R6，X11 发行版5 的系统文件</span><br><span class="line">	boot --- 引导加载器所需文件，系统所需图片保存于此</span><br><span class="line">	lib --- 根文件系统目录下程序和核心模块的公共库</span><br><span class="line">		modules --- 可加载模块，系统崩溃后重启所需模块</span><br><span class="line">	dev --- 设备文件目录</span><br><span class="line">	etc --- 配置文件</span><br><span class="line">		skel --- home目录建立，该目录初始化</span><br><span class="line">		sysconfig --- 网络，时间，键盘等配置目录</span><br><span class="line">	var</span><br><span class="line">		file</span><br><span class="line">		lib --- 该目录下的文件在系统运行时，会改变</span><br><span class="line">		local --- 安装在&#x2F;usr&#x2F;local的程序数据，变化的</span><br><span class="line">		lock --- 文件使用特定外设或文件，为其上锁，其他文件暂时不能访问</span><br><span class="line">		log --- 记录日志</span><br><span class="line">		run --- 系统运行合法信息</span><br><span class="line">		spool --- 打印机、邮件、代理服务器等假脱机目录</span><br><span class="line">		tmp</span><br><span class="line">		catman --- 缓存目录</span><br><span class="line">	mnt --- 临时用于挂载文件系统的地方。一般情况下这个目录是空的。</span><br><span class="line">			在我们将要挂载分区时在这个目录下建立目录，再将我们将要访问的设备挂载在这个目录上，这样我们就可访问文件了。</span><br><span class="line">	tmp --- 临时文件目录，系统启动后的临时文件存放在&#x2F;var&#x2F;tmp</span><br><span class="line">	lost+found --- 在文件系统修复时恢复的文件</span><br></pre></td></tr></table></figure>
+
+<p>  <strong>/</strong></p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">根目录，一般根目录下只存放目录，不要存放文件。</span><br><span class="line">&#x2F;etc、&#x2F;bin、&#x2F;dev、&#x2F;lib、&#x2F;sbin应该和根目录放置在一个分区中。</span><br></pre></td></tr></table></figure>
+
+<p>  <strong>/bin, /usr/bin</strong></p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">可执行二进制文件的目录，如常用的命令ls、tar、mv、cat等。</span><br></pre></td></tr></table></figure>
+
+<p>  <strong>/boot</strong></p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">放置linux系统启动时用到的一些文件。&#x2F;boot&#x2F;vmlinuz为linux的内核文件，以及&#x2F;boot&#x2F;gurb。建议单独分区，分区大小100M即可。</span><br></pre></td></tr></table></figure>
+
+<p>  <strong>/dev</strong></p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">存放linux系统下的设备文件，访问该目录下某个文件，相当于访问某个设备，常用的是挂载光驱mount:</span><br><span class="line">&#x2F;dev&#x2F;cdrom、&#x2F;mnt</span><br></pre></td></tr></table></figure>
+
+<p>  <strong>/etc</strong></p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">系统配置文件存放的目录，不建议在此目录下存放可执行文件。</span><br><span class="line">重要的配置文件有：&#x2F;etc&#x2F;inittab、&#x2F;etc&#x2F;fstab、&#x2F;etc&#x2F;init.d、&#x2F;etc&#x2F;X11、&#x2F;etc&#x2F;sysconfig、&#x2F;etc&#x2F;xinetd.d。</span><br><span class="line">修改配置文件之前记得备份。</span><br><span class="line">	</span><br><span class="line">注：&#x2F;etc&#x2F;X11存放与x windows有关的设置。</span><br></pre></td></tr></table></figure>
+
+<p>  <strong>/home</strong></p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">系统默认的用户家目录，新增用户账号时，用户的家目录都存放在此目录下。</span><br><span class="line">~表示当前用户的家目录，~test表示用户test的家目录。</span><br><span class="line">建议单独分区，并设置较大的磁盘空间，方便用户存放数据。</span><br></pre></td></tr></table></figure>
+
+<p>  <strong>/lib，/usr/lib，/usr/local/lib</strong></p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">系统使用的函数库的目录，程序在执行过程中，需要调用一些额外的参数时需要函数库的协助，比较重要的目录为&#x2F;lib&#x2F;modules。</span><br></pre></td></tr></table></figure>
+
+<p>  <strong>/lost+fount</strong></p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">系统异常产生错误时，会将一些遗失的片段放置于此目录下，通常这个目录会自动出现在装置目录下。</span><br><span class="line">如加载硬盘于&#x2F;disk 中，此目录下就会自动产生目录&#x2F;disk&#x2F;lost+found</span><br></pre></td></tr></table></figure>
+
+<p>  <strong>/mnt，/media</strong></p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">光盘默认挂载点，通常光盘挂载于&#x2F;mnt&#x2F;cdrom下，也不一定，可以选择任意位置进行挂载。</span><br></pre></td></tr></table></figure>
+
+<p>  <strong>/opt</strong></p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">给主机额外安装软件所摆放的目录。</span><br><span class="line">如：FC4使用的Fedora 社群开发软件，如果想要自行安装新的KDE 桌面软件，可以将该软件安装在该目录下。</span><br><span class="line">以前的 Linux 系统中，习惯放置在 &#x2F;usr&#x2F;local 目录下。</span><br></pre></td></tr></table></figure>
+
+<p>  <strong>/proc</strong></p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">此目录的数据都在内存中，如系统核心，外部设备，网络状态，由于数据都存放于内存中，所以不占用磁盘空间。</span><br><span class="line">比较重要的目录有&#x2F;proc&#x2F;cpuinfo、&#x2F;proc&#x2F;interrupts、&#x2F;proc&#x2F;dma、&#x2F;proc&#x2F;ioports、&#x2F;proc&#x2F;net&#x2F;*等。</span><br></pre></td></tr></table></figure>
+
+<p>  <strong>/root</strong></p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">系统管理员root的家目录，系统第一个启动的分区为&#x2F;，所以最好将&#x2F;root和&#x2F;放置在一个分区下。</span><br></pre></td></tr></table></figure>
+
+<p>  <strong>/sbin，/usr/sbin，/usr/local/sbin</strong></p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">放置系统管理员使用的可执行命令，如fdisk、shutdown、mount等。</span><br><span class="line">与&#x2F;bin不同的是，这几个目录是给系统管理员root使用的命令，一般用户只能&quot;查看&quot;而不能设置和使用。</span><br></pre></td></tr></table></figure>
+
+<p>  <strong>/tmp</strong></p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">一般用户或正在执行的程序临时存放文件的目录,任何人都可以访问,重要数据不可放置在此目录下。</span><br></pre></td></tr></table></figure>
+
+<p>  <strong>/srv</strong></p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">服务启动之后需要访问的数据目录，如www服务需要访问的网页数据存放在&#x2F;srv&#x2F;www内。</span><br></pre></td></tr></table></figure>
+
+<p>  <strong>/usr</strong></p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">应用程序存放目录。</span><br><span class="line">&#x2F;usr&#x2F;bin　存放应用程序。</span><br><span class="line">&#x2F;usr&#x2F;share　存放共享数据。</span><br><span class="line">&#x2F;usr&#x2F;lib　存放不能直接运行的，却是许多程序运行所必需的一些函数库文件。</span><br><span class="line">&#x2F;usr&#x2F;local　存放软件升级包。</span><br><span class="line">&#x2F;usr&#x2F;share&#x2F;doc　系统说明文件存放目录。</span><br><span class="line">&#x2F;usr&#x2F;share&#x2F;man　程序说明文件存放目录。</span><br><span class="line">使用 man ls时会查询&#x2F;usr&#x2F;share&#x2F;man&#x2F;man1&#x2F;ls.1.gz的内容。</span><br><span class="line">建议单独分区，设置较大的磁盘空间。</span><br></pre></td></tr></table></figure>
+
+<p>  <strong>/var</strong></p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">放置系统执行过程中经常变化的文件。</span><br><span class="line">&#x2F;var&#x2F;log　随时更改的日志文件。</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;message　所有的登录文件存放目录。</span><br><span class="line">&#x2F;var&#x2F;spool&#x2F;mail　邮件存放的目录。</span><br><span class="line">&#x2F;var&#x2F;run　程序或服务启动后，其PID存放在该目录下。</span><br><span class="line">建议单独分区，设置较大的磁盘空间。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>3、文件和目录操作相关命令</strong></p>
+<ul>
+<li><p>用户目录</p>
+<ul>
+<li>绝对路径：从根目录开始写，如/usr/bin</li>
+<li>相对路径：相对于当前的工作目录而言<ul>
+<li><strong>.</strong> 当前目录</li>
+<li><strong>..</strong> 当前目录的上一级目录</li>
+<li><strong>-</strong> 在临近的两个目录直接切换</li>
+</ul>
+</li>
+<li>root@ubuntu:~#<ul>
+<li>root: 当前用户名</li>
+<li>@：at, 在</li>
+<li>ubuntu：主机名</li>
+<li>~ : 当前用户home目录</li>
+<li>#：超级用户</li>
+<li>$：普通用户</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>ls</strong></p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ls -al</span><br><span class="line">	-a, --all			不隐藏任何以. 开始的项目</span><br><span class="line">	-l					使用较长格式列出信息</span><br><span class="line"></span><br><span class="line">-rw-r--r--  1 super root     3771 6月   7  2016 .bashrc</span><br><span class="line">drwx------ 22 super root     4096 12月 15 08:02 .cache</span><br><span class="line">lrwxrwxrwx  1 super root       31 11月 23 07:42 .vimrc -&gt; &#x2F;home&#x2F;super&#x2F;.spf13-vim-3&#x2F;.vimrc</span><br><span class="line"></span><br><span class="line">以最后一个为例：</span><br><span class="line">lrwxrwxrwx</span><br><span class="line">第1个字符：表示文件类型</span><br><span class="line">	-	普通文件</span><br><span class="line">	d	目录</span><br><span class="line">	l	链接符号</span><br><span class="line">	b	块设备</span><br><span class="line">	c	字符设备</span><br><span class="line">	s	socket文件</span><br><span class="line">	p	管道</span><br><span class="line">第2-4个字符：文档所有者权限</span><br><span class="line">第5-7个字符：同组用户权限</span><br><span class="line">第8-10个字符：其他人权限</span><br><span class="line">r: read 4</span><br><span class="line">w: write 2</span><br><span class="line">x: execute 1</span><br><span class="line"></span><br><span class="line">1				文件的硬链接数</span><br><span class="line">super			该文件或目录的所有者</span><br><span class="line">root			该文件或目录所属的组</span><br><span class="line">31				占用的存储空间</span><br><span class="line">11月 23 07:42   文件最后创建或修改的时间</span><br><span class="line">.vimrc			文件名</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>cd</strong></p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd ~		切换到用户home目录</span><br><span class="line">cd &#x2F;		切换到根目录</span><br><span class="line">cd			切换到用户home目录</span><br><span class="line">cd..		切换到上一级目录</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>tree</strong></p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tree path	显示指定路径的目录树结构</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>文件或目录颜色一般情况</strong></p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">白色			普通文件</span><br><span class="line">蓝色			目录</span><br><span class="line">绿色			可执行文件</span><br><span class="line">红色			压缩文件</span><br><span class="line">青色			链接文件</span><br><span class="line">黄色			设备文件</span><br><span class="line">灰色			其他文件</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>mkdir</strong></p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mkdir dirname				创建目录。</span><br><span class="line">mkdir dir1&#x2F;dir2&#x2F;dir3 -p		按层次创建目录。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>rmdir</strong></p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">rmdir dirname		目录必须为空才能删除，所以实际使用时不常用。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>rm</strong></p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">rm -rf dirname		递归强制删除文件夹下的目录和文件，实际使用中常用。</span><br><span class="line">rm -ri dirname		递归删除并提示用户删除了哪些目录或文件。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>touch</strong></p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">touch test.txt		创建文件。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>cp</strong></p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cp hello.c temp		在当前目录下生成一个temp文件，并把hello.c的内容写入文件。</span><br><span class="line">					如果temp不存在，则创建文件；如果存在，则覆盖已有文件。</span><br><span class="line">		</span><br><span class="line">cp mydir newdir -r  在当前目录下生成一个newdir目录，并把mydir目录里面的目录或文件拷贝过去。</span><br><span class="line">					如果目录不存在，则创建；如果存在，则mydir目录本身也拷贝到newdir目录下。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>cat</strong></p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cat test.txt		查看文件的内容，缺点内容太多时查看困难。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>more</strong></p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">more stdio.h		分屏查看文件，Enter下翻一行，Space下翻一页，缺点不能往回看。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>less</strong></p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">less stdio.h		分屏查看文件。比more更实用，可以来回翻页。</span><br><span class="line">					ctrl + p	上翻一行</span><br><span class="line">					ctrl + n	下翻一行</span><br><span class="line">					ctrl + b	上翻一页</span><br><span class="line">					ctrl + f	下翻一页</span><br><span class="line">					q			退出</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>head</strong></p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">head -5 stdio.h		查看前五行内容，不加参数默认是10行。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>tail</strong></p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tail -5 stdio.h		查看后5行内容， 不加参数默认是10行。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>mv</strong></p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mv test.c hello.c   移动到。多用于重命名目录或文件。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>ln</strong></p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ln -s ~&#x2F;.vim&#x2F;.vimrc .vimrc		创建软链接，相当于windows下的快捷方式,可用于目录或文件。</span><br><span class="line">								路径要用绝对路径，这样软链接拷贝到哪里都是有效的。</span><br><span class="line">								如果删除原文件，则软链接失效。</span><br><span class="line">		</span><br><span class="line">ln .vimrc .vimrc.hard			创建硬链接，只能用于文件。不必使用绝对路径。</span><br><span class="line">								创建后生成的硬链接与原文件引用同一个inode，硬链接本身不占硬盘空间。</span><br><span class="line">								如果删除原文件，硬链接仍然有效。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>wc</strong></p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wc test.c		统计文件的行数，字数，字节数。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>od</strong></p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">od -tx test.c		以十六进制形式查看文件。</span><br><span class="line">od -tc test.c		以ASCII字符形式查看文件。</span><br><span class="line">od -td test.c		以有符号十进制形式查看文件。</span><br><span class="line">od -tf test.c		以浮点数形式查看文件。</span><br><span class="line">od -to test.c		以八进制形式查看文件。</span><br><span class="line">od -tu test.c		以无符号十进制形式查看文件。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>du</strong></p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">du -h		查看当前文件夹下的目录或文件所占用磁盘的大小。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>df</strong></p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">df -h		查看当前文件夹下的目录或文件所使用磁盘空间的详细情况。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>which</strong></p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">which ls 	查看外部命令的位置，内部命令无法查看。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>pwd</strong></p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pwd			查看当前所在目录</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>4、文件权限、用户、用户组相关命令</strong></p>
+<ul>
+<li><p>查看当前用户</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">whoami		查看当前用户名。</span><br><span class="line">id			查看当前用户信息，如用户名，所属群组，UID，GID等。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改目录或文件权限</p>
+<ul>
+<li><p>文字设定法</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chmod [who] [+|-|&#x3D;] [mode]</span><br><span class="line">who : 不指定的话，默认是所有</span><br><span class="line">	文件所有者：u</span><br><span class="line">	文件所属组：g</span><br><span class="line">	其他人：o</span><br><span class="line">	所有人：a</span><br><span class="line">mode</span><br><span class="line">	r : 读</span><br><span class="line">	w : 写</span><br><span class="line">	x : 执行</span><br><span class="line">chmod o+w temp		给其他人加写权限。</span><br><span class="line">chmod a-x temp		给所有人去除执行权限。</span><br><span class="line">chmod a&#x3D;r temp		所有人只有读权限。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>数字设定法</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-	0	没有权限</span><br><span class="line">r	4	读</span><br><span class="line">w	2	写</span><br><span class="line">x	1	执行</span><br><span class="line"></span><br><span class="line">chmod 755 temp		-rwxr-xr-x</span><br><span class="line">chmod -001 temp		-rwxr-xr--</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>修改目录或文件所有者与所属组</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chown root temp			把文件temp的所有者修改为root。</span><br><span class="line">chown super:root temp	把文件temp的所有者修改super,所属组修改为root。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改目录或文件所属组</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chgrp root temp			修改文件所属组为root。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>目录必须有执行权限，否则不能打开目录。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>5、查找和检索相关命令</strong></p>
+<ul>
+<li><p>按文件属性查找</p>
+<ul>
+<li><p>文件名</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">find ~ -name &quot;hello.c&quot;		按完整名称匹配</span><br><span class="line">find ~ -name &quot;*.h&quot;			*代表任意长度字符</span><br><span class="line">find ~ -name &quot;tem?&quot;			？代表一个任意字符</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>文件大小</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">find ~ -size +10k				查找大于10k的文件</span><br><span class="line">find ~ -size -10M				查找小于10M的文件</span><br><span class="line">find ~ -size +10M -size -100M	查找大于10M小于是100M的文件</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>文件类型</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">find ~ -type p		查找类型为管道的档案</span><br><span class="line">find ~ -type f		查找类型为文件的档案</span><br><span class="line">find ~ -type d		查找类型为目录的档案</span><br><span class="line">find ~ -type l		查找类型为链接的档案</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>按文件内容查找</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">grep -r &quot;stdio.h&quot; ~		在用户家目录中查找文件内容里包括stdio.h的所有文件</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>6、软件安装和卸载</strong></p>
+<ul>
+<li><p>在线安装</p>
+<ul>
+<li><p>apt-get</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">安装		apt-get install tree		在线下载安装</span><br><span class="line">移除		apt-get remove tree</span><br><span class="line">更新		apt-get update				更新软件列表</span><br><span class="line">清理		apt-get clean				清理所有软件安装包，实际上清理的是&#x2F;var&#x2F;cache&#x2F;apt&#x2F;archives目录下的.deb文件</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>aptitude</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">安装       aptitude install tree</span><br><span class="line">重新安装    aptitude reinstall tree</span><br><span class="line">更新       apt-get update</span><br><span class="line">移除       aptitude remove tree</span><br><span class="line">显示状态    aptitude show tree</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>deb包安装</p>
+<ul>
+<li><p>安装</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dpkg -i xxx.deb</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dpkg -r xxx</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>源码安装</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1）解压缩源代码包。</span><br><span class="line">2）进入安装目录。</span><br><span class="line">3）检测文件是否缺失，创建Makefile，检测编译环境：.&#x2F;configure。</span><br><span class="line">4）编译源码，生成库和可执行程序：make。</span><br><span class="line">5）把库和可执行程序，安装到系统目录下：make install。</span><br><span class="line">6）删除和卸载软件：make distclean。</span><br><span class="line">7）上述安装步骤并不是绝对的，应该先查看附带的README文件。</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>7、磁盘管理</strong></p>
+<ul>
+<li><p>磁盘设备种类</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hd      Hard Disk         硬盘</span><br><span class="line">fd      Floppy Disk       软盘</span><br><span class="line">sd      SCSI Device       小型计算机系统接口（英语：Small Computer System Interface; 简写：SCSI）。</span><br><span class="line">                          一种用于计算机和智能设备之间（硬盘、软驱、光驱、打印机、扫描仪等）系统级接口的独立处理器标准。</span><br><span class="line">                          SCSI是一种智能的通用接口标准。</span><br><span class="line">设备都保存在&#x2F;dev中</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>sd后面加小写字母，分别代表不同的硬盘，如：</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sda     第一个硬盘</span><br><span class="line">sdb     第二个硬盘</span><br><span class="line">sdc     第三个硬盘</span><br><span class="line">sdd     第四个硬盘</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>每个硬盘又分为主分区和逻辑分区，一个硬盘最多允许四个主分区，第一个逻辑分区从sda5开始。</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">主分区：</span><br><span class="line">sda1    主分区1</span><br><span class="line">sda2    主分区2</span><br><span class="line">sda3    主分区3</span><br><span class="line">sda4    主分区4</span><br><span class="line"></span><br><span class="line">扩展分区：</span><br><span class="line">sda5    逻辑分区1</span><br><span class="line">sda6    逻辑分区2</span><br><span class="line">sda7    逻辑分区3</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看设备信息</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">fdisk -l    当你不知道usb的名称时，可以用这个命令在获取</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>挂载USB</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mount &#x2F;dev&#x2F;sdb1 &#x2F;mnt</span><br><span class="line">注： 如果挂载的目录不是一个空目录，则目录里面的内容会被临时覆盖掉，导致目录原有文件无法操作，卸载后会恢复原有文件。</span><br><span class="line">建议使用空目录， 如&#x2F;mnt。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>卸载USB</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">umount &#x2F;mnt</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="二、打包压缩和常用服务器"><a href="#二、打包压缩和常用服务器" class="headerlink" title="二、打包压缩和常用服务器"></a>二、打包压缩和常用服务器</h2><ul>
+<li><p><strong>1、压缩包管理</strong></p>
+<ul>
+<li><p>屌丝版</p>
+<ul>
+<li><p><strong>gzip</strong> – .gz格式压缩包</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gzip *.txt      假设当前目录中有a.txt和b.txt, 则会生成a.txt.gz和b.txt.gz，txt源文件会被删除。</span><br><span class="line">                这个命令不能用于目录。</span><br><span class="line">gunzip *.gz     解压</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>bzip2</strong> – .bz2格式的压缩包</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">bzip2 -k *.txt  假设当前目录中有a.txt和b.txt，则会生成a.txt.bz2和b.txt.bz2文件，加-k参数可以将源文件保留。</span><br><span class="line">                这个命令不能用于目录。</span><br><span class="line">bunzip2 *.bz2   解压</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>高富帅版</p>
+<ul>
+<li><p><strong>tar</strong> – 不使用z或j参数，该命令只能对文件和目录打包</p>
+<ul>
+<li><p>参数</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">c       创建--压缩时使用。</span><br><span class="line">x       释放--解压缩时使用。</span><br><span class="line">v       显示提示信息--压缩和解压缩都可以使用，可以省略。</span><br><span class="line">f       指定压缩文件的名字</span><br><span class="line">				</span><br><span class="line">z       使用gzip的方式压缩文件</span><br><span class="line">j       使用bzip2的方式压缩文件</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>压缩</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">用法：tar zcvf 生成的压缩包的名字（xxx.tar.gz） 要压缩的文件或目录</span><br><span class="line">示例：tar zcvf alltxt.tar.gz *.txt test&#x2F;		同时对文件和目录进行打包压缩</span><br><span class="line">				</span><br><span class="line">用法：tar jcvf 生成的压缩包的名字（xxx.tar.bz2） 要压缩的文件或目录</span><br><span class="line">示例：tar jcvf alltxt.tar.bz2 *.txt test&#x2F;		同时对文件和目录进行打包压缩</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>解压缩</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tar zxvf 压缩包的名字					解压到当前目录</span><br><span class="line">tar jxvf 压缩包的名字 -C 目录			解压到指定目录</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>rar</strong></p>
+<ul>
+<li><p>参数</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">a		Add压缩</span><br><span class="line">x		Extract解压缩</span><br><span class="line">r		压缩时递归目录，不加这个参数默认就是递归的</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>压缩</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">用法：rar a 生成的压缩文件的名字 压缩的文件或目录</span><br><span class="line"></span><br><span class="line">示例：</span><br><span class="line">rar a all *.txt			打包压缩文件</span><br><span class="line">rar a dir dir&#x2F;			打包压缩目录</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>解压缩</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">用法：rar x 压缩文件名 [解压缩目录]</span><br><span class="line">示例：rar x all.rar</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>zip</strong></p>
+<ul>
+<li><p>参数</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">r		压缩目录时加个参数用于递归目录，不加不能压缩</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>压缩</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">用法：zip 压缩包的名字 压缩的文件或目录</span><br><span class="line">示例：zip all *.txt</span><br><span class="line">	 zip -r myzip mytest&#x2F;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>解压缩</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">用法：unzip 压缩包的名字</span><br><span class="line">　　　unzip 压缩包的名字 -d 解压的目录</span><br><span class="line">示例：unzip all.zip</span><br><span class="line">	 unzip all.zip -d test&#x2F;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>2、进程管理</strong></p>
+<ul>
+<li><p>查看在线用户状态</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">who					查看当前在线用户的状态</span><br><span class="line"></span><br><span class="line">tty1~tty6			文字界面终端</span><br><span class="line">tty7				图形界面终端</span><br><span class="line">pts					虚拟终端</span><br><span class="line">Alt+Ctrl+F1~F7		切换终端，切换后各个终端互不影响</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看进程</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ps aux					查看在线用户下所有进程</span><br><span class="line">ps aux | grep bash		进程过滤</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>终止进程</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">kill -l					查看所有信号</span><br><span class="line">kill -SIGKILL 5179		终止进程</span><br><span class="line">kill -9 4678			终止进程</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看当前进程的环境变量</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">env						查看所有环境变量</span><br><span class="line">env | grep PATH			只查看PATH环境变量</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看系统状态</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">top</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>3、网络管理</strong></p>
+<ul>
+<li><p>获取网络接口信息</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ifconfig</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>测试与目标主机连通性</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ping www.baidu.com -c 4		发送4个数据包后终止</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看服务器域名对应的IP地址</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nslookup www.baidu.com</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>4、用户管理</strong></p>
+<ul>
+<li><p>创建用户</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">adduser super		用户名只能小写，不能大写</span><br><span class="line">useradd -s &#x2F;bin&#x2F;bash -g super -d &#x2F;home&#x2F;super -m super		用户名可以大写</span><br><span class="line">-s		指定新用户登陆时shell类型</span><br><span class="line">-g		指定所属组，该组必须已经存在</span><br><span class="line">-d		用户家目录</span><br><span class="line">-m		用户家目录不存在时，自动创建该目录</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置用户组</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">groupadd super</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除用户</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">deluser super</span><br><span class="line">userdel -r super		选项-r的作用是把用户的主目录一起删除</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>切换用户</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">su super</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改用户密码</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">passwd super</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>退出当前用户</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">exit</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看所有用户信息</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vi &#x2F;etc&#x2F;passwd</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>5、ftp服务器搭建</strong></p>
+<ul>
+<li><p><strong>vsftpd</strong>作用：文件的上传和下载</p>
+</li>
+<li><p><strong>服务器端</strong></p>
+<ul>
+<li><p>安装vsftpd</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apt-get install -y vsftpd		安装完成后会随系统启动而自动启动</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改配置文件</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vi &#x2F;etc&#x2F;vsftpd.conf</span><br><span class="line">			</span><br><span class="line">listen&#x3D;YES</span><br><span class="line">anon_root&#x3D;&#x2F;home&#x2F;super&#x2F;anonFtp&#x2F;		#指定匿名用户根目录，不指定默认是&#x2F;srv&#x2F;ftp&#x2F;</span><br><span class="line">anonymous_enable&#x3D;YES	#允许匿名用户登录</span><br><span class="line">write_enable&#x3D;YES		#实名用户拥有写权限（上传数据）</span><br><span class="line">local_umask&#x3D;022			#设置本地掩码为022</span><br><span class="line">anon_upload_enable&#x3D;YES		#匿名用户可以向ftp服务器上传数据</span><br><span class="line">anon_mkdir_write_enable&#x3D;YES		#匿名用户可以在ftp服务器上创建目录</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建匿名用户根目录</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd ~</span><br><span class="line">mkdir anonFtp</span><br><span class="line">chown ftp anonFtp</span><br><span class="line">chmod 777 anonFtp</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重启服务</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">service vsftpd retart</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>客户端</strong></p>
+<ul>
+<li><p>实名用户登录</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ftp IP(server)</span><br><span class="line">输入用户名</span><br><span class="line">输入密码</span><br><span class="line">			</span><br><span class="line">文件的上传和下载</span><br><span class="line">	文件的上传： put file</span><br><span class="line">	文件的下载： get file</span><br><span class="line">	不允许操作目录，如果想操作目录 -- 打包tar&#x2F;rar&#x2F;zip</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>匿名用户登录</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ftp IP(server)</span><br><span class="line">用户名：anonymous</span><br><span class="line">密码：直接回车</span><br><span class="line">			</span><br><span class="line">不允许匿名用户在任意目录直接切换</span><br><span class="line">只能在一个指定目录范围内工作</span><br><span class="line">需要在ftp服务器上创建一个匿名用户的目录 -- 匿名用户的根目录</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>退出</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">quit		推荐</span><br><span class="line">bye			推荐</span><br><span class="line">exit</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>lftp客户端访问ftp服务器</strong></p>
+<ul>
+<li><p>一个ftp客户端工具，可以上传和下载目录</p>
+</li>
+<li><p>安装</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apt-get install -y lftp</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>登录服务器</p>
+<ul>
+<li><p>匿名</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">lftp IP(sever) 回车</span><br><span class="line">login</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实名</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">lftp username@IP(sever) 回车</span><br><span class="line">输入服务器密码</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>操作</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">put file				上传文件</span><br><span class="line">mput file1 file2		上传多个文件</span><br><span class="line">get file				下载文件</span><br><span class="line">mget file1 file2		下载多个文件</span><br><span class="line">mirror dir				下载整个目录及其子目录</span><br><span class="line">mirror -R dir			上传整个目录及其子目录</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>6、nfs服务器搭建</strong></p>
+<ul>
+<li><p>net file system : 网络文件系统，它允许网络中的计算机之间通过TCP/IP网络共享资源。</p>
+</li>
+<li><p>服务器端</p>
+<ul>
+<li><p>安装</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apt-get install nfs-kernel-server		安装成功后会随系统启动而自动启动</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建共享目录</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">如: &#x2F;home&#x2F;super&#x2F;NfsShare</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改配置文件</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vi &#x2F;etc&#x2F;exports</span><br><span class="line">在文件最后加入下面设置：</span><br><span class="line">&#x2F;home&#x2F;super&#x2F;NfsShare *(rw, sync)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重启服务</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">service nfs-kernel-server restart</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>客户端</p>
+<ul>
+<li><p>挂载服务器共享目录</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">用法： mount serverIP:ShareDir &#x2F;mnt</span><br><span class="line">示例： mount 192.168.10.100:&#x2F;home&#x2F;super&#x2F;NfsShare &#x2F;mnt</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>7、ssh（Secure Shell）服务器</strong></p>
+<ul>
+<li><p>服务器端</p>
+<ul>
+<li><p>安装ssh</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">apt-get install -y openssh-server</span><br><span class="line">aptitude show openssh-server</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>客户端</p>
+<ul>
+<li><p>远程登录</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh Username@ServerIP</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>退出登录</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">logout</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>8、scp（Super Copy）命令</strong></p>
+<ul>
+<li><p>使用该命令的前提条件</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">目标主机已经安装了openssh-server</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用方法</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">scp -r 目标用户名@目标主机IP地址：／目标文件的绝对路径　／保存到本机的绝对（相对）路径</span><br><span class="line">scp -r super@192.168.10.100:&#x2F;home&#x2F;super&#x2F;SCP&#x2F; .&#x2F;mydir&#x2F;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>9、其他命令</strong></p>
+<ul>
+<li><p>翻页</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Shift+PageUp		上翻页</span><br><span class="line">Shift+PageDown		下翻页</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>清屏</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">clear</span><br><span class="line">Ctrl＋l</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建终端</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Ctrl+Alt+T		Ubuntu</span><br><span class="line">Ctrl+Shift+T	添加新标签页</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>看手册</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">man man</span><br><span class="line">		</span><br><span class="line">一共有九个章节，1,2,3,5是重点：</span><br><span class="line">1	可执行程序或 shell 命令</span><br><span class="line">2	系统调用(内核提供的函数)</span><br><span class="line">3	库调用(程序库中的函数)</span><br><span class="line">4	特殊文件(通常位于 &#x2F;dev)</span><br><span class="line">5	文件格式和规范，如 &#x2F;etc&#x2F;passwd</span><br><span class="line">6	游戏</span><br><span class="line">7	杂项(包括宏包和规范，如man(7)，groff(7))</span><br><span class="line">8	系统管理命令(通常只针对root用户)</span><br><span class="line">9	内核例程 [非标准</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置查看别名</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">alias					查看</span><br><span class="line">alias l&#x3D;&#39;ls -al&#39;		设置</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在显示器上显示数据</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">echo &quot;hello&quot;	打印字符串</span><br><span class="line">echo $PATH		打印环境变量</span><br><span class="line">echo $?			显示上一次程序退出值</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>10、关机重启</strong></p>
+<ul>
+<li><p><strong>poweroff</strong></p>
+</li>
+<li><p><strong>reboot</strong></p>
+</li>
+<li><p>shutdown</p>
+<ul>
+<li><p>参数</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-t		秒数:设定在切换至不同的runlevel之前，警告和删除两讯号之间的延迟时间（秒）</span><br><span class="line">-k		仅送出警告讯息文字，但不是真的要shutdown</span><br><span class="line">-r		shutdown之后重新开机</span><br><span class="line">-h		shutdown之后关机</span><br><span class="line">-n		不经过init，由shutdown指令本身来做关机动作（不建议使用）</span><br><span class="line">-f		重新开机时，跳过fsck指令，不检查档案系统</span><br><span class="line">-F		重新开机时，强迫做fsck检查</span><br><span class="line">-c		将已经正在shutdown的动作取消</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>示例</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">shutdown -r now		#立即重启</span><br><span class="line">shutdown -h now		#立即关机</span><br><span class="line">shutdown -k now &#39;Hey! Go away! now...&#39;		#发出警讯息，但没有真的关机</span><br><span class="line">shutdown -t3 -r now		#立即重启，但在警告和删除processes之间，延迟3秒钟</span><br><span class="line">shutdown -h 10:42 &#39;Hey! Go away!&#39;	#10：42关机</span><br><span class="line">shutdown -r 10 &#39;Hey! Go away!&#39;		#10分钟后关机</span><br><span class="line">shutdown -c		#取消shutdown指令，必须切换至其他tty，登入之后，才能下些命令</span><br><span class="line">shutdown now	#切换至单人操作模式（不加任何选项时）</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="三、vim和函数库"><a href="#三、vim和函数库" class="headerlink" title="三、vim和函数库"></a>三、vim和函数库</h2><h3 id="1、vim编辑器的使用"><a href="#1、vim编辑器的使用" class="headerlink" title="1、vim编辑器的使用"></a>1、vim编辑器的使用</h3><h4 id="1-1、vim简介"><a href="#1-1、vim简介" class="headerlink" title="1.1、vim简介"></a>1.1、vim简介</h4><ul>
+<li>Vim是从 vi 发展出来的一个文本编辑器。代码补全、编译及错误跳转等方便编程的功能特别丰富，在程序员中被广泛使用，和Emacs并列成为类Unix系统用户最喜欢的文本编辑器。</li>
+</ul>
+<h4 id="1-2、工作模式"><a href="#1-2、工作模式" class="headerlink" title="1.2、工作模式"></a>1.2、工作模式</h4><ul>
+<li><p>命令模式 – 打开文件之后，默认进入命令模式。</p>
+<ul>
+<li><p>移动光标</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">h			左</span><br><span class="line">j			下</span><br><span class="line">k			下</span><br><span class="line">l			右</span><br><span class="line">0			行首</span><br><span class="line">$			行尾</span><br><span class="line">gg			文件头部</span><br><span class="line">G			文件尾部</span><br><span class="line">5G			行跳转，移到第五行</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除操作（不是真正意义上的删除，更象是剪切操作）</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">x			删除光标后一个字符</span><br><span class="line">X			删除光标前一个字符</span><br><span class="line">dw			删除光标后一个单词</span><br><span class="line">d0			删除光标到行首的所有字符</span><br><span class="line">D(d$)		删除光标到行尾的所有字符</span><br><span class="line">dd			删除一行</span><br><span class="line">5dd			删除五行</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>撤消操作</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">u			撤消</span><br><span class="line">ctrl+r		还原前一个操作</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>复制粘贴</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">p			小写的p，粘贴到光标的下一行</span><br><span class="line">P			大写的p，粘贴到光标的所在行</span><br><span class="line">yy			复制一行</span><br><span class="line">5yy			复制五行</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>可视模式</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">v			切换到可视块模式</span><br><span class="line">h&#x2F;j&#x2F;k&#x2F;l		调整选中块</span><br><span class="line">y			复制</span><br><span class="line">d			删除</span><br><span class="line">p			粘贴</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查找模式</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;			切换到查找模式，向下查找</span><br><span class="line">？			切换到查找模式，向上查找</span><br><span class="line">n			下一个匹配</span><br><span class="line">N			上一个匹配</span><br><span class="line">#			移到要查找的单词上，按#号即可开启查找模式</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>字符替换</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">r			单个字符替换</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>行缩进</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;          向右缩进</span><br><span class="line">&lt;&lt;			向左缩进</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看函数man文档</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">K			先输入3（库函数章节），再输入K，以查看指定函数的man文档</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>编辑模式 – 需要输入一些命令，切换到编辑模式。</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">a		在光标所在位置的后边插入</span><br><span class="line">A		在当前行的尾部插入</span><br><span class="line"></span><br><span class="line">i		在光标所在位置的前边插入</span><br><span class="line">I		在光标所在行的行首插入</span><br><span class="line">	</span><br><span class="line">o		在光标所在行的下边开辟一个新的行</span><br><span class="line">O		在光标所在行的上边开辟一个新的行</span><br><span class="line">	</span><br><span class="line">s		删除光标后边的字符</span><br><span class="line">S		删除光标所有的行</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>末行模式 – 在末行模式下可以输入一些命令。</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">:s&#x2F;tom&#x2F;jack&#x2F;g			把光标所在行的tom替换成jack</span><br><span class="line">:%s&#x2F;tom&#x2F;jack&#x2F;g			把整个文档的tom替换成jack</span><br><span class="line">:25,30s&#x2F;tom&#x2F;jack&#x2F;g		把25到30行的tom替换成jack</span><br><span class="line">	</span><br><span class="line">:q			退出</span><br><span class="line">:q!			强制退出</span><br><span class="line">:w			保存</span><br><span class="line">:wq			保存并退出</span><br><span class="line">:x			相当于:wq</span><br><span class="line">ZZ			相当于:wq</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>分屏操作</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">:sp [file]		将屏幕水平分成两部分</span><br><span class="line">:vsp [file]		交屏幕垂直分成两部分</span><br><span class="line">:wqall			同时保存打开文件</span><br><span class="line">ctrl+ww			切换两个屏幕</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>vim打造成IDE</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;etc&#x2F;vim&#x2F;vimrc		系统级配置文件</span><br><span class="line">~&#x2F;.vim&#x2F;vimrc		用户级配置文件</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="2、gcc编译器"><a href="#2、gcc编译器" class="headerlink" title="2、gcc编译器"></a>2、gcc编译器</h3><ul>
+<li><p>gcc编译的四个阶段：</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hello.c  --------&gt;   hello.i  --------&gt;    hello.s  --------&gt;    hello.o  -------&gt;    hello.out</span><br><span class="line">	    预处理编译器（cpp）     编译器（gcc）          汇编器（as）           链接器（ld）</span><br><span class="line">		gcc -E                gcc -S                gcc -c                gcc</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编译工具链：</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">    预处理编译器：cpp     gcc -E hello.c -o hello.i   头文件展开，宏替换，注释去掉</span><br><span class="line">         编译器：gcc     gcc -S hello.i -o hello.s   c文件变成汇编文件</span><br><span class="line">汇编器：as      gcc -c hello.s -o hello.o   汇编文件变成二进制文件</span><br><span class="line">链接器：ld      gcc hello.o -o hello        将函数库中相应的代码组合到目标文件中</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>直接编译生成可执行文件</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gcc hello.c -o hello</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编译时指定头文件目录-I</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gcc hello.c -I .&#x2F;include hello</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编译时指定宏，通常用于调试代码-D</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gcc hello.c -D DEBUG</span><br><span class="line">	</span><br><span class="line">在需要打印日志的代码中加上下面的语句：</span><br><span class="line">#ifdef DEBUG</span><br><span class="line">	printf(&quot;debug info&quot;);</span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编译时对代码进行优化-O3</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gcc hello.c -o hello -O3 </span><br><span class="line">级别：</span><br><span class="line">0	没有优化</span><br><span class="line">1	缺省值</span><br><span class="line">3	优化级别最高</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编译时显示告警信息-Wall</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gcc hello.c -o hello -Wall</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编译时包含调试信息-g（gdb）</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gcc hello.c -o hello -g</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看编译版本</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gcc -v</span><br><span class="line">gcc --version</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="3、静态库的创建和使用"><a href="#3、静态库的创建和使用" class="headerlink" title="3、静态库的创建和使用"></a>3、静态库的创建和使用</h3><ul>
+<li><p>准备</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">目录结构</span><br><span class="line">myCalc</span><br><span class="line">├── include</span><br><span class="line">│   └── head.h</span><br><span class="line">├── lib</span><br><span class="line">│   └── libMyCalc.a</span><br><span class="line">├── main.c</span><br><span class="line">└── src</span><br><span class="line">    ├── add.c</span><br><span class="line">    ├── div.c</span><br><span class="line">    ├── mul.c</span><br><span class="line">    ├── sub.c</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>命名格式</p>
+<ul>
+<li><p>以<code>lib</code>开头。</p>
+</li>
+<li><p>静态库名。</p>
+</li>
+<li><p><code>.a</code>结尾。</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">示例 ：　libMyCalc.a</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>描述</p>
+<ul>
+<li>优点<ul>
+<li>寻址方便、速度快。</li>
+<li>库被打包到可执行程序中，直接发布可执行程序即可使用。</li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>静态库的代码在编译过程中已经被载入可执行程序，因此体积较大。</li>
+<li>如果静态函数库改变了，那么你的程序就必须重新编译。</li>
+</ul>
+</li>
+<li>使用场合<ul>
+<li>在核心程序上使用，保证速度，忽略空间。</li>
+<li>主流应用于80、90年代，现在很少使用。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>制作</p>
+<ul>
+<li><p>得到与位置有关的<code>*.o</code></p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd ~&#x2F;myClac&#x2F;src</span><br><span class="line">gcc *.c -c -I ..&#x2F;include</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将生成的<code>*.o</code>文件打包成静态库<code>libMyCalc.a</code></p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ar rcs libMyCalc.a *.o</span><br><span class="line">		</span><br><span class="line">ar工具不包含在一gcc中。</span><br><span class="line">参数：</span><br><span class="line">r		将文件夹插入到静态库中。</span><br><span class="line">c		创建静态库，不管库是否存在。</span><br><span class="line">s		写入一个目标文件索引到库中，或者更新一个存在的目标文件。</span><br><span class="line">		</span><br><span class="line">制作好以后移动到lib目录中</span><br><span class="line">mv libMyCalc.a ..&#x2F;lib</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看库中的符号（函数）</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nm libMyCalc.a</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>发布和使用静态库</p>
+<ul>
+<li><p>发布静态库，把<code>include</code>和<code>lib</code>目录打包给用户。</p>
+</li>
+<li><p>使用</p>
+<ul>
+<li><p>在<code>main.c</code>中包含头文件</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#inlcude &quot;head.h&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>两种编译方式</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gcc main.c lib&#x2F;libMyCalc.a -I include -o myapp</span><br><span class="line">gcc main.c -I include -L lib -l MyCalc -o myapp</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行<code>myapp</code></p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.&#x2F;myapp</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="4、动态库的创建和使用"><a href="#4、动态库的创建和使用" class="headerlink" title="4、动态库的创建和使用"></a>4、动态库的创建和使用</h3><ul>
+<li><p>准备</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">目录结构</span><br><span class="line">myCalc</span><br><span class="line">├── include</span><br><span class="line">│   └── head.h</span><br><span class="line">├── lib</span><br><span class="line">│   └── libMyCalc.so</span><br><span class="line">├── main.c</span><br><span class="line">└── src</span><br><span class="line">    ├── add.c</span><br><span class="line">    ├── div.c</span><br><span class="line">    ├── mul.c</span><br><span class="line">    ├── sub.c</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>命名格式</p>
+<ul>
+<li><p>以<code>lib</code>开头。</p>
+</li>
+<li><p>静态库名。</p>
+</li>
+<li><p><code>.so</code>结尾。</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">示例 ：　libMyCalc.so</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>描述</p>
+<ul>
+<li>优点<ul>
+<li>执行程序体积小。</li>
+<li>动态库更新了，不需要重新编译程序，前提是函数接口不变。</li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>发布程序的时候，需要将动态库提供给用户。</li>
+<li>动态库没有被打包到应用程序中，加载速度相对较慢。</li>
+</ul>
+</li>
+<li>使用场合<ul>
+<li>现代应用程序中常用。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>制作</p>
+<ul>
+<li><p>生成与位置无关的<code>*.o</code></p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd ~&#x2F;myClac&#x2F;src</span><br><span class="line">gcc -fPIC *.c -c -I ..&#x2F;include</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将生成的<code>*.o</code>文件打包成共享库（动态库）<code>libMyCalc.so</code></p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gcc -shared -o libMyCalc.so *.o -I ..&#x2F;include</span><br><span class="line">		</span><br><span class="line">制作好以后移动到lib目录中</span><br><span class="line">mv libMyCalc.so ..&#x2F;lib</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看库中的符号（函数）</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nm libMyCalc.so</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>发布和使用静态库</p>
+<ul>
+<li><p>发布静态库，把<code>include</code>和<code>lib</code>目录打包给用户。</p>
+</li>
+<li><p>使用</p>
+<ul>
+<li><p>在<code>main.c</code>中包含头文件</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#inlcude &quot;head.h&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>两种编译方式</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gcc main.c lib&#x2F;libMyCalc.so -I include -o myapp</span><br><span class="line">gcc main.c -I include -L lib -l MyCalc -o myapp</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行<code>myapp</code></p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.&#x2F;myapp</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看可执行文件夹所依赖的动态库</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ldd myapp</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>解决依赖的动态库无法加载的问题</p>
+<ul>
+<li><p>把<code>libMyCalc.so</code>拷贝到<code>/lib</code>目录下(不推荐使用，容易与系统库冲突)</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cp lib&#x2F;libMyCalc.so &#x2F;lib</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置环境变量LD_LIBRARY_PATH（测试时使用）</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export LD_LIBRARY_PATH&#x3D;.&#x2F;lib	只对当前会话有效</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置环境变量LD_LIBRARY_PATH到~/.bashrc中（测试时使用）</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vi ~&#x2F;.bashrc</span><br><span class="line">export LD_LIBRARY_PATH&#x3D;&#x2F;home&#x2F;super&#x2F;myCalc&#x2F;lib		会话每次开启就会生效</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置配置文件<code>/etc/ld.so.conf</code>（推荐使用），重启终端</p>
+<ul>
+<li><p>编辑动态连接器的配置文件</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vi &#x2F;etc&#x2F;ld.so.conf</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>动态库的路径写到配置文件中</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;home&#x2F;super&#x2F;myCalc&#x2F;lib</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>更新动态库</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ldconfig -v</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="四、makefile和文件IO"><a href="#四、makefile和文件IO" class="headerlink" title="四、makefile和文件IO"></a>四、makefile和文件IO</h2><h3 id="1、gdb调试"><a href="#1、gdb调试" class="headerlink" title="1、gdb调试"></a>1、gdb调试</h3><ul>
+<li><p>1.1、启动gdb</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gdb app</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>1.2、查看代码</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt;(gdb) l			#list</span><br><span class="line">&gt;&gt;&gt;(gdb) l 行号或函数名</span><br><span class="line">&gt;&gt;&gt;(gdb) l 文件名:行号或函数名</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>1.3、设置断点</p>
+<ul>
+<li><p>设置当前文件断点</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt;(gdb) b		#break</span><br><span class="line">&gt;&gt;&gt;(gdb) b 行号或函数名</span><br><span class="line">&gt;&gt;&gt;(gdb) b 文件名:行号或函数名</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置条件断点</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt;(gdb) b 10 if value&#x3D;&#x3D;19</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除断点</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt;(gdb) d 断点的编号		#delete或del</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>1.4、查看设置的断点</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt;(gdb) i b			#info, 可以获取断点的编号，删除断点时用</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>1.5、开始执行gdb调试</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt;(gdb) start		#只执行一步</span><br><span class="line">&gt;&gt;&gt;(gdb) c			#continue，直接停在断点的位置</span><br><span class="line">&gt;&gt;&gt;(gdb) run		#有断点会停在断点处，没有会直接跑完程序，较少用</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>1.6、单步调试</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt;(gdb) s			#进入函数体内部</span><br><span class="line">&gt;&gt;&gt;(gdb) finish     #从函数体内部跳出</span><br><span class="line">&gt;&gt;&gt;(gdb) n          #不进入函数体内部</span><br><span class="line">&gt;&gt;&gt;(gdb) u          #退出当前循环</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>1.7、查看变量的值</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt;(gdb) p		print</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>1.8、查看变量的类型</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt;(gdb) ptype 变量名</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>1.9、设置变量的值</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt;(gdb) set var 变量&#x3D;值</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>1.10、设置追踪变量</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt;(gdb) display 变量        #设置追踪变量</span><br><span class="line">&gt;&gt;&gt;(gdb) info display        #获取变量的编号</span><br><span class="line">&gt;&gt;&gt;(gdb) undisplay 编号       #取消追踪变量</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>1.10、退出gdb调试</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt;(gdb) quit</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="2、makefile的编写"><a href="#2、makefile的编写" class="headerlink" title="2、makefile的编写"></a>2、makefile的编写</h3><h4 id="2-1、makefile的命名"><a href="#2-1、makefile的命名" class="headerlink" title="2.1、makefile的命名"></a>2.1、makefile的命名</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">makefile</span><br><span class="line">Makefile</span><br><span class="line"></span><br><span class="line">注：两种任选其中一种，其他名称不行。</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-2、makefile的规则"><a href="#2-2、makefile的规则" class="headerlink" title="2.2、makefile的规则"></a>2.2、makefile的规则</h4><ul>
+<li><p>规则中的三要素：目标、依赖、命令</p>
+<ul>
+<li><p>makefile文件内容格式</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">目标：依赖文件</span><br><span class="line">	命令</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>makefile文件内容简单示例</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">app:main.c add.c sub.c mul.c div.c</span><br><span class="line">	gcc main.c add.c sub.c mul.c div.c -o app</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>第二行必须有一个tab缩进。</p>
+</li>
+</ul>
+</li>
+<li><p>子目标和终极目标</p>
+<ul>
+<li><p>示例</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#终极目标</span><br><span class="line">app:main.o add.o sub.o div.o</span><br><span class="line">	gcc main.o add.o sub.o div.o -o app</span><br><span class="line">#子目标</span><br><span class="line">main.o:main.c</span><br><span class="line">	gcc -c main.c</span><br><span class="line">#子目标</span><br><span class="line">add.o:add.c</span><br><span class="line">	gcc -c add.c</span><br><span class="line">#子目标</span><br><span class="line">sub.o:sub.c</span><br><span class="line">	gcc -c sub.c</span><br><span class="line">#子目标</span><br><span class="line">mul.o:mul.c</span><br><span class="line">	gcc -c mul.c</span><br><span class="line">#子目标</span><br><span class="line">div.o:div.c</span><br><span class="line">	gcc -c div.c</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>好处</p>
+<ul>
+<li>当其他一个文件被修改时，只会编译修改的文件，再打包生成app，编译效率高。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>更新目标的原则</p>
+</li>
+</ul>
+<h4 id="2-3、makefile的两个函数"><a href="#2-3、makefile的两个函数" class="headerlink" title="2.3、makefile的两个函数"></a>2.3、makefile的两个函数</h4><ul>
+<li><p><code>wildcard</code>：取得目录下的所有文件</p>
+</li>
+<li><p><code>patsubst</code>：将目标下的所有文件作替换</p>
+</li>
+<li><p>示例</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#自定义变量</span><br><span class="line">src&#x3D;$(wildcard .&#x2F;*.c)</span><br><span class="line">obj&#x3D;$(patsubst .&#x2F;%.c, .&#x2F;%.o, $(src))</span><br><span class="line">target&#x3D;app</span><br><span class="line">#终极目标</span><br><span class="line">$(target):$(obj)</span><br><span class="line">	gcc $(obj) -o $(target)</span><br><span class="line">#子目标</span><br><span class="line">%.o:%.c</span><br><span class="line">	gcc -c $&lt; -o $@</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="2-4、makefile的三个自动变量"><a href="#2-4、makefile的三个自动变量" class="headerlink" title="2.4、makefile的三个自动变量"></a>2.4、makefile的三个自动变量</h4><ul>
+<li><p>普通变量</p>
+<ul>
+<li>变量取值：<code>foo = $(obj)</code></li>
+<li>由makefile维护的一些变量<ul>
+<li>通常格式都是大写<ul>
+<li><code>CC</code>: 默认值是<code>cc</code></li>
+</ul>
+</li>
+<li>有些有默认值，有些没有<ul>
+<li><code>CPPFLAGS</code>: 预处理器需要的选项，如：<code>-I</code></li>
+<li><code>CFLAGS</code>: 编译的时候使用的参数 <code>-Wall -g -c</code></li>
+<li><code>LDFLAGS</code>: 链接库使用的选项 <code>-L -l</code></li>
+</ul>
+</li>
+<li>用户可以修改这些变量的默认值<ul>
+<li><code>CC = gcc</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>自动变量</p>
+<ul>
+<li><p>变量</p>
+<ul>
+<li><code>$&lt;</code> 规则中的第一个依赖条件</li>
+<li><code>$@</code> 规则中的目标</li>
+<li><code>$^</code> 规则中的所有依赖条件</li>
+<li>以上三种变量只能在规则的命令中使用</li>
+</ul>
+</li>
+<li><p>模式规则</p>
+<ul>
+<li><p>在规则的目标定义中使用%</p>
+</li>
+<li><p>在规则的依赖条件中使用%</p>
+</li>
+<li><p>示例</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#自定义变量</span><br><span class="line">src&#x3D;$(wildcard .&#x2F;*.c)</span><br><span class="line">obj&#x3D;$(patsubst .&#x2F;%.c, .&#x2F;%.o, $(src))</span><br><span class="line">target&#x3D;app</span><br><span class="line">#makefile维护的变量</span><br><span class="line">CC &#x3D; gcc</span><br><span class="line">CPPFLAGS &#x3D; -I</span><br><span class="line">#终极目标</span><br><span class="line">$(target):$(obj)</span><br><span class="line">	$(CC) $^ -o $@</span><br><span class="line">#子目标</span><br><span class="line">%.o:%.c</span><br><span class="line">	$(CC) -c $&lt; -o $@</span><br><span class="line">#伪目标</span><br><span class="line">.PHONY:clean</span><br><span class="line">clean:</span><br><span class="line">	#命令前面加-表示，如果命令执行失败则忽略这个命令</span><br><span class="line">	-makir &#x2F;release</span><br><span class="line">	rm -f $(obj) $(target)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="3、系统IO函数"><a href="#3、系统IO函数" class="headerlink" title="3、系统IO函数"></a>3、系统IO函数</h3><h4 id="3-1、一些概念"><a href="#3-1、一些概念" class="headerlink" title="3.1、一些概念"></a>3.1、一些概念</h4><ul>
+<li><p>C库IO函数工作流程<br>  <img src="https://images.cnblogs.com/cnblogs_com/zfc2201/928468/o_C%e5%ba%93IO%e5%87%bd%e6%95%b0%e5%b7%a5%e4%bd%9c%e6%b5%81%e7%a8%8b.png" alt="C库IO函数工作流程"></p>
+</li>
+<li><p>虚拟内存地址空间<br>  <img src="https://images.cnblogs.com/cnblogs_com/zfc2201/928468/o_%e8%99%9a%e6%8b%9f%e5%86%85%e5%ad%98%e5%9c%b0%e5%9d%80%e7%a9%ba%e9%97%b4.png" alt="虚拟内存地址空间"></p>
+</li>
+<li><p>pcb与文件描述符<br>  <img src="https://images.cnblogs.com/cnblogs_com/zfc2201/928468/o_pcb%e4%b8%8e%e6%96%87%e4%bb%b6%e6%8f%8f%e8%bf%b0%e7%ac%a6.png" alt="pcb与文件描述符 "></p>
+</li>
+<li><p>库函数与系统函数之间的关系<br>  <img src="https://images.cnblogs.com/cnblogs_com/zfc2201/928468/o_%e5%ba%93%e5%87%bd%e6%95%b0%e4%b8%8e%e7%b3%bb%e7%bb%9f%e5%87%bd%e6%95%b0%e4%b9%8b%e9%97%b4%e7%9a%84%e5%85%b3%e7%b3%bb.png" alt="库函数与系统函数之间的关系"></p>
+</li>
+<li><p>CPU为什么要使用虚拟地址空间与物理地址空间映射？解决了什么问题？</p>
+<ul>
+<li>方便编译器和操作系统安排程序的地址分布。<ul>
+<li>程序可以使用一系列相邻的虚拟地址来访问物理内存中不相邻的大内存缓冲区</li>
+</ul>
+</li>
+<li>方便进程之间隔离<ul>
+<li>不同进程使用的虚拟地址彼此隔离，一个进程中的代码无法更改正在由另一个进程使用的物理内存。</li>
+</ul>
+</li>
+<li>方便OS使用你那可怜的内存<ul>
+<li>程序可以使用一系列虚拟地址来访问大于可用物理内存的内存缓冲区。当物理内存的供应量变小时，内存管理器会将物理内存页（通常大小为4KB）保存到磁盘文件。数据或代码页会根据需要在物理内存和磁盘之间移动。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>查看帮助文档</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">man 2 open</span><br><span class="line">man 3 printf</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>errno</p>
+<ul>
+<li><p>定义在头文件</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;usr&#x2F;include&#x2F;error.h</span><br></pre></td></tr></table></figure>
+
+<p>  中</p>
+<ul>
+<li>全局变量</li>
+<li>任何标准C库函数都能对其进行修改（Linux系统函数更可以）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>错误宏定义位置</p>
+<ul>
+<li>第1-34个错误定义：<code>/usr/include/asm-generic/errno-base.h</code></li>
+<li>第35-133个错误定义：<code>/usr/include/asm-generic/errno.h</code></li>
+</ul>
+</li>
+<li><p>是记录系统的最后一次错误代码。代码是一个int型的值。</p>
+<ul>
+<li>第个errno值对应着以字符串表示的错误类型。</li>
+<li>当调用“某些”函数出错时，该函数会重新设置errno的值。</li>
+</ul>
+</li>
+<li><p>perror函数</p>
+<ul>
+<li>头文件<code>stdio.h</code></li>
+<li>函数定义<code>void perror(const char * s)</code></li>
+<li>函数说明<ul>
+<li>用来将上一个函数发生的错误的原因输出到标准设备（stderr）。</li>
+<li>参数s所指的字符串会先打印出，后面再加上错误原因字符串。</li>
+<li>些错误原因依照全局变量error的值来决定要输出的字符串。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-2、open"><a href="#3-2、open" class="headerlink" title="3.2、open"></a>3.2、open</h4><ul>
+<li><p>函数定义</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int open(const char *pathname, int flags);</span><br><span class="line">int open(const char *pathname, int flags, mode_t mode);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>功能</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">打开文件。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>参数</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pathname	文件路径，如.&#x2F;hello.c</span><br><span class="line">flags		文件访问模式，O_RDONLY, O_WRONLY, O_RDWR， 更多见man 2 open</span><br><span class="line">mode 		文件权限设置，实际结果是mode &amp; umask</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>返回值</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">返回一个文件描述fd，-1表示打开文件时发生错误。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>示例</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;sys&#x2F;types.h&gt;</span><br><span class="line">#include &lt;sys&#x2F;stat.h&gt;</span><br><span class="line">#include &lt;fcntl.h&gt;</span><br><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int fd; </span><br><span class="line">    &#x2F;&#x2F;打开文件</span><br><span class="line">    fd &#x3D; open(&quot;hello.c&quot;, O_RDWR);</span><br><span class="line">    &#x2F;&#x2F;打开文件，不存在则创建并设置权限为：755 &amp; umask</span><br><span class="line">	fd &#x3D; open(&quot;hello.c&quot;, O_RDWR | O_CREAT, 0755);</span><br><span class="line">    &#x2F;&#x2F;打开文件，不存在则创建并设置权限为：755 &amp; umask，另判断文件是否存在</span><br><span class="line">	fd &#x3D; open(&quot;hello.c&quot;, O_RDWR | O_CREAT | O_EXCL, 0755);</span><br><span class="line">    &#x2F;&#x2F;打开文件并清空文件里的内容</span><br><span class="line">	fd &#x3D; open(&quot;hello.c&quot;, O_RDWR | O_TRUNC);</span><br><span class="line"></span><br><span class="line">    printf(&quot;fd &#x3D; %d\n&quot;, fd);</span><br><span class="line">	&#x2F;&#x2F;打开失败则打印错误并退出程序</span><br><span class="line">    if(fd &#x3D;&#x3D; -1) </span><br><span class="line">    &#123;   </span><br><span class="line">        perror(&quot;open file failure&quot;);</span><br><span class="line">        exit(1);</span><br><span class="line">	&#125;   </span><br><span class="line"></span><br><span class="line">    int ret &#x3D; close(fd);</span><br><span class="line">    printf(&quot;ret &#x3D; %d\n&quot;, ret);</span><br><span class="line">	&#x2F;&#x2F;关闭失败则打印错误并退出程序</span><br><span class="line">    if(ret &#x3D;&#x3D; -1) </span><br><span class="line">    &#123;   </span><br><span class="line">        perror(&quot;close file failure&quot;);</span><br><span class="line">        exit(1);</span><br><span class="line">    &#125;   </span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="3-3、read"><a href="#3-3、read" class="headerlink" title="3.3、read"></a>3.3、read</h4><ul>
+<li><p>函数定义</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssize_t read(int fd, void *buf, size_t count);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>功能</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">读取文件。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>参数</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">fd			文件描述符</span><br><span class="line">buf			缓冲区</span><br><span class="line">count		读取多少字节数</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>返回值</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">有符号int型值</span><br><span class="line">-1		表示读文件失败</span><br><span class="line">0		表示文件读完了</span><br><span class="line">&gt;0      表示读取的字节数</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="3-4、write"><a href="#3-4、write" class="headerlink" title="3.4、write"></a>3.4、write</h4><ul>
+<li><p>函数定义</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssize_t write(int fd, const void *buf, size_t count);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>功能</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">写入文件。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>参数</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">fd			文件描述符</span><br><span class="line">buf			缓冲区</span><br><span class="line">count		读取多少字节数</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>返回值</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">有符号int型值</span><br><span class="line">-1		表示写文件失败</span><br><span class="line">0		表示什么都没写</span><br><span class="line">&gt;0      表示写了多少字节数</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>示例</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;sys&#x2F;types.h&gt;</span><br><span class="line">#include &lt;sys&#x2F;stat.h&gt;</span><br><span class="line">#include &lt;fcntl.h&gt;</span><br><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    &#x2F;&#x2F;以只读方式找开文件</span><br><span class="line">    int fd &#x3D; open(&quot;english.txt&quot;, O_RDONLY);</span><br><span class="line">    if(fd &#x3D;&#x3D; -1)</span><br><span class="line">    &#123;</span><br><span class="line">        perror(&quot;open&quot;);</span><br><span class="line">        exit(1);</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;以写的方式找开文件，文件不存在则创建</span><br><span class="line">    int fd1 &#x3D; open(&quot;newfile&quot;, O_CREAT | O_WRONLY, 0664);</span><br><span class="line">	&#x2F;&#x2F;打开失败，打印错误并退出程序</span><br><span class="line">    if(fd1 &#x3D;&#x3D; -1)</span><br><span class="line">    &#123;</span><br><span class="line">        perror(&quot;open1&quot;);</span><br><span class="line">        exit(1);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    char buf[2048] &#x3D; &#123;0&#125;;</span><br><span class="line">    &#x2F;&#x2F;每次读取2048字节</span><br><span class="line">    int count &#x3D; read(fd, buf, sizeof(buf));</span><br><span class="line">	&#x2F;&#x2F;读取失败，打印错误并退出程序</span><br><span class="line">    if(count &#x3D;&#x3D; -1)</span><br><span class="line">    &#123;</span><br><span class="line">        perror(&quot;read&quot;);</span><br><span class="line">        exit(1);</span><br><span class="line">    &#125;</span><br><span class="line">    while(count)</span><br><span class="line">    &#123;</span><br><span class="line">        &#x2F;&#x2F;写入文件</span><br><span class="line">        int ret &#x3D; write(fd1, buf, count);</span><br><span class="line">        printf(&quot;write bytes %d\n&quot;, ret);</span><br><span class="line">		&#x2F;&#x2F;继续读取内容</span><br><span class="line">        count &#x3D; read(fd, buf, sizeof(buf));</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;关闭文件</span><br><span class="line">    close(fd);</span><br><span class="line">    close(fd1);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="3-5、close"><a href="#3-5、close" class="headerlink" title="3.5、close"></a>3.5、close</h4><ul>
+<li><p>函数定义</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int close(int fd);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>功能</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">关闭文件。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>参数</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">fd		文件描述符</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>返回值</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">0		表示关闭成功</span><br><span class="line">-1		表示关闭失败</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="3-6、lseek"><a href="#3-6、lseek" class="headerlink" title="3.6、lseek"></a>3.6、lseek</h4><ul>
+<li><p>函数定义</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">off_t lseek(int fd, off_t offset, int whence);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>功能</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1、获取文件大小。</span><br><span class="line">2、移动文件指针。</span><br><span class="line">3、文件拓展。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>参数</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">fd			文件描述符</span><br><span class="line">offset		文件指针偏移量</span><br><span class="line">whence		来源，主要值有：SEEK_SET、SEEK_CUR、SEEK_END等</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>返回值</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">有符号int型值</span><br><span class="line">-1		表示读文件失败</span><br><span class="line">0		表示文件读完了</span><br><span class="line">&gt;0      表示读取的字节数</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>示例</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line">#include &lt;sys&#x2F;types.h&gt;</span><br><span class="line">#include &lt;sys&#x2F;stat.h&gt;</span><br><span class="line">#include &lt;fcntl.h&gt;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int fd &#x3D; open(&quot;aa&quot;, O_RDWR);</span><br><span class="line">    if(fd &#x3D;&#x3D; -1)</span><br><span class="line">    &#123;</span><br><span class="line">        perror(&quot;open file&quot;);</span><br><span class="line">        exit(1);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    int ret &#x3D; lseek(fd, 0, SEEK_END);</span><br><span class="line">    printf(&quot;file length &#x3D; %d\n&quot;, ret);</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;文件拓展</span><br><span class="line">    ret &#x3D; lseek(fd, 2000, SEEK_END);</span><br><span class="line">    printf(&quot;return value &#x3D; %d\n&quot;, ret);</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;实现文件拓展，需要再最后做一次写操作</span><br><span class="line">    write(fd, &quot;a&quot;, 1);</span><br><span class="line">    </span><br><span class="line">    close(fd);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="五、一些系统函数的使用"><a href="#五、一些系统函数的使用" class="headerlink" title="五、一些系统函数的使用"></a>五、一些系统函数的使用</h2><h3 id="1、Linux文件操作相关函数"><a href="#1、Linux文件操作相关函数" class="headerlink" title="1、Linux文件操作相关函数"></a>1、Linux文件操作相关函数</h3><h4 id="stat函数"><a href="#stat函数" class="headerlink" title="stat函数"></a>stat函数</h4><ul>
+<li><p>函数定义</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int stat(const char *pathname, struct stat *buf);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>功能</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">获取文件属性（从inode上获取）。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>参数</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pathname		文件名</span><br><span class="line">buf				结构体指针stat</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>返回值</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">0		成功</span><br><span class="line">-1      失败</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>文件属性</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">struct stat </span><br><span class="line">&#123;</span><br><span class="line">       dev_t     st_dev;         &#x2F;* 文件的设备编号 *&#x2F;</span><br><span class="line">       ino_t     st_ino;         &#x2F;* 节点 *&#x2F;</span><br><span class="line">       mode_t    st_mode;        &#x2F;* 文件的类型和存取的权限 *&#x2F;</span><br><span class="line">       nlink_t   st_nlink;       &#x2F;* 链接到该文件的硬链接数目，刚建立的文件值为1 *&#x2F;</span><br><span class="line">       uid_t     st_uid;         &#x2F;* 用户ID *&#x2F;</span><br><span class="line">       gid_t     st_gid;         &#x2F;* 组ID *&#x2F;</span><br><span class="line">       dev_t     st_rdev;        &#x2F;* （设备类型）若此文件为设备文件，则为其设备编号 *&#x2F;</span><br><span class="line">       off_t     st_size;        &#x2F;* 文件字节数（文件大小） *&#x2F;</span><br><span class="line">       blksize_t st_blksize;     &#x2F;* 块大小（文件系统的I&#x2F;O, 缓冲区的大小） *&#x2F;</span><br><span class="line">       blkcnt_t  st_blocks;      &#x2F;* 块数 *&#x2F;</span><br><span class="line">       struct timespec st_atim;  &#x2F;* 最后一次访问时间 *&#x2F;</span><br><span class="line">       struct timespec st_mtim;  &#x2F;* 最后一次修改时间 *&#x2F;</span><br><span class="line">       struct timespec st_ctim;  &#x2F;* 最后一次改变时间（属性） *&#x2F;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>特性</p>
+<ul>
+<li>能够穿透（跟踪）符号链接。如果是软链接，会统计原始文件信息，而不是软链接的信息。</li>
+</ul>
+</li>
+<li><p>示例</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;sys&#x2F;types.h&gt;</span><br><span class="line">#include &lt;sys&#x2F;stat.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;time.h&gt;</span><br><span class="line">#include &lt;pwd.h&gt;</span><br><span class="line">#include &lt;grp.h&gt;</span><br><span class="line"></span><br><span class="line">int main(int argc, char * argv[])</span><br><span class="line">&#123;</span><br><span class="line">    if(argc &lt; 2)</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;.&#x2F;a.out filename\n&quot;);</span><br><span class="line">        exit(1);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    struct stat st;</span><br><span class="line">    int ret &#x3D; stat(argv[1], &amp;st);</span><br><span class="line">    if(ret &#x3D;&#x3D; -1)</span><br><span class="line">    &#123;</span><br><span class="line">        perror(&quot;stat&quot;);</span><br><span class="line">        exit(1);</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;存储文件类型和访问权限</span><br><span class="line">    char perms[11] &#x3D; &#123;0&#125;;</span><br><span class="line">    &#x2F;&#x2F;判断文件类型</span><br><span class="line">    switch(st.st_mode &amp; S_IFMT)</span><br><span class="line">    &#123;</span><br><span class="line">        case S_IFLNK:</span><br><span class="line">            perms[0] &#x3D; &#39;l&#39;;</span><br><span class="line">            break;</span><br><span class="line">        case S_IFDIR:</span><br><span class="line">            perms[0] &#x3D; &#39;d&#39;;</span><br><span class="line">            break;</span><br><span class="line">        case S_IFREG:</span><br><span class="line">            perms[0] &#x3D; &#39;-&#39;;</span><br><span class="line">            break;</span><br><span class="line">        case S_IFBLK:</span><br><span class="line">            perms[0] &#x3D; &#39;b&#39;;</span><br><span class="line">            break;</span><br><span class="line">        case S_IFCHR:</span><br><span class="line">            perms[0] &#x3D; &#39;c&#39;;</span><br><span class="line">            break;</span><br><span class="line">        case S_IFSOCK:</span><br><span class="line">            perms[0] &#x3D; &#39;s&#39;;</span><br><span class="line">            break;</span><br><span class="line">        case S_IFIFO:</span><br><span class="line">            perms[0] &#x3D; &#39;p&#39;;</span><br><span class="line">            break;</span><br><span class="line">        default:</span><br><span class="line">            perms[0] &#x3D; &#39;?&#39;;</span><br><span class="line">            break;                </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;判断文件的访问权限</span><br><span class="line">    &#x2F;&#x2F;文件所有者</span><br><span class="line">    perms[1] &#x3D; (st.st_mode &amp; S_IRUSR) ? &#39;r&#39; : &#39;-&#39;;</span><br><span class="line">    perms[2] &#x3D; (st.st_mode &amp; S_IWUSR) ? &#39;w&#39; : &#39;-&#39;;</span><br><span class="line">    perms[3] &#x3D; (st.st_mode &amp; S_IXUSR) ? &#39;x&#39; : &#39;-&#39;;</span><br><span class="line">    &#x2F;&#x2F;文件所属组</span><br><span class="line">    perms[4] &#x3D; (st.st_mode &amp; S_IRGRP) ? &#39;r&#39; : &#39;-&#39;;</span><br><span class="line">    perms[5] &#x3D; (st.st_mode &amp; S_IWGRP) ? &#39;w&#39; : &#39;-&#39;;</span><br><span class="line">    perms[6] &#x3D; (st.st_mode &amp; S_IXGRP) ? &#39;x&#39; : &#39;-&#39;;</span><br><span class="line">    &#x2F;&#x2F;其他人</span><br><span class="line">    perms[7] &#x3D; (st.st_mode &amp; S_IROTH) ? &#39;r&#39; : &#39;-&#39;;</span><br><span class="line">    perms[8] &#x3D; (st.st_mode &amp; S_IWOTH) ? &#39;w&#39; : &#39;-&#39;;</span><br><span class="line">    perms[9] &#x3D; (st.st_mode &amp; S_IXOTH) ? &#39;x&#39; : &#39;-&#39;;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;硬链接计数</span><br><span class="line">    int linkNum &#x3D; st.st_nlink;</span><br><span class="line">    &#x2F;&#x2F;文件所有者</span><br><span class="line">    char * fileUser &#x3D; getpwuid(st.st_uid)-&gt;pw_name;</span><br><span class="line">    &#x2F;&#x2F;文件所属组</span><br><span class="line">    char * fileGrp &#x3D; getgrgid(st.st_gid)-&gt;gr_name;</span><br><span class="line">    &#x2F;&#x2F;文件大小</span><br><span class="line">    int filesize &#x3D; (int)st.st_size;</span><br><span class="line">    &#x2F;&#x2F;修改时间</span><br><span class="line">    char * time &#x3D; ctime(&amp;st.st_mtime);</span><br><span class="line">    char mtime[512] &#x3D; &#123;0&#125;;</span><br><span class="line">    strncpy(mtime, time, strlen(time) - 1);</span><br><span class="line">    </span><br><span class="line">    char buf[1024];</span><br><span class="line">    sprintf(buf, &quot;%s %d %s %s %d %s %s&quot;, perms, linkNum, fileUser, fileGrp, fileSize, mtime, argv[1]);</span><br><span class="line">    </span><br><span class="line">    printf(&quot;%s\n&quot;, buf);</span><br><span class="line">    </span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>st_mode</p>
+<ul>
+<li><p>该变量占两字节，共16位。</p>
+</li>
+<li><p>掩码的使用：st_mode &amp; 掩码</p>
+</li>
+<li><p>其他人权限（0-2 bit）</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">S_IROTH 00004 读权限</span><br><span class="line">S_IWOTH 00002 写权限</span><br><span class="line">S_IXOTH 00001 执行权限</span><br><span class="line">S_IRWXO 00007 掩码</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>所属组权限（3-5 bit）</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">S_IRGRP 00040 读权限</span><br><span class="line">S_IWGRP 00020 写权限</span><br><span class="line">S_IXGRP 00010 执行权限</span><br><span class="line">S_IRWXG 00070 掩码</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>文件所有者权限（6-8 bit）</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">S_IRUSR 00400 读权限</span><br><span class="line">S_IWUSR 00200 写权限</span><br><span class="line">S_IXUSR 00100 执行权限</span><br><span class="line">S_IRWXU 00700 掩码</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>特殊权限位（9-11 bit），很少用</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">S_ISUID 0004000 设置用户ID</span><br><span class="line">S_ISGID 0002000 设置组ID</span><br><span class="line">S_ISVTX 0001000 黏住位</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>文件类型（12-15 bit）</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">S_IFSOCK 0140000 套接字</span><br><span class="line">S_IFLNK 0120000 符号链接（软链接）</span><br><span class="line">S_IFREG 0100000 普通文件</span><br><span class="line">S_IFBLK 0060000 块设备</span><br><span class="line">S_IFDIR 0040000 目录</span><br><span class="line">S_IFCHR 0020000 字符设备</span><br><span class="line">S_IFIFO 0010000 管道</span><br><span class="line">S_IFMT 0170000 掩码</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://images.cnblogs.com/cnblogs_com/zfc2201/928468/o_st_mode.png" alt="st_mode"></p>
+<h4 id="lstat函数"><a href="#lstat函数" class="headerlink" title="lstat函数"></a>lstat函数</h4><ul>
+<li>功能和用法与stat相同</li>
+<li>特性：不穿透（跟踪）符号链接。如果是软链接，会统计软链接的信息，而不是原始文件的信息。</li>
+<li>链接的追踪<br>  <img src="https://images.cnblogs.com/cnblogs_com/zfc2201/928468/o_%e9%93%be%e6%8e%a5%e7%9a%84%e8%bf%bd%e8%b8%aa.png" alt="链接的追踪"></li>
+</ul>
+<h4 id="access函数"><a href="#access函数" class="headerlink" title="access函数"></a>access函数</h4><ul>
+<li><p>函数定义</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int access(const char *pathname, int mode);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>功能</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">测试指定文件是否拥有某种权限。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>参数</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pathname		文件名</span><br><span class="line">mode			权限类别</span><br><span class="line">				R_OK		是否有读权限</span><br><span class="line">				W_OK		是否有写权限</span><br><span class="line">				X_OK		是否有执行权限</span><br><span class="line">				F_OK		测试一个文件是否存在</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>返回值</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">0		所有欲查核的权限都通过了检查</span><br><span class="line">-1      有权限被禁止</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>示例</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line"></span><br><span class="line">int main(int argc, char * argv[])</span><br><span class="line">&#123;</span><br><span class="line">    if(argc &lt; 2)</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;access filename\n&quot;);</span><br><span class="line">        exit(1);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    int ret &#x3D; access(argv[1], W_OK);</span><br><span class="line">    if(ret &#x3D;&#x3D; -1)</span><br><span class="line">    &#123;</span><br><span class="line">        perror(&quot;access&quot;);</span><br><span class="line">        exit(1);</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;you can write this file.\n&quot;);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="chmod函数"><a href="#chmod函数" class="headerlink" title="chmod函数"></a>chmod函数</h4><ul>
+<li><p>函数定义</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int chmod(const char *pathname, mode_t mode);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>功能</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">改变文件的权限</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>参数</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pathname		文件名</span><br><span class="line">mode			权限，必须是一个8进制数字，转换用strtol函数</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>返回值</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">0		改变成功</span><br><span class="line">-1      失败</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>示例</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;sys&#x2F;stat.h&gt;</span><br><span class="line"></span><br><span class="line">int main(int argc, char * argv[])</span><br><span class="line">&#123;</span><br><span class="line">    if(argc &lt; 2)</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;chmod filename\n&quot;);</span><br><span class="line">        exit(1);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    int ret &#x3D; chmod(argv[1], 0755);</span><br><span class="line">    if(ret &#x3D;&#x3D; -1)</span><br><span class="line">    &#123;</span><br><span class="line">        perror(&quot;chmod&quot;);</span><br><span class="line">        exit(1);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="chown函数"><a href="#chown函数" class="headerlink" title="chown函数"></a>chown函数</h4><ul>
+<li><p>函数定义</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int chown(const char *pathname, uid_t owner, gid_t group);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>功能</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">改变文件的所有者</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>参数</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pathname		文件名</span><br><span class="line">owner			文件所有者ID</span><br><span class="line">group			文件所属组ID</span><br><span class="line"></span><br><span class="line">查看UID和GID：&#x2F;etc&#x2F;passwd</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>返回值</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">0		成功</span><br><span class="line">-1      失败</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>示例</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line"></span><br><span class="line">int main(int argc, char * argv[])</span><br><span class="line">&#123;</span><br><span class="line">    if(argc &lt; 2)</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;chown filename\n&quot;);</span><br><span class="line">        exit(1);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    int ret &#x3D; chown(argv[1], 116, 125);</span><br><span class="line">    if(ret &#x3D;&#x3D; -1)</span><br><span class="line">    &#123;</span><br><span class="line">        perror(&quot;chown&quot;);</span><br><span class="line">        exit(1);</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="truncate函数"><a href="#truncate函数" class="headerlink" title="truncate函数"></a>truncate函数</h4><ul>
+<li><p>函数定义</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int truncate(const char *path, off_t length);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>功能</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">将参数path指定的文件大小改为参数length指定的大小。如果原来的文件大小比参数length大，则超过部分会被删去。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>参数</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">path		文件路径</span><br><span class="line">length		指定文件的大小</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>返回值</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">0		成功</span><br><span class="line">-1      失败</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="连接函数"><a href="#连接函数" class="headerlink" title="连接函数"></a>连接函数</h4><ul>
+<li><p>link函数</p>
+<ul>
+<li><p>函数定义</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int link(const char *oldpath, const char *newpath);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>功能</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">创建一个硬链接。</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>symlink函数</p>
+<ul>
+<li><p>函数定义</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int symlink(const char *target, const char *linkpath);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>功能</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">创建一个软链接。</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>readlink函数</p>
+<ul>
+<li><p>函数定义</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssize_t readlink(const char *pathname, char *buf, size_t bufsiz);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>功能</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">读软链接对应的文件名，而不是读内容。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>示例</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line"></span><br><span class="line">int main(int argc, char * argv[])</span><br><span class="line">&#123;</span><br><span class="line">    if(argc &lt; 2)</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;readlink filename\n&quot;);</span><br><span class="line">        exit(1);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    char buf[512];</span><br><span class="line">    int ret &#x3D; readlink(argv[1], buf, sizeof(buf));</span><br><span class="line">    if(ret &#x3D;&#x3D; -1)</span><br><span class="line">    &#123;</span><br><span class="line">        perror(&quot;readlink&quot;);</span><br><span class="line">        exit(1);</span><br><span class="line">    &#125;</span><br><span class="line">    buf[ret] &#x3D; 0;</span><br><span class="line">    printf(&quot;buf &#x3D; %s\n&quot;, buf);</span><br><span class="line">    </span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>unlink函数</p>
+<ul>
+<li><p>函数定义</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int unlink(const char *pathname);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>功能</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">删除一个文件的目录并减少它的链接数，若成功则返回0，否则返回-1，错误原因存于errno。</span><br><span class="line">如果想调用这个函数来成功删除文件，你就必须拥有这个文件的所属目录的写和执行权限。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">如果是符号链接，删除符号链接。</span><br><span class="line">如果是硬链接，硬链接数减1，，当减为0时，释放数据块和inode。</span><br><span class="line">如果文件硬链接数为0，但有进程已打开该文件，并持有文件描述符，则等该进程关闭该文件时，kernel才真正去删除该文件。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>示例</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;sys&#x2F;types.h&gt;</span><br><span class="line">#include &lt;sys&#x2F;stat.h&gt;</span><br><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line">#include &lt;fcntl.h&gt;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int fd &#x3D; open(&quot;tempfile&quot;, O_CREAT | O_RDWR, 0664);</span><br><span class="line">    if(fd &#x3D;&#x3D; -1)</span><br><span class="line">    &#123;</span><br><span class="line">        perror(&quot;open&quot;);</span><br><span class="line">        exit(1);</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;删除临时文件</span><br><span class="line">    int ret &#x3D; unlink(&quot;tempfile&quot;);</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;write file</span><br><span class="line">    write(fd, &quot;hello\n&quot;, 5);</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;重置文件指针</span><br><span class="line">    lssek(fd, 0, SEEK_SET);</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;read file</span><br><span class="line">    char buf[24] &#x3D; &#123;0&#125;;</span><br><span class="line">    int len &#x3D; read(fd, buf, sizeof(buf));</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;将读出的内容写在屏幕上</span><br><span class="line">    write(1, buf, len);</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;close file</span><br><span class="line">    close(fd);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="rename函数"><a href="#rename函数" class="headerlink" title="rename函数"></a>rename函数</h4><ul>
+<li><p>函数定义</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int rename(const char *oldpath, const char *newpath);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>功能</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">文件重命名。</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="2、Linux目录操作相关函数"><a href="#2、Linux目录操作相关函数" class="headerlink" title="2、Linux目录操作相关函数"></a>2、Linux目录操作相关函数</h3><h4 id="chdir函数"><a href="#chdir函数" class="headerlink" title="chdir函数"></a>chdir函数</h4><ul>
+<li><p>函数定义</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int chdir(const char *path);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>功能</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">修改当前进程的路径。</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="getcwd函数"><a href="#getcwd函数" class="headerlink" title="getcwd函数"></a>getcwd函数</h4><ul>
+<li><p>函数定义</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">char *getcwd(char *buf, size_t size);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>功能</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">获取当前进程工作目录。</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="mkdir函数"><a href="#mkdir函数" class="headerlink" title="mkdir函数"></a>mkdir函数</h4><ul>
+<li><p>函数定义</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int mkdir(const char *pathname, mode_t mode);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>功能</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">创建目录。</span><br><span class="line">注意：创建的目录需要有执行权限，否则无法进入目录。</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="rmdir函数"><a href="#rmdir函数" class="headerlink" title="rmdir函数"></a>rmdir函数</h4><ul>
+<li><p>函数定义</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int rmdir(const char *pathname);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>功能</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">删除一个空目录。</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="opendir函数"><a href="#opendir函数" class="headerlink" title="opendir函数"></a>opendir函数</h4><ul>
+<li><p>函数定义</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">DIR *opendir(const char *name);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>功能</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">打开一个目录。</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="readdir函数"><a href="#readdir函数" class="headerlink" title="readdir函数"></a>readdir函数</h4><ul>
+<li><p>函数定义</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">struct dirent *readdir(DIR *dirp);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>功能</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">读目录。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>返回值</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">struct dirent &#123;</span><br><span class="line">	ino_t          d_ino;       &#x2F;* 此目录进入点的inode *&#x2F;</span><br><span class="line">	off_t          d_off;       &#x2F;* 目录文件开头至此目录进入点的位移 *&#x2F;</span><br><span class="line">	unsigned short d_reclen;    &#x2F;* d_name的长度，不包含NULL字符 *&#x2F;</span><br><span class="line">	unsigned char  d_type;      &#x2F;* d_name所指的文件类型 *&#x2F;</span><br><span class="line">	char           d_name[256]; &#x2F;* 文件名 *&#x2F;</span><br><span class="line">&#125;;</span><br><span class="line">	</span><br><span class="line">d_type:</span><br><span class="line">DT_BLK      This is a block device.</span><br><span class="line">DT_CHR      This is a character device.</span><br><span class="line">DT_DIR      This is a directory.</span><br><span class="line">DT_FIFO     This is a named pipe (FIFO).</span><br><span class="line">DT_LNK      This is a symbolic link.</span><br><span class="line">DT_REG      This is a regular file.</span><br><span class="line">DT_SOCK     This is a UNIX domain socket.</span><br><span class="line">DT_UNKNOWN  The file type is unknown.</span><br><span class="line"></span><br><span class="line">-D_BSD_SOURCE 编译时添加宏定义</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="colsedir函数"><a href="#colsedir函数" class="headerlink" title="colsedir函数"></a>colsedir函数</h4><ul>
+<li><p>函数定义</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int closedir(DIR *dirp);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>功能</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">关闭目录。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>示例</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;sys&#x2F;types.h&gt;</span><br><span class="line">#include &lt;dirent.h&gt;</span><br><span class="line"></span><br><span class="line">int get_file_count(char * root)</span><br><span class="line">&#123;</span><br><span class="line">    DIR * dir &#x3D; NULL;</span><br><span class="line">    dir &#x3D; opendir(root);</span><br><span class="line">    if(dir &#x3D;&#x3D; NULL)</span><br><span class="line">    &#123;</span><br><span class="line">        perror(&quot;opendir&quot;);</span><br><span class="line">        exit(1);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    struct dirent * ptr &#x3D; NULL;</span><br><span class="line">    char path[1024] &#x3D; &#123;0&#125;;</span><br><span class="line">    int total &#x3D; 0;</span><br><span class="line">    while(ptr &#x3D; readdir(dir) !&#x3D; NULL)</span><br><span class="line">    &#123;</span><br><span class="line">        &#x2F;&#x2F;过滤.和..</span><br><span class="line">        if(strcmp(ptr-&gt;d_name, &quot;.&quot;) &#x3D;&#x3D; 0 || strcmp(ptr-&gt;d_name, &quot;..&quot;) &#x3D;&#x3D; 0)</span><br><span class="line">        &#123;</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F;如果是目录</span><br><span class="line">        if(ptr-&gt;d_type &#x3D;&#x3D; DT_DIR)</span><br><span class="line">        &#123;</span><br><span class="line">            sprintf(path, &quot;%s&#x2F;%s&quot;, root, ptr-&gt;d_name);</span><br><span class="line">            total +&#x3D; getFileNum(path);</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F;如果是文件</span><br><span class="line">        if(ptr-&gt;d_type &#x3D;&#x3D; DT_REG)</span><br><span class="line">        &#123;</span><br><span class="line">            total++;            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    closedir(dir);</span><br><span class="line">    return total;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main(int argc, char * argv[])</span><br><span class="line">&#123;</span><br><span class="line">    if(argc &lt; 2)</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;.&#x2F;a.out dir\n&quot;);</span><br><span class="line">        exit(1);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    int total &#x3D; get_file_count(argv[1]);</span><br><span class="line">    printf(&quot;%s has file numbers %d\n&quot;, argv[1], total);</span><br><span class="line">    </span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="6、fcntl函数"><a href="#6、fcntl函数" class="headerlink" title="6、fcntl函数"></a>6、fcntl函数</h3><ul>
+<li><p>函数定义</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int fcntl(int fd, int cmd, ... &#x2F;* arg *&#x2F; );</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>功能</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">改变已经打开的文件的属性。</span><br><span class="line">1、复制一个现有的描述符 -- cmd</span><br><span class="line">		F_DUPFD</span><br><span class="line">2、获取&#x2F;设置文件描述符标记 -- cmd</span><br><span class="line">		F_GETFD</span><br><span class="line">		F_SETFD</span><br><span class="line">3、获取&#x2F;设置文件状态标记 -- cmd</span><br><span class="line">		F_GETFL</span><br><span class="line">					O_RDONLY		只读打开</span><br><span class="line">					O_WRONLY		只写打开</span><br><span class="line">					O_RDWR			读写打开</span><br><span class="line">					O_EXEC			执行打开</span><br><span class="line">					O_SEARCH		搜索打开目录</span><br><span class="line">					O_APPEND		追加写</span><br><span class="line">					O_NONBLOCK		非阻塞模式</span><br><span class="line">					</span><br><span class="line">		F_SETFL, 可更改的几个标识</span><br><span class="line">					O_APPEND</span><br><span class="line">					O_NONBLOCK</span><br><span class="line">4、获取&#x2F;设置异步I&#x2F;O所有权 -- cmd</span><br><span class="line">		F_GETOWN</span><br><span class="line">		F_SETOWN</span><br><span class="line">5、获取&#x2F;设置记录锁 -- cmd</span><br><span class="line">		F_GETLK</span><br><span class="line">		F_SETLK</span><br><span class="line">		F_SETLKW</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>示例</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;fcntl.h&gt;</span><br><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line"></span><br><span class="line">int main(int argc, char * argv[])</span><br><span class="line">&#123;</span><br><span class="line">    int fd;</span><br><span class="line">    int flag;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;测试字符串</span><br><span class="line">    char * p &#x3D; &quot;we are family!&quot;;</span><br><span class="line">    cahr * q &#x3D; &quot;yes, man.&quot;;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;只写的方式找开文件</span><br><span class="line">    fd &#x3D; open(&quot;test.txt&quot;, O_WRONLY);</span><br><span class="line">    if(fd &#x3D;&#x3D; -1)</span><br><span class="line">    &#123;</span><br><span class="line">        perror(&quot;open&quot;);</span><br><span class="line">        exit(1);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;输入新的内容，该部分会覆盖原来旧的内容</span><br><span class="line">    if(write(fd, p, strlen(p)) &#x3D;&#x3D; -1)</span><br><span class="line">    &#123;</span><br><span class="line">        perror(&quot;write&quot;);</span><br><span class="line">        exit(1);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;使用F_GETFL命令得到文件状态标志</span><br><span class="line">    flag &#x3D; fcntl(fd, F_GETFL, 0);</span><br><span class="line">    if(flag &#x3D;&#x3D; -1)</span><br><span class="line">    &#123;</span><br><span class="line">        perror(&quot;fcntl&quot;);</span><br><span class="line">        exit(1);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;将文件状态标志添加“追加写”选项</span><br><span class="line">    flag |&#x3D; O_APPEND;</span><br><span class="line">    &#x2F;&#x2F;将文件状态修改为追加写</span><br><span class="line">    if(fcntl(fd, F_SETFL, flag) &#x3D;&#x3D; -1)</span><br><span class="line">    &#123;</span><br><span class="line">        perror(&quot;fcntl -- append write&quot;);</span><br><span class="line">        exit(1);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;再次输入新内容，该内容会追加到旧内容的后面</span><br><span class="line">    if(write(fd, q, strlen(q)) &#x3D;&#x3D; -1)</span><br><span class="line">    &#123;</span><br><span class="line">        perror(&quot;write again&quot;);</span><br><span class="line">        exit(1);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;关闭文件</span><br><span class="line">    close(fd);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="7、dup-dup2函数"><a href="#7、dup-dup2函数" class="headerlink" title="7、dup, dup2函数"></a>7、dup, dup2函数</h3><ul>
+<li><p>函数定义</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int dup(int oldfd);</span><br><span class="line">int dup2(int oldfd, int newfd);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>功能</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">复制现有的文件描述符。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>返回值</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dup返回的是文件描述符中没有被占用的最小的文件描述符</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>注意事项</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dup2两种情况：</span><br><span class="line">1、old --&gt; new, 如果new是一个被打开的文件描述符，在拷贝前先关掉new。</span><br><span class="line">2、old和new是同一个文件描述符，不会关掉new，直接返回old。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>dup示例</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line">#include &lt;sys&#x2F;types.h&gt;</span><br><span class="line">#include &lt;sys&#x2F;stat.h&gt;</span><br><span class="line">#include &lt;fcntl.h&gt;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int fd &#x3D; open(&quot;a.txt&quot;, O_RDWR);</span><br><span class="line">    if(fd &#x3D;&#x3D; -1)</span><br><span class="line">    &#123;</span><br><span class="line">        perror(&quot;open&quot;);</span><br><span class="line">        exit(1);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    printf(&quot;file open fd &#x3D; %d\n&quot;, fd);</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;找到进程文件描述表中&#x3D;&#x3D;第一个&#x3D;&#x3D;可用的文件描述符</span><br><span class="line">    &#x2F;&#x2F;将参数指定的文件复制到该描述符后，返回这个描述符</span><br><span class="line">    int ret &#x3D; dup(fd);</span><br><span class="line">    if(ret &#x3D;&#x3D; -1)</span><br><span class="line">    &#123;</span><br><span class="line">        perror(&quot;dup&quot;);</span><br><span class="line">        exit(1);</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;dup fd &#x3D; %d\n&quot;, ret);</span><br><span class="line">    char * buf &#x3D; &quot;你是猴子派来的救兵吗？？？\n&quot;;</span><br><span class="line">    char * buf1 &#x3D; &quot;你大爷的，我是程序猿！！！\n&quot;;</span><br><span class="line">    </span><br><span class="line">    write(fd, buf, strlen(buf));</span><br><span class="line">    write(ret, buf1, strlen(buf1));</span><br><span class="line">    </span><br><span class="line">    close(fd);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>dup2示例</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;string.h&gt;</span><br><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line">#include &lt;sys&#x2F;types.h&gt;</span><br><span class="line">#include &lt;sys&#x2F;stat.h&gt;</span><br><span class="line">#include &lt;fcntl.h&gt;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int fd &#x3D; open(&quot;english.txt&quot;, O_RDWR);</span><br><span class="line">    if(fd &#x3D;&#x3D; -1)</span><br><span class="line">    &#123;</span><br><span class="line">        perror(&quot;open&quot;);</span><br><span class="line">        exit(1);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    int fd1 &#x3D; open(&quot;a.txt&quot;, O_RDWR);</span><br><span class="line">    if(fd1 &#x3D;&#x3D; -1)</span><br><span class="line">    &#123;</span><br><span class="line">        perror(&quot;open&quot;);</span><br><span class="line">        exit(1);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    printf(&quot;file open fd &#x3D; %d\n&quot;, fd);</span><br><span class="line">    printf(&quot;file open fd1 &#x3D; %d\n&quot;, fd1);</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;调用dup2后，fd1和fd同时指向了a.txt</span><br><span class="line">    int ret &#x3D; dup2(fd1, fd);</span><br><span class="line">    if(ret &#x3D;&#x3D; -1)</span><br><span class="line">    &#123;</span><br><span class="line">        perror(&quot;dup2&quot;);</span><br><span class="line">        exit(1);</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;current fd &#x3D; %d\n&quot;, ret);</span><br><span class="line">    char * buf &#x3D; &quot;主要看气质^_^！！！！！！！！！！！\n&quot;;</span><br><span class="line">    </span><br><span class="line">    write(fd, buf, strlen(buf));</span><br><span class="line">    write(fd1, &quot;hello, world!&quot;, 13);</span><br><span class="line">    </span><br><span class="line">    close(fd);</span><br><span class="line">    close(fd1);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>解决gcc编译过程中c99语法报错的问题</p>
+  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">alias gcc&#x3D;&#39;gcc -std&#x3D;gnu99&#39;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>索引节点inode：保存的其实是实际的数据的一些信息，这些信息称为“元数据”（也就是对文件属性的描述）。例如：文件大小，设备标识符，用户标识符，用户组标识符，文件模式，扩展属性，文件读取或修改的时间戳，链接数量，指向存储内容的磁盘区块的指针，文件分类等等。（注意数据分成：元数据+数据本身）</p>
+</li>
+<li><p>注意inode怎样生成的：每个inode节点的大小，一般是128字节或256字节。inode节点的总数，在格式化时就给定（现代OS可以动态变化），一般每2KB就设置一个inode。一般文件系统中很少有文件小于2KB的，所以预定按照2KB分，一般inode是用不完的。所以inode在文件系统安装的时候会有一个默认数量，后期会根据实际的需要发生变化。</p>
+</li>
+<li><p>注意inode号：inode号是唯一的，表示不同的文件。其实在Linux内部的时候，访问文件都是通过inode号来进行的，所谓文件名仅仅是给用户容易使用的。当我们打开一个文件的时候，首先，系统找到这个文件名对应的inode号；然后通过inode号，得到inode信息，最后，由inode找到文件数据所在的block，现在可以处理文件数据了。</p>
+</li>
+<li><p>inode与文件的关系：当创建一个文件的时候，就给文件分配了一个inode。一个inode只对应一个实际文件，一个文件也会只有一个inode。inode最大数量就是文件的最大数量。</p>
+</li>
+</ul>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Tags</a></li>
+         
+          <li><a href="http://101.132.226.32/search_simple" target="_blank" rel="noopener">Project</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux"><span class="toc-number">1.</span> <span class="toc-text">Linux</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#学习方法"><span class="toc-number">2.</span> <span class="toc-text">学习方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一、文件和目录操作"><span class="toc-number">3.</span> <span class="toc-text">一、文件和目录操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、打包压缩和常用服务器"><span class="toc-number">4.</span> <span class="toc-text">二、打包压缩和常用服务器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、vim和函数库"><span class="toc-number">5.</span> <span class="toc-text">三、vim和函数库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、vim编辑器的使用"><span class="toc-number">5.1.</span> <span class="toc-text">1、vim编辑器的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1、vim简介"><span class="toc-number">5.1.1.</span> <span class="toc-text">1.1、vim简介</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2、工作模式"><span class="toc-number">5.1.2.</span> <span class="toc-text">1.2、工作模式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、gcc编译器"><span class="toc-number">5.2.</span> <span class="toc-text">2、gcc编译器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、静态库的创建和使用"><span class="toc-number">5.3.</span> <span class="toc-text">3、静态库的创建和使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、动态库的创建和使用"><span class="toc-number">5.4.</span> <span class="toc-text">4、动态库的创建和使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、makefile和文件IO"><span class="toc-number">6.</span> <span class="toc-text">四、makefile和文件IO</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、gdb调试"><span class="toc-number">6.1.</span> <span class="toc-text">1、gdb调试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、makefile的编写"><span class="toc-number">6.2.</span> <span class="toc-text">2、makefile的编写</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1、makefile的命名"><span class="toc-number">6.2.1.</span> <span class="toc-text">2.1、makefile的命名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2、makefile的规则"><span class="toc-number">6.2.2.</span> <span class="toc-text">2.2、makefile的规则</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3、makefile的两个函数"><span class="toc-number">6.2.3.</span> <span class="toc-text">2.3、makefile的两个函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4、makefile的三个自动变量"><span class="toc-number">6.2.4.</span> <span class="toc-text">2.4、makefile的三个自动变量</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、系统IO函数"><span class="toc-number">6.3.</span> <span class="toc-text">3、系统IO函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1、一些概念"><span class="toc-number">6.3.1.</span> <span class="toc-text">3.1、一些概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2、open"><span class="toc-number">6.3.2.</span> <span class="toc-text">3.2、open</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3、read"><span class="toc-number">6.3.3.</span> <span class="toc-text">3.3、read</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4、write"><span class="toc-number">6.3.4.</span> <span class="toc-text">3.4、write</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-5、close"><span class="toc-number">6.3.5.</span> <span class="toc-text">3.5、close</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-6、lseek"><span class="toc-number">6.3.6.</span> <span class="toc-text">3.6、lseek</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、一些系统函数的使用"><span class="toc-number">7.</span> <span class="toc-text">五、一些系统函数的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、Linux文件操作相关函数"><span class="toc-number">7.1.</span> <span class="toc-text">1、Linux文件操作相关函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#stat函数"><span class="toc-number">7.1.1.</span> <span class="toc-text">stat函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#lstat函数"><span class="toc-number">7.1.2.</span> <span class="toc-text">lstat函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#access函数"><span class="toc-number">7.1.3.</span> <span class="toc-text">access函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#chmod函数"><span class="toc-number">7.1.4.</span> <span class="toc-text">chmod函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#chown函数"><span class="toc-number">7.1.5.</span> <span class="toc-text">chown函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#truncate函数"><span class="toc-number">7.1.6.</span> <span class="toc-text">truncate函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#连接函数"><span class="toc-number">7.1.7.</span> <span class="toc-text">连接函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#rename函数"><span class="toc-number">7.1.8.</span> <span class="toc-text">rename函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、Linux目录操作相关函数"><span class="toc-number">7.2.</span> <span class="toc-text">2、Linux目录操作相关函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#chdir函数"><span class="toc-number">7.2.1.</span> <span class="toc-text">chdir函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#getcwd函数"><span class="toc-number">7.2.2.</span> <span class="toc-text">getcwd函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mkdir函数"><span class="toc-number">7.2.3.</span> <span class="toc-text">mkdir函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#rmdir函数"><span class="toc-number">7.2.4.</span> <span class="toc-text">rmdir函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#opendir函数"><span class="toc-number">7.2.5.</span> <span class="toc-text">opendir函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#readdir函数"><span class="toc-number">7.2.6.</span> <span class="toc-text">readdir函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#colsedir函数"><span class="toc-number">7.2.7.</span> <span class="toc-text">colsedir函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6、fcntl函数"><span class="toc-number">7.3.</span> <span class="toc-text">6、fcntl函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7、dup-dup2函数"><span class="toc-number">7.4.</span> <span class="toc-text">7、dup, dup2函数</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://xingkongyj2.github.io/2021/02/08/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91%E4%B8%80%E5%9F%BA%E7%A1%80(%E8%BD%AC%E8%BD%BD)/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://xingkongyj2.github.io/2021/02/08/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91%E4%B8%80%E5%9F%BA%E7%A1%80(%E8%BD%AC%E8%BD%BD)/&text=Linux服务器开发一基础(转载)" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://xingkongyj2.github.io/2021/02/08/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91%E4%B8%80%E5%9F%BA%E7%A1%80(%E8%BD%AC%E8%BD%BD)/&title=Linux服务器开发一基础(转载)" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://xingkongyj2.github.io/2021/02/08/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91%E4%B8%80%E5%9F%BA%E7%A1%80(%E8%BD%AC%E8%BD%BD)/&is_video=false&description=Linux服务器开发一基础(转载)" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Linux服务器开发一基础(转载)&body=Check out this article: https://xingkongyj2.github.io/2021/02/08/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91%E4%B8%80%E5%9F%BA%E7%A1%80(%E8%BD%AC%E8%BD%BD)/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://xingkongyj2.github.io/2021/02/08/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91%E4%B8%80%E5%9F%BA%E7%A1%80(%E8%BD%AC%E8%BD%BD)/&title=Linux服务器开发一基础(转载)" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://xingkongyj2.github.io/2021/02/08/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91%E4%B8%80%E5%9F%BA%E7%A1%80(%E8%BD%AC%E8%BD%BD)/&title=Linux服务器开发一基础(转载)" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://xingkongyj2.github.io/2021/02/08/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91%E4%B8%80%E5%9F%BA%E7%A1%80(%E8%BD%AC%E8%BD%BD)/&title=Linux服务器开发一基础(转载)" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://xingkongyj2.github.io/2021/02/08/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91%E4%B8%80%E5%9F%BA%E7%A1%80(%E8%BD%AC%E8%BD%BD)/&title=Linux服务器开发一基础(转载)" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://xingkongyj2.github.io/2021/02/08/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91%E4%B8%80%E5%9F%BA%E7%A1%80(%E8%BD%AC%E8%BD%BD)/&name=Linux服务器开发一基础(转载)&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://xingkongyj2.github.io/2021/02/08/Linux%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%80%E5%8F%91%E4%B8%80%E5%9F%BA%E7%A1%80(%E8%BD%AC%E8%BD%BD)/&t=Linux服务器开发一基础(转载)" target="_blank" rel="noopener"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2020-2021
+    兔子翻书
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories/">Tags</a></li>
+         
+          <li><a href="http://101.132.226.32/search_simple" target="_blank" rel="noopener">Project</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
