@@ -14,7 +14,7 @@
 <meta property="og:description" content="Linux下数据库安装 数据库一定要经常做备份 数据库一定要经常做备份 数据库一定要经常做备份  在服务器上记得让数据库开机就启动 MYSQL远程连接失败：ERROR 1130: mysql 1130连接错误的有效解決方法 卸载 centos 中预安装的 mysqlrpm -qa | grep -i mysqlrpm -e mysql-libs-5.1.71-1.el6.x86_64 --node">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-12-31T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-02-08T15:14:27.601Z">
+<meta property="article:modified_time" content="2021-04-22T12:58:27.582Z">
 <meta property="article:author" content="兔子翻书">
 <meta name="twitter:card" content="summary">
     
@@ -170,7 +170,7 @@
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo firewall-cmd --zone=public --add-port=3306/tcp --permanent</span><br><span class="line">sudo firewall-cmd --reload</span><br></pre></td></tr></table></figure>
 
 <p><a href="https://blog.csdn.net/qq_34680444/article/details/86238516" target="_blank" rel="noopener">mysql8 grant授权报错</a></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">//先更mysql数据库中的user</span><br><span class="line">update user set host='%' where user='root';</span><br><span class="line"></span><br><span class="line">//执行两次</span><br><span class="line">GRANT ALL ON *.* TO 'root'@'%';</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">//先更mysql数据库中的user</span><br><span class="line">//允许别的客户端获取别的IP连接这个数据这一步必须设置</span><br><span class="line">use mysql;</span><br><span class="line">update user set host='%' where user='root';</span><br><span class="line"></span><br><span class="line">//执行两次</span><br><span class="line">GRANT ALL ON *.* TO 'root'@'%';</span><br></pre></td></tr></table></figure>
 
 <h3 id="Mysql指令"><a href="#Mysql指令" class="headerlink" title="Mysql指令"></a>Mysql指令</h3><blockquote>
 <p>Systemctl是一个systemd工具，主要负责控制systemd系统和服务管理器。</p>
