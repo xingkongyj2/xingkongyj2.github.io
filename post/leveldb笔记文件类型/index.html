@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready text-sm lg:text-base"
+  style="--bg: #faf6f1"
+  lang="zh"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>LevelDB笔记：文件类型 - mayj&#39;s blog</title>
+
+  
+  <meta name="theme-color" />
+  
+  <meta name="description" content="Log（*.log）：即Write Ahead Log，是用来记录LevelDB变更的append-only的文件，在LevelDB重启时用来恢复内存中的数据。
+MemTable、Immutable MemTable：用来Buffer最近写入的内存结构，其通过SkipList实现。当MemTable达到一定大小时会转为只读的Immutable MemTable，并等待后台线程通过Minor Compaction将其转为level-0的SSTable。MemTable是LSM-Tree将随机写入转为顺序写入的关键。
+SSTable（新：.ldb、旧：.sst）：通过Compaction生成的SSTable。level-0的SSTable由Immutable MemTable直接转储得到，因此level-0的SSTable的key间存在overlap；其它level的SSTable每层间没有overlap。另外，除了level-0外，每层SSTable的总大小比上一层大10倍。
+Manifest（MANIFEST-*）：记录SSTable文件等的版本变更，其中Record的格式与Log相同，LevelDB每次重启都会从一个新的Manifest文件写入。
+Current（CURRENT）：用来指向最新的Manifest文件。
+Cache：分为Table Cache与Block Cache，核心为ShardedLRUCache，用来缓存数据块、索引块或过滤器。
+Iterator：提供遍历LevelDB中各种数据结构的功能，LevelDB中Iterator可以作为一个体系，本系列单独用一个篇幅对其进行了介绍。
+LOCK文件：LevelDB仅支持单个LevelDB进程操作一个数据库，因此其通过LOCK文件防止其它LevelDB进程访问该数据库。
+LOG文件：LevelDB的日志文件。" />
+  <meta
+    name="author"
+    content=""
+  />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="https://xingkongyj2.github.io/main.min.css" />
+
+  
+  <script
+    defer
+    src="https://xingkongyj2.github.io/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad();"
+  ></script>
+  
+
+  
+   
+  <link rel="preload" as="image" href="https://xingkongyj2.github.io/theme.png" />
+
+  
+  
+  
+  <link rel="preload" as="image" href="https://www.gravatar.com/avatar/1461c57a55669f50e12c3d2415165ba9?s=160&amp;d=identicon" />
+  
+  
+
+  
+  <link rel="preload" as="image" href="https://xingkongyj2.github.io/github.svg" />
+  
+
+  
+  <link rel="icon" href="https://xingkongyj2.github.io/favicon.ico" />
+  <link rel="apple-touch-icon" href="https://xingkongyj2.github.io/apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.101.0" />
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="LevelDB笔记：文件类型" />
+<meta property="og:description" content="Log（*.log）：即Write Ahead Log，是用来记录LevelDB变更的append-only的文件，在LevelDB重启时用来恢复内存中的数据。
+MemTable、Immutable MemTable：用来Buffer最近写入的内存结构，其通过SkipList实现。当MemTable达到一定大小时会转为只读的Immutable MemTable，并等待后台线程通过Minor Compaction将其转为level-0的SSTable。MemTable是LSM-Tree将随机写入转为顺序写入的关键。
+SSTable（新：.ldb、旧：.sst）：通过Compaction生成的SSTable。level-0的SSTable由Immutable MemTable直接转储得到，因此level-0的SSTable的key间存在overlap；其它level的SSTable每层间没有overlap。另外，除了level-0外，每层SSTable的总大小比上一层大10倍。
+Manifest（MANIFEST-*）：记录SSTable文件等的版本变更，其中Record的格式与Log相同，LevelDB每次重启都会从一个新的Manifest文件写入。
+Current（CURRENT）：用来指向最新的Manifest文件。
+Cache：分为Table Cache与Block Cache，核心为ShardedLRUCache，用来缓存数据块、索引块或过滤器。
+Iterator：提供遍历LevelDB中各种数据结构的功能，LevelDB中Iterator可以作为一个体系，本系列单独用一个篇幅对其进行了介绍。
+LOCK文件：LevelDB仅支持单个LevelDB进程操作一个数据库，因此其通过LOCK文件防止其它LevelDB进程访问该数据库。
+LOG文件：LevelDB的日志文件。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xingkongyj2.github.io/post/leveldb%E7%AC%94%E8%AE%B0%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2023-02-12T14:54:24+08:00" />
+<meta property="article:modified_time" content="2023-02-12T14:54:24+08:00" />
+
+
+  
+  <meta itemprop="name" content="LevelDB笔记：文件类型">
+<meta itemprop="description" content="Log（*.log）：即Write Ahead Log，是用来记录LevelDB变更的append-only的文件，在LevelDB重启时用来恢复内存中的数据。
+MemTable、Immutable MemTable：用来Buffer最近写入的内存结构，其通过SkipList实现。当MemTable达到一定大小时会转为只读的Immutable MemTable，并等待后台线程通过Minor Compaction将其转为level-0的SSTable。MemTable是LSM-Tree将随机写入转为顺序写入的关键。
+SSTable（新：.ldb、旧：.sst）：通过Compaction生成的SSTable。level-0的SSTable由Immutable MemTable直接转储得到，因此level-0的SSTable的key间存在overlap；其它level的SSTable每层间没有overlap。另外，除了level-0外，每层SSTable的总大小比上一层大10倍。
+Manifest（MANIFEST-*）：记录SSTable文件等的版本变更，其中Record的格式与Log相同，LevelDB每次重启都会从一个新的Manifest文件写入。
+Current（CURRENT）：用来指向最新的Manifest文件。
+Cache：分为Table Cache与Block Cache，核心为ShardedLRUCache，用来缓存数据块、索引块或过滤器。
+Iterator：提供遍历LevelDB中各种数据结构的功能，LevelDB中Iterator可以作为一个体系，本系列单独用一个篇幅对其进行了介绍。
+LOCK文件：LevelDB仅支持单个LevelDB进程操作一个数据库，因此其通过LOCK文件防止其它LevelDB进程访问该数据库。
+LOG文件：LevelDB的日志文件。"><meta itemprop="datePublished" content="2023-02-12T14:54:24+08:00" />
+<meta itemprop="dateModified" content="2023-02-12T14:54:24+08:00" />
+<meta itemprop="wordCount" content="17">
+<meta itemprop="keywords" content="LevelDB,C&#43;&#43;," />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="LevelDB笔记：文件类型"/>
+<meta name="twitter:description" content="Log（*.log）：即Write Ahead Log，是用来记录LevelDB变更的append-only的文件，在LevelDB重启时用来恢复内存中的数据。
+MemTable、Immutable MemTable：用来Buffer最近写入的内存结构，其通过SkipList实现。当MemTable达到一定大小时会转为只读的Immutable MemTable，并等待后台线程通过Minor Compaction将其转为level-0的SSTable。MemTable是LSM-Tree将随机写入转为顺序写入的关键。
+SSTable（新：.ldb、旧：.sst）：通过Compaction生成的SSTable。level-0的SSTable由Immutable MemTable直接转储得到，因此level-0的SSTable的key间存在overlap；其它level的SSTable每层间没有overlap。另外，除了level-0外，每层SSTable的总大小比上一层大10倍。
+Manifest（MANIFEST-*）：记录SSTable文件等的版本变更，其中Record的格式与Log相同，LevelDB每次重启都会从一个新的Manifest文件写入。
+Current（CURRENT）：用来指向最新的Manifest文件。
+Cache：分为Table Cache与Block Cache，核心为ShardedLRUCache，用来缓存数据块、索引块或过滤器。
+Iterator：提供遍历LevelDB中各种数据结构的功能，LevelDB中Iterator可以作为一个体系，本系列单独用一个篇幅对其进行了介绍。
+LOCK文件：LevelDB仅支持单个LevelDB进程操作一个数据库，因此其通过LOCK文件防止其它LevelDB进程访问该数据库。
+LOG文件：LevelDB的日志文件。"/>
+
+  
+  
+</head>
+
+  <body class="text-black duration-200 ease-out dark:text-white">
+    <header class="mx-auto flex h-[5rem] max-w-3xl px-8 lg:justify-center">
+  <div class="relative z-50 mr-auto flex items-center">
+    
+    <a
+      class="btn-dark h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]"
+    ></a>
+  </div>
+
+  <a
+    class="btn-menu relative z-50 -mr-8 flex h-[5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+  ></a>
+
+  
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = `"#faf6f1"`.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+    <nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6">
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/"
+        >Home</a
+      >
+      
+    </nav>
+    
+
+    
+    <nav
+      class="mt-12 flex justify-center space-x-10 dark:invert lg:mt-0 lg:ml-12 lg:items-center lg:space-x-6"
+    >
+      
+      <a
+        class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href="https://github.com/xingkongyj2"
+        target="_blank"
+        rel="me"
+      ></a>
+      
+    </nav>
+    
+  </div>
+</header>
+
+
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 pb-32 dark:prose-invert"
+    >
+      
+
+<article>
+  <header class="mb-20 custom-post-title">
+    <h1 class="!my-0 pb-2.5">LevelDB笔记：文件类型</h1>
+
+    
+    <div class="text-sm opacity-60">
+      
+      <time>2023年2月12日</time>
+      
+      
+    </div>
+    
+  </header>
+
+  <section><p>Log（*.log）：即Write Ahead Log，是用来记录LevelDB变更的append-only的文件，在LevelDB重启时用来恢复内存中的数据。</p>
+<p>MemTable、Immutable MemTable：用来Buffer最近写入的内存结构，其通过SkipList实现。当MemTable达到一定大小时会转为只读的Immutable MemTable，并等待后台线程通过Minor Compaction将其转为level-0的SSTable。MemTable是LSM-Tree将随机写入转为顺序写入的关键。</p>
+<p>SSTable（新：<em>.ldb、旧：</em>.sst）：通过Compaction生成的SSTable。level-0的SSTable由Immutable MemTable直接转储得到，因此level-0的SSTable的key间存在overlap；其它level的SSTable每层间没有overlap。另外，除了level-0外，每层SSTable的总大小比上一层大10倍。</p>
+<p>Manifest（MANIFEST-*）：记录SSTable文件等的版本变更，其中Record的格式与Log相同，LevelDB每次重启都会从一个新的Manifest文件写入。</p>
+<p>Current（CURRENT）：用来指向最新的Manifest文件。</p>
+<p>Cache：分为Table Cache与Block Cache，核心为ShardedLRUCache，用来缓存数据块、索引块或过滤器。</p>
+<p>Iterator：提供遍历LevelDB中各种数据结构的功能，LevelDB中Iterator可以作为一个体系，本系列单独用一个篇幅对其进行了介绍。</p>
+<p>LOCK文件：LevelDB仅支持单个LevelDB进程操作一个数据库，因此其通过LOCK文件防止其它LevelDB进程访问该数据库。</p>
+<p>LOG文件：LevelDB的日志文件。</p>
+</section>
+
+  
+  
+  <footer class="mt-12 flex flex-wrap">
+     
+    <a
+      class="mr-1.5 mb-1.5 rounded-lg bg-black/[3%] px-5 py-2 no-underline dark:bg-white/[8%]"
+      href="https://xingkongyj2.github.io/tags/leveldb"
+      >LevelDB</a
+    >
+     
+    <a
+      class="mr-1.5 mb-1.5 rounded-lg bg-black/[3%] px-5 py-2 no-underline dark:bg-white/[8%]"
+      href="https://xingkongyj2.github.io/tags/c&#43;&#43;"
+      >C&#43;&#43;</a
+    >
+    
+  </footer>
+  
+
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a
+      class="flex w-1/2 items-center rounded-l-md p-6 pr-3 no-underline hover:bg-black/[2%]"
+      href="https://xingkongyj2.github.io/post/leveldb%E7%AC%94%E8%AE%B0%E5%8A%9F%E8%83%BD%E7%89%B9%E6%80%A7/"
+      ><span class="mr-1.5">←</span><span>LevelDB笔记：功能特性</span></a
+    >
+    
+    
+  </nav>
+  
+
+  
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+>
+  <div class="mr-auto">
+    &copy; 2023
+    <a class="link" href="https://xingkongyj2.github.io/">mayj&#39;s blog</a>
+  </div>
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >▷ Paper 6</a
+  >
+</footer>
+
+  </body>
+</html>

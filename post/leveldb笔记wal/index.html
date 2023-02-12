@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready text-sm lg:text-base"
+  style="--bg: #faf6f1"
+  lang="zh"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>LevelDB笔记：WAL - mayj&#39;s blog</title>
+
+  
+  <meta name="theme-color" />
+  
+  <meta name="description" content="为了不丢失数据，需要持久化的功能。把数据持久化到磁盘上，最常用的技术就是日志技术，也就是当修改数据时，先把对数据的修改写到磁盘上，然后在MemTable里做修改。因为日志记录了每个操作，只要对日志进行重放便可以恢复MemTable，这样就做到了数据库实例崩溃、宕机或者停机维护的时候数据不丢失。
+这种日志技术在数据库里面很常用（Redis里的Aof，Innodb里的Redo Log都是这样的技术），一般称为WAL （Write Ahead Log），正如名字一样，就是在写入前先写入日志的意思。
+Put操作也不能简单的写入到 memtable，而是要先写日志、再写 memtable，都更新完成后再返回写入成功，write-ahead logging 名字也是由此而来。
+因为日志的写入都是Append的，也就是顺序写，所以写磁盘也是顺序写，虽然磁盘的随机写效率比较低，但是顺序写效率还是很高的，所以就算加入了日志，写效率还是很高，依然可以满足写多的场景。
+另外可以通过控制日志写同步的策略在性能和可靠性之间做折中：
+每次写入都做一次sync，可靠性最高，不会丢数据，但是性能最低； 每次写入，但是不sync，数据库崩溃不会丢数据，但是机器崩溃会丢数据，性能高； 每次写入，不sync，但是每1s做一次sync，数据库崩溃不会丢数据，但是机器崩溃丢最多1s的数据，性能较高。 有了MemTable和WAL，就有了一个功能比较完备的数据库了，类似于一个简化版的Redis。然而这又引入了新的问题：
+如果日志量很大，每次重启数据库时，恢复的时间非常长； 内存的容量是有限的，所以当数据量太大，MemTable的大小超过内存容量时，就没法写入数据了。 这时候不仅仅需要将日志写入到磁盘，也需要定时将MemTable的镜像写入磁盘，并且清空MemTable。
+leveldb 里的日志写操作主要由leveldb::log::Writer完成。log::Writer类主要负责：接收待写入数据，组织数据格式，调用成员变量完成数据真正写入到文件系统。
+日志的格式 例如当前 block 只有10个字节，而用户调用了AddRecord(&lsquo;HelloWorld&rsquo;)，数据会分为两次写入，type 分别为 kFirstType kLastType:
+************** block N ************** ... |crc 3 kFirstType|hel| ************** block N&#43;1 ************** |crc 7 kLastType|loWorld| ... 可以看到先尝试写入hel填满该 block，标记这次写入为kFirstType，总共占用 10 个字节。然后写入loWorld到下一个 block，标记为kLastType.
+如果这个 block 写不下，那么就标记为kMiddleType.
+type 是一个枚举值：
+enum RecordType { // Zero is reserved for preallocated files kZeroType = 0, kFullType = 1, // For fragments kFirstType = 2, kMiddleType = 3, kLastType = 4 }; 如果 block 剩余的空间不足7 bytes，写不下 header，那么就补\0填满。" />
+  <meta
+    name="author"
+    content=""
+  />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="https://xingkongyj2.github.io/main.min.css" />
+
+  
+  <script
+    defer
+    src="https://xingkongyj2.github.io/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad();"
+  ></script>
+  
+
+  
+   
+  <link rel="preload" as="image" href="https://xingkongyj2.github.io/theme.png" />
+
+  
+  
+  
+  <link rel="preload" as="image" href="https://www.gravatar.com/avatar/1461c57a55669f50e12c3d2415165ba9?s=160&amp;d=identicon" />
+  
+  
+
+  
+  <link rel="preload" as="image" href="https://xingkongyj2.github.io/github.svg" />
+  
+
+  
+  <link rel="icon" href="https://xingkongyj2.github.io/favicon.ico" />
+  <link rel="apple-touch-icon" href="https://xingkongyj2.github.io/apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.101.0" />
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="LevelDB笔记：WAL" />
+<meta property="og:description" content="为了不丢失数据，需要持久化的功能。把数据持久化到磁盘上，最常用的技术就是日志技术，也就是当修改数据时，先把对数据的修改写到磁盘上，然后在MemTable里做修改。因为日志记录了每个操作，只要对日志进行重放便可以恢复MemTable，这样就做到了数据库实例崩溃、宕机或者停机维护的时候数据不丢失。
+这种日志技术在数据库里面很常用（Redis里的Aof，Innodb里的Redo Log都是这样的技术），一般称为WAL （Write Ahead Log），正如名字一样，就是在写入前先写入日志的意思。
+Put操作也不能简单的写入到 memtable，而是要先写日志、再写 memtable，都更新完成后再返回写入成功，write-ahead logging 名字也是由此而来。
+因为日志的写入都是Append的，也就是顺序写，所以写磁盘也是顺序写，虽然磁盘的随机写效率比较低，但是顺序写效率还是很高的，所以就算加入了日志，写效率还是很高，依然可以满足写多的场景。
+另外可以通过控制日志写同步的策略在性能和可靠性之间做折中：
+每次写入都做一次sync，可靠性最高，不会丢数据，但是性能最低； 每次写入，但是不sync，数据库崩溃不会丢数据，但是机器崩溃会丢数据，性能高； 每次写入，不sync，但是每1s做一次sync，数据库崩溃不会丢数据，但是机器崩溃丢最多1s的数据，性能较高。 有了MemTable和WAL，就有了一个功能比较完备的数据库了，类似于一个简化版的Redis。然而这又引入了新的问题：
+如果日志量很大，每次重启数据库时，恢复的时间非常长； 内存的容量是有限的，所以当数据量太大，MemTable的大小超过内存容量时，就没法写入数据了。 这时候不仅仅需要将日志写入到磁盘，也需要定时将MemTable的镜像写入磁盘，并且清空MemTable。
+leveldb 里的日志写操作主要由leveldb::log::Writer完成。log::Writer类主要负责：接收待写入数据，组织数据格式，调用成员变量完成数据真正写入到文件系统。
+日志的格式 例如当前 block 只有10个字节，而用户调用了AddRecord(&lsquo;HelloWorld&rsquo;)，数据会分为两次写入，type 分别为 kFirstType kLastType:
+************** block N ************** ... |crc 3 kFirstType|hel| ************** block N&#43;1 ************** |crc 7 kLastType|loWorld| ... 可以看到先尝试写入hel填满该 block，标记这次写入为kFirstType，总共占用 10 个字节。然后写入loWorld到下一个 block，标记为kLastType.
+如果这个 block 写不下，那么就标记为kMiddleType.
+type 是一个枚举值：
+enum RecordType { // Zero is reserved for preallocated files kZeroType = 0, kFullType = 1, // For fragments kFirstType = 2, kMiddleType = 3, kLastType = 4 }; 如果 block 剩余的空间不足7 bytes，写不下 header，那么就补\0填满。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xingkongyj2.github.io/post/leveldb%E7%AC%94%E8%AE%B0wal/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2023-02-12T14:54:24+08:00" />
+<meta property="article:modified_time" content="2023-02-12T14:54:24+08:00" />
+
+
+  
+  <meta itemprop="name" content="LevelDB笔记：WAL">
+<meta itemprop="description" content="为了不丢失数据，需要持久化的功能。把数据持久化到磁盘上，最常用的技术就是日志技术，也就是当修改数据时，先把对数据的修改写到磁盘上，然后在MemTable里做修改。因为日志记录了每个操作，只要对日志进行重放便可以恢复MemTable，这样就做到了数据库实例崩溃、宕机或者停机维护的时候数据不丢失。
+这种日志技术在数据库里面很常用（Redis里的Aof，Innodb里的Redo Log都是这样的技术），一般称为WAL （Write Ahead Log），正如名字一样，就是在写入前先写入日志的意思。
+Put操作也不能简单的写入到 memtable，而是要先写日志、再写 memtable，都更新完成后再返回写入成功，write-ahead logging 名字也是由此而来。
+因为日志的写入都是Append的，也就是顺序写，所以写磁盘也是顺序写，虽然磁盘的随机写效率比较低，但是顺序写效率还是很高的，所以就算加入了日志，写效率还是很高，依然可以满足写多的场景。
+另外可以通过控制日志写同步的策略在性能和可靠性之间做折中：
+每次写入都做一次sync，可靠性最高，不会丢数据，但是性能最低； 每次写入，但是不sync，数据库崩溃不会丢数据，但是机器崩溃会丢数据，性能高； 每次写入，不sync，但是每1s做一次sync，数据库崩溃不会丢数据，但是机器崩溃丢最多1s的数据，性能较高。 有了MemTable和WAL，就有了一个功能比较完备的数据库了，类似于一个简化版的Redis。然而这又引入了新的问题：
+如果日志量很大，每次重启数据库时，恢复的时间非常长； 内存的容量是有限的，所以当数据量太大，MemTable的大小超过内存容量时，就没法写入数据了。 这时候不仅仅需要将日志写入到磁盘，也需要定时将MemTable的镜像写入磁盘，并且清空MemTable。
+leveldb 里的日志写操作主要由leveldb::log::Writer完成。log::Writer类主要负责：接收待写入数据，组织数据格式，调用成员变量完成数据真正写入到文件系统。
+日志的格式 例如当前 block 只有10个字节，而用户调用了AddRecord(&lsquo;HelloWorld&rsquo;)，数据会分为两次写入，type 分别为 kFirstType kLastType:
+************** block N ************** ... |crc 3 kFirstType|hel| ************** block N&#43;1 ************** |crc 7 kLastType|loWorld| ... 可以看到先尝试写入hel填满该 block，标记这次写入为kFirstType，总共占用 10 个字节。然后写入loWorld到下一个 block，标记为kLastType.
+如果这个 block 写不下，那么就标记为kMiddleType.
+type 是一个枚举值：
+enum RecordType { // Zero is reserved for preallocated files kZeroType = 0, kFullType = 1, // For fragments kFirstType = 2, kMiddleType = 3, kLastType = 4 }; 如果 block 剩余的空间不足7 bytes，写不下 header，那么就补\0填满。"><meta itemprop="datePublished" content="2023-02-12T14:54:24+08:00" />
+<meta itemprop="dateModified" content="2023-02-12T14:54:24+08:00" />
+<meta itemprop="wordCount" content="97">
+<meta itemprop="keywords" content="LevelDB,C&#43;&#43;," />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="LevelDB笔记：WAL"/>
+<meta name="twitter:description" content="为了不丢失数据，需要持久化的功能。把数据持久化到磁盘上，最常用的技术就是日志技术，也就是当修改数据时，先把对数据的修改写到磁盘上，然后在MemTable里做修改。因为日志记录了每个操作，只要对日志进行重放便可以恢复MemTable，这样就做到了数据库实例崩溃、宕机或者停机维护的时候数据不丢失。
+这种日志技术在数据库里面很常用（Redis里的Aof，Innodb里的Redo Log都是这样的技术），一般称为WAL （Write Ahead Log），正如名字一样，就是在写入前先写入日志的意思。
+Put操作也不能简单的写入到 memtable，而是要先写日志、再写 memtable，都更新完成后再返回写入成功，write-ahead logging 名字也是由此而来。
+因为日志的写入都是Append的，也就是顺序写，所以写磁盘也是顺序写，虽然磁盘的随机写效率比较低，但是顺序写效率还是很高的，所以就算加入了日志，写效率还是很高，依然可以满足写多的场景。
+另外可以通过控制日志写同步的策略在性能和可靠性之间做折中：
+每次写入都做一次sync，可靠性最高，不会丢数据，但是性能最低； 每次写入，但是不sync，数据库崩溃不会丢数据，但是机器崩溃会丢数据，性能高； 每次写入，不sync，但是每1s做一次sync，数据库崩溃不会丢数据，但是机器崩溃丢最多1s的数据，性能较高。 有了MemTable和WAL，就有了一个功能比较完备的数据库了，类似于一个简化版的Redis。然而这又引入了新的问题：
+如果日志量很大，每次重启数据库时，恢复的时间非常长； 内存的容量是有限的，所以当数据量太大，MemTable的大小超过内存容量时，就没法写入数据了。 这时候不仅仅需要将日志写入到磁盘，也需要定时将MemTable的镜像写入磁盘，并且清空MemTable。
+leveldb 里的日志写操作主要由leveldb::log::Writer完成。log::Writer类主要负责：接收待写入数据，组织数据格式，调用成员变量完成数据真正写入到文件系统。
+日志的格式 例如当前 block 只有10个字节，而用户调用了AddRecord(&lsquo;HelloWorld&rsquo;)，数据会分为两次写入，type 分别为 kFirstType kLastType:
+************** block N ************** ... |crc 3 kFirstType|hel| ************** block N&#43;1 ************** |crc 7 kLastType|loWorld| ... 可以看到先尝试写入hel填满该 block，标记这次写入为kFirstType，总共占用 10 个字节。然后写入loWorld到下一个 block，标记为kLastType.
+如果这个 block 写不下，那么就标记为kMiddleType.
+type 是一个枚举值：
+enum RecordType { // Zero is reserved for preallocated files kZeroType = 0, kFullType = 1, // For fragments kFirstType = 2, kMiddleType = 3, kLastType = 4 }; 如果 block 剩余的空间不足7 bytes，写不下 header，那么就补\0填满。"/>
+
+  
+  
+</head>
+
+  <body class="text-black duration-200 ease-out dark:text-white">
+    <header class="mx-auto flex h-[5rem] max-w-3xl px-8 lg:justify-center">
+  <div class="relative z-50 mr-auto flex items-center">
+    
+    <a
+      class="btn-dark h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]"
+    ></a>
+  </div>
+
+  <a
+    class="btn-menu relative z-50 -mr-8 flex h-[5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+  ></a>
+
+  
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = `"#faf6f1"`.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+    <nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6">
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/"
+        >Home</a
+      >
+      
+    </nav>
+    
+
+    
+    <nav
+      class="mt-12 flex justify-center space-x-10 dark:invert lg:mt-0 lg:ml-12 lg:items-center lg:space-x-6"
+    >
+      
+      <a
+        class="h-8 w-8 [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href="https://github.com/xingkongyj2"
+        target="_blank"
+        rel="me"
+      ></a>
+      
+    </nav>
+    
+  </div>
+</header>
+
+
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-10rem)] max-w-3xl px-8 pt-20 pb-32 dark:prose-invert"
+    >
+      
+
+<article>
+  <header class="mb-20 custom-post-title">
+    <h1 class="!my-0 pb-2.5">LevelDB笔记：WAL</h1>
+
+    
+    <div class="text-sm opacity-60">
+      
+      <time>2023年2月12日</time>
+      
+      
+    </div>
+    
+  </header>
+
+  <section><p>为了不丢失数据，需要持久化的功能。把数据持久化到磁盘上，最常用的技术就是日志技术，也就是当修改数据时，先把对数据的修改写到磁盘上，然后在MemTable里做修改。因为日志记录了每个操作，只要对日志进行重放便可以恢复MemTable，这样就做到了数据库实例崩溃、宕机或者停机维护的时候数据不丢失。</p>
+<p>这种日志技术在数据库里面很常用（Redis里的Aof，Innodb里的Redo Log都是这样的技术），一般称为WAL （Write Ahead Log），正如名字一样，就是在写入前先写入日志的意思。</p>
+<p>Put操作也不能简单的写入到 memtable，而是要先写日志、再写 memtable，都更新完成后再返回写入成功，write-ahead logging 名字也是由此而来。</p>
+<p>因为日志的写入都是<code>Append</code>的，也就是顺序写，所以写磁盘也是顺序写，虽然磁盘的随机写效率比较低，但是顺序写效率还是很高的，所以就算加入了日志，写效率还是很高，依然可以满足写多的场景。</p>
+<p>另外可以通过控制日志写同步的策略在性能和可靠性之间做折中：</p>
+<ul>
+<li>每次写入都做一次<code>sync</code>，可靠性最高，不会丢数据，但是性能最低；</li>
+<li>每次写入，但是不<code>sync</code>，数据库崩溃不会丢数据，但是机器崩溃会丢数据，性能高；</li>
+<li>每次写入，不<code>sync</code>，但是每1s做一次<code>sync</code>，数据库崩溃不会丢数据，但是机器崩溃丢最多1s的数据，性能较高。</li>
+</ul>
+<p>有了MemTable和WAL，就有了一个功能比较完备的数据库了，类似于一个简化版的Redis。然而这又引入了新的问题：</p>
+<ul>
+<li>如果日志量很大，每次重启数据库时，恢复的时间非常长；</li>
+<li>内存的容量是有限的，所以当数据量太大，MemTable的大小超过内存容量时，就没法写入数据了。</li>
+</ul>
+<p>这时候不仅仅需要将日志写入到磁盘，也需要定时将MemTable的镜像写入磁盘，并且清空MemTable。</p>
+<p>leveldb 里的日志写操作主要由leveldb::log::Writer完成。log::Writer类主要负责：<strong>接收待写入数据，组织数据格式，调用成员变量完成数据真正写入到文件系统。</strong></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/258521/1668602892091-8f7d7409-ee2b-417a-858a-848d692b994a.png#averageHue=%23f1f1bf&amp;clientId=uff09e8ae-9207-4&amp;from=paste&amp;id=uaecf8196&amp;name=image.png&amp;originHeight=446&amp;originWidth=484&amp;originalType=binary&amp;ratio=1&amp;rotation=0&amp;showTitle=false&amp;size=33419&amp;status=done&amp;style=none&amp;taskId=uac53ee18-7e77-483e-a14b-f17322ea945&amp;title=" alt="image.png"></p>
+<h1 id="日志的格式">日志的格式</h1>
+<p><a href="https://segmentfault.com/img/remote/1460000040475074"></a></p>
+<p>例如当前 block 只有10个字节，而用户调用了AddRecord(&lsquo;HelloWorld&rsquo;)，数据会分为两次写入，type 分别为 kFirstType kLastType:</p>
+<pre tabindex="0"><code>**************  block N  **************
+...
+|crc 3 kFirstType|hel|
+************** block N+1 **************
+|crc 7 kLastType|loWorld|
+...
+</code></pre><p>可以看到先尝试写入hel填满该 block，标记这次写入为kFirstType，总共占用 10 个字节。然后写入loWorld到下一个 block，标记为kLastType.</p>
+<p>如果这个 block 写不下，那么就标记为kMiddleType.</p>
+<p>type 是一个枚举值：</p>
+<pre tabindex="0"><code>enum RecordType {
+  // Zero is reserved for preallocated files
+  kZeroType = 0,
+
+  kFullType = 1,
+
+  // For fragments
+  kFirstType = 2,
+  kMiddleType = 3,
+  kLastType = 4
+};
+</code></pre><p>如果 block 剩余的空间不足7 bytes，写不下 header，那么就补\0填满。</p>
+<p>简而言之：一个block只有32k，来一条数据时，能放得下就放，放不下就能放多少算多少。剩下的放入下个blck，其中用type来标记是第几块。</p>
+<p>源码位置：log_writer.cc。</p>
+<p>在 level 中，<a href="https://github.com/yingshin/leveldb_more_annotation/blob/master/db/db_impl.cc">db_impl.cc</a>会构造log::Writer对象并且写入数据。</p>
+<p>WriteBatchInternal::Contents(updates)数据格式图里的 data 部分，这些究竟包含了什么？可以参考<a href="https://izualzhy.cn/leveldb-write-read#3-writebatch">写入与读取流程</a>这篇笔记。</p>
+</section>
+
+  
+  
+  <footer class="mt-12 flex flex-wrap">
+     
+    <a
+      class="mr-1.5 mb-1.5 rounded-lg bg-black/[3%] px-5 py-2 no-underline dark:bg-white/[8%]"
+      href="https://xingkongyj2.github.io/tags/leveldb"
+      >LevelDB</a
+    >
+     
+    <a
+      class="mr-1.5 mb-1.5 rounded-lg bg-black/[3%] px-5 py-2 no-underline dark:bg-white/[8%]"
+      href="https://xingkongyj2.github.io/tags/c&#43;&#43;"
+      >C&#43;&#43;</a
+    >
+    
+  </footer>
+  
+
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end rounded-r-md p-6 pl-3 no-underline hover:bg-black/[2%]"
+      href="https://xingkongyj2.github.io/post/leveldb%E7%AC%94%E8%AE%B0%E5%8A%9F%E8%83%BD%E7%89%B9%E6%80%A7/"
+      ><span>LevelDB笔记：功能特性</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+
+  
+  
+
+  
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+>
+  <div class="mr-auto">
+    &copy; 2023
+    <a class="link" href="https://xingkongyj2.github.io/">mayj&#39;s blog</a>
+  </div>
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >▷ Paper 6</a
+  >
+</footer>
+
+  </body>
+</html>

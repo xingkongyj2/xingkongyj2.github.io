@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on mayj&#39;s blog</title>
+    <link>https://xingkongyj2.github.io/post/</link>
+    <description>Recent content in Posts on mayj&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <copyright>Copyright © 2008–2019, Steve Francia and the lee.so; all rights reserved.</copyright>
+    <lastBuildDate>Sun, 12 Feb 2023 14:54:24 +0800</lastBuildDate><atom:link href="https://xingkongyj2.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>LevelDB笔记：WAL</title>
+      <link>https://xingkongyj2.github.io/post/leveldb%E7%AC%94%E8%AE%B0wal/</link>
+      <pubDate>Sun, 12 Feb 2023 14:54:24 +0800</pubDate>
+      
+      <guid>https://xingkongyj2.github.io/post/leveldb%E7%AC%94%E8%AE%B0wal/</guid>
+      <description>为了不丢失数据，需要持久化的功能。把数据持久化到磁盘上，最常用的技术就是日志技术，也就是当修改数据时，先把对数据的修改写到磁盘上，然后在MemTable里做修改。因为日志记录了每个操作，只要对日志进行重放便可以恢复MemTable，这样就做到了数据库实例崩溃、宕机或者停机维护的时候数据不丢失。
+这种日志技术在数据库里面很常用（Redis里的Aof，Innodb里的Redo Log都是这样的技术），一般称为WAL （Write Ahead Log），正如名字一样，就是在写入前先写入日志的意思。
+Put操作也不能简单的写入到 memtable，而是要先写日志、再写 memtable，都更新完成后再返回写入成功，write-ahead logging 名字也是由此而来。
+因为日志的写入都是Append的，也就是顺序写，所以写磁盘也是顺序写，虽然磁盘的随机写效率比较低，但是顺序写效率还是很高的，所以就算加入了日志，写效率还是很高，依然可以满足写多的场景。
+另外可以通过控制日志写同步的策略在性能和可靠性之间做折中：
+每次写入都做一次sync，可靠性最高，不会丢数据，但是性能最低； 每次写入，但是不sync，数据库崩溃不会丢数据，但是机器崩溃会丢数据，性能高； 每次写入，不sync，但是每1s做一次sync，数据库崩溃不会丢数据，但是机器崩溃丢最多1s的数据，性能较高。 有了MemTable和WAL，就有了一个功能比较完备的数据库了，类似于一个简化版的Redis。然而这又引入了新的问题：
+如果日志量很大，每次重启数据库时，恢复的时间非常长； 内存的容量是有限的，所以当数据量太大，MemTable的大小超过内存容量时，就没法写入数据了。 这时候不仅仅需要将日志写入到磁盘，也需要定时将MemTable的镜像写入磁盘，并且清空MemTable。
+leveldb 里的日志写操作主要由leveldb::log::Writer完成。log::Writer类主要负责：接收待写入数据，组织数据格式，调用成员变量完成数据真正写入到文件系统。
+日志的格式 例如当前 block 只有10个字节，而用户调用了AddRecord(&amp;lsquo;HelloWorld&amp;rsquo;)，数据会分为两次写入，type 分别为 kFirstType kLastType:
+************** block N ************** ... |crc 3 kFirstType|hel| ************** block N+1 ************** |crc 7 kLastType|loWorld| ... 可以看到先尝试写入hel填满该 block，标记这次写入为kFirstType，总共占用 10 个字节。然后写入loWorld到下一个 block，标记为kLastType.
+如果这个 block 写不下，那么就标记为kMiddleType.
+type 是一个枚举值：
+enum RecordType { // Zero is reserved for preallocated files kZeroType = 0, kFullType = 1, // For fragments kFirstType = 2, kMiddleType = 3, kLastType = 4 }; 如果 block 剩余的空间不足7 bytes，写不下 header，那么就补\0填满。</description>
+    </item>
+    
+    <item>
+      <title>LevelDB笔记：功能特性</title>
+      <link>https://xingkongyj2.github.io/post/leveldb%E7%AC%94%E8%AE%B0%E5%8A%9F%E8%83%BD%E7%89%B9%E6%80%A7/</link>
+      <pubDate>Sun, 12 Feb 2023 14:54:24 +0800</pubDate>
+      
+      <guid>https://xingkongyj2.github.io/post/leveldb%E7%AC%94%E8%AE%B0%E5%8A%9F%E8%83%BD%E7%89%B9%E6%80%A7/</guid>
+      <description>打开 LevelDB每一个数据库有一个name，对应一个目录，所有的数据库文件都在这个目录里。通过Open可以打开或者新建一个数据库，得到数据库的引用，通过这个引用来操作数据库。
+可以这样打开一个数据库：
+leveldb::DB* db; leveldb::Options options; options.create_if_missing = true; leveldb::Status status = leveldb::DB::Open(options, &amp;#34;/tmp/testdb&amp;#34;, &amp;amp;db); name指定数据库目录，options指定了打开数据库的选项，db获取了数据库的引用。这里使用了create_if_missing选项，当数据库不存在时会创建数据库。
+关闭 只需要delete数据库实例即可：
+delete db 基础API LevelDB的基础API有三个，分别是Get、Put和Delete，表示查询一个键、插入一个键和删除一个键。LevelDB没有更新操作，因为更新就是简单地插入一个Kv，会覆盖之前的值。
+db-&amp;gt;Put(leveldb::WriteOptions(), &amp;#34;hello&amp;#34;, &amp;#34;LevelDB&amp;#34;); std::string value; db-&amp;gt;Get(leveldb::ReadOptions(), &amp;#34;hello&amp;#34;, &amp;amp;value); db-&amp;gt;Delete(leveldb::WriteOptions(), &amp;#34;hello&amp;#34;); 同步写 数据库系统经常要抉择的一个问题：性能还是可靠性。如果每次写入，都调用类似于sync的操作，能保证写入的数据不会丢失，但是这是一个耗时的操作，会大大地降低吞吐量。如果不使用同步写的话，虽然吞吐量会很高，但是系统宕机可能会丢数据。
+这就需要根据自己的场景进行抉择了。LevelDB默认不使用同步写，将数据write后，不调用sync就返回了，数据很有可能还在缓冲区里。可以手动开启同步写:
+leveldb::WriteOptions options; options.sync = true; leveldb::DB* db; db-&amp;gt;Put(options, &amp;#34;hello&amp;#34;, &amp;#34;LevelDB&amp;#34;); 原子更新 有时候需要一些更新同时生效，也就是要支持多个操作的原子性。比如写key1，再写入key2，如果在写入key1时宕机了，就没有key2了，这时候可以使用原子更新:
+leveldb::WriteBatch batch; batch.Delete(key1); batch.Put(key2, value); s = db-&amp;gt;Write(leveldb::WriteOptions(), &amp;amp;batch); 可以把Delete和Put加入到一个WriteBatch中，一次性写入数据库。
+原子更新除了提供原子性外，还可以提高性能，因为可以将多个操作批量写入。
+并发 当一个进程打开一个LevelDB数据库时，会获取这个数据库的一个文件锁，其它进程就没法获取这个文件锁了。所以一个LevelDB数据库只支持一个进程同时访问，但是这一个进程里面可以同时有多个线程并发访问。对于leveldb::DB里的很多方法，都是线程安全的，在这些方法内都有加锁的步骤。但是对于其它的一些对象，比如WriteBatch，如果多线程并发访问，需要自己同步。
+迭代器 LevelDB里大量使用了迭代器，可以对Data Block、SSTable、MemTable和整个数据库进行迭代。
+比如可以迭代整个数据库：
+leveldb::Iterator* it = db-&amp;gt;NewIterator(leveldb::ReadOptions()); for (it-&amp;gt;SeekToFirst(); it-&amp;gt;Valid(); it-&amp;gt;Next()) { cout &amp;lt;&amp;lt; it-&amp;gt;key().</description>
+    </item>
+    
+    <item>
+      <title>LevelDB笔记：文件类型</title>
+      <link>https://xingkongyj2.github.io/post/leveldb%E7%AC%94%E8%AE%B0%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B/</link>
+      <pubDate>Sun, 12 Feb 2023 14:54:24 +0800</pubDate>
+      
+      <guid>https://xingkongyj2.github.io/post/leveldb%E7%AC%94%E8%AE%B0%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B/</guid>
+      <description>Log（*.log）：即Write Ahead Log，是用来记录LevelDB变更的append-only的文件，在LevelDB重启时用来恢复内存中的数据。
+MemTable、Immutable MemTable：用来Buffer最近写入的内存结构，其通过SkipList实现。当MemTable达到一定大小时会转为只读的Immutable MemTable，并等待后台线程通过Minor Compaction将其转为level-0的SSTable。MemTable是LSM-Tree将随机写入转为顺序写入的关键。
+SSTable（新：.ldb、旧：.sst）：通过Compaction生成的SSTable。level-0的SSTable由Immutable MemTable直接转储得到，因此level-0的SSTable的key间存在overlap；其它level的SSTable每层间没有overlap。另外，除了level-0外，每层SSTable的总大小比上一层大10倍。
+Manifest（MANIFEST-*）：记录SSTable文件等的版本变更，其中Record的格式与Log相同，LevelDB每次重启都会从一个新的Manifest文件写入。
+Current（CURRENT）：用来指向最新的Manifest文件。
+Cache：分为Table Cache与Block Cache，核心为ShardedLRUCache，用来缓存数据块、索引块或过滤器。
+Iterator：提供遍历LevelDB中各种数据结构的功能，LevelDB中Iterator可以作为一个体系，本系列单独用一个篇幅对其进行了介绍。
+LOCK文件：LevelDB仅支持单个LevelDB进程操作一个数据库，因此其通过LOCK文件防止其它LevelDB进程访问该数据库。
+LOG文件：LevelDB的日志文件。</description>
+    </item>
+    
+  </channel>
+</rss>
