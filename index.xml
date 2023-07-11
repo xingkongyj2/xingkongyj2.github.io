@@ -1,13 +1,53 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>mayj&#39;s blog</title>
+    <title>YJ-Ma&#39;s blog</title>
     <link>https://xingkongyj2.github.io/</link>
-    <description>Recent content on mayj&#39;s blog</description>
+    <description>Recent content on YJ-Ma&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <copyright>Copyright © 2008–2019, Steve Francia and the lee.so; all rights reserved.</copyright>
-    <lastBuildDate>Sun, 12 Feb 2023 14:54:24 +0800</lastBuildDate><atom:link href="https://xingkongyj2.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 13 Feb 2023 14:54:24 +0800</lastBuildDate><atom:link href="https://xingkongyj2.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Effective C&#43;&#43;</title>
+      <link>https://xingkongyj2.github.io/post/effective-c&#43;&#43;/</link>
+      <pubDate>Mon, 13 Feb 2023 14:54:24 +0800</pubDate>
+      
+      <guid>https://xingkongyj2.github.io/post/effective-c&#43;&#43;/</guid>
+      <description>1: C+ ＋为一个语言联邦 C++ 并不是一个带有一组守则的一体语言。它是从四个层次语言组成的联邦政府，每个层次语言都有自己的规约：
+C Object-Oriented C+＋ Template C+＋ STL 当从某个层次语言切换到另一个，高效编程守则的策略需要改变。例如对内置类型而言 pass-by-value通常比 pass-by-reference 高效，但当你从C part of C+＋移往 Object-Oriented C++，由与用户自定义 (user-defined) 构造函数和析构函数的存在，pass-by-reference-to-canst 往往更好。
+C++高效编程守则视状况而变化，取决于你使用的哪一部分。
+2: 尽置以 canst, enum, inline 替换＃define #define ASPECT_RATIO 1.653 可能在编译器开始处理源码之前，记号名称ASPECT_RATIO就被预处理器移走了，记号名称ASPECT_RATIO可能没有被编译器看见。于是记号名称ASPECT_RATIO有可能没进入记号表(symbol table) 内。当用这个常量，但是获得一个编译错误信息时，这个错误信息可能提到的是1.653，而不是 ASPECT_RATIO。如果ASPECT_RATIO被定义在一个不是你所写的头文件内，那么肯定就不知道1.653是从那里报出来的错误。而且追踪这个错误也很浪费时间。
+解决方法：是以一个常量替换上述的宏 (#define)
+const double AspectRatio = 1.653; 这样AspectRatio作为一个常量，就能被编译器看见了，也就会进入记号表内。
+以常量替换＃defines, 有两种特殊的情况：
+1.定义常量指针
+由于常量定义式通常被放在头文件内（以便被不同的源码含入），除了指针所指的东西声明为const之外， 也有必要将指针也声明为 const 。例如若要在头文件内定义一个常量的char*-based 字符串，必须写const两次：
+const char* const authorName = &amp;#34;Seot Meyers&amp;#34;; string 对象通常比char*-based 更好，所以上述的authorName定义成这样更好：
+const std::string authorName(&amp;#34;Scott Meyers&amp;#34;); 2.class 专属常量
+为了将常量的作用域限制于 class内，必须让它成为 class 的一个member。为了保证这个常量至多只有一份。</description>
+    </item>
+    
+    <item>
+      <title>Google C&#43;&#43;风格指南</title>
+      <link>https://xingkongyj2.github.io/post/google-c&#43;&#43;%E9%A3%8E%E6%A0%BC%E6%8C%87%E5%8D%97/</link>
+      <pubDate>Mon, 13 Feb 2023 14:54:24 +0800</pubDate>
+      
+      <guid>https://xingkongyj2.github.io/post/google-c&#43;&#43;%E9%A3%8E%E6%A0%BC%E6%8C%87%E5%8D%97/</guid>
+      <description>C++ 风格指南— Google 开源项目风格指南
+1. 头文件 1.1 Self-contained 头文件 一个头文件要有#define保护。
+.h和.cpp需要各自包含他们所需要的其它头文件。如果.cpp需要的头文件中在.h中存在，那就不必再引入了。
+？如果 .h 文件声明了一个模板或内联函数，同时也在该文件加以定义。凡是有用到这些的 .cc 文件，就得统统包含该头文件，否则程序可能会在构建中链接失败。
+？例外：如果某函数模板为所有相关模板参数显式实例化，或本身就是某类的一个私有成员，那么它就只能定义在实例化该模板的 .cc 文件里。
+存取函数一般内联在头文件中
+1.2 头文件保护#define 所有头文件都应该有 #define 保护来防止头文件被多重包含, 命名格式当是: &amp;lt;PROJECT&amp;gt;_&amp;lt;PATH&amp;gt;_&amp;lt;FILE&amp;gt;_H_ .
+//项目 `foo` 中的头文件 `foo/src/bar/baz.h` #ifndef FOO_BAR_BAZ_H_ #define FOO_BAR_BAZ_H_ ... #endif // FOO_BAR_BAZ_H_ 1.3 前置声明 尽可能地避免使用前置声明。使用 #include 包含需要的头文件即可。
+1.4 内联函数 只有当函数只有 10 行甚至更少时才将其定义为内联函数.
+谨慎对待析构函数, 析构函数往往比其表面看起来要更长, 因为有隐含的成员和基类析构函数被调用!
+内联那些包含循环或 switch 语句的函数常常是得不偿失
+1.5 #include 的路径及顺序 使用标准的头文件包含顺序可增强可读性, 避免隐藏依赖: 相关头文件, C 库, C++ 库, 其他库的 .h, 本项目内的 .h.</description>
+    </item>
+    
     <item>
       <title>LevelDB笔记：WAL</title>
       <link>https://xingkongyj2.github.io/post/leveldb%E7%AC%94%E8%AE%B0wal/</link>

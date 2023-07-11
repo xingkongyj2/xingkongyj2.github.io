@@ -37,7 +37,7 @@
 
 <html
   class="not-ready text-sm lg:text-base"
-  style="--bg: #faf6f1"
+  style="--bg: "
   lang="zh"
 >
   <head>
@@ -49,7 +49,7 @@
   />
 
   
-  <title>LevelDB笔记：功能特性 - mayj&#39;s blog</title>
+  <title>LevelDB笔记：功能特性 - YJ-Ma&#39;s blog</title>
 
   
   <meta name="theme-color" />
@@ -215,7 +215,7 @@ leveldb::Iterator* it = db-&gt;NewIterator(leveldb::ReadOptions()); for (it-&gt;
 
     
     const metaTheme = document.querySelector('meta[name="theme-color"]');
-    const lightBg = `"#faf6f1"`.replace(/"/g, '');
+    const lightBg = ` null `.replace(/"/g, '');
     const setDark = (isDark) => {
       metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
       htmlClass[isDark ? 'add' : 'remove']('dark');
@@ -300,11 +300,11 @@ leveldb::Iterator* it = db-&gt;NewIterator(leveldb::ReadOptions()); for (it-&gt;
   <section><h3 id="打开">打开</h3>
 <p>LevelDB每一个数据库有一个name，对应一个目录，所有的数据库文件都在这个目录里。通过<code>Open</code>可以打开或者新建一个数据库，得到数据库的引用，通过这个引用来操作数据库。</p>
 <p>可以这样打开一个数据库：</p>
-<pre tabindex="0"><code>leveldb::DB* db;
-leveldb::Options options;
-options.create_if_missing = true;
-leveldb::Status status = leveldb::DB::Open(options, &#34;/tmp/testdb&#34;, &amp;db);
-</code></pre><p><code>name</code>指定数据库目录，<code>options</code>指定了打开数据库的选项，<code>db</code>获取了数据库的引用。这里使用了<code>create_if_missing</code>选项，当数据库不存在时会创建数据库。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>leveldb<span style="color:#f92672">::</span>DB<span style="color:#f92672">*</span> db;
+</span></span><span style="display:flex;"><span>leveldb<span style="color:#f92672">::</span>Options options;
+</span></span><span style="display:flex;"><span>options.create_if_missing <span style="color:#f92672">=</span> true;
+</span></span><span style="display:flex;"><span>leveldb<span style="color:#f92672">::</span>Status status <span style="color:#f92672">=</span> leveldb<span style="color:#f92672">::</span>DB<span style="color:#f92672">::</span>Open(options, <span style="color:#e6db74">&#34;/tmp/testdb&#34;</span>, <span style="color:#f92672">&amp;</span>db);
+</span></span></code></pre></div><p><code>name</code>指定数据库目录，<code>options</code>指定了打开数据库的选项，<code>db</code>获取了数据库的引用。这里使用了<code>create_if_missing</code>选项，当数据库不存在时会创建数据库。</p>
 <h3 id="关闭">关闭</h3>
 <p>只需要<code>delete</code>数据库实例即可：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#66d9ef">delete</span> db
@@ -467,7 +467,7 @@ db-&gt;Get(options, &#34;hello&#34;, &amp;value);
 >
   <div class="mr-auto">
     &copy; 2023
-    <a class="link" href="https://xingkongyj2.github.io/">mayj&#39;s blog</a>
+    <a class="link" href="https://xingkongyj2.github.io/">YJ-Ma&#39;s blog</a>
   </div>
   <a
     class="link"
